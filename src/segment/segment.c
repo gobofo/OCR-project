@@ -272,8 +272,10 @@ static int bbox_cmp(const void *a, const void *b)
     int cy_a = ba->y + ba->h / 2;
     int cy_b = bb->y + bb->h / 2;
 
-    /* If centres are within 10px, treat as same row → sort by x. */
-    if (abs(cy_a - cy_b) <= 10)
+    /* If centres are within half a cell height, treat as same row → sort by x. */
+    int tol = (ba->h + bb->h) / 4;
+    if (tol < 10) tol = 10;
+    if (abs(cy_a - cy_b) <= tol)
         return ba->x - bb->x;
 
     return cy_a - cy_b;

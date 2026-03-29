@@ -1,0 +1,20 @@
+<map id="src/cnn/cnn.h" name="src/cnn/cnn.h">
+<area shape="rect" id="Node000001" title="Convolutional Neural Network for A–Z character recognition." alt="" coords="246,5,352,33"/>
+<area shape="rect" id="Node000002" href="$solve__main_8c.html" title="Entry point for the OCR + crossword&#45;solver binary." alt="" coords="5,157,113,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,35,177,55,126,83,107,101,90,121,67,158,63,155,86,118,103,97,123,79,175,50,233,33"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html" title="CNN implementation: initialisation, forward pass, backward pass, SGD&#45;with&#45;momentum update." alt="" coords="493,81,598,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="358,35,504,80,499,81,357,40"/>
+<area shape="rect" id="Node000004" href="$dataset_8h.html" title="Training dataset loader." alt="" coords="337,81,469,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="330,39,387,81,382,81,329,45"/>
+<area shape="rect" id="Node000006" href="$train__main_8c.html" title="Entry point for the CNN training binary." alt="" coords="285,157,388,184"/>
+<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="308,46,336,157,331,155,304,50"/>
+<area shape="rect" id="Node000007" href="$model_8h.html" title="Binary serialisation and deserialisation of CNN weights." alt="" coords="137,81,261,109"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="271,41,218,83,215,78,267,44"/>
+<area shape="rect" id="Node000005" href="$dataset_8c.html" title="Training dataset loader with optional POSIX thread parallelism." alt="" coords="412,157,543,184"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="428,117,467,157,462,156,426,122"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="383,119,350,159,347,154,379,121"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="163,117,85,159,83,154,158,115"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="238,114,315,156,309,156,236,119"/>
+<area shape="rect" id="Node000008" href="$model_8c.html" title="Binary save/load of CNN weights and latest&#45;model discovery." alt="" coords="137,157,261,184"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="201,123,201,158,197,155,197,126"/>
+</map>

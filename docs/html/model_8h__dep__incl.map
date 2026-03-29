@@ -1,0 +1,9 @@
+<map id="src/cnn/model.h" name="src/cnn/model.h">
+<area shape="rect" id="Node000001" title="Binary serialisation and deserialisation of CNN weights." alt="" coords="137,5,261,33"/>
+<area shape="rect" id="Node000002" href="$solve__main_8c.html" title="Entry point for the OCR + crossword&#45;solver binary." alt="" coords="5,81,113,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,42,85,83,83,78,158,39"/>
+<area shape="rect" id="Node000003" href="$model_8c.html" title="Binary save/load of CNN weights and latest&#45;model discovery." alt="" coords="137,81,261,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,47,201,82,197,79,197,51"/>
+<area shape="rect" id="Node000004" href="$train__main_8c.html" title="Entry point for the CNN training binary." alt="" coords="285,81,388,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="238,38,315,80,309,81,236,43"/>
+</map>

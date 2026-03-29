@@ -1,0 +1,43 @@
+\doxysection{Sample Struct Reference}
+\hypertarget{structSample}{}\label{structSample}\index{Sample@{Sample}}
+
+
+A single labelled training sample.  
+
+
+
+
+{\ttfamily \+\#include $<$dataset.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \doxymbox{\hyperlink{structSample_a33df9a5330df848399c37d878a220b24}{pixels}} \+[\doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}} \texorpdfstring{$\ast$}{*}\doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}}]\+
+\item 
+int \doxymbox{\hyperlink{structSample_a1ceeafd4dbfdef1b43bc7c8aed02b851}{label}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A single labelled training sample. 
+
+\label{doc-variable-members}
+\Hypertarget{structSample_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structSample_a1ceeafd4dbfdef1b43bc7c8aed02b851}\index{Sample@{Sample}!label@{label}}
+\index{label@{label}!Sample@{Sample}}
+\doxysubsubsection{\texorpdfstring{label}{label}}
+{\footnotesize\ttfamily \label{structSample_a1ceeafd4dbfdef1b43bc7c8aed02b851} 
+int Sample::\+label}
+
+Class index in \+[0, CNN\+\_\+\+N\+\_\+\+CLASSES):\+ 0=\textquotesingle{}A\textquotesingle{}, 25=\textquotesingle{}Z\textquotesingle{}. \Hypertarget{structSample_a33df9a5330df848399c37d878a220b24}\index{Sample@{Sample}!pixels@{pixels}}
+\index{pixels@{pixels}!Sample@{Sample}}
+\doxysubsubsection{\texorpdfstring{pixels}{pixels}}
+{\footnotesize\ttfamily \label{structSample_a33df9a5330df848399c37d878a220b24} 
+float Sample::\+pixels\+[\doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}} \texorpdfstring{$\ast$}{*}\doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}}]\+}
+
+Flat float array of CNN\+\_\+\+IMG\+\_\+H \texorpdfstring{$\ast$}{*} CNN\+\_\+\+IMG\+\_\+W normalised pixels. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+cnn/\+\doxymbox{\hyperlink{dataset_8h}{dataset.\+h}}\end{DoxyCompactItemize}

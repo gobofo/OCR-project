@@ -1,0 +1,26 @@
+<map id="train_main.c" name="train_main.c">
+<area shape="rect" id="Node000001" title="Entry point for the CNN training binary." alt="" coords="388,5,491,33"/>
+<area shape="rect" id="Node000002" href="$cnn_8h.html" title="Convolutional Neural Network for A–Z character recognition." alt="" coords="110,157,217,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="385,22,344,28,295,38,246,55,203,83,191,96,182,111,171,143,166,140,177,109,187,93,199,79,244,51,294,32,343,22,390,20"/>
+<area shape="rect" id="Node000004" href="$dataset_8h.html" title="Training dataset loader." alt="" coords="5,81,138,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="387,33,153,80,152,75,389,28"/>
+<area shape="rect" id="Node000005" href="$model_8h.html" title="Binary serialisation and deserialisation of CNN weights." alt="" coords="213,81,338,109"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="408,35,320,77,317,72,413,32"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="362,81,427,109"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="433,32,412,70,408,66,429,35"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="452,81,521,109"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="449,31,472,69,467,67,447,36"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="544,81,615,109"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="465,31,544,73,539,74,464,36"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="638,81,702,109"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="481,31,626,78,621,79,481,36"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="725,81,810,109"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="491,29,713,79,708,81,491,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="82,232,155,260"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="158,184,136,221,132,217,153,186"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="88,107,138,146,133,148,88,112"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="77,107,101,184,112,218,106,217,96,185,74,111"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="258,108,197,150,194,146,253,111"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="240,157,311,184"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="277,107,278,142,273,140,274,111"/>
+</map>

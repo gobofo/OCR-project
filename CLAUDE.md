@@ -64,10 +64,10 @@ solve_main.c                   entry point for ./solve
 ## CNN Architecture
 
 ```
-Input 28×28 (float, 0–1)
-  Conv2D  16 filters 3×3  → 16×26×26
+Input 56×56 (float, 0–1)
+  Conv2D  16 filters 3×3  → 16×54×54
   ReLU
-  MaxPool 2×2             → 16×13×13
+  MaxPool 4×4             → 16×13×13
   Flatten                 → 2704
   Dense   2704 → 128
   ReLU
@@ -75,8 +75,8 @@ Input 28×28 (float, 0–1)
   Softmax                 → P(A)…P(Z)
 ```
 
-Training: He init, SGD + momentum (lr=0.001, β=0.9), cross-entropy loss,
-batch size 32.
+Training: He init, SGD + momentum (lr=0.001, β=0.9), averaged gradients,
+cross-entropy loss, batch size 32.
 
 ## Task Checklist
 

@@ -1,0 +1,7 @@
+<map id="cnn_predict" name="cnn_predict">
+<area shape="rect" id="Node000001" title="Predict the most likely class for a single image." alt="" coords="270,5,366,33"/>
+<area shape="rect" id="Node000002" href="$solve__main_8c.html#a6680539f8c646b0b8c01cf9eb3c49148" title="Crop a cell bounding box from a pixel buffer, resize, and predict." alt="" coords="108,5,222,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="252,19,222,22,222,17,257,19"/>
+<area shape="rect" id="Node000003" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="89,20,60,22,60,17,94,18"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="is_image_file" name="is_image_file">
+<area shape="rect" id="Node000001" title="Check whether filename ends with a known image extension." alt="" coords="421,32,529,60"/>
+<area shape="rect" id="Node000002" href="$dataset_8c.html#acdf368673c2db18790faefc8d06f88e5" title="Count the number of image files in a directory." alt="" coords="261,5,373,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="403,34,374,31,374,26,409,34"/>
+<area shape="rect" id="Node000005" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="262,57,373,85"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="408,57,374,65,373,60,403,57"/>
+<area shape="rect" id="Node000003" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="108,32,213,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="243,32,214,39,213,34,248,31"/>
+<area shape="rect" id="Node000004" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="89,47,61,48,60,43,94,45"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="243,60,213,57,213,52,249,60"/>
+</map>

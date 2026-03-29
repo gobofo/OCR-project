@@ -1,0 +1,7 @@
+<map id="src/segment/segment.h" name="src/segment/segment.h">
+<area shape="rect" id="Node000001" title="Letter segmentation: detect crossword grid and extract letter cells." alt="" coords="53,5,228,33"/>
+<area shape="rect" id="Node000002" href="$solve__main_8c.html" title="Entry point for the OCR + crossword&#45;solver binary." alt="" coords="5,81,113,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,43,75,83,72,78,112,44"/>
+<area shape="rect" id="Node000003" href="$segment_8c.html" title="Letter segmentation via connected&#45;component analysis and grid detection." alt="" coords="136,81,310,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,41,211,81,206,81,165,46"/>
+</map>

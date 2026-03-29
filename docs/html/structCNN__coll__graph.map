@@ -1,0 +1,7 @@
+<map id="CNN" name="CNN">
+<area shape="rect" id="Node000001" title="Full CNN state: weights, gradients, momentum buffers, activations." alt="" coords="99,151,150,178"/>
+<area shape="rect" id="Node000002" href="$structCNNWeights.html" title="Learnable parameters of the CNN." alt="" coords="5,5,108,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,45,107,125,120,151,114,150,102,128,66,49"/>
+<area shape="rect" id="Node000003" href="$structCNNActivations.html" title="Intermediate activations produced by the forward pass." alt="" coords="132,5,256,33"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,46,184,88,167,128,145,152,141,148,162,125,179,86,189,50"/>
+</map>

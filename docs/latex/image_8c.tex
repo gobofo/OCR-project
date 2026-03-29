@@ -1,0 +1,357 @@
+\doxysection{src/\+preprocess/\+image.c File Reference}
+\hypertarget{image_8c}{}\label{image_8c}\index{src/preprocess/image.c@{src/preprocess/image.c}}
+
+
+\doxylink{structImage}{Image} preprocessing pipeline using libpng (no SDL2\+\_\+image required).  
+
+
+{\ttfamily \+\#include "{}image.\+h"{}}\newline
+{\ttfamily \+\#include $<$math.\+h$>$}\newline
+{\ttfamily \+\#include $<$png.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+Include dependency graph for image.\+c:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{image_8c_a0f84a9ec64f5cd9a13915bd0d631a580}{image\+\_\+alloc}} (int w, int h)
+\begin{DoxyCompactList}\small\item\em Allocate an \doxylink{structImage}{Image} of given dimensions with a zeroed pixel buffer. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{image_8c_a712dc87c6c9fed0f3bf082bce38b40fb}{image\+\_\+free}} (\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}img)
+\begin{DoxyCompactList}\small\item\em Free an \doxylink{structImage}{Image} allocated by \doxylink{image_8h_a28674722e7d5137fadd79c172bc60127}{image\+\_\+load\+\_\+png()}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{image_8c_a28674722e7d5137fadd79c172bc60127}{image\+\_\+load\+\_\+png}} (const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Load a PNG file into an \doxylink{structImage}{Image}. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{image_8c_a305f6a837e3c8a24d59bd52ddd8180ad}{image\+\_\+save\+\_\+png}} (const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}img, const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Save an \doxylink{structImage}{Image} as a PNG file. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{image_8c_a0aca710a195c2b99587ca94455b25c46}{image\+\_\+to\+\_\+grayscale}} (\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}img)
+\begin{DoxyCompactList}\small\item\em Convert an \doxylink{structImage}{Image} to grayscale in-\/place. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{image_8c_a8e5e4e11e7daf8b8d973824c6476c8d2}{image\+\_\+binarize}} (\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}img)
+\begin{DoxyCompactList}\small\item\em Binarise a grayscale \doxylink{structImage}{Image} in-\/place using a global threshold. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{image_8c_a9d344df105e6164de2266f08e2bc3130}{image\+\_\+resize}} (const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}src, int w, int h)
+\begin{DoxyCompactList}\small\item\em Resize an \doxylink{structImage}{Image} to the given dimensions (nearest-\/neighbour). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{image_8c_a2f65d152419d4fcd1418da5fc863b421}{image\+\_\+rotate}} (const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}src, float angle\+\_\+deg)
+\begin{DoxyCompactList}\small\item\em Rotate an \doxylink{structImage}{Image} by {\ttfamily angle\+\_\+deg} degrees clockwise. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{image_8c_aea22486042d084f879e40219b1bc8967}{image\+\_\+to\+\_\+float}} (const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}img, float \texorpdfstring{$\ast$}{*}out)
+\begin{DoxyCompactList}\small\item\em Convert an \doxylink{structImage}{Image} to a flat normalised float array. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{image_8c_a29ef0f108bf45225178781b800a0e4a9}{image\+\_\+load\+\_\+normalised}} (const char \texorpdfstring{$\ast$}{*}path, const \doxymbox{\hyperlink{structPreprocessParams}{Preprocess\+Params}} \texorpdfstring{$\ast$}{*}p, float \texorpdfstring{$\ast$}{*}out, int out\+\_\+h, int out\+\_\+w)
+\begin{DoxyCompactList}\small\item\em Full pipeline:\+ load PNG → preprocess → resize → float array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{structImage}{Image} preprocessing pipeline using libpng (no SDL2\+\_\+image required). 
+
+
+
+\label{doc-func-members}
+\Hypertarget{image_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{image_8c_a0f84a9ec64f5cd9a13915bd0d631a580}\index{image.c@{image.c}!image\_alloc@{image\_alloc}}
+\index{image\_alloc@{image\_alloc}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_alloc()}{image\_alloc()}}
+{\footnotesize\ttfamily \label{image_8c_a0f84a9ec64f5cd9a13915bd0d631a580} 
+\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} image\+\_\+alloc (\begin{DoxyParamCaption}\item[{int}]{w}{, }\item[{int}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Allocate an \doxylink{structImage}{Image} of given dimensions with a zeroed pixel buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Width in pixels. \\
+\hline
+{\em h} & Height in pixels. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap-\/allocated \doxylink{structImage}{Image}, or NULL on failure. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a0f84a9ec64f5cd9a13915bd0d631a580_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{image_8c_a8e5e4e11e7daf8b8d973824c6476c8d2}\index{image.c@{image.c}!image\_binarize@{image\_binarize}}
+\index{image\_binarize@{image\_binarize}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_binarize()}{image\_binarize()}}
+{\footnotesize\ttfamily \label{image_8c_a8e5e4e11e7daf8b8d973824c6476c8d2} 
+void image\+\_\+binarize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{img}{}\end{DoxyParamCaption})}
+
+
+
+Binarise a grayscale \doxylink{structImage}{Image} in-\/place using a global threshold. 
+
+The threshold is the mean pixel luminance of the image. Pixels above the threshold → 255 (white/\+background). Pixels at or below → 0 (black/\+ink).
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & Grayscale \doxylink{structImage}{Image} (R channel used as luminance). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a8e5e4e11e7daf8b8d973824c6476c8d2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{image_8c_a712dc87c6c9fed0f3bf082bce38b40fb}\index{image.c@{image.c}!image\_free@{image\_free}}
+\index{image\_free@{image\_free}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_free()}{image\_free()}}
+{\footnotesize\ttfamily \label{image_8c_a712dc87c6c9fed0f3bf082bce38b40fb} 
+void image\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{img}{}\end{DoxyParamCaption})}
+
+
+
+Free an \doxylink{structImage}{Image} allocated by \doxylink{image_8h_a28674722e7d5137fadd79c172bc60127}{image\+\_\+load\+\_\+png()}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \doxylink{structImage}{Image} to free. No-\/op if NULL. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a712dc87c6c9fed0f3bf082bce38b40fb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{image_8c_a29ef0f108bf45225178781b800a0e4a9}\index{image.c@{image.c}!image\_load\_normalised@{image\_load\_normalised}}
+\index{image\_load\_normalised@{image\_load\_normalised}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_load\_normalised()}{image\_load\_normalised()}}
+{\footnotesize\ttfamily \label{image_8c_a29ef0f108bf45225178781b800a0e4a9} 
+int image\+\_\+load\+\_\+normalised (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{, }\item[{const \doxymbox{\hyperlink{structPreprocessParams}{Preprocess\+Params}} \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{out}{, }\item[{int}]{out\+\_\+h}{, }\item[{int}]{out\+\_\+w}{}\end{DoxyParamCaption})}
+
+
+
+Full pipeline:\+ load PNG → preprocess → resize → float array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to the source PNG file. \\
+\hline
+{\em p} & Preprocessing parameters (may be NULL for defaults). \\
+\hline
+{\em out} & Output buffer of size {\ttfamily out\+\_\+h} \texorpdfstring{$\ast$}{*} {\ttfamily out\+\_\+w} floats. \\
+\hline
+{\em out\+\_\+h} & Target height (e.\+g. 28 for \doxylink{structCNN}{CNN} input). \\
+\hline
+{\em out\+\_\+w} & Target width (e.\+g. 28 for \doxylink{structCNN}{CNN} input). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on error. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a29ef0f108bf45225178781b800a0e4a9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a29ef0f108bf45225178781b800a0e4a9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{image_8c_a28674722e7d5137fadd79c172bc60127}\index{image.c@{image.c}!image\_load\_png@{image\_load\_png}}
+\index{image\_load\_png@{image\_load\_png}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_load\_png()}{image\_load\_png()}}
+{\footnotesize\ttfamily \label{image_8c_a28674722e7d5137fadd79c172bc60127} 
+\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} image\+\_\+load\+\_\+png (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Load a PNG file into an \doxylink{structImage}{Image}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to the PNG file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap-\/allocated \doxylink{structImage}{Image} on success, or NULL on error. Free with \doxylink{image_8h_a712dc87c6c9fed0f3bf082bce38b40fb}{image\+\_\+free()}. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{image_8c_a28674722e7d5137fadd79c172bc60127_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a28674722e7d5137fadd79c172bc60127_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{image_8c_a9d344df105e6164de2266f08e2bc3130}\index{image.c@{image.c}!image\_resize@{image\_resize}}
+\index{image\_resize@{image\_resize}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_resize()}{image\_resize()}}
+{\footnotesize\ttfamily \label{image_8c_a9d344df105e6164de2266f08e2bc3130} 
+\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} image\+\_\+resize (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{int}]{w}{, }\item[{int}]{h}{}\end{DoxyParamCaption})}
+
+
+
+Resize an \doxylink{structImage}{Image} to the given dimensions (nearest-\/neighbour). 
+
+Returns a new \doxylink{structImage}{Image}; the original is not modified.
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & Source \doxylink{structImage}{Image}. \\
+\hline
+{\em w} & Target width in pixels. \\
+\hline
+{\em h} & Target height in pixels. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New \doxylink{structImage}{Image} on success, NULL on allocation failure. Free with \doxylink{image_8h_a712dc87c6c9fed0f3bf082bce38b40fb}{image\+\_\+free()}. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{image_8c_a9d344df105e6164de2266f08e2bc3130_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a9d344df105e6164de2266f08e2bc3130_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{image_8c_a2f65d152419d4fcd1418da5fc863b421}\index{image.c@{image.c}!image\_rotate@{image\_rotate}}
+\index{image\_rotate@{image\_rotate}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_rotate()}{image\_rotate()}}
+{\footnotesize\ttfamily \label{image_8c_a2f65d152419d4fcd1418da5fc863b421} 
+\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} image\+\_\+rotate (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{float}]{angle\+\_\+deg}{}\end{DoxyParamCaption})}
+
+
+
+Rotate an \doxylink{structImage}{Image} by {\ttfamily angle\+\_\+deg} degrees clockwise. 
+
+Returns a new \doxylink{structImage}{Image} large enough to contain the full rotated content. Background pixels are set to white (255, 255, 255, 255).
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & Source \doxylink{structImage}{Image}. \\
+\hline
+{\em angle\+\_\+deg} & Rotation angle in degrees (clockwise). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New rotated \doxylink{structImage}{Image}, or NULL on failure. Free with \doxylink{image_8h_a712dc87c6c9fed0f3bf082bce38b40fb}{image\+\_\+free()}. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{image_8c_a2f65d152419d4fcd1418da5fc863b421_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a2f65d152419d4fcd1418da5fc863b421_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{image_8c_a305f6a837e3c8a24d59bd52ddd8180ad}\index{image.c@{image.c}!image\_save\_png@{image\_save\_png}}
+\index{image\_save\_png@{image\_save\_png}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_save\_png()}{image\_save\_png()}}
+{\footnotesize\ttfamily \label{image_8c_a305f6a837e3c8a24d59bd52ddd8180ad} 
+int image\+\_\+save\+\_\+png (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Save an \doxylink{structImage}{Image} as a PNG file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \doxylink{structImage}{Image} to save. \\
+\hline
+{\em path} & Destination file path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on error. 
+\end{DoxyReturn}
+\Hypertarget{image_8c_aea22486042d084f879e40219b1bc8967}\index{image.c@{image.c}!image\_to\_float@{image\_to\_float}}
+\index{image\_to\_float@{image\_to\_float}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_to\_float()}{image\_to\_float()}}
+{\footnotesize\ttfamily \label{image_8c_aea22486042d084f879e40219b1bc8967} 
+void image\+\_\+to\+\_\+float (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{img}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{out}{}\end{DoxyParamCaption})}
+
+
+
+Convert an \doxylink{structImage}{Image} to a flat normalised float array. 
+
+Reads the R channel (expected to hold grayscale luminance). Ink (R=0) → 1.\+0f, background (R=255) → 0.\+0f.
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & Source \doxylink{structImage}{Image} (must be grayscale). \\
+\hline
+{\em out} & Output buffer of size img-\/\texorpdfstring{$>$}{>}width \texorpdfstring{$\ast$}{*} img-\/\texorpdfstring{$>$}{>}height floats. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_aea22486042d084f879e40219b1bc8967_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{image_8c_a0aca710a195c2b99587ca94455b25c46}\index{image.c@{image.c}!image\_to\_grayscale@{image\_to\_grayscale}}
+\index{image\_to\_grayscale@{image\_to\_grayscale}!image.c@{image.c}}
+\doxysubsubsection{\texorpdfstring{image\_to\_grayscale()}{image\_to\_grayscale()}}
+{\footnotesize\ttfamily \label{image_8c_a0aca710a195c2b99587ca94455b25c46} 
+void image\+\_\+to\+\_\+grayscale (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{img}{}\end{DoxyParamCaption})}
+
+
+
+Convert an \doxylink{structImage}{Image} to grayscale in-\/place. 
+
+Uses ITU-\/R BT.\+601 luminance weights:\+ L = 0.\+299·R + 0.\+587·G + 0.\+114·B
+
+After this call the R, G, and B channels all hold the luminance value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em img} & \doxylink{structImage}{Image} to convert. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{image_8c_a0aca710a195c2b99587ca94455b25c46_icgraph}
+\end{center}
+\end{figure}

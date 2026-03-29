@@ -1,0 +1,9 @@
+<map id="src/preprocess/image.h" name="src/preprocess/image.h">
+<area shape="rect" id="Node000001" title="Image loading, preprocessing, and normalisation." alt="" coords="117,5,289,33"/>
+<area shape="rect" id="Node000002" href="$solve__main_8c.html" title="Entry point for the OCR + crossword&#45;solver binary." alt="" coords="5,81,113,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,42,86,83,83,78,161,39"/>
+<area shape="rect" id="Node000003" href="$dataset_8c.html" title="Training dataset loader with optional POSIX thread parallelism." alt="" coords="137,81,269,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,47,205,82,201,79,201,51"/>
+<area shape="rect" id="Node000004" href="$image_8c.html" title="Image preprocessing pipeline using libpng (no SDL2_image required)." alt="" coords="293,81,465,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="249,37,350,80,345,81,248,42"/>
+</map>

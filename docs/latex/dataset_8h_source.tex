@@ -1,0 +1,34 @@
+\doxysection{dataset.\+h}
+\hypertarget{dataset_8h_source}{}\label{dataset_8h_source}\index{src/cnn/dataset.h@{src/cnn/dataset.h}}
+\doxymbox{\hyperlink{dataset_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ DATASET\_H}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ DATASET\_H}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{cnn_8h}{cnn.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structSample_a33df9a5330df848399c37d878a220b24}{pixels}}[\doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\_IMG\_H}}\ *\ \doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\_IMG\_W}}];}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \doxymbox{\hyperlink{structSample_a1ceeafd4dbfdef1b43bc7c8aed02b851}{label}};}
+\DoxyCodeLine{00034\ \}\ \doxymbox{\hyperlink{structSample}{Sample}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \doxymbox{\hyperlink{structSample}{Sample}}\ *\doxymbox{\hyperlink{structDataset_ab2c787d589d3906b56da29da8afd22bc}{data}};\ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \doxymbox{\hyperlink{structDataset_ad962e1bccad21818b5921eceba79006a}{size}};\ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \doxymbox{\hyperlink{structDataset_ae02b370e8391f5fbe422834d15101956}{cap}};\ \ \ \ \ }
+\DoxyCodeLine{00043\ \}\ \doxymbox{\hyperlink{structDataset}{Dataset}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00059\ \doxymbox{\hyperlink{structDataset}{Dataset}}\ *\doxymbox{\hyperlink{dataset_8h_a73880acad0c6623605bec581bb468f54}{dataset\_load}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *root\_dir,\ \textcolor{keywordtype}{int}\ n\_threads);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{dataset_8h_a8f29f81c08084278983c39e57931ae3c}{dataset\_shuffle}}(\doxymbox{\hyperlink{structDataset}{Dataset}}\ *ds);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{dataset_8h_aa47cdfa2cb64479b8cf15f5e9838c8a1}{dataset\_free}}(\doxymbox{\hyperlink{structDataset}{Dataset}}\ *ds);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{dataset_8h_ae4efe00373f1161a112fd63725b13017}{dataset\_print\_info}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structDataset}{Dataset}}\ *ds);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ DATASET\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

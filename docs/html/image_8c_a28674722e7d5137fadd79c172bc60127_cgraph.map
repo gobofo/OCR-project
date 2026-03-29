@@ -1,0 +1,7 @@
+<map id="image_load_png" name="image_load_png">
+<area shape="rect" id="Node000001" title="Load a PNG file into an Image." alt="" coords="5,32,134,60"/>
+<area shape="rect" id="Node000002" href="$image_8c.html#a0f84a9ec64f5cd9a13915bd0d631a580" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="182,5,282,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,33,169,29,163,31,135,38"/>
+<area shape="rect" id="Node000003" href="$image_8c.html#a712dc87c6c9fed0f3bf082bce38b40fb" title="Free an Image allocated by image_load_png()." alt="" coords="184,57,280,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,53,171,61,166,62,134,59"/>
+</map>

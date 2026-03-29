@@ -26,8 +26,8 @@
  * ---------------------------------------------------------------------- */
 
 /** Input image height and width (pixels). */
-#define CNN_IMG_H   28
-#define CNN_IMG_W   28
+#define CNN_IMG_H   56
+#define CNN_IMG_W   56
 
 /** Convolution: number of filters and kernel size. */
 #define CNN_N_FILTERS   16
@@ -38,11 +38,11 @@
 #define CNN_CONV_H  (CNN_IMG_H - CNN_KERNEL_H + 1)   /* 26 */
 #define CNN_CONV_W  (CNN_IMG_W - CNN_KERNEL_W + 1)   /* 26 */
 
-/** Max-pooling window and stride. */
-#define CNN_POOL_H  2
-#define CNN_POOL_W  2
+/** Max-pooling window and stride (4×4 keeps flat size at 2704 with 56×56 input). */
+#define CNN_POOL_H  4
+#define CNN_POOL_W  4
 
-/** Derived pool output size. */
+/** Derived pool output size: floor(54/4) = 13. */
 #define CNN_POOL_OUT_H  (CNN_CONV_H / CNN_POOL_H)   /* 13 */
 #define CNN_POOL_OUT_W  (CNN_CONV_W / CNN_POOL_W)   /* 13 */
 
@@ -135,10 +135,11 @@ typedef struct {
  * @brief Full CNN state: weights, gradients, momentum buffers, activations.
  */
 typedef struct {
-    CNNWeights  weights;   /**< Current learnable parameters.             */
-    CNNWeights  grads;     /**< Accumulated gradients (reset each batch). */
-    CNNWeights  velocity;  /**< Momentum velocity buffer.                 */
-    CNNActivations act;    /**< Forward-pass activations.                 */
+    CNNWeights  weights;     /**< Current learnable parameters.             */
+    CNNWeights  grads;       /**< Accumulated gradients (reset each batch). */
+    CNNWeights  velocity;    /**< Momentum velocity buffer.                 */
+    CNNActivations act;      /**< Forward-pass activations.                 */
+    int         batch_count; /**< Number of backward() calls since last update(). */
 } CNN;
 
 /* -------------------------------------------------------------------------

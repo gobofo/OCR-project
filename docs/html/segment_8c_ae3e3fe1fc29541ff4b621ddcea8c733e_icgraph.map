@@ -1,0 +1,7 @@
+<map id="segment_sort_reading_order" name="segment_sort_reading_order">
+<area shape="rect" id="Node000001" title="Sort a SegmentResult&#39;s cells in reading order (top&#45;to&#45;bottom, left&#45;to&#45;right)." alt="" coords="282,5,448,50"/>
+<area shape="rect" id="Node000002" href="$segment_8c.html#af4f1a9479f738e0cccc6d9f0b6e963e3" title="Segment a binarised image into letter cell bounding boxes." alt="" coords="108,14,234,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,28,234,30,234,25,269,28"/>
+<area shape="rect" id="Node000003" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,14,60,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,29,60,30,60,25,95,27"/>
+</map>

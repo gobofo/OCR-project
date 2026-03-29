@@ -1,0 +1,9 @@
+<map id="try_direction" name="try_direction">
+<area shape="rect" id="Node000001" title="Check whether word fits in grid starting at (r, c) going in direction dir." alt="" coords="406,5,510,33"/>
+<area shape="rect" id="Node000002" href="$solver_8c.html#ae7bb6f196b7565fd463fabc118c16d03" title="Search for word in grid in all 8 directions." alt="" coords="266,5,358,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="388,19,359,22,359,17,393,19"/>
+<area shape="rect" id="Node000003" href="$solve__main_8c.html#a6258df9f0bf10752ca0b2487e72fdf81" title="Search for all comma&#45;separated words in args&#45;&gt;words." alt="" coords="108,5,218,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="248,19,218,22,218,17,253,19"/>
+<area shape="rect" id="Node000004" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="90,20,60,22,60,17,95,18"/>
+</map>

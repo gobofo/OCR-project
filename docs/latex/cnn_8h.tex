@@ -1,0 +1,453 @@
+\doxysection{src/\+cnn/\+cnn.h File Reference}
+\hypertarget{cnn_8h}{}\label{cnn_8h}\index{src/cnn/cnn.h@{src/cnn/cnn.h}}
+
+
+Convolutional Neural Network for A–Z character recognition.  
+
+
+{\ttfamily \+\#include $<$stddef.\+h$>$}\newline
+Include dependency graph for cnn.\+h:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{cnn_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cnn_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structCNNWeights}{CNNWeights}}
+\begin{DoxyCompactList}\small\item\em Learnable parameters of the \doxylink{structCNN}{CNN}. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structCNNActivations}{CNNActivations}}
+\begin{DoxyCompactList}\small\item\em Intermediate activations produced by the forward pass. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structCNN}{CNN}}
+\begin{DoxyCompactList}\small\item\em Full \doxylink{structCNN}{CNN} state:\+ weights, gradients, momentum buffers, activations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}}~28
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}}~28
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}~16
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_adb097e298ba6b84fb4cc59ac08641c31}{CNN\+\_\+\+KERNEL\+\_\+H}}~3
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a3cfba4b17a3484edca8821c4001efc76}{CNN\+\_\+\+KERNEL\+\_\+W}}~3
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_ae09fcfd11a99599048be612b2493e968}{CNN\+\_\+\+CONV\+\_\+H}}~(\doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}} -\/ \doxymbox{\hyperlink{cnn_8h_adb097e298ba6b84fb4cc59ac08641c31}{CNN\+\_\+\+KERNEL\+\_\+H}} + 1)   /\+\texorpdfstring{$\ast$}{*} 26 \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_af515392cca7f15414fa7d0135341c5a0}{CNN\+\_\+\+CONV\+\_\+W}}~(\doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}} -\/ \doxymbox{\hyperlink{cnn_8h_a3cfba4b17a3484edca8821c4001efc76}{CNN\+\_\+\+KERNEL\+\_\+W}} + 1)   /\+\texorpdfstring{$\ast$}{*} 26 \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a106b6060d5bb01886f146b81ebb4e822}{CNN\+\_\+\+POOL\+\_\+H}}~2
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a63ed2572f3e837b3871429d7d8fcfb34}{CNN\+\_\+\+POOL\+\_\+W}}~2
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}}~(\doxymbox{\hyperlink{cnn_8h_ae09fcfd11a99599048be612b2493e968}{CNN\+\_\+\+CONV\+\_\+H}} /\+ \doxymbox{\hyperlink{cnn_8h_a106b6060d5bb01886f146b81ebb4e822}{CNN\+\_\+\+POOL\+\_\+H}})   /\+\texorpdfstring{$\ast$}{*} 13 \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}}~(\doxymbox{\hyperlink{cnn_8h_af515392cca7f15414fa7d0135341c5a0}{CNN\+\_\+\+CONV\+\_\+W}} /\+ \doxymbox{\hyperlink{cnn_8h_a63ed2572f3e837b3871429d7d8fcfb34}{CNN\+\_\+\+POOL\+\_\+W}})   /\+\texorpdfstring{$\ast$}{*} 13 \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a269e26192240a9ab5fc15963d3e7bf20}{CNN\+\_\+\+FLAT\+\_\+\+SIZE}}~(\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}})  /\+\texorpdfstring{$\ast$}{*} 2704 \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}~128
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}~26
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_ab7efac7032b7cc10915875a4d465149b}{CNN\+\_\+\+LR}}~0.\+001f
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a4acc16f06208c508726c5ef7c55e3c55}{CNN\+\_\+\+MOMENTUM}}~0.\+9f
+\item 
+\+\#define \doxymbox{\hyperlink{cnn_8h_a4f39e78ae2dc5ce77dd7a8762e7d971e}{CNN\+\_\+\+BATCH\+\_\+\+SIZE}}~32
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{cnn_8h_ad61352e349918920eb7049293eb055fa}{cnn\+\_\+create}} (void)
+\begin{DoxyCompactList}\small\item\em Allocate and initialise a \doxylink{structCNN}{CNN} with He-\/initialised weights. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be}{cnn\+\_\+free}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
+\begin{DoxyCompactList}\small\item\em Free all memory associated with a \doxylink{structCNN}{CNN}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, const float \texorpdfstring{$\ast$}{*}image)
+\begin{DoxyCompactList}\small\item\em Run a full forward pass and populate net-\/\texorpdfstring{$>$}{>}act. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{cnn_8h_a361aa06e1ee8de199d32219f0e75aa51}{cnn\+\_\+backward}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, int label)
+\begin{DoxyCompactList}\small\item\em Compute gradients via backpropagation. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50}{cnn\+\_\+update}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
+\begin{DoxyCompactList}\small\item\em Apply one SGD-\/with-\/momentum update step to the weights. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{cnn_8h_a6b9ac925c4c2f18b387e92f84babc7b8}{cnn\+\_\+zero\+\_\+grads}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
+\begin{DoxyCompactList}\small\item\em Zero all gradient accumulators in net-\/\texorpdfstring{$>$}{>}grads. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504}{cnn\+\_\+predict}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, const float \texorpdfstring{$\ast$}{*}image)
+\begin{DoxyCompactList}\small\item\em Predict the most likely class for a single image. \end{DoxyCompactList}\item 
+float \doxymbox{\hyperlink{cnn_8h_a77821bf85cd4325cb90a473548d8a920}{cnn\+\_\+loss}} (const \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, int label)
+\begin{DoxyCompactList}\small\item\em Compute cross-\/entropy loss for the current forward-\/pass output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Convolutional Neural Network for A–Z character recognition. 
+
+Architecture:\+ Input 28×28 (float, 0–1) → Conv2D 16 filters 3×3, stride 1, no padding → 16×26×26 → Re\+LU → Max\+Pool 2×2, stride 2 → 16×13×13 → Flatten → 2704 → Dense 2704 → 128 → Re\+LU → Dense 128 → 26 → Softmax → P(\+A)…\+P(\+Z)
+
+Training:\+ He initialisation, SGD with momentum, cross-\/entropy loss. 
+
+\label{doc-define-members}
+\Hypertarget{cnn_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{cnn_8h_a4f39e78ae2dc5ce77dd7a8762e7d971e}\index{cnn.h@{cnn.h}!CNN\_BATCH\_SIZE@{CNN\_BATCH\_SIZE}}
+\index{CNN\_BATCH\_SIZE@{CNN\_BATCH\_SIZE}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_BATCH\_SIZE}{CNN\_BATCH\_SIZE}}
+{\footnotesize\ttfamily \label{cnn_8h_a4f39e78ae2dc5ce77dd7a8762e7d971e} 
+\+\#define CNN\+\_\+\+BATCH\+\_\+\+SIZE~32}
+
+Training batch size. \Hypertarget{cnn_8h_ae09fcfd11a99599048be612b2493e968}\index{cnn.h@{cnn.h}!CNN\_CONV\_H@{CNN\_CONV\_H}}
+\index{CNN\_CONV\_H@{CNN\_CONV\_H}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_CONV\_H}{CNN\_CONV\_H}}
+{\footnotesize\ttfamily \label{cnn_8h_ae09fcfd11a99599048be612b2493e968} 
+\+\#define CNN\+\_\+\+CONV\+\_\+H~(\doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}} -\/ \doxymbox{\hyperlink{cnn_8h_adb097e298ba6b84fb4cc59ac08641c31}{CNN\+\_\+\+KERNEL\+\_\+H}} + 1)   /\+\texorpdfstring{$\ast$}{*} 26 \texorpdfstring{$\ast$}{*}/\+}
+
+Derived conv output size (no padding, stride 1). \Hypertarget{cnn_8h_af515392cca7f15414fa7d0135341c5a0}\index{cnn.h@{cnn.h}!CNN\_CONV\_W@{CNN\_CONV\_W}}
+\index{CNN\_CONV\_W@{CNN\_CONV\_W}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_CONV\_W}{CNN\_CONV\_W}}
+{\footnotesize\ttfamily \label{cnn_8h_af515392cca7f15414fa7d0135341c5a0} 
+\+\#define CNN\+\_\+\+CONV\+\_\+W~(\doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}} -\/ \doxymbox{\hyperlink{cnn_8h_a3cfba4b17a3484edca8821c4001efc76}{CNN\+\_\+\+KERNEL\+\_\+W}} + 1)   /\+\texorpdfstring{$\ast$}{*} 26 \texorpdfstring{$\ast$}{*}/\+}
+
+\Hypertarget{cnn_8h_a269e26192240a9ab5fc15963d3e7bf20}\index{cnn.h@{cnn.h}!CNN\_FLAT\_SIZE@{CNN\_FLAT\_SIZE}}
+\index{CNN\_FLAT\_SIZE@{CNN\_FLAT\_SIZE}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_FLAT\_SIZE}{CNN\_FLAT\_SIZE}}
+{\footnotesize\ttfamily \label{cnn_8h_a269e26192240a9ab5fc15963d3e7bf20} 
+\+\#define CNN\+\_\+\+FLAT\+\_\+\+SIZE~(\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}})  /\+\texorpdfstring{$\ast$}{*} 2704 \texorpdfstring{$\ast$}{*}/\+}
+
+Flattened size after pooling. \Hypertarget{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}\index{cnn.h@{cnn.h}!CNN\_HIDDEN\_SIZE@{CNN\_HIDDEN\_SIZE}}
+\index{CNN\_HIDDEN\_SIZE@{CNN\_HIDDEN\_SIZE}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_HIDDEN\_SIZE}{CNN\_HIDDEN\_SIZE}}
+{\footnotesize\ttfamily \label{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80} 
+\+\#define CNN\+\_\+\+HIDDEN\+\_\+\+SIZE~128}
+
+Hidden dense layer size. \Hypertarget{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}\index{cnn.h@{cnn.h}!CNN\_IMG\_H@{CNN\_IMG\_H}}
+\index{CNN\_IMG\_H@{CNN\_IMG\_H}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_IMG\_H}{CNN\_IMG\_H}}
+{\footnotesize\ttfamily \label{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9} 
+\+\#define CNN\+\_\+\+IMG\+\_\+H~28}
+
+Input image height and width (pixels). \Hypertarget{cnn_8h_a61715312c5f1056571a8be4d28773754}\index{cnn.h@{cnn.h}!CNN\_IMG\_W@{CNN\_IMG\_W}}
+\index{CNN\_IMG\_W@{CNN\_IMG\_W}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_IMG\_W}{CNN\_IMG\_W}}
+{\footnotesize\ttfamily \label{cnn_8h_a61715312c5f1056571a8be4d28773754} 
+\+\#define CNN\+\_\+\+IMG\+\_\+W~28}
+
+\Hypertarget{cnn_8h_adb097e298ba6b84fb4cc59ac08641c31}\index{cnn.h@{cnn.h}!CNN\_KERNEL\_H@{CNN\_KERNEL\_H}}
+\index{CNN\_KERNEL\_H@{CNN\_KERNEL\_H}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_KERNEL\_H}{CNN\_KERNEL\_H}}
+{\footnotesize\ttfamily \label{cnn_8h_adb097e298ba6b84fb4cc59ac08641c31} 
+\+\#define CNN\+\_\+\+KERNEL\+\_\+H~3}
+
+\Hypertarget{cnn_8h_a3cfba4b17a3484edca8821c4001efc76}\index{cnn.h@{cnn.h}!CNN\_KERNEL\_W@{CNN\_KERNEL\_W}}
+\index{CNN\_KERNEL\_W@{CNN\_KERNEL\_W}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_KERNEL\_W}{CNN\_KERNEL\_W}}
+{\footnotesize\ttfamily \label{cnn_8h_a3cfba4b17a3484edca8821c4001efc76} 
+\+\#define CNN\+\_\+\+KERNEL\+\_\+W~3}
+
+\Hypertarget{cnn_8h_ab7efac7032b7cc10915875a4d465149b}\index{cnn.h@{cnn.h}!CNN\_LR@{CNN\_LR}}
+\index{CNN\_LR@{CNN\_LR}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_LR}{CNN\_LR}}
+{\footnotesize\ttfamily \label{cnn_8h_ab7efac7032b7cc10915875a4d465149b} 
+\+\#define CNN\+\_\+\+LR~0.\+001f}
+
+Learning rate for SGD. \Hypertarget{cnn_8h_a4acc16f06208c508726c5ef7c55e3c55}\index{cnn.h@{cnn.h}!CNN\_MOMENTUM@{CNN\_MOMENTUM}}
+\index{CNN\_MOMENTUM@{CNN\_MOMENTUM}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_MOMENTUM}{CNN\_MOMENTUM}}
+{\footnotesize\ttfamily \label{cnn_8h_a4acc16f06208c508726c5ef7c55e3c55} 
+\+\#define CNN\+\_\+\+MOMENTUM~0.\+9f}
+
+Momentum coefficient. \Hypertarget{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}\index{cnn.h@{cnn.h}!CNN\_N\_CLASSES@{CNN\_N\_CLASSES}}
+\index{CNN\_N\_CLASSES@{CNN\_N\_CLASSES}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_N\_CLASSES}{CNN\_N\_CLASSES}}
+{\footnotesize\ttfamily \label{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c} 
+\+\#define CNN\+\_\+\+N\+\_\+\+CLASSES~26}
+
+Number of output classes (A–Z). \Hypertarget{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}\index{cnn.h@{cnn.h}!CNN\_N\_FILTERS@{CNN\_N\_FILTERS}}
+\index{CNN\_N\_FILTERS@{CNN\_N\_FILTERS}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_N\_FILTERS}{CNN\_N\_FILTERS}}
+{\footnotesize\ttfamily \label{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732} 
+\+\#define CNN\+\_\+\+N\+\_\+\+FILTERS~16}
+
+Convolution:\+ number of filters and kernel size. \Hypertarget{cnn_8h_a106b6060d5bb01886f146b81ebb4e822}\index{cnn.h@{cnn.h}!CNN\_POOL\_H@{CNN\_POOL\_H}}
+\index{CNN\_POOL\_H@{CNN\_POOL\_H}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_POOL\_H}{CNN\_POOL\_H}}
+{\footnotesize\ttfamily \label{cnn_8h_a106b6060d5bb01886f146b81ebb4e822} 
+\+\#define CNN\+\_\+\+POOL\+\_\+H~2}
+
+Max-\/pooling window and stride. \Hypertarget{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}\index{cnn.h@{cnn.h}!CNN\_POOL\_OUT\_H@{CNN\_POOL\_OUT\_H}}
+\index{CNN\_POOL\_OUT\_H@{CNN\_POOL\_OUT\_H}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_POOL\_OUT\_H}{CNN\_POOL\_OUT\_H}}
+{\footnotesize\ttfamily \label{cnn_8h_a091cc69cd46eef1600559c977b48fbd7} 
+\+\#define CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H~(\doxymbox{\hyperlink{cnn_8h_ae09fcfd11a99599048be612b2493e968}{CNN\+\_\+\+CONV\+\_\+H}} /\+ \doxymbox{\hyperlink{cnn_8h_a106b6060d5bb01886f146b81ebb4e822}{CNN\+\_\+\+POOL\+\_\+H}})   /\+\texorpdfstring{$\ast$}{*} 13 \texorpdfstring{$\ast$}{*}/\+}
+
+Derived pool output size. \Hypertarget{cnn_8h_a3b7aa9b6b805919938567139ff144f81}\index{cnn.h@{cnn.h}!CNN\_POOL\_OUT\_W@{CNN\_POOL\_OUT\_W}}
+\index{CNN\_POOL\_OUT\_W@{CNN\_POOL\_OUT\_W}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_POOL\_OUT\_W}{CNN\_POOL\_OUT\_W}}
+{\footnotesize\ttfamily \label{cnn_8h_a3b7aa9b6b805919938567139ff144f81} 
+\+\#define CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W~(\doxymbox{\hyperlink{cnn_8h_af515392cca7f15414fa7d0135341c5a0}{CNN\+\_\+\+CONV\+\_\+W}} /\+ \doxymbox{\hyperlink{cnn_8h_a63ed2572f3e837b3871429d7d8fcfb34}{CNN\+\_\+\+POOL\+\_\+W}})   /\+\texorpdfstring{$\ast$}{*} 13 \texorpdfstring{$\ast$}{*}/\+}
+
+\Hypertarget{cnn_8h_a63ed2572f3e837b3871429d7d8fcfb34}\index{cnn.h@{cnn.h}!CNN\_POOL\_W@{CNN\_POOL\_W}}
+\index{CNN\_POOL\_W@{CNN\_POOL\_W}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{CNN\_POOL\_W}{CNN\_POOL\_W}}
+{\footnotesize\ttfamily \label{cnn_8h_a63ed2572f3e837b3871429d7d8fcfb34} 
+\+\#define CNN\+\_\+\+POOL\+\_\+W~2}
+
+
+
+\label{doc-func-members}
+\Hypertarget{cnn_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{cnn_8h_a361aa06e1ee8de199d32219f0e75aa51}\index{cnn.h@{cnn.h}!cnn\_backward@{cnn\_backward}}
+\index{cnn\_backward@{cnn\_backward}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{cnn\_backward()}{cnn\_backward()}}
+{\footnotesize\ttfamily \label{cnn_8h_a361aa06e1ee8de199d32219f0e75aa51} 
+void cnn\+\_\+backward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{int}]{label}{}\end{DoxyParamCaption})}
+
+
+
+Compute gradients via backpropagation. 
+
+Must be called after \doxylink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward()}. Accumulates gradients into net-\/\texorpdfstring{$>$}{>}grads.
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & \doxylink{structCNN}{CNN} after a forward pass. \\
+\hline
+{\em label} & True class index in \+[0, CNN\+\_\+\+N\+\_\+\+CLASSES).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This is a stub:\+ the full implementation is deferred. 
+\end{DoxyNote}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{cnn_8h_a361aa06e1ee8de199d32219f0e75aa51_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{cnn_8h_ad61352e349918920eb7049293eb055fa}\index{cnn.h@{cnn.h}!cnn\_create@{cnn\_create}}
+\index{cnn\_create@{cnn\_create}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{cnn\_create()}{cnn\_create()}}
+{\footnotesize\ttfamily \label{cnn_8h_ad61352e349918920eb7049293eb055fa} 
+\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*} cnn\+\_\+create (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Allocate and initialise a \doxylink{structCNN}{CNN} with He-\/initialised weights. 
+
+All conv kernels and dense weights are drawn from a zero-\/mean normal distribution with variance 2/\+fan\+\_\+in (He, 2015). Biases are zeroed.
+
+\begin{DoxyReturn}{Returns}
+Pointer to a heap-\/allocated \doxylink{structCNN}{CNN}, or NULL on allocation failure. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller must free the returned pointer with \doxylink{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be}{cnn\+\_\+free()}. 
+\end{DoxyNote}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{cnn_8h_ad61352e349918920eb7049293eb055fa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{cnn_8h_ad61352e349918920eb7049293eb055fa_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}\index{cnn.h@{cnn.h}!cnn\_forward@{cnn\_forward}}
+\index{cnn\_forward@{cnn\_forward}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{cnn\_forward()}{cnn\_forward()}}
+{\footnotesize\ttfamily \label{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d} 
+void cnn\+\_\+forward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{const float \texorpdfstring{$\ast$}{*}}]{image}{}\end{DoxyParamCaption})}
+
+
+
+Run a full forward pass and populate net-\/\texorpdfstring{$>$}{>}act. 
+
+Stages:\+ Conv2D → Re\+LU → Max\+Pool → Flatten → Dense → Re\+LU → Dense → Softmax.
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & Initialised \doxylink{structCNN}{CNN}. \\
+\hline
+{\em image} & Flat array of CNN\+\_\+\+IMG\+\_\+H \texorpdfstring{$\ast$}{*} CNN\+\_\+\+IMG\+\_\+W normalised float pixels, row-\/major order. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be}\index{cnn.h@{cnn.h}!cnn\_free@{cnn\_free}}
+\index{cnn\_free@{cnn\_free}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{cnn\_free()}{cnn\_free()}}
+{\footnotesize\ttfamily \label{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be} 
+void cnn\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{}\end{DoxyParamCaption})}
+
+
+
+Free all memory associated with a \doxylink{structCNN}{CNN}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & Pointer returned by \doxylink{cnn_8h_ad61352e349918920eb7049293eb055fa}{cnn\+\_\+create()}. No-\/op if NULL. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{cnn_8h_a77821bf85cd4325cb90a473548d8a920}\index{cnn.h@{cnn.h}!cnn\_loss@{cnn\_loss}}
+\index{cnn\_loss@{cnn\_loss}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{cnn\_loss()}{cnn\_loss()}}
+{\footnotesize\ttfamily \label{cnn_8h_a77821bf85cd4325cb90a473548d8a920} 
+float cnn\+\_\+loss (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{int}]{label}{}\end{DoxyParamCaption})}
+
+
+
+Compute cross-\/entropy loss for the current forward-\/pass output. 
+
+loss = -\/log(output\+[label]\+)
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & \doxylink{structCNN}{CNN} after \doxylink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward()}. \\
+\hline
+{\em label} & True class index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scalar cross-\/entropy loss (≥ 0). 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cnn_8h_a77821bf85cd4325cb90a473548d8a920_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504}\index{cnn.h@{cnn.h}!cnn\_predict@{cnn\_predict}}
+\index{cnn\_predict@{cnn\_predict}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{cnn\_predict()}{cnn\_predict()}}
+{\footnotesize\ttfamily \label{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504} 
+int cnn\+\_\+predict (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{const float \texorpdfstring{$\ast$}{*}}]{image}{}\end{DoxyParamCaption})}
+
+
+
+Predict the most likely class for a single image. 
+
+Runs \doxylink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward()} internally.
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & Initialised \doxylink{structCNN}{CNN} with trained weights. \\
+\hline
+{\em image} & Flat float array, same layout as \doxylink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Class index in \+[0, CNN\+\_\+\+N\+\_\+\+CLASSES), i.\+e. 0 = \textquotesingle{}A\textquotesingle{}, 25 = \textquotesingle{}Z\textquotesingle{}. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50}\index{cnn.h@{cnn.h}!cnn\_update@{cnn\_update}}
+\index{cnn\_update@{cnn\_update}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{cnn\_update()}{cnn\_update()}}
+{\footnotesize\ttfamily \label{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50} 
+void cnn\+\_\+update (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{}\end{DoxyParamCaption})}
+
+
+
+Apply one SGD-\/with-\/momentum update step to the weights. 
+
+w\+\_\+new = w -\/ lr \texorpdfstring{$\ast$}{*} (β \texorpdfstring{$\ast$}{*} v + g) where v is the momentum velocity and g is the gradient.
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & \doxylink{structCNN}{CNN} with filled net-\/\texorpdfstring{$>$}{>}grads from \doxylink{cnn_8h_a361aa06e1ee8de199d32219f0e75aa51}{cnn\+\_\+backward()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Resets net-\/\texorpdfstring{$>$}{>}grads to zero after the update. 
+\end{DoxyNote}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{cnn_8h_a6b9ac925c4c2f18b387e92f84babc7b8}\index{cnn.h@{cnn.h}!cnn\_zero\_grads@{cnn\_zero\_grads}}
+\index{cnn\_zero\_grads@{cnn\_zero\_grads}!cnn.h@{cnn.h}}
+\doxysubsubsection{\texorpdfstring{cnn\_zero\_grads()}{cnn\_zero\_grads()}}
+{\footnotesize\ttfamily \label{cnn_8h_a6b9ac925c4c2f18b387e92f84babc7b8} 
+void cnn\+\_\+zero\+\_\+grads (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{}\end{DoxyParamCaption})}
+
+
+
+Zero all gradient accumulators in net-\/\texorpdfstring{$>$}{>}grads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & \doxylink{structCNN}{CNN} whose gradients should be cleared. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cnn_8h_a6b9ac925c4c2f18b387e92f84babc7b8_icgraph}
+\end{center}
+\end{figure}

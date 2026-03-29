@@ -1,0 +1,5 @@
+<map id="src/solver/solver.h" name="src/solver/solver.h">
+<area shape="rect" id="Node000001" title="Crossword word&#45;search solver: find words in a 2&#45;D character grid in all 8 directions." alt="" coords="5,5,145,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="38,81,112,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,32,78,66,72,65,73,36"/>
+</map>

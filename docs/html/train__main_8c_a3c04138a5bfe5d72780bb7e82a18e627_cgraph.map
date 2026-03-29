@@ -1,0 +1,83 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,265,60,293"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#ad61352e349918920eb7049293eb055fa" title="Allocate and initialise a CNN with He&#45;initialised weights." alt="" coords="131,57,224,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="33,264,40,231,53,186,74,138,106,96,119,88,116,92,110,100,79,141,58,188,45,232,38,265"/>
+<area shape="rect" id="Node000004" href="$cnn_8c.html#ad0b13d3a238166cf78825f43df5ac1be" title="Free all memory associated with a CNN." alt="" coords="139,109,216,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="36,264,60,209,80,176,106,148,126,137,123,141,109,152,84,179,65,211,41,266"/>
+<area shape="rect" id="Node000005" href="$dataset_8c.html#aa47cdfa2cb64479b8cf15f5e9838c8a1" title="Free all memory owned by a Dataset." alt="" coords="126,161,229,189"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="42,264,69,232,106,200,119,194,116,198,109,204,73,235,47,266"/>
+<area shape="rect" id="Node000006" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="125,213,230,241"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="58,268,124,245,121,249,62,272"/>
+<area shape="rect" id="Node000019" href="$dataset_8c.html#ae4efe00373f1161a112fd63725b13017" title="Print a summary of the dataset to stdout." alt="" coords="108,265,247,293"/>
+<area shape="poly" id="edge22_Node000001_Node000019" title=" " alt="" coords="58,277,94,277,90,281,61,281"/>
+<area shape="rect" id="Node000020" href="$model_8c.html#aad2b0d353910317fe5fdf691acb688b6" title="Save the weights of a trained CNN to a binary file." alt="" coords="127,317,228,345"/>
+<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="59,286,125,310,120,313,61,291"/>
+<area shape="rect" id="Node000021" href="$train__main_8c.html#a6ce9160f0e65d295b3da8ae30176eff7" title="Parse argv into a TrainArgs structure." alt="" coords="131,369,224,397"/>
+<area shape="poly" id="edge24_Node000001_Node000021" title=" " alt="" coords="44,291,73,323,109,354,120,361,115,363,106,359,69,327,45,296"/>
+<area shape="rect" id="Node000022" href="$train__main_8c.html#a8f04a4925d406dfc7c833e46cb46f03d" title="Run the training loop with early stopping." alt="" coords="134,421,220,449"/>
+<area shape="poly" id="edge25_Node000001_Node000022" title=" " alt="" coords="38,291,65,347,84,379,109,406,123,416,117,418,106,411,80,382,60,350,38,296"/>
+<area shape="rect" id="Node000038" href="$train__main_8c.html#a848c0ca46d3e3ecc39d2fccc4d85fa12" title="Print usage information to stderr." alt="" coords="147,473,208,501"/>
+<area shape="poly" id="edge43_Node000001_Node000038" title=" " alt="" coords="36,291,45,326,58,371,79,417,109,459,135,476,130,477,106,462,74,420,53,373,40,328,36,296"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#abe4f46755db0f2e8923d757a80fd60a8" title="Box&#45;Muller transform: sample one value from N(0, 1)." alt="" coords="326,57,385,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="223,69,313,70,309,73,225,74"/>
+<area shape="rect" id="Node000007" href="$dataset_8c.html#acdf368673c2db18790faefc8d06f88e5" title="Count the number of image files in a directory." alt="" coords="300,213,412,241"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="229,225,287,226,282,229,232,230"/>
+<area shape="rect" id="Node000009" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="300,161,411,189"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="226,210,294,192,290,196,229,215"/>
+<area shape="rect" id="Node000008" href="$dataset_8c.html#a9835941ed32f81c45571e5986f4f6a19" title="Check whether filename ends with a known image extension." alt="" coords="499,213,607,241"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="411,225,486,226,481,228,413,230"/>
+<area shape="poly" id="edge21_Node000009_Node000008" title=" " alt="" coords="411,187,486,208,481,210,412,192"/>
+<area shape="rect" id="Node000010" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="464,161,642,189"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="411,173,451,174,446,176,413,178"/>
+<area shape="rect" id="Node000011" href="$image_8c.html#a8e5e4e11e7daf8b8d973824c6476c8d2" title="Binarise a grayscale Image in&#45;place using a global threshold." alt="" coords="705,265,826,293"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="616,187,643,200,659,212,668,225,677,238,691,250,703,259,698,259,688,255,673,242,664,228,655,216,640,204,616,192"/>
+<area shape="rect" id="Node000012" href="$image_8c.html#a712dc87c6c9fed0f3bf082bce38b40fb" title="Free an Image allocated by image_load_png()." alt="" coords="906,213,1002,241"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="622,187,643,200,655,213,662,227,667,255,672,281,679,292,691,302,729,320,763,323,798,316,841,302,888,279,925,253,930,250,891,283,843,307,800,321,763,328,728,325,688,307,675,295,667,283,661,256,657,229,651,216,640,204,622,192"/>
+<area shape="rect" id="Node000013" href="$image_8c.html#a28674722e7d5137fadd79c172bc60127" title="Load a PNG file into an Image." alt="" coords="702,109,830,137"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="612,158,694,140,689,142,614,163"/>
+<area shape="rect" id="Node000015" href="$image_8c.html#a9d344df105e6164de2266f08e2bc3130" title="Resize an Image to the given dimensions (nearest&#45;neighbour)." alt="" coords="712,5,820,33"/>
+<area shape="poly" id="edge15_Node000010_Node000015" title=" " alt="" coords="564,159,614,104,649,72,688,44,703,38,699,41,691,48,653,76,618,107,568,163"/>
+<area shape="rect" id="Node000016" href="$image_8c.html#a2f65d152419d4fcd1418da5fc863b421" title="Rotate an Image by angle_deg degrees clockwise." alt="" coords="712,57,820,85"/>
+<area shape="poly" id="edge17_Node000010_Node000016" title=" " alt="" coords="575,159,626,128,689,95,708,89,704,92,691,100,629,133,578,163"/>
+<area shape="rect" id="Node000017" href="$image_8c.html#aea22486042d084f879e40219b1bc8967" title="Convert an Image to a flat normalised float array." alt="" coords="707,161,825,189"/>
+<area shape="poly" id="edge19_Node000010_Node000017" title=" " alt="" coords="642,173,693,174,688,176,643,178"/>
+<area shape="rect" id="Node000018" href="$image_8c.html#a0aca710a195c2b99587ca94455b25c46" title="Convert an Image to grayscale in&#45;place." alt="" coords="690,213,842,241"/>
+<area shape="poly" id="edge20_Node000010_Node000018" title=" " alt="" coords="613,187,694,208,689,210,613,192"/>
+<area shape="poly" id="edge14_Node000013_Node000012" title=" " alt="" coords="814,135,843,147,887,174,926,204,921,203,884,178,841,152,814,140"/>
+<area shape="rect" id="Node000014" href="$image_8c.html#a0f84a9ec64f5cd9a13915bd0d631a580" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="904,57,1004,85"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="818,106,892,88,887,90,820,111"/>
+<area shape="poly" id="edge16_Node000015_Node000014" title=" " alt="" coords="819,31,892,53,887,54,819,36"/>
+<area shape="poly" id="edge18_Node000016_Node000014" title=" " alt="" coords="820,69,891,70,886,72,821,74"/>
+<area shape="rect" id="Node000023" href="$cnn_8c.html#a361aa06e1ee8de199d32219f0e75aa51" title="Compute gradients via backpropagation." alt="" coords="298,445,413,473"/>
+<area shape="poly" id="edge26_Node000022_Node000023" title=" " alt="" coords="220,438,285,448,280,450,221,444"/>
+<area shape="rect" id="Node000024" href="$cnn_8c.html#a97f29ff1777a0eaec225d9efd2ebfc2d" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="502,471,604,498"/>
+<area shape="poly" id="edge27_Node000022_Node000024" title=" " alt="" coords="221,428,311,423,364,425,417,431,465,444,511,464,506,464,464,449,416,436,364,430,311,428,222,433"/>
+<area shape="rect" id="Node000032" href="$cnn_8c.html#a77821bf85cd4325cb90a473548d8a920" title="Compute cross&#45;entropy loss for the current forward&#45;pass output." alt="" coords="514,523,592,550"/>
+<area shape="poly" id="edge35_Node000022_Node000032" title=" " alt="" coords="221,444,249,460,265,480,272,501,279,519,296,534,321,545,347,552,401,558,453,555,497,551,502,550,454,561,400,563,346,558,319,550,294,539,275,522,267,502,260,483,245,464,221,450"/>
+<area shape="rect" id="Node000033" href="$cnn_8c.html#abda61d7b8584ba361e8a81f4e858dc50" title="Apply one SGD&#45;with&#45;momentum update step to the weights." alt="" coords="308,292,404,320"/>
+<area shape="poly" id="edge36_Node000022_Node000033" title=" " alt="" coords="220,421,245,406,261,388,269,370,277,350,293,331,303,326,299,329,297,334,281,353,274,372,266,391,249,411,223,426"/>
+<area shape="rect" id="Node000036" href="$dataset_8c.html#a8f29f81c08084278983c39e57931ae3c" title="Shuffle the samples in a Dataset in&#45;place (Fisher&#45;Yates)." alt="" coords="295,344,416,372"/>
+<area shape="poly" id="edge39_Node000022_Node000036" title=" " alt="" coords="216,418,246,406,314,377,310,380,248,411,218,423"/>
+<area shape="rect" id="Node000037" href="$train__main_8c.html#a5295741721f4fdb51966332285b7f667" title="Compute loss and accuracy on a slice of samples (no gradient update)." alt="" coords="314,497,397,525"/>
+<area shape="poly" id="edge40_Node000022_Node000037" title=" " alt="" coords="217,447,248,459,296,482,311,491,306,491,294,487,246,464,217,452"/>
+<area shape="rect" id="Node000025" href="$cnn_8c.html#ab5cfc81d08bd47071237d6d712cce0e4" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="711,471,820,498"/>
+<area shape="poly" id="edge28_Node000024_Node000025" title=" " alt="" coords="604,482,698,484,693,485,604,487"/>
+<area shape="rect" id="Node000027" href="$cnn_8c.html#a965e7546544716df9f94516eab66a69b" title="Dense layer 1 (2704 → 128) followed by ReLU." alt="" coords="703,523,828,550"/>
+<area shape="poly" id="edge30_Node000024_Node000027" title=" " alt="" coords="604,494,694,518,689,518,604,499"/>
+<area shape="rect" id="Node000028" href="$cnn_8c.html#a4733c05bd6ecfdd8aea86561031a0138" title="Dense layer 2 (128 → 26) followed by Softmax." alt="" coords="703,575,828,602"/>
+<area shape="poly" id="edge31_Node000024_Node000028" title=" " alt="" coords="605,492,643,509,659,522,668,535,677,547,691,560,703,569,698,567,688,564,673,551,664,538,655,525,640,513,604,498"/>
+<area shape="rect" id="Node000030" href="$cnn_8c.html#a78dfd01dac25db70517ca90e165d9656" title="Flatten stage: copy pool_out into act&#45;&gt;flat, row&#45;major." alt="" coords="706,367,826,394"/>
+<area shape="poly" id="edge33_Node000024_Node000030" title=" " alt="" coords="576,468,626,437,689,405,704,401,709,399,691,410,629,442,578,473"/>
+<area shape="rect" id="Node000031" href="$cnn_8c.html#aff764a1877fe34f7084fc0c804e64a5f" title="Max&#45;pooling stage: compute net&#45;&gt;act.pool_out." alt="" coords="713,419,819,446"/>
+<area shape="poly" id="edge34_Node000024_Node000031" title=" " alt="" coords="604,470,695,450,700,449,605,475"/>
+<area shape="rect" id="Node000026" href="$cnn_8c.html#a3eea1fcc46fdb93cd28f49760d187e75" title="Apply ReLU element&#45;wise: f(x) = max(0, x)." alt="" coords="904,471,1004,498"/>
+<area shape="poly" id="edge29_Node000025_Node000026" title=" " alt="" coords="821,482,891,484,886,485,821,487"/>
+<area shape="rect" id="Node000029" href="$cnn_8c.html#a61bbed6c1803dbf5364fc8575dea1ad1" title="Apply softmax in&#45;place over an array of length n." alt="" coords="890,575,1018,602"/>
+<area shape="poly" id="edge32_Node000028_Node000029" title=" " alt="" coords="829,586,877,588,872,589,829,591"/>
+<area shape="rect" id="Node000034" href="$cnn_8c.html#a6b9ac925c4c2f18b387e92f84babc7b8" title="Zero all gradient accumulators in net&#45;&gt;grads." alt="" coords="492,291,614,318"/>
+<area shape="poly" id="edge37_Node000033_Node000034" title=" " alt="" coords="403,303,479,304,474,306,405,308"/>
+<area shape="rect" id="Node000035" href="$cnn_8c.html#a3ffa6d0a657a540e817ba092042f84b0" title="Apply SGD+momentum to one weight array." alt="" coords="505,343,601,370"/>
+<area shape="poly" id="edge38_Node000033_Node000035" title=" " alt="" coords="404,315,492,340,487,341,404,321"/>
+<area shape="poly" id="edge41_Node000037_Node000024" title=" " alt="" coords="397,503,489,493,484,494,398,508"/>
+<area shape="poly" id="edge42_Node000037_Node000032" title=" " alt="" coords="397,514,502,529,496,530,397,519"/>
+</map>

@@ -1,0 +1,27 @@
+<map id="src/cnn/dataset.c" name="src/cnn/dataset.c">
+<area shape="rect" id="Node000001" title="Training dataset loader with optional POSIX thread parallelism." alt="" coords="425,5,556,33"/>
+<area shape="rect" id="Node000002" href="$dataset_8h.html" title="Training dataset loader." alt="" coords="14,81,96,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="422,31,285,53,112,83,110,78,284,48,427,28"/>
+<area shape="rect" id="Node000005" href="$image_8h.html" title="Image loading, preprocessing, and normalisation." alt="" coords="120,81,281,109"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="436,35,268,79,266,74,441,32"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="304,81,376,109"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="462,35,382,76,379,71,466,32"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="400,81,483,109"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="484,32,461,70,457,66,480,35"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="508,81,573,109"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="501,31,526,69,520,67,499,36"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="598,81,667,109"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="516,31,596,73,591,74,516,36"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="690,81,761,109"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="533,31,678,78,673,78,533,36"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="785,81,869,109"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="553,31,772,80,767,81,553,36"/>
+<area shape="rect" id="Node000003" href="$cnn_8h.html" title="Convolutional Neural Network for A–Z character recognition." alt="" coords="5,157,62,184"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="52,107,44,143,39,141,50,112"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="62,232,136,260"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="60,107,76,156,94,218,88,218,71,157,58,112"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="46,182,80,220,75,222,44,187"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="194,109,118,221,114,218,189,109"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="186,157,257,184"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="205,107,216,142,211,141,203,112"/>
+</map>

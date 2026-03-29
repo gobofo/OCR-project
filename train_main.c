@@ -40,7 +40,10 @@
 
 #define DEFAULT_DATA_DIR  "training_data/"
 #define DEFAULT_MODEL_DIR "models/"
-#define MAX_EPOCHS        20
+#define MAX_EPOCHS        50
+#define VAL_SPLIT         0.15f   /* fraction of data kept for validation */
+#define ES_PATIENCE       5       /* epochs without improvement before stopping */
+#define ES_MIN_DELTA      1e-4f   /* minimum val-loss improvement to count */
 
 /* -------------------------------------------------------------------------
  * CLI parsing
@@ -133,35 +136,87 @@ static int parse_args(int argc, char **argv, TrainArgs *args)
  * ---------------------------------------------------------------------- */
 
 /**
- * @brief Run the training loop for @p n_epochs epochs.
+ * @brief Compute loss and accuracy on a slice of samples (no gradient update).
  *
- * Each epoch:
- *  1. Shuffle the dataset.
- *  2. Iterate over mini-batches of CNN_BATCH_SIZE samples.
- *  3. For each sample: forward pass → accumulate loss → backward pass.
- *  4. After each batch: apply cnn_update().
- *  5. Print epoch loss and accuracy.
+ * @param net     Trained CNN.
+ * @param samples Pointer to first sample.
+ * @param n       Number of samples.
+ * @param out_acc Filled with accuracy in [0, 1].
+ * @return        Average cross-entropy loss.
+ */
+static double eval_loss(CNN *net, const Sample *samples, size_t n,
+                        double *out_acc)
+{
+    double total = 0.0;
+    int    correct = 0;
+
+    for (size_t i = 0; i < n; i++) {
+        cnn_forward(net, samples[i].pixels);
+        total += (double)cnn_loss(net, samples[i].label);
+
+        int pred = 0;
+        float best = net->act.output[0];
+        for (int k = 1; k < CNN_N_CLASSES; k++) {
+            if (net->act.output[k] > best) {
+                best = net->act.output[k];
+                pred = k;
+            }
+        }
+        if (pred == samples[i].label)
+            correct++;
+    }
+
+    if (out_acc)
+        *out_acc = (double)correct / (double)n;
+    return total / (double)n;
+}
+
+/**
+ * @brief Run the training loop with early stopping.
+ *
+ * The dataset is split into a training portion (1 - VAL_SPLIT) and a
+ * validation portion (VAL_SPLIT) after an initial shuffle.
+ *
+ * Early stopping: training halts when validation loss has not improved by
+ * more than ES_MIN_DELTA for ES_PATIENCE consecutive epochs.  The best
+ * weights observed so far are restored before returning.
  *
  * @param net       Initialised CNN.
- * @param ds        Training dataset.
- * @param n_epochs  Number of full passes over the dataset.
+ * @param ds        Full dataset (will be shuffled in-place).
+ * @param n_epochs  Maximum number of epochs.
  */
 static void train_loop(CNN *net, Dataset *ds, int n_epochs)
 {
-    for (int epoch = 0; epoch < n_epochs; epoch++) {
-        dataset_shuffle(ds);
+    /* Split dataset after a full shuffle. */
+    dataset_shuffle(ds);
+    size_t val_size   = (size_t)(ds->size * VAL_SPLIT);
+    size_t train_size = ds->size - val_size;
+    const Sample *train_data = ds->data;
+    const Sample *val_data   = ds->data + train_size;
 
-        double total_loss = 0.0;
+    printf("Split: %zu train  /  %zu val\n\n", train_size, val_size);
+
+    /* Snapshot buffer for best weights (early stopping). */
+    CNNWeights best_weights = net->weights;
+    double     best_val_loss = 1e30;
+    int        patience_left = ES_PATIENCE;
+
+    for (int epoch = 0; epoch < n_epochs; epoch++) {
+        /* Shuffle only the training portion each epoch. */
+        for (size_t i = train_size - 1; i > 0; i--) {
+            size_t j = (size_t)rand() % (i + 1);
+            Sample tmp         = ds->data[i];
+            ds->data[i]        = ds->data[j];
+            ds->data[j]        = tmp;
+        }
+
+        double train_loss = 0.0;
         int    correct    = 0;
 
-        for (size_t i = 0; i < ds->size; i++) {
-            const Sample *s = &ds->data[i];
+        for (size_t i = 0; i < train_size; i++) {
+            cnn_forward(net, train_data[i].pixels);
+            train_loss += (double)cnn_loss(net, train_data[i].label);
 
-            /* Forward pass. */
-            cnn_forward(net, s->pixels);
-            total_loss += (double)cnn_loss(net, s->label);
-
-            /* Track accuracy. */
             int pred = 0;
             float best = net->act.output[0];
             for (int k = 1; k < CNN_N_CLASSES; k++) {
@@ -170,22 +225,50 @@ static void train_loop(CNN *net, Dataset *ds, int n_epochs)
                     pred = k;
                 }
             }
-            if (pred == s->label)
+            if (pred == train_data[i].label)
                 correct++;
 
-            /* Backward pass. */
-            cnn_backward(net, s->label);
+            cnn_backward(net, train_data[i].label);
 
-            /* Update weights at end of each mini-batch. */
-            if ((i + 1) % CNN_BATCH_SIZE == 0 || i + 1 == ds->size)
+            if ((i + 1) % CNN_BATCH_SIZE == 0 || i + 1 == train_size)
                 cnn_update(net);
         }
 
-        double avg_loss = total_loss / (double)ds->size;
-        double accuracy = 100.0 * correct / (double)ds->size;
-        printf("Epoch %2d/%d  loss=%.4f  accuracy=%.2f%%\n",
-               epoch + 1, n_epochs, avg_loss, accuracy);
+        train_loss /= (double)train_size;
+        double train_acc = 100.0 * correct / (double)train_size;
+
+        /* Validation pass. */
+        double val_acc  = 0.0;
+        double val_loss = eval_loss(net, val_data, val_size, &val_acc);
+        val_acc        *= 100.0;
+
+        printf("Epoch %2d/%d  train_loss=%.4f  acc=%.1f%%"
+               "  |  val_loss=%.4f  val_acc=%.1f%%",
+               epoch + 1, n_epochs,
+               train_loss, train_acc,
+               val_loss,   val_acc);
+
+        /* Early stopping bookkeeping. */
+        if (val_loss < best_val_loss - ES_MIN_DELTA) {
+            best_val_loss = val_loss;
+            best_weights  = net->weights;   /* snapshot */
+            patience_left = ES_PATIENCE;
+            printf("  [best]\n");
+        } else {
+            patience_left--;
+            printf("  [patience %d/%d]\n", ES_PATIENCE - patience_left,
+                   ES_PATIENCE);
+            if (patience_left == 0) {
+                printf("\nEarly stopping triggered (no improvement for %d"
+                       " epochs).\n", ES_PATIENCE);
+                break;
+            }
+        }
     }
+
+    /* Restore best weights. */
+    net->weights = best_weights;
+    printf("Best val_loss=%.4f — weights restored.\n", best_val_loss);
 }
 
 /* -------------------------------------------------------------------------
@@ -201,12 +284,14 @@ int main(int argc, char **argv)
     }
 
     printf("Training configuration:\n");
-    printf("  data dir : %s\n", args.data_dir);
-    printf("  output   : %s\n", args.output);
-    printf("  threads  : %d\n", args.n_threads);
-    printf("  epochs   : %d\n", MAX_EPOCHS);
-    printf("  batch sz : %d\n", CNN_BATCH_SIZE);
-    printf("  lr       : %.4f\n", (double)CNN_LR);
+    printf("  data dir    : %s\n", args.data_dir);
+    printf("  output      : %s\n", args.output);
+    printf("  threads     : %d\n", args.n_threads);
+    printf("  max epochs  : %d\n", MAX_EPOCHS);
+    printf("  batch sz    : %d\n", CNN_BATCH_SIZE);
+    printf("  lr          : %.4f\n", (double)CNN_LR);
+    printf("  val split   : %.0f%%\n", (double)(VAL_SPLIT * 100.0f));
+    printf("  patience    : %d epochs\n", ES_PATIENCE);
     printf("\n");
 
     /* Load dataset. */

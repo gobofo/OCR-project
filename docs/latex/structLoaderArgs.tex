@@ -1,0 +1,72 @@
+\doxysection{Loader\+Args Struct Reference}
+\hypertarget{structLoaderArgs}{}\label{structLoaderArgs}\index{LoaderArgs@{LoaderArgs}}
+
+
+Arguments passed to each loader thread.  
+
+
+
+
+Collaboration diagram for Loader\+Args:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{structLoaderArgs__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structLoaderArgs_a24395f7952d4f1e86d2b87047eadad68}{dir\+\_\+path}}
+\item 
+int \doxymbox{\hyperlink{structLoaderArgs_a7b5246fb164b0ae4da95b30d4a4ee035}{label}}
+\item 
+\doxymbox{\hyperlink{structSample}{Sample}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structLoaderArgs_ac083522388e87041f9338e8f794eb698}{buf}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{structLoaderArgs_ae0da4df49aaed56e2adb66a0d1ffb651}{buf\+\_\+cap}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{structLoaderArgs_a7797ae00a0f68614fbb0367bc9b2619e}{n\+\_\+loaded}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Arguments passed to each loader thread. 
+
+\label{doc-variable-members}
+\Hypertarget{structLoaderArgs_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structLoaderArgs_ac083522388e87041f9338e8f794eb698}\index{LoaderArgs@{LoaderArgs}!buf@{buf}}
+\index{buf@{buf}!LoaderArgs@{LoaderArgs}}
+\doxysubsubsection{\texorpdfstring{buf}{buf}}
+{\footnotesize\ttfamily \label{structLoaderArgs_ac083522388e87041f9338e8f794eb698} 
+\doxymbox{\hyperlink{structSample}{Sample}}\texorpdfstring{$\ast$}{*} Loader\+Args::\+buf}
+
+Pre-\/allocated buffer to write samples to. \Hypertarget{structLoaderArgs_ae0da4df49aaed56e2adb66a0d1ffb651}\index{LoaderArgs@{LoaderArgs}!buf\_cap@{buf\_cap}}
+\index{buf\_cap@{buf\_cap}!LoaderArgs@{LoaderArgs}}
+\doxysubsubsection{\texorpdfstring{buf\_cap}{buf\_cap}}
+{\footnotesize\ttfamily \label{structLoaderArgs_ae0da4df49aaed56e2adb66a0d1ffb651} 
+size\+\_\+t Loader\+Args::\+buf\+\_\+cap}
+
+Capacity of {\ttfamily buf} (max samples to write). \Hypertarget{structLoaderArgs_a24395f7952d4f1e86d2b87047eadad68}\index{LoaderArgs@{LoaderArgs}!dir\_path@{dir\_path}}
+\index{dir\_path@{dir\_path}!LoaderArgs@{LoaderArgs}}
+\doxysubsubsection{\texorpdfstring{dir\_path}{dir\_path}}
+{\footnotesize\ttfamily \label{structLoaderArgs_a24395f7952d4f1e86d2b87047eadad68} 
+const char\texorpdfstring{$\ast$}{*} Loader\+Args::\+dir\+\_\+path}
+
+Directory to scan for images. \Hypertarget{structLoaderArgs_a7b5246fb164b0ae4da95b30d4a4ee035}\index{LoaderArgs@{LoaderArgs}!label@{label}}
+\index{label@{label}!LoaderArgs@{LoaderArgs}}
+\doxysubsubsection{\texorpdfstring{label}{label}}
+{\footnotesize\ttfamily \label{structLoaderArgs_a7b5246fb164b0ae4da95b30d4a4ee035} 
+int Loader\+Args::\+label}
+
+Class label (0–25) for all images in dir. \Hypertarget{structLoaderArgs_a7797ae00a0f68614fbb0367bc9b2619e}\index{LoaderArgs@{LoaderArgs}!n\_loaded@{n\_loaded}}
+\index{n\_loaded@{n\_loaded}!LoaderArgs@{LoaderArgs}}
+\doxysubsubsection{\texorpdfstring{n\_loaded}{n\_loaded}}
+{\footnotesize\ttfamily \label{structLoaderArgs_a7797ae00a0f68614fbb0367bc9b2619e} 
+size\+\_\+t Loader\+Args::\+n\+\_\+loaded}
+
+Filled by thread:\+ actual samples written. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+cnn/\+\doxymbox{\hyperlink{dataset_8c}{dataset.\+c}}\end{DoxyCompactItemize}

@@ -1,0 +1,20 @@
+<map id="image_free" name="image_free">
+<area shape="rect" id="Node000001" title="Free an Image allocated by image_load_png()." alt="" coords="822,56,917,84"/>
+<area shape="rect" id="Node000002" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="420,5,598,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="833,47,805,34,773,22,729,14,684,10,598,11,597,6,684,4,730,8,775,17,808,29,838,48"/>
+<area shape="rect" id="Node000006" href="$image_8c.html#a28674722e7d5137fadd79c172bc60127" title="Load a PNG file into an Image." alt="" coords="646,31,774,58"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="804,60,774,57,774,52,809,60"/>
+<area shape="rect" id="Node000007" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="482,81,536,109"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="804,75,537,96,536,91,809,74"/>
+<area shape="rect" id="Node000008" href="$solve__main_8c.html#a6680539f8c646b0b8c01cf9eb3c49148" title="Crop a cell bounding box from a pixel buffer, resize, and predict." alt="" coords="653,132,767,160"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="827,90,742,134,740,129,822,91"/>
+<area shape="rect" id="Node000003" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="261,5,372,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,20,373,22,372,17,408,19"/>
+<area shape="rect" id="Node000004" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="108,5,213,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="243,20,214,22,213,17,248,18"/>
+<area shape="rect" id="Node000005" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="90,21,61,22,59,17,94,17"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="628,35,598,33,598,28,633,34"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="640,62,537,91,536,86,635,63"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="635,128,536,105,537,99,640,128"/>
+</map>

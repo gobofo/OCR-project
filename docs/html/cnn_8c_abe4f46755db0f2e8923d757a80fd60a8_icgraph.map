@@ -1,0 +1,7 @@
+<map id="randn" name="randn">
+<area shape="rect" id="Node000001" title="Box&#45;Muller transform: sample one value from N(0, 1)." alt="" coords="248,5,306,33"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#ad61352e349918920eb7049293eb055fa" title="Allocate and initialise a CNN with He&#45;initialised weights." alt="" coords="108,5,200,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,19,201,22,200,17,235,19"/>
+<area shape="rect" id="Node000003" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="89,20,60,22,60,17,95,18"/>
+</map>

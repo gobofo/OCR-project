@@ -1,0 +1,19 @@
+<map id="cnn_predict" name="cnn_predict">
+<area shape="rect" id="Node000001" title="Predict the most likely class for a single image." alt="" coords="5,109,102,137"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#a97f29ff1777a0eaec225d9efd2ebfc2d" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="150,109,251,137"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,121,136,122,132,125,103,126"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#ab5cfc81d08bd47071237d6d712cce0e4" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="307,5,416,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,107,251,76,298,44,312,39,307,41,300,48,255,80,218,111"/>
+<area shape="rect" id="Node000005" href="$cnn_8c.html#a965e7546544716df9f94516eab66a69b" title="Dense layer 1 (2704 → 128) followed by ReLU." alt="" coords="299,57,424,85"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="245,106,304,89,300,91,247,111"/>
+<area shape="rect" id="Node000006" href="$cnn_8c.html#a4733c05bd6ecfdd8aea86561031a0138" title="Dense layer 2 (128 → 26) followed by Softmax." alt="" coords="299,109,424,137"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="251,121,286,123,281,124,252,126"/>
+<area shape="rect" id="Node000008" href="$cnn_8c.html#a78dfd01dac25db70517ca90e165d9656" title="Flatten stage: copy pool_out into act&#45;&gt;flat, row&#45;major." alt="" coords="302,161,422,189"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="246,135,305,156,299,156,246,140"/>
+<area shape="rect" id="Node000009" href="$cnn_8c.html#aff764a1877fe34f7084fc0c804e64a5f" title="Max&#45;pooling stage: compute net&#45;&gt;act.pool_out." alt="" coords="308,213,415,241"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="217,135,255,166,300,198,312,207,307,206,298,203,251,170,216,140"/>
+<area shape="rect" id="Node000004" href="$cnn_8c.html#a3eea1fcc46fdb93cd28f49760d187e75" title="Apply ReLU element&#45;wise: f(x) = max(0, x)." alt="" coords="486,5,587,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="416,17,473,18,468,20,417,22"/>
+<area shape="rect" id="Node000007" href="$cnn_8c.html#a61bbed6c1803dbf5364fc8575dea1ad1" title="Apply softmax in&#45;place over an array of length n." alt="" coords="472,109,601,137"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="424,121,460,123,454,124,425,126"/>
+</map>

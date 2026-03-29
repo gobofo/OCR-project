@@ -1,0 +1,26 @@
+<map id="loader_thread" name="loader_thread">
+<area shape="rect" id="Node000001" title="POSIX thread worker: load all images from one class directory." alt="" coords="5,185,117,213"/>
+<area shape="rect" id="Node000002" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="165,159,342,186"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,189,151,185,147,188,118,194"/>
+<area shape="rect" id="Node000011" href="$dataset_8c.html#a9835941ed32f81c45571e5986f4f6a19" title="Check whether filename ends with a known image extension." alt="" coords="200,211,307,238"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="117,204,187,214,182,217,118,209"/>
+<area shape="rect" id="Node000003" href="$image_8c.html#a8e5e4e11e7daf8b8d973824c6476c8d2" title="Binarise a grayscale Image in&#45;place using a global threshold." alt="" coords="406,5,527,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,156,317,105,351,76,389,49,413,38,408,41,391,53,355,80,320,109,269,160"/>
+<area shape="rect" id="Node000004" href="$image_8c.html#a712dc87c6c9fed0f3bf082bce38b40fb" title="Free an Image allocated by image_load_png()." alt="" coords="593,81,688,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="271,156,322,122,355,105,389,93,438,83,488,80,580,86,575,87,488,85,439,89,391,98,357,110,325,126,274,160"/>
+<area shape="rect" id="Node000005" href="$image_8c.html#a28674722e7d5137fadd79c172bc60127" title="Load a PNG file into an Image." alt="" coords="402,107,530,134"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="312,156,394,138,389,140,314,161"/>
+<area shape="rect" id="Node000007" href="$image_8c.html#a9d344df105e6164de2266f08e2bc3130" title="Resize an Image to the given dimensions (nearest&#45;neighbour)." alt="" coords="412,159,520,186"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="342,170,399,172,394,173,343,175"/>
+<area shape="rect" id="Node000008" href="$image_8c.html#a2f65d152419d4fcd1418da5fc863b421" title="Rotate an Image by angle_deg degrees clockwise." alt="" coords="412,211,520,238"/>
+<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="313,184,400,207,394,208,313,190"/>
+<area shape="rect" id="Node000009" href="$image_8c.html#aea22486042d084f879e40219b1bc8967" title="Convert an Image to a flat normalised float array." alt="" coords="407,263,525,290"/>
+<area shape="poly" id="edge11_Node000002_Node000009" title=" " alt="" coords="317,184,343,197,359,210,368,223,377,235,392,248,403,256,398,256,388,252,373,239,364,226,355,213,341,201,316,190"/>
+<area shape="rect" id="Node000010" href="$image_8c.html#a0aca710a195c2b99587ca94455b25c46" title="Convert an Image to grayscale in&#45;place." alt="" coords="390,315,542,342"/>
+<area shape="poly" id="edge12_Node000002_Node000010" title=" " alt="" coords="323,184,344,197,356,210,363,223,369,250,375,275,381,288,392,300,398,307,393,305,388,304,377,291,370,277,364,251,358,225,351,213,340,201,322,189"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="530,109,580,103,575,105,532,114"/>
+<area shape="rect" id="Node000006" href="$image_8c.html#a0f84a9ec64f5cd9a13915bd0d631a580" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="590,159,691,186"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="515,132,580,153,575,154,515,138"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="521,170,577,172,572,173,521,175"/>
+<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="515,207,575,192,580,191,516,213"/>
+</map>

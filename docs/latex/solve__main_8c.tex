@@ -1,0 +1,269 @@
+\doxysection{solve\+\_\+main.\+c File Reference}
+\hypertarget{solve__main_8c}{}\label{solve__main_8c}\index{solve\_main.c@{solve\_main.c}}
+
+
+Entry point for the OCR + crossword-\/solver binary.  
+
+
+{\ttfamily \+\#include "{}src/\+cnn/\+cnn.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+cnn/\+model.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+preprocess/\+image.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+segment/\+segment.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+solver/\+solver.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+Include dependency graph for solve\+\_\+main.\+c:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solve__main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structSolveArgs}{Solve\+Args}}
+\begin{DoxyCompactList}\small\item\em Parsed command-\/line options for the solve binary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{solve__main_8c_ada0f7155f9e594701164ffa4cc8dfb5e}{DEFAULT\+\_\+\+MODEL\+\_\+\+DIR}}~"{}models/\+"{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{solve__main_8c_a848c0ca46d3e3ecc39d2fccc4d85fa12}{usage}} (const char \texorpdfstring{$\ast$}{*}prog)
+\begin{DoxyCompactList}\small\item\em Print usage information to stderr. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{solve__main_8c_ab3b6bd6bc2e6b88c8592033b2c7b29c5}{parse\+\_\+args}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \doxymbox{\hyperlink{structSolveArgs}{Solve\+Args}} \texorpdfstring{$\ast$}{*}args)
+\begin{DoxyCompactList}\small\item\em Parse argv into a \doxylink{structSolveArgs}{Solve\+Args} structure. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{solve__main_8c_ab0afc1d46614af9864f863e2808317d0}{resolve\+\_\+model}} (\doxymbox{\hyperlink{structSolveArgs}{Solve\+Args}} \texorpdfstring{$\ast$}{*}args)
+\begin{DoxyCompactList}\small\item\em Ensure args-\/\texorpdfstring{$>$}{>}model\+\_\+path is filled:\+ auto-\/detect if not specified. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148}{recognise\+\_\+cell}} (const unsigned char \texorpdfstring{$\ast$}{*}full\+\_\+pixels, int img\+\_\+w, int img\+\_\+h, const \doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*}box, \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
+\begin{DoxyCompactList}\small\item\em Crop a cell bounding box from a pixel buffer, resize, and predict. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{solve__main_8c_a6258df9f0bf10752ca0b2487e72fdf81}{search\+\_\+words}} (const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}grid, char \texorpdfstring{$\ast$}{*}words)
+\begin{DoxyCompactList}\small\item\em Search for all comma-\/separated words in {\ttfamily args-\/\texorpdfstring{$>$}{>}words}. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{solve__main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entry point for the OCR + crossword-\/solver binary. 
+
+Usage:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./solve\ -\/-\/image\ <path>\ [-\/-\/model\ <path>]\ [-\/-\/words\ <word1,word2,...>]\ [-\/v]}
+
+\end{DoxyCode}
+
+
+Options:\+ --image $<$path$>$ (required) Input crossword image. --model $<$path$>$ (optional) Model file to load. If absent, picks the most recent .bin in models/\+. --words 
+\begin{DoxyItemize}
+\end{DoxyItemize}list of words to search for. --verbose /\+ -\/v Print per-\/cell recognition details and grid.
+
+Pipeline:\+
+\begin{DoxyEnumerate}
+\item Load model.
+\item Load and preprocess the image (grayscale, binarize).
+\item Segment letter cells.
+\item Recognise each cell with the \doxylink{structCNN}{CNN}.
+\item Build a character grid.
+\item Solve the word search (if --words is given).
+\end{DoxyEnumerate}
+
+Exit codes:\+ 0 Success. 1 Argument error. 2 Model error (not found /\+ cannot load). 3 \doxylink{structImage}{Image} load error. 4 Segmentation error. 
+
+\label{doc-define-members}
+\Hypertarget{solve__main_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{solve__main_8c_ada0f7155f9e594701164ffa4cc8dfb5e}\index{solve\_main.c@{solve\_main.c}!DEFAULT\_MODEL\_DIR@{DEFAULT\_MODEL\_DIR}}
+\index{DEFAULT\_MODEL\_DIR@{DEFAULT\_MODEL\_DIR}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_MODEL\_DIR}{DEFAULT\_MODEL\_DIR}}
+{\footnotesize\ttfamily \label{solve__main_8c_ada0f7155f9e594701164ffa4cc8dfb5e} 
+\+\#define DEFAULT\+\_\+\+MODEL\+\_\+\+DIR~"{}models/\+"{}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{solve__main_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{solve__main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\index{solve\_main.c@{solve\_main.c}!main@{main}}
+\index{main@{main}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{solve__main_8c_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solve__main_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solve__main_8c_ab3b6bd6bc2e6b88c8592033b2c7b29c5}\index{solve\_main.c@{solve\_main.c}!parse\_args@{parse\_args}}
+\index{parse\_args@{parse\_args}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
+{\footnotesize\ttfamily \label{solve__main_8c_ab3b6bd6bc2e6b88c8592033b2c7b29c5} 
+int parse\+\_\+args (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{, }\item[{\doxymbox{\hyperlink{structSolveArgs}{Solve\+Args}} \texorpdfstring{$\ast$}{*}}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse argv into a \doxylink{structSolveArgs}{Solve\+Args} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Argument count. \\
+\hline
+{\em argv} & Argument vector. \\
+\hline
+{\em args} & Output structure (caller-\/allocated and zeroed). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on error. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{solve__main_8c_ab3b6bd6bc2e6b88c8592033b2c7b29c5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148}\index{solve\_main.c@{solve\_main.c}!recognise\_cell@{recognise\_cell}}
+\index{recognise\_cell@{recognise\_cell}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{recognise\_cell()}{recognise\_cell()}}
+{\footnotesize\ttfamily \label{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148} 
+int recognise\+\_\+cell (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{full\+\_\+pixels}{, }\item[{int}]{img\+\_\+w}{, }\item[{int}]{img\+\_\+h}{, }\item[{const \doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*}}]{box}{, }\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Crop a cell bounding box from a pixel buffer, resize, and predict. 
+
+Allocates a temporary \doxylink{structImage}{Image} for the cell, runs the full pipeline, then calls \doxylink{cnn_8c_a5128dc1ad09d45983c5b93bd26dc6504}{cnn\+\_\+predict()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+\_\+pixels} & Full image pixel buffer (RGBA, row-\/major). \\
+\hline
+{\em img\+\_\+w} & Full image width. \\
+\hline
+{\em img\+\_\+h} & Full image height. \\
+\hline
+{\em box} & Bounding box of the cell to recognise. \\
+\hline
+{\em net} & Trained \doxylink{structCNN}{CNN}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Predicted class index (0=\textquotesingle{}A\textquotesingle{}…25=\textquotesingle{}Z\textquotesingle{}), or -\/1 on error. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solve__main_8c_ab0afc1d46614af9864f863e2808317d0}\index{solve\_main.c@{solve\_main.c}!resolve\_model@{resolve\_model}}
+\index{resolve\_model@{resolve\_model}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{resolve\_model()}{resolve\_model()}}
+{\footnotesize\ttfamily \label{solve__main_8c_ab0afc1d46614af9864f863e2808317d0} 
+int resolve\+\_\+model (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structSolveArgs}{Solve\+Args}} \texorpdfstring{$\ast$}{*}}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Ensure args-\/\texorpdfstring{$>$}{>}model\+\_\+path is filled:\+ auto-\/detect if not specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \doxylink{structSolveArgs}{Solve\+Args} with possibly empty model\+\_\+path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if model\+\_\+path is valid, -\/1 if no model could be found. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{solve__main_8c_ab0afc1d46614af9864f863e2808317d0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{solve__main_8c_ab0afc1d46614af9864f863e2808317d0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solve__main_8c_a6258df9f0bf10752ca0b2487e72fdf81}\index{solve\_main.c@{solve\_main.c}!search\_words@{search\_words}}
+\index{search\_words@{search\_words}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{search\_words()}{search\_words()}}
+{\footnotesize\ttfamily \label{solve__main_8c_a6258df9f0bf10752ca0b2487e72fdf81} 
+void search\+\_\+words (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}}]{grid}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{words}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Search for all comma-\/separated words in {\ttfamily args-\/\texorpdfstring{$>$}{>}words}. 
+
+Prints each result to stdout in the format:\+ WORD:\+ (r0,c0) → (r1,c1) DIRECTION or:\+ WORD:\+ not found
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & Recognised character grid. \\
+\hline
+{\em words} & Comma-\/separated word list (modified in-\/place by strtok). \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solve__main_8c_a6258df9f0bf10752ca0b2487e72fdf81_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{solve__main_8c_a6258df9f0bf10752ca0b2487e72fdf81_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solve__main_8c_a848c0ca46d3e3ecc39d2fccc4d85fa12}\index{solve\_main.c@{solve\_main.c}!usage@{usage}}
+\index{usage@{usage}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily \label{solve__main_8c_a848c0ca46d3e3ecc39d2fccc4d85fa12} 
+void usage (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{prog}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Print usage information to stderr. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog} & Program name (argv\+[0]\+). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{solve__main_8c_a848c0ca46d3e3ecc39d2fccc4d85fa12_icgraph}
+\end{center}
+\end{figure}

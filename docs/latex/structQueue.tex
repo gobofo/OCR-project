@@ -1,0 +1,55 @@
+\doxysection{Queue Struct Reference}
+\hypertarget{structQueue}{}\label{structQueue}\index{Queue@{Queue}}
+
+
+Simple heap-\/allocated FIFO queue for pixel coordinates.  
+
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structQueue_a7a2dbb7a3bf7c2e3a8175f123b413b13}{data}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{structQueue_ae3ec5b8da499c9766898fe71975b7cfb}{head}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{structQueue_afde22dd7d74f5ee3053742c052d2f81e}{tail}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{structQueue_a060e4192a22f2518e83defbfae3ef417}{cap}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple heap-\/allocated FIFO queue for pixel coordinates. 
+
+\label{doc-variable-members}
+\Hypertarget{structQueue_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structQueue_a060e4192a22f2518e83defbfae3ef417}\index{Queue@{Queue}!cap@{cap}}
+\index{cap@{cap}!Queue@{Queue}}
+\doxysubsubsection{\texorpdfstring{cap}{cap}}
+{\footnotesize\ttfamily \label{structQueue_a060e4192a22f2518e83defbfae3ef417} 
+size\+\_\+t Queue::\+cap}
+
+Total allocated pairs. \Hypertarget{structQueue_a7a2dbb7a3bf7c2e3a8175f123b413b13}\index{Queue@{Queue}!data@{data}}
+\index{data@{data}!Queue@{Queue}}
+\doxysubsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily \label{structQueue_a7a2dbb7a3bf7c2e3a8175f123b413b13} 
+int\texorpdfstring{$\ast$}{*} Queue::\+data}
+
+Flat array of (x, y) pairs:\+ data\+[2\texorpdfstring{$\ast$}{*}i]\+, data\+[2\texorpdfstring{$\ast$}{*}i+1]\+. \Hypertarget{structQueue_ae3ec5b8da499c9766898fe71975b7cfb}\index{Queue@{Queue}!head@{head}}
+\index{head@{head}!Queue@{Queue}}
+\doxysubsubsection{\texorpdfstring{head}{head}}
+{\footnotesize\ttfamily \label{structQueue_ae3ec5b8da499c9766898fe71975b7cfb} 
+size\+\_\+t Queue::\+head}
+
+Read index. \Hypertarget{structQueue_afde22dd7d74f5ee3053742c052d2f81e}\index{Queue@{Queue}!tail@{tail}}
+\index{tail@{tail}!Queue@{Queue}}
+\doxysubsubsection{\texorpdfstring{tail}{tail}}
+{\footnotesize\ttfamily \label{structQueue_afde22dd7d74f5ee3053742c052d2f81e} 
+size\+\_\+t Queue::\+tail}
+
+Write index (next free slot). 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+segment/\+\doxymbox{\hyperlink{segment_8c}{segment.\+c}}\end{DoxyCompactItemize}

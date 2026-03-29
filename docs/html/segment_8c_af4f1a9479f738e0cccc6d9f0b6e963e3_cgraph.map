@@ -1,0 +1,21 @@
+<map id="segment_image" name="segment_image">
+<area shape="rect" id="Node000001" title="Segment a binarised image into letter cell bounding boxes." alt="" coords="5,173,132,201"/>
+<area shape="rect" id="Node000002" href="$segment_8c.html#a1f320fd7cedab5d2870e28e717a337d8" title="Extract letter bounding boxes via connected&#45;component analysis." alt="" coords="180,116,419,144"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,170,228,146,224,150,128,175"/>
+<area shape="rect" id="Node000008" href="$segment_8c.html#a597c16bd9433d6d0adf303db35f78d49" title="Detect grid lines and infer cell geometry." alt="" coords="220,173,378,201"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="132,185,207,186,203,189,133,190"/>
+<area shape="rect" id="Node000009" href="$segment_8c.html#ae3e3fe1fc29541ff4b621ddcea8c733e" title="Sort a SegmentResult&#39;s cells in reading order (top&#45;to&#45;bottom, left&#45;to&#45;right)." alt="" coords="216,236,382,280"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="117,199,212,229,207,232,116,204"/>
+<area shape="rect" id="Node000003" href="$segment_8c.html#ac8e6a7763372099c3ddbb9f7b23d537c" title="Allocate a Queue with initial capacity cap pixel pairs." alt="" coords="468,5,577,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="328,113,466,43,481,39,476,41,468,48,330,118"/>
+<area shape="rect" id="Node000004" href="$segment_8c.html#ae63c70cbd30b3a6b9761ff09da7093c6" title="Return 1 if the queue has elements, 0 if empty." alt="" coords="467,57,577,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="354,113,455,88,450,90,355,118"/>
+<area shape="rect" id="Node000005" href="$segment_8c.html#af0bc5753cb9e7df233227b71a6a4a11d" title="Free queue memory." alt="" coords="475,109,569,137"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="419,124,462,124,457,126,420,129"/>
+<area shape="rect" id="Node000006" href="$segment_8c.html#ab71b3e9afd214fc91fc20f4c39aef264" title="Pop the front element. Caller must ensure queue is non&#45;empty." alt="" coords="476,161,568,189"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="371,142,463,162,458,163,371,147"/>
+<area shape="rect" id="Node000007" href="$segment_8c.html#a7903d51a922266d740a3987c9cdf0799" title="Append a pixel coordinate to the queue, growing if needed." alt="" coords="472,213,572,241"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="373,141,420,159,445,178,469,198,478,206,473,205,465,203,442,182,418,164,372,147"/>
+<area shape="rect" id="Node000010" href="$segment_8c.html#a1c8bbcb985c4ccf49dd35f24012e9967" title="qsort comparator: sort BoundingBox by y then x." alt="" coords="478,265,566,293"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="383,263,465,274,460,274,383,268"/>
+</map>

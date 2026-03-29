@@ -1,0 +1,7 @@
+<map id="grid_create" name="grid_create">
+<area shape="rect" id="Node000001" title="Allocate a CharGrid of the given dimensions, filled with spaces." alt="" coords="135,32,229,60"/>
+<area shape="rect" id="Node000002" href="$solver_8c.html#a2c5f08af3f67e41ab4ea1023c48b6f23" title="Read a CharGrid from a plain&#45;text file." alt="" coords="5,5,87,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,35,87,30,87,24,122,33"/>
+<area shape="rect" id="Node000003" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="19,57,73,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,58,74,69,73,64,122,57"/>
+</map>

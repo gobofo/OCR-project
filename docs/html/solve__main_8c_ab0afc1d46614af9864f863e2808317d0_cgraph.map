@@ -1,0 +1,5 @@
+<map id="resolve_model" name="resolve_model">
+<area shape="rect" id="Node000001" title="Ensure args&#45;&gt;model_path is filled: auto&#45;detect if not specified." alt="" coords="5,5,123,33"/>
+<area shape="rect" id="Node000002" href="$model_8c.html#a6b4d12a76727dd069dcbc5a1f993925b" title="Find the most recently modified .bin file inside a directory." alt="" coords="171,5,308,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,17,158,19,153,19,123,22"/>
+</map>

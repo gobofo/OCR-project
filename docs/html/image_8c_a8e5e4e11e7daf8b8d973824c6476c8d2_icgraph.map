@@ -1,0 +1,13 @@
+<map id="image_binarize" name="image_binarize">
+<area shape="rect" id="Node000001" title="Binarise a grayscale Image in&#45;place using a global threshold." alt="" coords="646,32,767,60"/>
+<area shape="rect" id="Node000002" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="420,5,598,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="627,36,598,34,598,29,633,36"/>
+<area shape="rect" id="Node000006" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="482,57,536,85"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="633,55,537,70,537,65,628,56"/>
+<area shape="rect" id="Node000003" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="261,5,372,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,19,373,22,373,17,408,19"/>
+<area shape="rect" id="Node000004" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="108,5,213,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="243,20,214,22,213,17,248,19"/>
+<area shape="rect" id="Node000005" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="90,21,61,22,60,17,94,18"/>
+</map>

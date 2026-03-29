@@ -288,47 +288,94 @@ float cnn_loss(const CNN *net, int label)
 }
 
 /* -------------------------------------------------------------------------
- * Backward pass (stub)
+ * Backward pass
  * ---------------------------------------------------------------------- */
 
 void cnn_backward(CNN *net, int label)
 {
-    /*
-     * @note STUB — full backpropagation not yet implemented.
-     *
-     * Algorithm outline:
-     *
-     * 1. Softmax + cross-entropy gradient:
-     *      dL/dz2[k] = output[k] - (k == label ? 1 : 0)
-     *
-     * 2. Dense layer 2 gradients:
-     *      dW2[k][h] += dz2[k] * h1[h]
-     *      db2[k]    += dz2[k]
-     *      dh1[h]     = sum_k W2[k][h] * dz2[k]
-     *
-     * 3. ReLU backprop through hidden layer:
-     *      dz1[h] = dh1[h] * (z1[h] > 0 ? 1 : 0)
-     *
-     * 4. Dense layer 1 gradients:
-     *      dW1[h][f] += dz1[h] * flat[f]
-     *      db1[h]    += dz1[h]
-     *      dflat[f]   = sum_h W1[h][f] * dz1[h]
-     *
-     * 5. Unflatten dflat → dpool_out[f][r][c]
-     *
-     * 6. MaxPool backprop (route gradient to winning position):
-     *      dconv_out[f][base_r + max_r][base_c + max_c] += dpool_out[f][r][c]
-     *      all other positions in the window receive 0
-     *
-     * 7. ReLU backprop through conv output:
-     *      dconv_pre[f][r][c] = dconv_out[f][r][c] * (conv_out[f][r][c] > 0)
-     *
-     * 8. Conv layer gradients:
-     *      dkernel[f][dr][dc] += sum_{r,c} dconv_pre[f][r][c] * input[r+dr][c+dc]
-     *      dbias[f]           += sum_{r,c} dconv_pre[f][r][c]
-     */
-    (void)net;
-    (void)label;
+    const CNNWeights *w   = &net->weights;
+    CNNActivations   *act = &net->act;
+    CNNWeights       *g   = &net->grads;
+
+    net->batch_count++;
+
+    /* 1. Softmax + cross-entropy gradient: dL/dz2[k] = output[k] - 1{k==label} */
+    float dz2[CNN_N_CLASSES];
+    for (int k = 0; k < CNN_N_CLASSES; k++)
+        dz2[k] = act->output[k] - (k == label ? 1.0f : 0.0f);
+
+    /* 2. Dense layer 2 gradients */
+    float dh1[CNN_HIDDEN_SIZE];
+    memset(dh1, 0, sizeof(dh1));
+    for (int k = 0; k < CNN_N_CLASSES; k++) {
+        g->b2[k] += dz2[k];
+        for (int h = 0; h < CNN_HIDDEN_SIZE; h++) {
+            g->W2[k][h] += dz2[k] * act->h1[h];
+            dh1[h]      += w->W2[k][h] * dz2[k];
+        }
+    }
+
+    /* 3. ReLU backprop through hidden layer */
+    float dz1[CNN_HIDDEN_SIZE];
+    for (int h = 0; h < CNN_HIDDEN_SIZE; h++)
+        dz1[h] = dh1[h] * (act->z1[h] > 0.0f ? 1.0f : 0.0f);
+
+    /* 4. Dense layer 1 gradients */
+    float dflat[CNN_FLAT_SIZE];
+    memset(dflat, 0, sizeof(dflat));
+    for (int h = 0; h < CNN_HIDDEN_SIZE; h++) {
+        g->b1[h] += dz1[h];
+        for (int f = 0; f < CNN_FLAT_SIZE; f++) {
+            g->W1[h][f] += dz1[h] * act->flat[f];
+            dflat[f]    += w->W1[h][f] * dz1[h];
+        }
+    }
+
+    /* 5. Unflatten dflat → dpool_out */
+    float dpool_out[CNN_N_FILTERS][CNN_POOL_OUT_H][CNN_POOL_OUT_W];
+    {
+        int idx = 0;
+        for (int f = 0; f < CNN_N_FILTERS; f++)
+            for (int r = 0; r < CNN_POOL_OUT_H; r++)
+                for (int c = 0; c < CNN_POOL_OUT_W; c++)
+                    dpool_out[f][r][c] = dflat[idx++];
+    }
+
+    /* 6. MaxPool backprop: route gradient to the winning position only */
+    float dconv_out[CNN_N_FILTERS][CNN_CONV_H][CNN_CONV_W];
+    memset(dconv_out, 0, sizeof(dconv_out));
+    for (int f = 0; f < CNN_N_FILTERS; f++) {
+        for (int r = 0; r < CNN_POOL_OUT_H; r++) {
+            for (int c = 0; c < CNN_POOL_OUT_W; c++) {
+                int base_r = r * CNN_POOL_H;
+                int base_c = c * CNN_POOL_W;
+                int mr     = act->pool_max_r[f][r][c];
+                int mc     = act->pool_max_c[f][r][c];
+                dconv_out[f][base_r + mr][base_c + mc] += dpool_out[f][r][c];
+            }
+        }
+    }
+
+    /* 7. ReLU backprop through conv output (conv_out holds post-ReLU values) */
+    for (int f = 0; f < CNN_N_FILTERS; f++)
+        for (int r = 0; r < CNN_CONV_H; r++)
+            for (int c = 0; c < CNN_CONV_W; c++)
+                dconv_out[f][r][c] *= (act->conv_out[f][r][c] > 0.0f ? 1.0f : 0.0f);
+
+    /* 8. Conv layer gradients */
+    for (int f = 0; f < CNN_N_FILTERS; f++) {
+        float db = 0.0f;
+        for (int r = 0; r < CNN_CONV_H; r++) {
+            for (int c = 0; c < CNN_CONV_W; c++) {
+                float d = dconv_out[f][r][c];
+                db += d;
+                for (int dr = 0; dr < CNN_KERNEL_H; dr++)
+                    for (int dc = 0; dc < CNN_KERNEL_W; dc++)
+                        g->kernels[f][dr][dc] += d * act->input[r + dr][c + dc];
+            }
+        }
+        g->conv_bias[f] += db;
+    }
 }
 
 /* -------------------------------------------------------------------------
@@ -352,10 +399,12 @@ void cnn_zero_grads(CNN *net)
  * @param g      Gradient array (read-only).
  * @param n      Number of elements.
  */
-static void sgd_update(float *w, float *v, const float *g, size_t n)
+static void sgd_update(float *w, float *v, const float *g, size_t n,
+                       float inv_batch)
 {
     for (size_t i = 0; i < n; i++) {
-        v[i] = CNN_MOMENTUM * v[i] + g[i];
+        float g_avg = g[i] * inv_batch;   /* average gradient over the batch */
+        v[i] = CNN_MOMENTUM * v[i] + g_avg;
         w[i] -= CNN_LR * v[i];
     }
 }
@@ -366,23 +415,31 @@ void cnn_update(CNN *net)
     CNNWeights *v = &net->velocity;
     CNNWeights *g = &net->grads;
 
+    /* Compute how many samples contributed to the accumulated gradients.
+     * net->batch_count is set by the training loop before calling cnn_update. */
+    float inv_batch = (net->batch_count > 0)
+                      ? 1.0f / (float)net->batch_count
+                      : 1.0f / (float)CNN_BATCH_SIZE;
+
     sgd_update(&w->kernels[0][0][0], &v->kernels[0][0][0],
                &g->kernels[0][0][0],
-               CNN_N_FILTERS * CNN_KERNEL_H * CNN_KERNEL_W);
+               CNN_N_FILTERS * CNN_KERNEL_H * CNN_KERNEL_W, inv_batch);
 
-    sgd_update(w->conv_bias, v->conv_bias, g->conv_bias, CNN_N_FILTERS);
+    sgd_update(w->conv_bias, v->conv_bias, g->conv_bias,
+               CNN_N_FILTERS, inv_batch);
 
     sgd_update(&w->W1[0][0], &v->W1[0][0], &g->W1[0][0],
-               CNN_HIDDEN_SIZE * CNN_FLAT_SIZE);
+               CNN_HIDDEN_SIZE * CNN_FLAT_SIZE, inv_batch);
 
-    sgd_update(w->b1, v->b1, g->b1, CNN_HIDDEN_SIZE);
+    sgd_update(w->b1, v->b1, g->b1, CNN_HIDDEN_SIZE, inv_batch);
 
     sgd_update(&w->W2[0][0], &v->W2[0][0], &g->W2[0][0],
-               CNN_N_CLASSES * CNN_HIDDEN_SIZE);
+               CNN_N_CLASSES * CNN_HIDDEN_SIZE, inv_batch);
 
-    sgd_update(w->b2, v->b2, g->b2, CNN_N_CLASSES);
+    sgd_update(w->b2, v->b2, g->b2, CNN_N_CLASSES, inv_batch);
 
     cnn_zero_grads(net);
+    net->batch_count = 0;
 }
 
 /* -------------------------------------------------------------------------

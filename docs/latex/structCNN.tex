@@ -1,0 +1,68 @@
+\doxysection{CNN Struct Reference}
+\hypertarget{structCNN}{}\label{structCNN}\index{CNN@{CNN}}
+
+
+Full \doxylink{structCNN}{CNN} state:\+ weights, gradients, momentum buffers, activations.  
+
+
+
+
+{\ttfamily \+\#include $<$cnn.\+h$>$}
+
+
+
+Collaboration diagram for CNN:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{structCNN__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structCNNWeights}{CNNWeights}} \doxymbox{\hyperlink{structCNN_a5ed8686d38b2dafb8912c5f817b10278}{weights}}
+\item 
+\doxymbox{\hyperlink{structCNNWeights}{CNNWeights}} \doxymbox{\hyperlink{structCNN_ab2e73669a995d8660f02167881ed65db}{grads}}
+\item 
+\doxymbox{\hyperlink{structCNNWeights}{CNNWeights}} \doxymbox{\hyperlink{structCNN_a6ed93f5166f0bcfa2ac4e1a0e525a354}{velocity}}
+\item 
+\doxymbox{\hyperlink{structCNNActivations}{CNNActivations}} \doxymbox{\hyperlink{structCNN_a4368f9961c876136f2f90392be455459}{act}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Full \doxylink{structCNN}{CNN} state:\+ weights, gradients, momentum buffers, activations. 
+
+\label{doc-variable-members}
+\Hypertarget{structCNN_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structCNN_a4368f9961c876136f2f90392be455459}\index{CNN@{CNN}!act@{act}}
+\index{act@{act}!CNN@{CNN}}
+\doxysubsubsection{\texorpdfstring{act}{act}}
+{\footnotesize\ttfamily \label{structCNN_a4368f9961c876136f2f90392be455459} 
+\doxymbox{\hyperlink{structCNNActivations}{CNNActivations}} CNN::\+act}
+
+Forward-\/pass activations. \Hypertarget{structCNN_ab2e73669a995d8660f02167881ed65db}\index{CNN@{CNN}!grads@{grads}}
+\index{grads@{grads}!CNN@{CNN}}
+\doxysubsubsection{\texorpdfstring{grads}{grads}}
+{\footnotesize\ttfamily \label{structCNN_ab2e73669a995d8660f02167881ed65db} 
+\doxymbox{\hyperlink{structCNNWeights}{CNNWeights}} CNN::\+grads}
+
+Accumulated gradients (reset each batch). \Hypertarget{structCNN_a6ed93f5166f0bcfa2ac4e1a0e525a354}\index{CNN@{CNN}!velocity@{velocity}}
+\index{velocity@{velocity}!CNN@{CNN}}
+\doxysubsubsection{\texorpdfstring{velocity}{velocity}}
+{\footnotesize\ttfamily \label{structCNN_a6ed93f5166f0bcfa2ac4e1a0e525a354} 
+\doxymbox{\hyperlink{structCNNWeights}{CNNWeights}} CNN::\+velocity}
+
+Momentum velocity buffer. \Hypertarget{structCNN_a5ed8686d38b2dafb8912c5f817b10278}\index{CNN@{CNN}!weights@{weights}}
+\index{weights@{weights}!CNN@{CNN}}
+\doxysubsubsection{\texorpdfstring{weights}{weights}}
+{\footnotesize\ttfamily \label{structCNN_a5ed8686d38b2dafb8912c5f817b10278} 
+\doxymbox{\hyperlink{structCNNWeights}{CNNWeights}} CNN::\+weights}
+
+Current learnable parameters. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+cnn/\+\doxymbox{\hyperlink{cnn_8h}{cnn.\+h}}\end{DoxyCompactItemize}

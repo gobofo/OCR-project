@@ -1,0 +1,109 @@
+\doxysection{CNNActivations Struct Reference}
+\hypertarget{structCNNActivations}{}\label{structCNNActivations}\index{CNNActivations@{CNNActivations}}
+
+
+Intermediate activations produced by the forward pass.  
+
+
+
+
+{\ttfamily \+\#include $<$cnn.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \doxymbox{\hyperlink{structCNNActivations_ae18ca5fcf8b798863f4edb2142584b5e}{input}} \+[\doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNActivations_abe7204e611e1b7a756f15a7f2b82708a}{conv\+\_\+out}} \+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_ae09fcfd11a99599048be612b2493e968}{CNN\+\_\+\+CONV\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_af515392cca7f15414fa7d0135341c5a0}{CNN\+\_\+\+CONV\+\_\+W}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNActivations_a8408bbda8693b4d2f47834c3cee33482}{pool\+\_\+out}} \+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}}]\+
+\item 
+int \doxymbox{\hyperlink{structCNNActivations_a9550dd0736118521247e58fea33d42a3}{pool\+\_\+max\+\_\+r}} \+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}}]\+
+\item 
+int \doxymbox{\hyperlink{structCNNActivations_a30713959c5427d4881c047845d4d7e91}{pool\+\_\+max\+\_\+c}} \+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNActivations_aa37a0325bd7d8418967e5387f315c17c}{flat}} \+[\doxymbox{\hyperlink{cnn_8h_a269e26192240a9ab5fc15963d3e7bf20}{CNN\+\_\+\+FLAT\+\_\+\+SIZE}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNActivations_a40e65f895d2f25515d6aaabe6eeba5eb}{z1}} \+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNActivations_a5ebd36c6c691a92f315ab98a83e99f57}{h1}} \+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNActivations_aaa144d6619e7b1238bf6950383f9f7b7}{z2}} \+[\doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNActivations_a45b8cac2892ac6464a8cd2e4ed019c6b}{output}} \+[\doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}]\+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Intermediate activations produced by the forward pass. 
+
+Kept in memory during training so that backward() can reuse them. 
+
+\label{doc-variable-members}
+\Hypertarget{structCNNActivations_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structCNNActivations_abe7204e611e1b7a756f15a7f2b82708a}\index{CNNActivations@{CNNActivations}!conv\_out@{conv\_out}}
+\index{conv\_out@{conv\_out}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{conv\_out}{conv\_out}}
+{\footnotesize\ttfamily \label{structCNNActivations_abe7204e611e1b7a756f15a7f2b82708a} 
+float CNNActivations::\+conv\+\_\+out\+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_ae09fcfd11a99599048be612b2493e968}{CNN\+\_\+\+CONV\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_af515392cca7f15414fa7d0135341c5a0}{CNN\+\_\+\+CONV\+\_\+W}}]\+}
+
+Conv output after Re\+LU:\+ conv\+\_\+out\+[filter]\+\+[row]\+\+[col]\+. \Hypertarget{structCNNActivations_aa37a0325bd7d8418967e5387f315c17c}\index{CNNActivations@{CNNActivations}!flat@{flat}}
+\index{flat@{flat}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{flat}{flat}}
+{\footnotesize\ttfamily \label{structCNNActivations_aa37a0325bd7d8418967e5387f315c17c} 
+float CNNActivations::\+flat\+[\doxymbox{\hyperlink{cnn_8h_a269e26192240a9ab5fc15963d3e7bf20}{CNN\+\_\+\+FLAT\+\_\+\+SIZE}}]\+}
+
+Flattened activations after pooling. \Hypertarget{structCNNActivations_a5ebd36c6c691a92f315ab98a83e99f57}\index{CNNActivations@{CNNActivations}!h1@{h1}}
+\index{h1@{h1}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{h1}{h1}}
+{\footnotesize\ttfamily \label{structCNNActivations_a5ebd36c6c691a92f315ab98a83e99f57} 
+float CNNActivations::\+h1\+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+}
+
+Hidden layer post-\/activation (after Re\+LU). \Hypertarget{structCNNActivations_ae18ca5fcf8b798863f4edb2142584b5e}\index{CNNActivations@{CNNActivations}!input@{input}}
+\index{input@{input}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{input}{input}}
+{\footnotesize\ttfamily \label{structCNNActivations_ae18ca5fcf8b798863f4edb2142584b5e} 
+float CNNActivations::\+input\+[\doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}}]\+}
+
+Normalised input image:\+ input\+[row]\+\+[col]\+ ∈ \+[0, 1]\+. \Hypertarget{structCNNActivations_a45b8cac2892ac6464a8cd2e4ed019c6b}\index{CNNActivations@{CNNActivations}!output@{output}}
+\index{output@{output}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{output}{output}}
+{\footnotesize\ttfamily \label{structCNNActivations_a45b8cac2892ac6464a8cd2e4ed019c6b} 
+float CNNActivations::\+output\+[\doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}]\+}
+
+Final class probabilities (softmax output). \Hypertarget{structCNNActivations_a30713959c5427d4881c047845d4d7e91}\index{CNNActivations@{CNNActivations}!pool\_max\_c@{pool\_max\_c}}
+\index{pool\_max\_c@{pool\_max\_c}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{pool\_max\_c}{pool\_max\_c}}
+{\footnotesize\ttfamily \label{structCNNActivations_a30713959c5427d4881c047845d4d7e91} 
+int CNNActivations::\+pool\+\_\+max\+\_\+c\+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}}]\+}
+
+\Hypertarget{structCNNActivations_a9550dd0736118521247e58fea33d42a3}\index{CNNActivations@{CNNActivations}!pool\_max\_r@{pool\_max\_r}}
+\index{pool\_max\_r@{pool\_max\_r}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{pool\_max\_r}{pool\_max\_r}}
+{\footnotesize\ttfamily \label{structCNNActivations_a9550dd0736118521247e58fea33d42a3} 
+int CNNActivations::\+pool\+\_\+max\+\_\+r\+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}}]\+}
+
+Row/\+col of the max element in each pooling window (for backprop). pool\+\_\+max\+\_\+r\+[f]\+\+[r]\+\+[c]\+ = row inside the 2×2 window that held the max. \Hypertarget{structCNNActivations_a8408bbda8693b4d2f47834c3cee33482}\index{CNNActivations@{CNNActivations}!pool\_out@{pool\_out}}
+\index{pool\_out@{pool\_out}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{pool\_out}{pool\_out}}
+{\footnotesize\ttfamily \label{structCNNActivations_a8408bbda8693b4d2f47834c3cee33482} 
+float CNNActivations::\+pool\+\_\+out\+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a3b7aa9b6b805919938567139ff144f81}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+W}}]\+}
+
+Pool output:\+ pool\+\_\+out\+[filter]\+\+[row]\+\+[col]\+. \Hypertarget{structCNNActivations_a40e65f895d2f25515d6aaabe6eeba5eb}\index{CNNActivations@{CNNActivations}!z1@{z1}}
+\index{z1@{z1}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{z1}{z1}}
+{\footnotesize\ttfamily \label{structCNNActivations_a40e65f895d2f25515d6aaabe6eeba5eb} 
+float CNNActivations::\+z1\+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+}
+
+Hidden layer pre-\/activation (before Re\+LU). \Hypertarget{structCNNActivations_aaa144d6619e7b1238bf6950383f9f7b7}\index{CNNActivations@{CNNActivations}!z2@{z2}}
+\index{z2@{z2}!CNNActivations@{CNNActivations}}
+\doxysubsubsection{\texorpdfstring{z2}{z2}}
+{\footnotesize\ttfamily \label{structCNNActivations_aaa144d6619e7b1238bf6950383f9f7b7} 
+float CNNActivations::\+z2\+[\doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}]\+}
+
+Output layer pre-\/softmax. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+cnn/\+\doxymbox{\hyperlink{cnn_8h}{cnn.\+h}}\end{DoxyCompactItemize}

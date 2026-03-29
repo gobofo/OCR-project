@@ -1,0 +1,160 @@
+\doxysection{src/\+cnn/\+model.h File Reference}
+\hypertarget{model_8h}{}\label{model_8h}\index{src/cnn/model.h@{src/cnn/model.h}}
+
+
+Binary serialisation and deserialisation of \doxylink{structCNN}{CNN} weights.  
+
+
+{\ttfamily \+\#include "{}cnn.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+Include dependency graph for model.\+h:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{model_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{model_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{model_8h_a8fdd52f80b510e4cb6a9f47b2296e74b}{MODEL\+\_\+\+MAGIC}}~"{}OCRC"{}
+\item 
+\+\#define \doxymbox{\hyperlink{model_8h_a9e6464f959da2a07d638643657cff7a7}{MODEL\+\_\+\+VERSION}}~((uint32\+\_\+t)1)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{model_8h_aad2b0d353910317fe5fdf691acb688b6}{model\+\_\+save}} (const \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Save the weights of a trained \doxylink{structCNN}{CNN} to a binary file. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{model_8h_a2707495d03714c502efe81f3f16e10c3}{model\+\_\+load}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Load \doxylink{structCNN}{CNN} weights from a binary file into {\ttfamily net}. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{model_8h_a6b4d12a76727dd069dcbc5a1f993925b}{model\+\_\+find\+\_\+latest}} (const char \texorpdfstring{$\ast$}{*}dir, char \texorpdfstring{$\ast$}{*}out\+\_\+path, size\+\_\+t out\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Find the most recently modified .bin file inside a directory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Binary serialisation and deserialisation of \doxylink{structCNN}{CNN} weights. 
+
+The model file format is a flat binary dump of the \doxylink{structCNNWeights}{CNNWeights} struct, preceded by a 4-\/byte magic number and a 4-\/byte version field:\+
+
+\+[magic:\+ 4 bytes \textquotesingle{}OCRC\textquotesingle{}]\+ \+[version:\+ uint32\+\_\+t]\+ \+[\doxylink{structCNNWeights}{CNNWeights}:\+ sizeof(\+CNNWeights) bytes]\+
+
+This allows fast save/\+load with a single fwrite/\+fread call and easy detection of incompatible files. 
+
+\label{doc-define-members}
+\Hypertarget{model_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{model_8h_a8fdd52f80b510e4cb6a9f47b2296e74b}\index{model.h@{model.h}!MODEL\_MAGIC@{MODEL\_MAGIC}}
+\index{MODEL\_MAGIC@{MODEL\_MAGIC}!model.h@{model.h}}
+\doxysubsubsection{\texorpdfstring{MODEL\_MAGIC}{MODEL\_MAGIC}}
+{\footnotesize\ttfamily \label{model_8h_a8fdd52f80b510e4cb6a9f47b2296e74b} 
+\+\#define MODEL\+\_\+\+MAGIC~"{}OCRC"{}}
+
+Magic bytes written at the start of every model file. \Hypertarget{model_8h_a9e6464f959da2a07d638643657cff7a7}\index{model.h@{model.h}!MODEL\_VERSION@{MODEL\_VERSION}}
+\index{MODEL\_VERSION@{MODEL\_VERSION}!model.h@{model.h}}
+\doxysubsubsection{\texorpdfstring{MODEL\_VERSION}{MODEL\_VERSION}}
+{\footnotesize\ttfamily \label{model_8h_a9e6464f959da2a07d638643657cff7a7} 
+\+\#define MODEL\+\_\+\+VERSION~((uint32\+\_\+t)1)}
+
+Current model file format version. Increment when \doxylink{structCNNWeights}{CNNWeights} changes. 
+
+\label{doc-func-members}
+\Hypertarget{model_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{model_8h_a6b4d12a76727dd069dcbc5a1f993925b}\index{model.h@{model.h}!model\_find\_latest@{model\_find\_latest}}
+\index{model\_find\_latest@{model\_find\_latest}!model.h@{model.h}}
+\doxysubsubsection{\texorpdfstring{model\_find\_latest()}{model\_find\_latest()}}
+{\footnotesize\ttfamily \label{model_8h_a6b4d12a76727dd069dcbc5a1f993925b} 
+int model\+\_\+find\+\_\+latest (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{dir}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{out\+\_\+path}{, }\item[{size\+\_\+t}]{out\+\_\+len}{}\end{DoxyParamCaption})}
+
+
+
+Find the most recently modified .bin file inside a directory. 
+
+Iterates over all regular files with a "{}.\+bin"{} suffix in {\ttfamily dir} and returns the one with the highest mtime.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Directory to search (e.\+g. "{}models/\+"{}). \\
+\hline
+{\em out\+\_\+path} & Buffer that receives the full path of the chosen file. \\
+\hline
+{\em out\+\_\+len} & Size of {\ttfamily out\+\_\+path} in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if a file was found and written to {\ttfamily out\+\_\+path}, -\/1 if the directory is empty or cannot be opened. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{model_8h_a6b4d12a76727dd069dcbc5a1f993925b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{model_8h_a2707495d03714c502efe81f3f16e10c3}\index{model.h@{model.h}!model\_load@{model\_load}}
+\index{model\_load@{model\_load}!model.h@{model.h}}
+\doxysubsubsection{\texorpdfstring{model\_load()}{model\_load()}}
+{\footnotesize\ttfamily \label{model_8h_a2707495d03714c502efe81f3f16e10c3} 
+int model\+\_\+load (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Load \doxylink{structCNN}{CNN} weights from a binary file into {\ttfamily net}. 
+
+Validates the magic number and version before reading. If validation fails, {\ttfamily net} is left unchanged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & \doxylink{structCNN}{CNN} to load weights into. Must not be NULL. \\
+\hline
+{\em path} & Source file path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on I/\+O error or format mismatch. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{model_8h_a2707495d03714c502efe81f3f16e10c3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{model_8h_aad2b0d353910317fe5fdf691acb688b6}\index{model.h@{model.h}!model\_save@{model\_save}}
+\index{model\_save@{model\_save}!model.h@{model.h}}
+\doxysubsubsection{\texorpdfstring{model\_save()}{model\_save()}}
+{\footnotesize\ttfamily \label{model_8h_aad2b0d353910317fe5fdf691acb688b6} 
+int model\+\_\+save (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Save the weights of a trained \doxylink{structCNN}{CNN} to a binary file. 
+
+Creates or overwrites the file at {\ttfamily path}. The directory must exist.
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & \doxylink{structCNN}{CNN} whose weights should be saved. Must not be NULL. \\
+\hline
+{\em path} & Destination file path (e.\+g. "{}models/\+my\+\_\+model.\+bin"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on I/\+O error (message printed to stderr). 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{model_8h_aad2b0d353910317fe5fdf691acb688b6_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,25 @@
+\doxysection{model.\+h}
+\hypertarget{model_8h_source}{}\label{model_8h_source}\index{src/cnn/model.h@{src/cnn/model.h}}
+\doxymbox{\hyperlink{model_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ MODEL\_H}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ MODEL\_H}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{cnn_8h}{cnn.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ MODEL\_MAGIC\ \ \ \ "{}OCRC"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ MODEL\_VERSION\ \ ((uint32\_t)1)}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{model_8h_aad2b0d353910317fe5fdf691acb688b6}{model\_save}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{model_8h_a2707495d03714c502efe81f3f16e10c3}{model\_load}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{model_8h_a6b4d12a76727dd069dcbc5a1f993925b}{model\_find\_latest}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dir,\ \textcolor{keywordtype}{char}\ *out\_path,\ \textcolor{keywordtype}{size\_t}\ out\_len);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ MODEL\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

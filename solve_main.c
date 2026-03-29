@@ -157,54 +157,123 @@ static int resolve_model(SolveArgs *args)
  * Per-cell recognition
  * ---------------------------------------------------------------------- */
 
-/**
- * @brief Crop a cell bounding box from a pixel buffer, resize, and predict.
- *
- * Allocates a temporary Image for the cell, runs the full pipeline, then
- * calls cnn_predict().
- *
- * @param full_pixels  Full image pixel buffer (RGBA, row-major).
- * @param img_w        Full image width.
- * @param img_h        Full image height.
- * @param box          Bounding box of the cell to recognise.
- * @param net          Trained CNN.
- * @return             Predicted class index (0='A'…25='Z'), or -1 on error.
- */
-static int recognise_cell(const unsigned char *full_pixels,
-                           int img_w, int img_h,
-                           const BoundingBox *box,
-                           CNN *net)
-{
-    /* Build a sub-Image from the bounding box. */
-    Image cell_img;
-    cell_img.width  = box->w;
-    cell_img.height = box->h;
-    cell_img.pixels = malloc((size_t)box->w * box->h * 4);
-    if (!cell_img.pixels)
-        return -1;
+/** Number of shifted crops averaged for Test-Time Augmentation. */
+#define TTA_N_CROPS  5
 
-    /* Copy pixels row by row. */
-    for (int row = 0; row < box->h && (box->y + row) < img_h; row++) {
-        const unsigned char *src = full_pixels
-            + ((box->y + row) * img_w + box->x) * 4;
-        unsigned char       *dst = cell_img.pixels + row * box->w * 4;
-        int copy_w = box->w;
-        if (box->x + copy_w > img_w)
-            copy_w = img_w - box->x;
-        memcpy(dst, src, (size_t)copy_w * 4);
+/**
+ * @brief Run one forward pass on a region of the grayscale image.
+ *
+ * Extracts [x1,x2) × [y1,y2) from gray_img (RGBA, grayscale), binarizes
+ * the region locally, resizes to 28×28 and runs cnn_forward().
+ * The CNN output probabilities are added into @p probs_out.
+ *
+ * @param gray_img   Full grayscale image (RGBA).
+ * @param x1 y1 x2 y2  Region bounds (clamped to image boundaries internally).
+ * @param net        Trained CNN.
+ * @param probs_out  Array of CNN_N_CLASSES floats — result is *added* here.
+ */
+static void forward_region(const Image *gray_img,
+                            int x1, int y1, int x2, int y2,
+                            CNN *net, float *probs_out)
+{
+    int img_w = gray_img->width;
+    int img_h = gray_img->height;
+    if (x1 < 0)    x1 = 0;
+    if (y1 < 0)    y1 = 0;
+    if (x2 > img_w) x2 = img_w;
+    if (y2 > img_h) y2 = img_h;
+    int cw = x2 - x1, ch = y2 - y1;
+    if (cw <= 0 || ch <= 0) return;
+
+    Image cell_img;
+    cell_img.width  = cw;
+    cell_img.height = ch;
+    cell_img.pixels = malloc((size_t)cw * ch * 4);
+    if (!cell_img.pixels) return;
+
+    for (int row = 0; row < ch; row++) {
+        const unsigned char *src = gray_img->pixels
+            + ((y1 + row) * img_w + x1) * 4;
+        memcpy(cell_img.pixels + row * cw * 4, src, (size_t)cw * 4);
     }
 
-    /* Preprocess and resize to CNN input size. */
+    image_binarize(&cell_img);
+
     Image *resized = image_resize(&cell_img, CNN_IMG_W, CNN_IMG_H);
     free(cell_img.pixels);
-    if (!resized)
-        return -1;
+    if (!resized) return;
 
-    float pixels[CNN_IMG_H * CNN_IMG_W];
-    image_to_float(resized, pixels);
+    float px[CNN_IMG_H * CNN_IMG_W];
+    image_to_float(resized, px);
     image_free(resized);
 
-    return cnn_predict(net, pixels);
+    cnn_forward(net, px);
+    for (int k = 0; k < CNN_N_CLASSES; k++)
+        probs_out[k] += net->act.output[k];
+}
+
+/**
+ * @brief Predict a cell using Test-Time Augmentation (TTA).
+ *
+ * Runs TTA_N_CROPS forward passes with slightly different crop origins
+ * (the original crop + 4 shifts of ±shift pixels in x and y), averages
+ * the softmax outputs, and returns the argmax class.
+ *
+ * The crop window is grid-aware: it is centred on the letter's bounding-box
+ * centre and sized to @p cell_size × @p cell_size (the detected grid pitch).
+ * This guarantees a consistent white border around the letter regardless of
+ * how tight the connected-component bounding box is.
+ *
+ * @param gray_img   Full grayscale image.
+ * @param box        Tight bounding box from segmentation.
+ * @param cell_size  Full grid cell side length (pixels).  Pass 0 to fall back
+ *                   to the padding-fraction heuristic.
+ * @param net        Trained CNN.
+ * @return           Best class index (0='A'…25='Z'), or -1 on error.
+ */
+static int recognise_cell(const Image *gray_img,
+                           const BoundingBox *box,
+                           int cell_size,
+                           CNN *net)
+{
+    /* Centre of the letter bounding box. */
+    int cx = box->x + box->w / 2;
+    int cy = box->y + box->h / 2;
+
+    /* Half-size of the crop window. */
+    int half;
+    if (cell_size > 0) {
+        half = cell_size / 2;
+    } else {
+        /* Fallback: pad by 35% around the bbox. */
+        int pad = (int)((box->w > box->h ? box->w : box->h) * 0.35f);
+        if (pad < 3) pad = 3;
+        half = box->w / 2 + pad;
+    }
+
+    /* TTA: original crop + 4 small shifts. */
+    static const int shifts[TTA_N_CROPS][2] = {
+        { 0,  0},
+        {-2,  0},
+        { 2,  0},
+        { 0, -2},
+        { 0,  2},
+    };
+
+    float probs[CNN_N_CLASSES] = {0};
+    for (int t = 0; t < TTA_N_CROPS; t++) {
+        int dx = shifts[t][0], dy = shifts[t][1];
+        forward_region(gray_img,
+                       cx - half + dx, cy - half + dy,
+                       cx + half + dx, cy + half + dy,
+                       net, probs);
+    }
+
+    int best = 0;
+    for (int k = 1; k < CNN_N_CLASSES; k++)
+        if (probs[k] > probs[best])
+            best = k;
+    return best;
 }
 
 /* -------------------------------------------------------------------------
@@ -290,9 +359,10 @@ int main(int argc, char **argv)
     }
 
     image_to_grayscale(img);
-    image_binarize(img);
 
-    /* Build a single-channel (R-only) byte buffer for the segmenter. */
+    /* Build a binarized single-channel buffer for the segmenter,
+     * without modifying img so it stays as grayscale for per-cell
+     * local binarization during recognition. */
     int n_pixels = img->width * img->height;
     unsigned char *gray_buf = malloc((size_t)n_pixels);
     if (!gray_buf) {
@@ -300,8 +370,15 @@ int main(int argc, char **argv)
         cnn_free(net);
         return 3;
     }
-    for (int i = 0; i < n_pixels; i++)
-        gray_buf[i] = img->pixels[i * 4];   /* R channel = grayscale */
+    {
+        /* Compute global threshold (mean luminance). */
+        long sum = 0;
+        for (int i = 0; i < n_pixels; i++)
+            sum += img->pixels[i * 4];
+        unsigned char thr = (unsigned char)(sum / n_pixels);
+        for (int i = 0; i < n_pixels; i++)
+            gray_buf[i] = (img->pixels[i * 4] > thr) ? 255 : 0;
+    }
 
     /* 4. Segment. */
     if (args.verbose)
@@ -319,7 +396,44 @@ int main(int argc, char **argv)
     if (args.verbose)
         printf("Found %zu letter cells.\n", seg->count);
 
-    /* 5. Recognise each cell. */
+    /* 5. Estimate grid cell size (pitch) from the sorted bounding boxes.
+     *
+     * For a regular grid the full cell size equals the image extent divided
+     * by the number of rows/cols.  We estimate this from the actual bounding
+     * boxes: compute the span between first and last letter centre in each
+     * axis and divide by (count-1). */
+    int cell_size = 0;
+    {
+        /* Count rows (reuse the same y-jump logic used below). */
+        int row_count = 1;
+        if (seg->count > 1) {
+            int tol2 = seg->cells[0].h > 0 ? seg->cells[0].h * 3 / 5 : 20;
+            int prev_cy2 = seg->cells[0].y + seg->cells[0].h / 2;
+            for (size_t i = 1; i < seg->count; i++) {
+                int cy = seg->cells[i].y + seg->cells[i].h / 2;
+                if (cy - prev_cy2 > tol2) { row_count++; prev_cy2 = cy; }
+            }
+        }
+        int col_count = (row_count > 0) ? (int)seg->count / row_count : 1;
+
+        if (row_count > 1 && col_count > 1 && (size_t)(row_count * col_count) == seg->count) {
+            /* Vertical pitch from first and last row centres. */
+            int cy_first = seg->cells[0].y + seg->cells[0].h / 2;
+            int cy_last  = seg->cells[(row_count-1)*col_count].y
+                         + seg->cells[(row_count-1)*col_count].h / 2;
+            int v_pitch  = (cy_last - cy_first) / (row_count - 1);
+
+            /* Horizontal pitch from first row. */
+            int cx_first = seg->cells[0].x + seg->cells[0].w / 2;
+            int cx_last  = seg->cells[col_count-1].x + seg->cells[col_count-1].w / 2;
+            int h_pitch  = (cx_last - cx_first) / (col_count - 1);
+
+            cell_size = (v_pitch + h_pitch) / 2;
+        }
+        if (args.verbose)
+            printf("Grid pitch: %dpx (%d×%d)\n", cell_size, row_count, col_count);
+    }
+
     int *labels = malloc(seg->count * sizeof(int));
     if (!labels) {
         segment_result_free(seg);
@@ -330,25 +444,32 @@ int main(int argc, char **argv)
 
     size_t n_cells = seg->count;
     for (size_t i = 0; i < n_cells; i++) {
-        labels[i] = recognise_cell(img->pixels, img->width, img->height,
-                                    &seg->cells[i], net);
+        labels[i] = recognise_cell(img, &seg->cells[i], cell_size, net);
         if (args.verbose && labels[i] >= 0)
             printf("  cell %3zu: '%c'\n", i, 'A' + labels[i]);
     }
 
     /* 6. Build character grid. */
-    int rows = seg->rows > 0 ? seg->rows : 1;
-    int cols = seg->cols > 0 ? seg->cols : (int)n_cells;
+    int rows, cols;
 
-    /* If grid dimensions unknown, try to infer from cell count. */
-    if (seg->rows == 0 || seg->cols == 0) {
-        for (int s = (int)n_cells; s >= 1; s--) {
-            if ((int)n_cells % s == 0) {
-                rows = (int)n_cells / s;
-                cols = s;
-                break;
+    if (seg->rows > 0 && seg->cols > 0) {
+        rows = seg->rows;
+        cols = seg->cols;
+    } else {
+        /* Infer rows by counting y-center jumps in the sorted cell list. */
+        rows = 1;
+        if (n_cells > 1) {
+            int tol = seg->cells[0].h > 0 ? seg->cells[0].h * 3 / 5 : 20;
+            int prev_cy = seg->cells[0].y + seg->cells[0].h / 2;
+            for (size_t i = 1; i < n_cells; i++) {
+                int cy = seg->cells[i].y + seg->cells[i].h / 2;
+                if (cy - prev_cy > tol) {
+                    rows++;
+                    prev_cy = cy;
+                }
             }
         }
+        cols = (rows > 0) ? (int)n_cells / rows : (int)n_cells;
     }
 
     CharGrid *grid = grid_create(rows, cols);

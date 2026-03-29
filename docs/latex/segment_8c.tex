@@ -1,0 +1,416 @@
+\doxysection{src/\+segment/\+segment.c File Reference}
+\hypertarget{segment_8c}{}\label{segment_8c}\index{src/segment/segment.c@{src/segment/segment.c}}
+
+
+Letter segmentation via connected-\/component analysis and grid detection.  
+
+
+{\ttfamily \+\#include "{}segment.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+Include dependency graph for segment.\+c:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structQueue}{Queue}}
+\begin{DoxyCompactList}\small\item\em Simple heap-\/allocated FIFO queue for pixel coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{segment_8c_a74b500378602aaaf9f8965ff77a4af1c}{MIN\+\_\+\+COMPONENT\+\_\+\+SIZE}}~40
+\item 
+\+\#define \doxymbox{\hyperlink{segment_8c_a12c8504fa9929d2f8f50bdb283708633}{MAX\+\_\+\+COMPONENT\+\_\+\+SIZE}}~4000
+\item 
+\+\#define \doxymbox{\hyperlink{segment_8c_a81716bb60c227bdec238fbb45698a22c}{MIN\+\_\+\+ASPECT\+\_\+\+RATIO}}~0.\+15f
+\item 
+\+\#define \doxymbox{\hyperlink{segment_8c_adfef7da24f2481cca47225da17fadc2e}{MAX\+\_\+\+ASPECT\+\_\+\+RATIO}}~6.\+0f
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{structQueue}{Queue}} \doxymbox{\hyperlink{segment_8c_ac8e6a7763372099c3ddbb9f7b23d537c}{queue\+\_\+create}} (size\+\_\+t cap)
+\begin{DoxyCompactList}\small\item\em Allocate a \doxylink{structQueue}{Queue} with initial capacity {\ttfamily cap} pixel pairs. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{segment_8c_a7903d51a922266d740a3987c9cdf0799}{queue\+\_\+push}} (\doxymbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}q, int x, int y)
+\begin{DoxyCompactList}\small\item\em Append a pixel coordinate to the queue, growing if needed. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{segment_8c_ab71b3e9afd214fc91fc20f4c39aef264}{queue\+\_\+pop}} (\doxymbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}q, int \texorpdfstring{$\ast$}{*}x, int \texorpdfstring{$\ast$}{*}y)
+\begin{DoxyCompactList}\small\item\em Pop the front element. Caller must ensure queue is non-\/empty. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{segment_8c_ae63c70cbd30b3a6b9761ff09da7093c6}{queue\+\_\+empty}} (const \doxymbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}q)
+\begin{DoxyCompactList}\small\item\em Return 1 if the queue has elements, 0 if empty. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{segment_8c_af0bc5753cb9e7df233227b71a6a4a11d}{queue\+\_\+free}} (\doxymbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}q)
+\begin{DoxyCompactList}\small\item\em Free queue memory. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{segment_8c_a1f320fd7cedab5d2870e28e717a337d8}{segment\+\_\+connected\+\_\+components}} (const unsigned char \texorpdfstring{$\ast$}{*}pixels, int width, int height, \doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*}out)
+\begin{DoxyCompactList}\small\item\em Extract letter bounding boxes via connected-\/component analysis. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{segment_8c_a597c16bd9433d6d0adf303db35f78d49}{segment\+\_\+detect\+\_\+grid}} (const unsigned char \texorpdfstring{$\ast$}{*}pixels, int width, int height, float min\+\_\+span, \doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*}out)
+\begin{DoxyCompactList}\small\item\em Detect grid lines and infer cell geometry. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{segment_8c_a1c8bbcb985c4ccf49dd35f24012e9967}{bbox\+\_\+cmp}} (const void \texorpdfstring{$\ast$}{*}a, const void \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em qsort comparator:\+ sort \doxylink{structBoundingBox}{Bounding\+Box} by y then x. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{segment_8c_ae3e3fe1fc29541ff4b621ddcea8c733e}{segment\+\_\+sort\+\_\+reading\+\_\+order}} (\doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Sort a \doxylink{structSegmentResult}{Segment\+Result}\textquotesingle{}s cells in reading order (top-\/to-\/bottom, left-\/to-\/right). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{segment_8c_af4f1a9479f738e0cccc6d9f0b6e963e3}{segment\+\_\+image}} (const unsigned char \texorpdfstring{$\ast$}{*}pixels, int width, int height)
+\begin{DoxyCompactList}\small\item\em Segment a binarised image into letter cell bounding boxes. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{segment_8c_aa54f26ffb11d643dce51321e45cc1912}{segment\+\_\+result\+\_\+free}} (\doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*}res)
+\begin{DoxyCompactList}\small\item\em Free a \doxylink{structSegmentResult}{Segment\+Result} returned by \doxylink{segment_8h_af4f1a9479f738e0cccc6d9f0b6e963e3}{segment\+\_\+image()}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Letter segmentation via connected-\/component analysis and grid detection. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{segment_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{segment_8c_adfef7da24f2481cca47225da17fadc2e}\index{segment.c@{segment.c}!MAX\_ASPECT\_RATIO@{MAX\_ASPECT\_RATIO}}
+\index{MAX\_ASPECT\_RATIO@{MAX\_ASPECT\_RATIO}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_ASPECT\_RATIO}{MAX\_ASPECT\_RATIO}}
+{\footnotesize\ttfamily \label{segment_8c_adfef7da24f2481cca47225da17fadc2e} 
+\+\#define MAX\+\_\+\+ASPECT\+\_\+\+RATIO~6.\+0f}
+
+Maximum aspect ratio (w/\+h) of a letter bounding box. \Hypertarget{segment_8c_a12c8504fa9929d2f8f50bdb283708633}\index{segment.c@{segment.c}!MAX\_COMPONENT\_SIZE@{MAX\_COMPONENT\_SIZE}}
+\index{MAX\_COMPONENT\_SIZE@{MAX\_COMPONENT\_SIZE}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_COMPONENT\_SIZE}{MAX\_COMPONENT\_SIZE}}
+{\footnotesize\ttfamily \label{segment_8c_a12c8504fa9929d2f8f50bdb283708633} 
+\+\#define MAX\+\_\+\+COMPONENT\+\_\+\+SIZE~4000}
+
+Maximum number of black pixels (filters out large blobs /\+ noise). \Hypertarget{segment_8c_a81716bb60c227bdec238fbb45698a22c}\index{segment.c@{segment.c}!MIN\_ASPECT\_RATIO@{MIN\_ASPECT\_RATIO}}
+\index{MIN\_ASPECT\_RATIO@{MIN\_ASPECT\_RATIO}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{MIN\_ASPECT\_RATIO}{MIN\_ASPECT\_RATIO}}
+{\footnotesize\ttfamily \label{segment_8c_a81716bb60c227bdec238fbb45698a22c} 
+\+\#define MIN\+\_\+\+ASPECT\+\_\+\+RATIO~0.\+15f}
+
+Minimum aspect ratio (w/\+h) of a letter bounding box. \Hypertarget{segment_8c_a74b500378602aaaf9f8965ff77a4af1c}\index{segment.c@{segment.c}!MIN\_COMPONENT\_SIZE@{MIN\_COMPONENT\_SIZE}}
+\index{MIN\_COMPONENT\_SIZE@{MIN\_COMPONENT\_SIZE}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{MIN\_COMPONENT\_SIZE}{MIN\_COMPONENT\_SIZE}}
+{\footnotesize\ttfamily \label{segment_8c_a74b500378602aaaf9f8965ff77a4af1c} 
+\+\#define MIN\+\_\+\+COMPONENT\+\_\+\+SIZE~40}
+
+Minimum number of black pixels in a component to be considered a letter. 
+
+\label{doc-func-members}
+\Hypertarget{segment_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{segment_8c_a1c8bbcb985c4ccf49dd35f24012e9967}\index{segment.c@{segment.c}!bbox\_cmp@{bbox\_cmp}}
+\index{bbox\_cmp@{bbox\_cmp}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{bbox\_cmp()}{bbox\_cmp()}}
+{\footnotesize\ttfamily \label{segment_8c_a1c8bbcb985c4ccf49dd35f24012e9967} 
+int bbox\+\_\+cmp (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+qsort comparator:\+ sort \doxylink{structBoundingBox}{Bounding\+Box} by y then x. 
+
+Boxes with y-\/centres within 10 pixels of each other are considered the same row and sorted left-\/to-\/right. Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_a1c8bbcb985c4ccf49dd35f24012e9967_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_ac8e6a7763372099c3ddbb9f7b23d537c}\index{segment.c@{segment.c}!queue\_create@{queue\_create}}
+\index{queue\_create@{queue\_create}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{queue\_create()}{queue\_create()}}
+{\footnotesize\ttfamily \label{segment_8c_ac8e6a7763372099c3ddbb9f7b23d537c} 
+\doxymbox{\hyperlink{structQueue}{Queue}} queue\+\_\+create (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{cap}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Allocate a \doxylink{structQueue}{Queue} with initial capacity {\ttfamily cap} pixel pairs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cap} & Initial capacity (number of (x,y) pairs). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Initialised \doxylink{structQueue}{Queue}, or \{NULL,0,0,0\} on failure. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_ac8e6a7763372099c3ddbb9f7b23d537c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_ae63c70cbd30b3a6b9761ff09da7093c6}\index{segment.c@{segment.c}!queue\_empty@{queue\_empty}}
+\index{queue\_empty@{queue\_empty}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{queue\_empty()}{queue\_empty()}}
+{\footnotesize\ttfamily \label{segment_8c_ae63c70cbd30b3a6b9761ff09da7093c6} 
+int queue\+\_\+empty (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{q}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Return 1 if the queue has elements, 0 if empty. 
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_ae63c70cbd30b3a6b9761ff09da7093c6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_af0bc5753cb9e7df233227b71a6a4a11d}\index{segment.c@{segment.c}!queue\_free@{queue\_free}}
+\index{queue\_free@{queue\_free}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{queue\_free()}{queue\_free()}}
+{\footnotesize\ttfamily \label{segment_8c_af0bc5753cb9e7df233227b71a6a4a11d} 
+void queue\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{q}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Free queue memory. 
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_af0bc5753cb9e7df233227b71a6a4a11d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_ab71b3e9afd214fc91fc20f4c39aef264}\index{segment.c@{segment.c}!queue\_pop@{queue\_pop}}
+\index{queue\_pop@{queue\_pop}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{queue\_pop()}{queue\_pop()}}
+{\footnotesize\ttfamily \label{segment_8c_ab71b3e9afd214fc91fc20f4c39aef264} 
+void queue\+\_\+pop (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{q}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{x}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pop the front element. Caller must ensure queue is non-\/empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \doxylink{structQueue}{Queue}. \\
+\hline
+{\em x} & Receives column. \\
+\hline
+{\em y} & Receives row. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_ab71b3e9afd214fc91fc20f4c39aef264_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_a7903d51a922266d740a3987c9cdf0799}\index{segment.c@{segment.c}!queue\_push@{queue\_push}}
+\index{queue\_push@{queue\_push}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{queue\_push()}{queue\_push()}}
+{\footnotesize\ttfamily \label{segment_8c_a7903d51a922266d740a3987c9cdf0799} 
+int queue\+\_\+push (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structQueue}{Queue}} \texorpdfstring{$\ast$}{*}}]{q}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Append a pixel coordinate to the queue, growing if needed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & \doxylink{structQueue}{Queue} to push to. \\
+\hline
+{\em x} & Column. \\
+\hline
+{\em y} & Row. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on allocation failure. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_a7903d51a922266d740a3987c9cdf0799_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_a1f320fd7cedab5d2870e28e717a337d8}\index{segment.c@{segment.c}!segment\_connected\_components@{segment\_connected\_components}}
+\index{segment\_connected\_components@{segment\_connected\_components}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{segment\_connected\_components()}{segment\_connected\_components()}}
+{\footnotesize\ttfamily \label{segment_8c_a1f320fd7cedab5d2870e28e717a337d8} 
+int segment\+\_\+connected\+\_\+components (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{pixels}{, }\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{\doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*}}]{out}{}\end{DoxyParamCaption})}
+
+
+
+Extract letter bounding boxes via connected-\/component analysis. 
+
+Uses an iterative flood-\/fill (queue-\/based, no recursion) to group connected black pixels into components. Components whose size and aspect ratio fall within the expected range for a letter are kept.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pixels} & Grayscale pixel array (0=black, 255=white), row-\/major. \\
+\hline
+{\em width} & \doxylink{structImage}{Image} width. \\
+\hline
+{\em height} & \doxylink{structImage}{Image} height. \\
+\hline
+{\em out} & Pre-\/allocated \doxylink{structSegmentResult}{Segment\+Result} to fill. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of components found (≥ 0), -\/1 on error. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_a1f320fd7cedab5d2870e28e717a337d8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_a1f320fd7cedab5d2870e28e717a337d8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_a597c16bd9433d6d0adf303db35f78d49}\index{segment.c@{segment.c}!segment\_detect\_grid@{segment\_detect\_grid}}
+\index{segment\_detect\_grid@{segment\_detect\_grid}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{segment\_detect\_grid()}{segment\_detect\_grid()}}
+{\footnotesize\ttfamily \label{segment_8c_a597c16bd9433d6d0adf303db35f78d49} 
+int segment\+\_\+detect\+\_\+grid (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{pixels}{, }\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{float}]{min\+\_\+span}{, }\item[{\doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*}}]{out}{}\end{DoxyParamCaption})}
+
+
+
+Detect grid lines and infer cell geometry. 
+
+Finds horizontal and vertical runs of dark pixels spanning at least {\ttfamily min\+\_\+span} proportion of the image dimension to identify grid lines. Returns regular grid cell positions if a consistent grid is detected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pixels} & Grayscale pixel array (0=black, 255=white), row-\/major. \\
+\hline
+{\em width} & \doxylink{structImage}{Image} width. \\
+\hline
+{\em height} & \doxylink{structImage}{Image} height. \\
+\hline
+{\em min\+\_\+span} & Minimum fraction of dimension a line must span \+[0, 1]\+. \\
+\hline
+{\em out} & Pre-\/allocated \doxylink{structSegmentResult}{Segment\+Result} to fill. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if a regular grid was detected and {\ttfamily out} filled, 0 if no grid was found.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+STUB — full implementation deferred. 
+\end{DoxyNote}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_a597c16bd9433d6d0adf303db35f78d49_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_af4f1a9479f738e0cccc6d9f0b6e963e3}\index{segment.c@{segment.c}!segment\_image@{segment\_image}}
+\index{segment\_image@{segment\_image}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{segment\_image()}{segment\_image()}}
+{\footnotesize\ttfamily \label{segment_8c_af4f1a9479f738e0cccc6d9f0b6e963e3} 
+\doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*} segment\+\_\+image (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{pixels}{, }\item[{int}]{width}{, }\item[{int}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Segment a binarised image into letter cell bounding boxes. 
+
+Tries two strategies in order:\+
+\begin{DoxyEnumerate}
+\item Grid-\/line detection (for crossword-\/style images with visible grid).
+\item Connected-\/component analysis (for images without explicit grid lines).
+\end{DoxyEnumerate}
+
+The returned \doxylink{structSegmentResult_affb93c110d43c3fe87785edc41b07ecd}{Segment\+Result::\+cells} array is ordered left-\/to-\/right, top-\/to-\/bottom.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pixels} & Flat grayscale pixel array (1 byte/\+pixel, 0=black, 255=white), row-\/major, width × height bytes. \\
+\hline
+{\em width} & \doxylink{structImage}{Image} width in pixels. \\
+\hline
+{\em height} & \doxylink{structImage}{Image} height in pixels. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap-\/allocated \doxylink{structSegmentResult}{Segment\+Result} on success, NULL on error. Free with \doxylink{segment_8h_aa54f26ffb11d643dce51321e45cc1912}{segment\+\_\+result\+\_\+free()}.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+STUB:\+ grid-\/line detection and connected-\/component paths are partially implemented; see internal comments for the full algorithm outline. 
+\end{DoxyNote}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_af4f1a9479f738e0cccc6d9f0b6e963e3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{segment_8c_af4f1a9479f738e0cccc6d9f0b6e963e3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_aa54f26ffb11d643dce51321e45cc1912}\index{segment.c@{segment.c}!segment\_result\_free@{segment\_result\_free}}
+\index{segment\_result\_free@{segment\_result\_free}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{segment\_result\_free()}{segment\_result\_free()}}
+{\footnotesize\ttfamily \label{segment_8c_aa54f26ffb11d643dce51321e45cc1912} 
+void segment\+\_\+result\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*}}]{res}{}\end{DoxyParamCaption})}
+
+
+
+Free a \doxylink{structSegmentResult}{Segment\+Result} returned by \doxylink{segment_8h_af4f1a9479f738e0cccc6d9f0b6e963e3}{segment\+\_\+image()}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em res} & Result to free. No-\/op if NULL. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{segment_8c_aa54f26ffb11d643dce51321e45cc1912_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{segment_8c_ae3e3fe1fc29541ff4b621ddcea8c733e}\index{segment.c@{segment.c}!segment\_sort\_reading\_order@{segment\_sort\_reading\_order}}
+\index{segment\_sort\_reading\_order@{segment\_sort\_reading\_order}!segment.c@{segment.c}}
+\doxysubsubsection{\texorpdfstring{segment\_sort\_reading\_order()}{segment\_sort\_reading\_order()}}
+{\footnotesize\ttfamily \label{segment_8c_ae3e3fe1fc29541ff4b621ddcea8c733e} 
+void segment\+\_\+sort\+\_\+reading\+\_\+order (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structSegmentResult}{Segment\+Result}} \texorpdfstring{$\ast$}{*}}]{res}{}\end{DoxyParamCaption})}
+
+
+
+Sort a \doxylink{structSegmentResult}{Segment\+Result}\textquotesingle{}s cells in reading order (top-\/to-\/bottom, left-\/to-\/right). 
+
+Cells are grouped into rows based on vertical overlap, then sorted left-\/to-\/right within each row.
+
+
+\begin{DoxyParams}{Parameters}
+{\em res} & \doxylink{structSegmentResult}{Segment\+Result} to sort in-\/place. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{segment_8c_ae3e3fe1fc29541ff4b621ddcea8c733e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{segment_8c_ae3e3fe1fc29541ff4b621ddcea8c733e_icgraph}
+\end{center}
+\end{figure}

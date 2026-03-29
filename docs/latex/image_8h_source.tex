@@ -1,0 +1,57 @@
+\doxysection{image.\+h}
+\hypertarget{image_8h_source}{}\label{image_8h_source}\index{src/preprocess/image.h@{src/preprocess/image.h}}
+\doxymbox{\hyperlink{image_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ IMAGE\_H}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ IMAGE\_H}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ Opaque\ pixel\ buffer}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ uint8\_t\ *\doxymbox{\hyperlink{structImage_a8bfa0ba60f1934114c7501c764d61cd0}{pixels}};\ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \doxymbox{\hyperlink{structImage_ab8d12f635013c04159cd4d3d972bac88}{width}};\ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \doxymbox{\hyperlink{structImage_a51df43db420c9c0b57536cb2dd36de5c}{height}};\ \ }
+\DoxyCodeLine{00031\ \}\ \doxymbox{\hyperlink{structImage}{Image}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ Preprocessing\ parameters}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structPreprocessParams_a3a22825ca0abcec5f046efb4152b0d9a}{rotation\_deg}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \doxymbox{\hyperlink{structPreprocessParams_a5a579c92b854079766698b04a819e44a}{invert}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \}\ \doxymbox{\hyperlink{structPreprocessParams}{PreprocessParams}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ *\ Public\ API}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00056\ \doxymbox{\hyperlink{structImage}{Image}}\ *\doxymbox{\hyperlink{image_8h_a28674722e7d5137fadd79c172bc60127}{image\_load\_png}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{image_8h_a712dc87c6c9fed0f3bf082bce38b40fb}{image\_free}}(\doxymbox{\hyperlink{structImage}{Image}}\ *img);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{image_8h_a0aca710a195c2b99587ca94455b25c46}{image\_to\_grayscale}}(\doxymbox{\hyperlink{structImage}{Image}}\ *img);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{image_8h_a8e5e4e11e7daf8b8d973824c6476c8d2}{image\_binarize}}(\doxymbox{\hyperlink{structImage}{Image}}\ *img);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00099\ \doxymbox{\hyperlink{structImage}{Image}}\ *\doxymbox{\hyperlink{image_8h_ac3beb56e41a286d273b9d99fd90819c9}{image\_resize}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structImage}{Image}}\ *img,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00112\ \doxymbox{\hyperlink{structImage}{Image}}\ *\doxymbox{\hyperlink{image_8h_a39538efca07450a2b9647f8a295be50b}{image\_rotate}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structImage}{Image}}\ *img,\ \textcolor{keywordtype}{float}\ angle\_deg);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00123\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{image_8h_aea22486042d084f879e40219b1bc8967}{image\_to\_float}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structImage}{Image}}\ *img,\ \textcolor{keywordtype}{float}\ *out);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00135\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{image_8h_a29ef0f108bf45225178781b800a0e4a9}{image\_load\_normalised}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structPreprocessParams}{PreprocessParams}}\ *p,}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ *out,\ \textcolor{keywordtype}{int}\ out\_h,\ \textcolor{keywordtype}{int}\ out\_w);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00145\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{image_8h_a305f6a837e3c8a24d59bd52ddd8180ad}{image\_save\_png}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structImage}{Image}}\ *img,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ IMAGE\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

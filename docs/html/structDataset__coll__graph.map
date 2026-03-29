@@ -1,0 +1,5 @@
+<map id="Dataset" name="Dataset">
+<area shape="rect" id="Node000001" title="A collection of training samples." alt="" coords="5,106,78,134"/>
+<area shape="rect" id="Node000002" href="$structSample.html" title="A single labelled training sample." alt="" coords="6,5,77,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="44,47,44,106,39,105,39,50"/>
+</map>

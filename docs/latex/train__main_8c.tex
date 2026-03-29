@@ -1,0 +1,268 @@
+\doxysection{train\+\_\+main.\+c File Reference}
+\hypertarget{train__main_8c}{}\label{train__main_8c}\index{train\_main.c@{train\_main.c}}
+
+
+Entry point for the \doxylink{structCNN}{CNN} training binary.  
+
+
+{\ttfamily \+\#include "{}src/\+cnn/\+cnn.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+cnn/\+dataset.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+cnn/\+model.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$time.\+h$>$}\newline
+{\ttfamily \+\#include $<$sys/\+stat.\+h$>$}\newline
+Include dependency graph for train\+\_\+main.\+c:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{train__main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structTrainArgs}{Train\+Args}}
+\begin{DoxyCompactList}\small\item\em Parsed command-\/line options for the train binary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{train__main_8c_a89d9b90dbc1df3ab30a2d08519e40e49}{DEFAULT\+\_\+\+DATA\+\_\+\+DIR}}~"{}training\+\_\+data/\+"{}
+\item 
+\+\#define \doxymbox{\hyperlink{train__main_8c_ada0f7155f9e594701164ffa4cc8dfb5e}{DEFAULT\+\_\+\+MODEL\+\_\+\+DIR}}~"{}models/\+"{}
+\item 
+\+\#define \doxymbox{\hyperlink{train__main_8c_a509b584101c2947c0d67b90f96bbd975}{MAX\+\_\+\+EPOCHS}}~50
+\item 
+\+\#define \doxymbox{\hyperlink{train__main_8c_a53009b0c14fe260ec5cc1e37a3b2e7a5}{VAL\+\_\+\+SPLIT}}~0.\+15f   /\+\texorpdfstring{$\ast$}{*} fraction of data kept for validation \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{train__main_8c_ab2aa46e8c47d0fb47fd8035697610e02}{ES\+\_\+\+PATIENCE}}~5       /\+\texorpdfstring{$\ast$}{*} epochs without improvement before stopping \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{train__main_8c_a007580fb592ea702735cb29176bd8520}{ES\+\_\+\+MIN\+\_\+\+DELTA}}~1e-\/4f   /\+\texorpdfstring{$\ast$}{*} minimum val-\/loss improvement to count \texorpdfstring{$\ast$}{*}/\+
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{train__main_8c_a848c0ca46d3e3ecc39d2fccc4d85fa12}{usage}} (const char \texorpdfstring{$\ast$}{*}prog)
+\begin{DoxyCompactList}\small\item\em Print usage information to stderr. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{train__main_8c_a6ce9160f0e65d295b3da8ae30176eff7}{parse\+\_\+args}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \doxymbox{\hyperlink{structTrainArgs}{Train\+Args}} \texorpdfstring{$\ast$}{*}args)
+\begin{DoxyCompactList}\small\item\em Parse argv into a \doxylink{structTrainArgs}{Train\+Args} structure. \end{DoxyCompactList}\item 
+static double \doxymbox{\hyperlink{train__main_8c_a5295741721f4fdb51966332285b7f667}{eval\+\_\+loss}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, const \doxymbox{\hyperlink{structSample}{Sample}} \texorpdfstring{$\ast$}{*}samples, size\+\_\+t n, double \texorpdfstring{$\ast$}{*}out\+\_\+acc)
+\begin{DoxyCompactList}\small\item\em Compute loss and accuracy on a slice of samples (no gradient update). \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{train__main_8c_a8f04a4925d406dfc7c833e46cb46f03d}{train\+\_\+loop}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, \doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}ds, int n\+\_\+epochs)
+\begin{DoxyCompactList}\small\item\em Run the training loop with early stopping. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{train__main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entry point for the \doxylink{structCNN}{CNN} training binary. 
+
+Usage:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./train\ [-\/-\/data\ <dir>]\ [-\/-\/output\ <file>]\ [-\/j<N>]}
+
+\end{DoxyCode}
+
+
+Options:\+ --data $<$dir$>$ Training data root directory (default:\+ training\+\_\+data/\+). --output $<$file$>$ Output model filename (default:\+ models/\+model\+\_\+$<$ts$>$.bin). -\/j$<$\+N$>$ Number of loader threads (default:\+ 1).
+
+Example:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./train\ -\/-\/data\ training\_data/\ -\/-\/output\ my\_model.bin\ -\/j4}
+
+\end{DoxyCode}
+
+
+Exit codes:\+ 0 Success — model saved to the output path. 1 Argument error. 2 \doxylink{structDataset}{Dataset} loading error. 3 Model save error. 
+
+\label{doc-define-members}
+\Hypertarget{train__main_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{train__main_8c_a89d9b90dbc1df3ab30a2d08519e40e49}\index{train\_main.c@{train\_main.c}!DEFAULT\_DATA\_DIR@{DEFAULT\_DATA\_DIR}}
+\index{DEFAULT\_DATA\_DIR@{DEFAULT\_DATA\_DIR}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_DATA\_DIR}{DEFAULT\_DATA\_DIR}}
+{\footnotesize\ttfamily \label{train__main_8c_a89d9b90dbc1df3ab30a2d08519e40e49} 
+\+\#define DEFAULT\+\_\+\+DATA\+\_\+\+DIR~"{}training\+\_\+data/\+"{}}
+
+\Hypertarget{train__main_8c_ada0f7155f9e594701164ffa4cc8dfb5e}\index{train\_main.c@{train\_main.c}!DEFAULT\_MODEL\_DIR@{DEFAULT\_MODEL\_DIR}}
+\index{DEFAULT\_MODEL\_DIR@{DEFAULT\_MODEL\_DIR}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_MODEL\_DIR}{DEFAULT\_MODEL\_DIR}}
+{\footnotesize\ttfamily \label{train__main_8c_ada0f7155f9e594701164ffa4cc8dfb5e} 
+\+\#define DEFAULT\+\_\+\+MODEL\+\_\+\+DIR~"{}models/\+"{}}
+
+\Hypertarget{train__main_8c_a007580fb592ea702735cb29176bd8520}\index{train\_main.c@{train\_main.c}!ES\_MIN\_DELTA@{ES\_MIN\_DELTA}}
+\index{ES\_MIN\_DELTA@{ES\_MIN\_DELTA}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{ES\_MIN\_DELTA}{ES\_MIN\_DELTA}}
+{\footnotesize\ttfamily \label{train__main_8c_a007580fb592ea702735cb29176bd8520} 
+\+\#define ES\+\_\+\+MIN\+\_\+\+DELTA~1e-\/4f   /\+\texorpdfstring{$\ast$}{*} minimum val-\/loss improvement to count \texorpdfstring{$\ast$}{*}/\+}
+
+\Hypertarget{train__main_8c_ab2aa46e8c47d0fb47fd8035697610e02}\index{train\_main.c@{train\_main.c}!ES\_PATIENCE@{ES\_PATIENCE}}
+\index{ES\_PATIENCE@{ES\_PATIENCE}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{ES\_PATIENCE}{ES\_PATIENCE}}
+{\footnotesize\ttfamily \label{train__main_8c_ab2aa46e8c47d0fb47fd8035697610e02} 
+\+\#define ES\+\_\+\+PATIENCE~5       /\+\texorpdfstring{$\ast$}{*} epochs without improvement before stopping \texorpdfstring{$\ast$}{*}/\+}
+
+\Hypertarget{train__main_8c_a509b584101c2947c0d67b90f96bbd975}\index{train\_main.c@{train\_main.c}!MAX\_EPOCHS@{MAX\_EPOCHS}}
+\index{MAX\_EPOCHS@{MAX\_EPOCHS}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_EPOCHS}{MAX\_EPOCHS}}
+{\footnotesize\ttfamily \label{train__main_8c_a509b584101c2947c0d67b90f96bbd975} 
+\+\#define MAX\+\_\+\+EPOCHS~50}
+
+\Hypertarget{train__main_8c_a53009b0c14fe260ec5cc1e37a3b2e7a5}\index{train\_main.c@{train\_main.c}!VAL\_SPLIT@{VAL\_SPLIT}}
+\index{VAL\_SPLIT@{VAL\_SPLIT}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{VAL\_SPLIT}{VAL\_SPLIT}}
+{\footnotesize\ttfamily \label{train__main_8c_a53009b0c14fe260ec5cc1e37a3b2e7a5} 
+\+\#define VAL\+\_\+\+SPLIT~0.\+15f   /\+\texorpdfstring{$\ast$}{*} fraction of data kept for validation \texorpdfstring{$\ast$}{*}/\+}
+
+
+
+\label{doc-func-members}
+\Hypertarget{train__main_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{train__main_8c_a5295741721f4fdb51966332285b7f667}\index{train\_main.c@{train\_main.c}!eval\_loss@{eval\_loss}}
+\index{eval\_loss@{eval\_loss}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{eval\_loss()}{eval\_loss()}}
+{\footnotesize\ttfamily \label{train__main_8c_a5295741721f4fdb51966332285b7f667} 
+double eval\+\_\+loss (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{const \doxymbox{\hyperlink{structSample}{Sample}} \texorpdfstring{$\ast$}{*}}]{samples}{, }\item[{size\+\_\+t}]{n}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{out\+\_\+acc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Compute loss and accuracy on a slice of samples (no gradient update). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & Trained \doxylink{structCNN}{CNN}. \\
+\hline
+{\em samples} & Pointer to first sample. \\
+\hline
+{\em n} & Number of samples. \\
+\hline
+{\em out\+\_\+acc} & Filled with accuracy in \+[0, 1]\+. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Average cross-\/entropy loss. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{train__main_8c_a5295741721f4fdb51966332285b7f667_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{train__main_8c_a5295741721f4fdb51966332285b7f667_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{train__main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\index{train\_main.c@{train\_main.c}!main@{main}}
+\index{main@{main}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{train__main_8c_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{train__main_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{train__main_8c_a6ce9160f0e65d295b3da8ae30176eff7}\index{train\_main.c@{train\_main.c}!parse\_args@{parse\_args}}
+\index{parse\_args@{parse\_args}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
+{\footnotesize\ttfamily \label{train__main_8c_a6ce9160f0e65d295b3da8ae30176eff7} 
+int parse\+\_\+args (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{, }\item[{\doxymbox{\hyperlink{structTrainArgs}{Train\+Args}} \texorpdfstring{$\ast$}{*}}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parse argv into a \doxylink{structTrainArgs}{Train\+Args} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Argument count. \\
+\hline
+{\em argv} & Argument vector. \\
+\hline
+{\em args} & Output structure (caller-\/allocated). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, -\/1 on parse error. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{train__main_8c_a6ce9160f0e65d295b3da8ae30176eff7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{train__main_8c_a8f04a4925d406dfc7c833e46cb46f03d}\index{train\_main.c@{train\_main.c}!train\_loop@{train\_loop}}
+\index{train\_loop@{train\_loop}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{train\_loop()}{train\_loop()}}
+{\footnotesize\ttfamily \label{train__main_8c_a8f04a4925d406dfc7c833e46cb46f03d} 
+void train\+\_\+loop (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}}]{ds}{, }\item[{int}]{n\+\_\+epochs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Run the training loop with early stopping. 
+
+The dataset is split into a training portion (1 -\/ VAL\+\_\+\+SPLIT) and a validation portion (VAL\+\_\+\+SPLIT) after an initial shuffle.
+
+Early stopping:\+ training halts when validation loss has not improved by more than ES\+\_\+\+MIN\+\_\+\+DELTA for ES\+\_\+\+PATIENCE consecutive epochs. The best weights observed so far are restored before returning.
+
+
+\begin{DoxyParams}{Parameters}
+{\em net} & Initialised \doxylink{structCNN}{CNN}. \\
+\hline
+{\em ds} & Full dataset (will be shuffled in-\/place). \\
+\hline
+{\em n\+\_\+epochs} & Maximum number of epochs. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{train__main_8c_a8f04a4925d406dfc7c833e46cb46f03d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{train__main_8c_a8f04a4925d406dfc7c833e46cb46f03d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{train__main_8c_a848c0ca46d3e3ecc39d2fccc4d85fa12}\index{train\_main.c@{train\_main.c}!usage@{usage}}
+\index{usage@{usage}!train\_main.c@{train\_main.c}}
+\doxysubsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily \label{train__main_8c_a848c0ca46d3e3ecc39d2fccc4d85fa12} 
+void usage (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{prog}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Print usage information to stderr. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog} & Program name (argv\+[0]\+). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{train__main_8c_a848c0ca46d3e3ecc39d2fccc4d85fa12_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,340 @@
+\doxysection{src/\+solver/\+solver.c File Reference}
+\hypertarget{solver_8c}{}\label{solver_8c}\index{src/solver/solver.c@{src/solver/solver.c}}
+
+
+8-\/direction crossword word-\/search solver.  
+
+
+{\ttfamily \+\#include "{}solver.\+h"{}}\newline
+{\ttfamily \+\#include $<$ctype.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+Include dependency graph for solver.\+c:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solver_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{solver_8c_a144c8f70e5c914de3416dc9b517d56c5}{N\+\_\+\+DIRS}}~8
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{solver_8c_ac709bb3fa1106fa280d3bda18fdaa1fd}{grid\+\_\+create}} (int rows, int cols)
+\begin{DoxyCompactList}\small\item\em Allocate a \doxylink{structCharGrid}{Char\+Grid} of the given dimensions, filled with spaces. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{solver_8c_a0e5be091d6732712e52e71bf774dd4eb}{grid\+\_\+fill}} (\doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}grid, const int \texorpdfstring{$\ast$}{*}labels, size\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Fill a \doxylink{structCharGrid}{Char\+Grid} from an array of predicted character indices. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{solver_8c_a2c5f08af3f67e41ab4ea1023c48b6f23}{grid\+\_\+load}} (const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Read a \doxylink{structCharGrid}{Char\+Grid} from a plain-\/text file. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{solver_8c_a370fe8ba1f79fb1aff05af0b1cb9ec73}{grid\+\_\+print}} (const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Print a \doxylink{structCharGrid}{Char\+Grid} to stdout (for debugging /\+ verbose mode). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{solver_8c_a4b748577700cf6ad1ee4fb51c9f6e6c2}{grid\+\_\+free}} (\doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Free a \doxylink{structCharGrid}{Char\+Grid}. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{solver_8c_a41c1b7b5e6dc3aa102fd9f8b74f6b4b1}{try\+\_\+direction}} (const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}grid, const char \texorpdfstring{$\ast$}{*}word, int r, int c, int dir)
+\begin{DoxyCompactList}\small\item\em Check whether {\ttfamily word} fits in {\ttfamily grid} starting at (r, c) going in direction {\ttfamily dir}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structWordResult}{Word\+Result}} \doxymbox{\hyperlink{solver_8c_ae7bb6f196b7565fd463fabc118c16d03}{solver\+\_\+find}} (const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}grid, const char \texorpdfstring{$\ast$}{*}word)
+\begin{DoxyCompactList}\small\item\em Search for {\ttfamily word} in {\ttfamily grid} in all 8 directions. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{solver_8c_a00412cc6de353149b5444883cb2de064}{solver\+\_\+dir\+\_\+name}} (int dir)
+\begin{DoxyCompactList}\small\item\em Return the human-\/readable name of direction index {\ttfamily dir}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const int \doxymbox{\hyperlink{solver_8c_a62144e264147ad1715e5789731306538}{DIR\+\_\+\+DR}} \+[\doxymbox{\hyperlink{solver_8c_a144c8f70e5c914de3416dc9b517d56c5}{N\+\_\+\+DIRS}}]\+ = \{ 0, 1, 1, 1, 0, -\/1, -\/1, -\/1\}
+\begin{DoxyCompactList}\small\item\em Row and column deltas for each of the 8 search directions. \end{DoxyCompactList}\item 
+static const int \doxymbox{\hyperlink{solver_8c_a3af337b5b8a983fede5cc1c281113f98}{DIR\+\_\+\+DC}} \+[\doxymbox{\hyperlink{solver_8c_a144c8f70e5c914de3416dc9b517d56c5}{N\+\_\+\+DIRS}}]\+ = \{ 1, 1, 0, -\/1, -\/1, -\/1, 0, 1\}
+\item 
+static const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{solver_8c_ae7d8c96b045fc222a3a2f0327df9249a}{DIR\+\_\+\+NAMES}} \+[\doxymbox{\hyperlink{solver_8c_a144c8f70e5c914de3416dc9b517d56c5}{N\+\_\+\+DIRS}}]\+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+8-\/direction crossword word-\/search solver. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{solver_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{solver_8c_a144c8f70e5c914de3416dc9b517d56c5}\index{solver.c@{solver.c}!N\_DIRS@{N\_DIRS}}
+\index{N\_DIRS@{N\_DIRS}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{N\_DIRS}{N\_DIRS}}
+{\footnotesize\ttfamily \label{solver_8c_a144c8f70e5c914de3416dc9b517d56c5} 
+\+\#define N\+\_\+\+DIRS~8}
+
+Number of search directions. 
+
+\label{doc-func-members}
+\Hypertarget{solver_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{solver_8c_ac709bb3fa1106fa280d3bda18fdaa1fd}\index{solver.c@{solver.c}!grid\_create@{grid\_create}}
+\index{grid\_create@{grid\_create}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{grid\_create()}{grid\_create()}}
+{\footnotesize\ttfamily \label{solver_8c_ac709bb3fa1106fa280d3bda18fdaa1fd} 
+\doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*} grid\+\_\+create (\begin{DoxyParamCaption}\item[{int}]{rows}{, }\item[{int}]{cols}{}\end{DoxyParamCaption})}
+
+
+
+Allocate a \doxylink{structCharGrid}{Char\+Grid} of the given dimensions, filled with spaces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & Number of rows. \\
+\hline
+{\em cols} & Number of columns. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap-\/allocated \doxylink{structCharGrid}{Char\+Grid}, or NULL on failure. Free with \doxylink{solver_8h_ad2ff6ea984bd03b9b62fd372cf4c3a38}{grid\+\_\+free()}. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{solver_8c_ac709bb3fa1106fa280d3bda18fdaa1fd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solver_8c_a0e5be091d6732712e52e71bf774dd4eb}\index{solver.c@{solver.c}!grid\_fill@{grid\_fill}}
+\index{grid\_fill@{grid\_fill}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{grid\_fill()}{grid\_fill()}}
+{\footnotesize\ttfamily \label{solver_8c_a0e5be091d6732712e52e71bf774dd4eb} 
+void grid\+\_\+fill (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}}]{grid}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{labels}{, }\item[{size\+\_\+t}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Fill a \doxylink{structCharGrid}{Char\+Grid} from an array of predicted character indices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & Target grid (must already be allocated with the right size). \\
+\hline
+{\em labels} & Array of class indices in \+[0, 25]\+; labels\+[r\texorpdfstring{$\ast$}{*}cols + c]\+ gives the index for cell (r, c). 0=\textquotesingle{}A\textquotesingle{}, 25=\textquotesingle{}Z\textquotesingle{}. \\
+\hline
+{\em count} & Number of elements in {\ttfamily labels} (must equal rows \texorpdfstring{$\ast$}{*} cols). \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{solver_8c_a0e5be091d6732712e52e71bf774dd4eb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solver_8c_a4b748577700cf6ad1ee4fb51c9f6e6c2}\index{solver.c@{solver.c}!grid\_free@{grid\_free}}
+\index{grid\_free@{grid\_free}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{grid\_free()}{grid\_free()}}
+{\footnotesize\ttfamily \label{solver_8c_a4b748577700cf6ad1ee4fb51c9f6e6c2} 
+void grid\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}}]{grid}{}\end{DoxyParamCaption})}
+
+
+
+Free a \doxylink{structCharGrid}{Char\+Grid}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & Grid to free. No-\/op if NULL. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{solver_8c_a4b748577700cf6ad1ee4fb51c9f6e6c2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solver_8c_a2c5f08af3f67e41ab4ea1023c48b6f23}\index{solver.c@{solver.c}!grid\_load@{grid\_load}}
+\index{grid\_load@{grid\_load}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{grid\_load()}{grid\_load()}}
+{\footnotesize\ttfamily \label{solver_8c_a2c5f08af3f67e41ab4ea1023c48b6f23} 
+\doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*} grid\+\_\+load (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})}
+
+
+
+Read a \doxylink{structCharGrid}{Char\+Grid} from a plain-\/text file. 
+
+File format (first line:\+ dimensions, then one row per line):\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rows\ cols}
+\DoxyCodeLine{ABCDE}
+\DoxyCodeLine{FGHIJ}
+\DoxyCodeLine{…}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to the grid file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Heap-\/allocated \doxylink{structCharGrid}{Char\+Grid} on success, NULL on error. Free with \doxylink{solver_8h_ad2ff6ea984bd03b9b62fd372cf4c3a38}{grid\+\_\+free()}. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{solver_8c_a2c5f08af3f67e41ab4ea1023c48b6f23_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solver_8c_a370fe8ba1f79fb1aff05af0b1cb9ec73}\index{solver.c@{solver.c}!grid\_print@{grid\_print}}
+\index{grid\_print@{grid\_print}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{grid\_print()}{grid\_print()}}
+{\footnotesize\ttfamily \label{solver_8c_a370fe8ba1f79fb1aff05af0b1cb9ec73} 
+void grid\+\_\+print (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}}]{grid}{}\end{DoxyParamCaption})}
+
+
+
+Print a \doxylink{structCharGrid}{Char\+Grid} to stdout (for debugging /\+ verbose mode). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & Grid to display. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{solver_8c_a370fe8ba1f79fb1aff05af0b1cb9ec73_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solver_8c_a00412cc6de353149b5444883cb2de064}\index{solver.c@{solver.c}!solver\_dir\_name@{solver\_dir\_name}}
+\index{solver\_dir\_name@{solver\_dir\_name}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{solver\_dir\_name()}{solver\_dir\_name()}}
+{\footnotesize\ttfamily \label{solver_8c_a00412cc6de353149b5444883cb2de064} 
+const char \texorpdfstring{$\ast$}{*} solver\+\_\+dir\+\_\+name (\begin{DoxyParamCaption}\item[{int}]{dir}{}\end{DoxyParamCaption})}
+
+
+
+Return the human-\/readable name of direction index {\ttfamily dir}. 
+
+Directions are numbered 0–7:\+ 0=RIGHT, 1=DOWN\+\_\+\+RIGHT, 2=DOWN, 3=DOWN\+\_\+\+LEFT, 4=LEFT, 5=UP\+\_\+\+LEFT, 6=UP, 7=UP\+\_\+\+RIGHT
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & Direction index in \+[0, 7]\+. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Constant string (e.\+g. "{}\+RIGHT"{}), or "{}\+UNKNOWN"{} if out of range. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solver_8c_a00412cc6de353149b5444883cb2de064_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solver_8c_ae7bb6f196b7565fd463fabc118c16d03}\index{solver.c@{solver.c}!solver\_find@{solver\_find}}
+\index{solver\_find@{solver\_find}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{solver\_find()}{solver\_find()}}
+{\footnotesize\ttfamily \label{solver_8c_ae7bb6f196b7565fd463fabc118c16d03} 
+\doxymbox{\hyperlink{structWordResult}{Word\+Result}} solver\+\_\+find (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}}]{grid}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{word}{}\end{DoxyParamCaption})}
+
+
+
+Search for {\ttfamily word} in {\ttfamily grid} in all 8 directions. 
+
+The search is case-\/insensitive; the grid and word are both converted to uppercase before comparison.
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & Character grid to search in. \\
+\hline
+{\em word} & Null-\/terminated string to search for (A–Z, case-\/insensitive). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structWordResult}{Word\+Result} with found=1 and coordinates if found, or found=0 if not present. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{solver_8c_ae7bb6f196b7565fd463fabc118c16d03_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{solver_8c_ae7bb6f196b7565fd463fabc118c16d03_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{solver_8c_a41c1b7b5e6dc3aa102fd9f8b74f6b4b1}\index{solver.c@{solver.c}!try\_direction@{try\_direction}}
+\index{try\_direction@{try\_direction}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{try\_direction()}{try\_direction()}}
+{\footnotesize\ttfamily \label{solver_8c_a41c1b7b5e6dc3aa102fd9f8b74f6b4b1} 
+int try\+\_\+direction (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}}]{grid}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{word}{, }\item[{int}]{r}{, }\item[{int}]{c}{, }\item[{int}]{dir}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check whether {\ttfamily word} fits in {\ttfamily grid} starting at (r, c) going in direction {\ttfamily dir}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid} & Character grid. \\
+\hline
+{\em word} & Uppercase null-\/terminated search string. \\
+\hline
+{\em r} & Starting row. \\
+\hline
+{\em c} & Starting column. \\
+\hline
+{\em dir} & Direction index (0–7). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the word matches in that direction, 0 otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solver_8c_a41c1b7b5e6dc3aa102fd9f8b74f6b4b1_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{solver_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{solver_8c_a3af337b5b8a983fede5cc1c281113f98}\index{solver.c@{solver.c}!DIR\_DC@{DIR\_DC}}
+\index{DIR\_DC@{DIR\_DC}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{DIR\_DC}{DIR\_DC}}
+{\footnotesize\ttfamily \label{solver_8c_a3af337b5b8a983fede5cc1c281113f98} 
+const int DIR\+\_\+\+DC\+[\doxymbox{\hyperlink{solver_8c_a144c8f70e5c914de3416dc9b517d56c5}{N\+\_\+\+DIRS}}]\+ = \{ 1, 1, 0, -\/1, -\/1, -\/1, 0, 1\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{solver_8c_a62144e264147ad1715e5789731306538}\index{solver.c@{solver.c}!DIR\_DR@{DIR\_DR}}
+\index{DIR\_DR@{DIR\_DR}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{DIR\_DR}{DIR\_DR}}
+{\footnotesize\ttfamily \label{solver_8c_a62144e264147ad1715e5789731306538} 
+const int DIR\+\_\+\+DR\+[\doxymbox{\hyperlink{solver_8c_a144c8f70e5c914de3416dc9b517d56c5}{N\+\_\+\+DIRS}}]\+ = \{ 0, 1, 1, 1, 0, -\/1, -\/1, -\/1\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Row and column deltas for each of the 8 search directions. 
+
+Indexed 0–7:\+ 0 = RIGHT (dr= 0, dc=+1) 1 = DOWN\+\_\+\+RIGHT (dr=+1, dc=+1) 2 = DOWN (dr=+1, dc= 0) 3 = DOWN\+\_\+\+LEFT (dr=+1, dc=-\/1) 4 = LEFT (dr= 0, dc=-\/1) 5 = UP\+\_\+\+LEFT (dr=-\/1, dc=-\/1) 6 = UP (dr=-\/1, dc= 0) 7 = UP\+\_\+\+RIGHT (dr=-\/1, dc=+1) \Hypertarget{solver_8c_ae7d8c96b045fc222a3a2f0327df9249a}\index{solver.c@{solver.c}!DIR\_NAMES@{DIR\_NAMES}}
+\index{DIR\_NAMES@{DIR\_NAMES}!solver.c@{solver.c}}
+\doxysubsubsection{\texorpdfstring{DIR\_NAMES}{DIR\_NAMES}}
+{\footnotesize\ttfamily \label{solver_8c_ae7d8c96b045fc222a3a2f0327df9249a} 
+const char\texorpdfstring{$\ast$}{*} DIR\+\_\+\+NAMES\+[\doxymbox{\hyperlink{solver_8c_a144c8f70e5c914de3416dc9b517d56c5}{N\+\_\+\+DIRS}}]\+\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}RIGHT"{}},\ \textcolor{stringliteral}{"{}DOWN\_RIGHT"{}},\ \textcolor{stringliteral}{"{}DOWN"{}},\ \textcolor{stringliteral}{"{}DOWN\_LEFT"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}LEFT"{}},\ \ \textcolor{stringliteral}{"{}UP\_LEFT"{}},\ \ \ \ \textcolor{stringliteral}{"{}UP"{}},\ \ \ \textcolor{stringliteral}{"{}UP\_RIGHT"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

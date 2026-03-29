@@ -1,0 +1,29 @@
+<map id="recognise_cell" name="recognise_cell">
+<area shape="rect" id="Node000001" title="Crop a cell bounding box from a pixel buffer, resize, and predict." alt="" coords="5,188,120,216"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#a5128dc1ad09d45983c5b93bd26dc6504" title="Predict the most likely class for a single image." alt="" coords="179,109,275,137"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,185,167,147,182,143,178,146,169,152,93,190"/>
+<area shape="rect" id="Node000011" href="$image_8c.html#a712dc87c6c9fed0f3bf082bce38b40fb" title="Free an Image allocated by image_load_png()." alt="" coords="179,161,274,189"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="119,190,166,184,161,187,121,195"/>
+<area shape="rect" id="Node000012" href="$image_8c.html#a9d344df105e6164de2266f08e2bc3130" title="Resize an Image to the given dimensions (nearest&#45;neighbour)." alt="" coords="173,213,281,241"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="120,208,160,216,155,217,120,213"/>
+<area shape="rect" id="Node000014" href="$image_8c.html#aea22486042d084f879e40219b1bc8967" title="Convert an Image to a flat normalised float array." alt="" coords="168,265,286,293"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="93,214,169,250,183,259,178,258,167,255,92,219"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#a97f29ff1777a0eaec225d9efd2ebfc2d" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="334,109,435,137"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="275,121,321,122,316,124,276,126"/>
+<area shape="rect" id="Node000004" href="$cnn_8c.html#ab5cfc81d08bd47071237d6d712cce0e4" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="491,5,601,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="399,107,436,76,482,44,492,41,496,39,485,48,439,80,402,111"/>
+<area shape="rect" id="Node000006" href="$cnn_8c.html#a965e7546544716df9f94516eab66a69b" title="Dense layer 1 (2704 → 128) followed by ReLU." alt="" coords="483,57,609,85"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="429,106,489,89,484,91,431,111"/>
+<area shape="rect" id="Node000007" href="$cnn_8c.html#a4733c05bd6ecfdd8aea86561031a0138" title="Dense layer 2 (128 → 26) followed by Softmax." alt="" coords="483,109,609,137"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="435,121,470,123,465,124,436,126"/>
+<area shape="rect" id="Node000009" href="$cnn_8c.html#a78dfd01dac25db70517ca90e165d9656" title="Flatten stage: copy pool_out into act&#45;&gt;flat, row&#45;major." alt="" coords="486,161,606,189"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="430,135,489,156,484,156,430,140"/>
+<area shape="rect" id="Node000010" href="$cnn_8c.html#aff764a1877fe34f7084fc0c804e64a5f" title="Max&#45;pooling stage: compute net&#45;&gt;act.pool_out." alt="" coords="493,213,599,241"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="402,135,439,166,485,198,497,207,491,206,482,203,436,170,400,140"/>
+<area shape="rect" id="Node000005" href="$cnn_8c.html#a3eea1fcc46fdb93cd28f49760d187e75" title="Apply ReLU element&#45;wise: f(x) = max(0, x)." alt="" coords="671,5,771,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="600,17,657,19,652,20,601,22"/>
+<area shape="rect" id="Node000008" href="$cnn_8c.html#a61bbed6c1803dbf5364fc8575dea1ad1" title="Apply softmax in&#45;place over an array of length n." alt="" coords="657,109,785,137"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="609,121,644,123,639,124,609,126"/>
+<area shape="rect" id="Node000013" href="$image_8c.html#a0f84a9ec64f5cd9a13915bd0d631a580" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="334,213,435,241"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="281,225,321,227,316,228,282,230"/>
+</map>

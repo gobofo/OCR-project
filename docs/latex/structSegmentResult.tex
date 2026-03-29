@@ -1,0 +1,68 @@
+\doxysection{Segment\+Result Struct Reference}
+\hypertarget{structSegmentResult}{}\label{structSegmentResult}\index{SegmentResult@{SegmentResult}}
+
+
+Result of a grid detection /\+ segmentation pass.  
+
+
+
+
+{\ttfamily \+\#include $<$segment.\+h$>$}
+
+
+
+Collaboration diagram for Segment\+Result:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{structSegmentResult__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structSegmentResult_affb93c110d43c3fe87785edc41b07ecd}{cells}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{structSegmentResult_a721a5c35deb0913cf5dce31cac6ff730}{count}}
+\item 
+int \doxymbox{\hyperlink{structSegmentResult_ab51387a1378fa4fb6aa1b51e14b14069}{cols}}
+\item 
+int \doxymbox{\hyperlink{structSegmentResult_a80cbc94633546a57a7cf86ad3d2a4025}{rows}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Result of a grid detection /\+ segmentation pass. 
+
+\label{doc-variable-members}
+\Hypertarget{structSegmentResult_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structSegmentResult_affb93c110d43c3fe87785edc41b07ecd}\index{SegmentResult@{SegmentResult}!cells@{cells}}
+\index{cells@{cells}!SegmentResult@{SegmentResult}}
+\doxysubsubsection{\texorpdfstring{cells}{cells}}
+{\footnotesize\ttfamily \label{structSegmentResult_affb93c110d43c3fe87785edc41b07ecd} 
+\doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}}\texorpdfstring{$\ast$}{*} Segment\+Result::\+cells}
+
+Heap-\/allocated array of cell bounding boxes. \Hypertarget{structSegmentResult_ab51387a1378fa4fb6aa1b51e14b14069}\index{SegmentResult@{SegmentResult}!cols@{cols}}
+\index{cols@{cols}!SegmentResult@{SegmentResult}}
+\doxysubsubsection{\texorpdfstring{cols}{cols}}
+{\footnotesize\ttfamily \label{structSegmentResult_ab51387a1378fa4fb6aa1b51e14b14069} 
+int Segment\+Result::\+cols}
+
+Grid width in cells (0 if unknown). \Hypertarget{structSegmentResult_a721a5c35deb0913cf5dce31cac6ff730}\index{SegmentResult@{SegmentResult}!count@{count}}
+\index{count@{count}!SegmentResult@{SegmentResult}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily \label{structSegmentResult_a721a5c35deb0913cf5dce31cac6ff730} 
+size\+\_\+t Segment\+Result::\+count}
+
+Number of cells. \Hypertarget{structSegmentResult_a80cbc94633546a57a7cf86ad3d2a4025}\index{SegmentResult@{SegmentResult}!rows@{rows}}
+\index{rows@{rows}!SegmentResult@{SegmentResult}}
+\doxysubsubsection{\texorpdfstring{rows}{rows}}
+{\footnotesize\ttfamily \label{structSegmentResult_a80cbc94633546a57a7cf86ad3d2a4025} 
+int Segment\+Result::\+rows}
+
+Grid height in cells (0 if unknown). 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+segment/\+\doxymbox{\hyperlink{segment_8h}{segment.\+h}}\end{DoxyCompactItemize}

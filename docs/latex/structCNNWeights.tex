@@ -1,0 +1,77 @@
+\doxysection{CNNWeights Struct Reference}
+\hypertarget{structCNNWeights}{}\label{structCNNWeights}\index{CNNWeights@{CNNWeights}}
+
+
+Learnable parameters of the \doxylink{structCNN}{CNN}.  
+
+
+
+
+{\ttfamily \+\#include $<$cnn.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \doxymbox{\hyperlink{structCNNWeights_a156c720293eda7d7b652ba2841ed21a3}{kernels}} \+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_adb097e298ba6b84fb4cc59ac08641c31}{CNN\+\_\+\+KERNEL\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a3cfba4b17a3484edca8821c4001efc76}{CNN\+\_\+\+KERNEL\+\_\+W}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNWeights_a644d2807817df27c21bc950a2c394a39}{conv\+\_\+bias}} \+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNWeights_a2f77a1b306efdaabe73e32aa502bd01f}{W1}} \+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a269e26192240a9ab5fc15963d3e7bf20}{CNN\+\_\+\+FLAT\+\_\+\+SIZE}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNWeights_a3c84a3d7c7484346010bfdcd3ec2d388}{b1}} \+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNWeights_afa07a4000e7d5801c94bdbb53e98f521}{W2}} \+[\doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+
+\item 
+float \doxymbox{\hyperlink{structCNNWeights_ae0f75aa209ab56a416d39b419c1190a3}{b2}} \+[\doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}]\+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Learnable parameters of the \doxylink{structCNN}{CNN}. 
+
+Laid out flat so that \doxylink{model_8c_aad2b0d353910317fe5fdf691acb688b6}{model\+\_\+save()} /\+ \doxylink{model_8c_a2707495d03714c502efe81f3f16e10c3}{model\+\_\+load()} can serialise them with a single fwrite /\+ fread call. 
+
+\label{doc-variable-members}
+\Hypertarget{structCNNWeights_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structCNNWeights_a3c84a3d7c7484346010bfdcd3ec2d388}\index{CNNWeights@{CNNWeights}!b1@{b1}}
+\index{b1@{b1}!CNNWeights@{CNNWeights}}
+\doxysubsubsection{\texorpdfstring{b1}{b1}}
+{\footnotesize\ttfamily \label{structCNNWeights_a3c84a3d7c7484346010bfdcd3ec2d388} 
+float CNNWeights::\+b1\+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+}
+
+Dense layer 1 biases. \Hypertarget{structCNNWeights_ae0f75aa209ab56a416d39b419c1190a3}\index{CNNWeights@{CNNWeights}!b2@{b2}}
+\index{b2@{b2}!CNNWeights@{CNNWeights}}
+\doxysubsubsection{\texorpdfstring{b2}{b2}}
+{\footnotesize\ttfamily \label{structCNNWeights_ae0f75aa209ab56a416d39b419c1190a3} 
+float CNNWeights::\+b2\+[\doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}]\+}
+
+Dense layer 2 biases. \Hypertarget{structCNNWeights_a644d2807817df27c21bc950a2c394a39}\index{CNNWeights@{CNNWeights}!conv\_bias@{conv\_bias}}
+\index{conv\_bias@{conv\_bias}!CNNWeights@{CNNWeights}}
+\doxysubsubsection{\texorpdfstring{conv\_bias}{conv\_bias}}
+{\footnotesize\ttfamily \label{structCNNWeights_a644d2807817df27c21bc950a2c394a39} 
+float CNNWeights::\+conv\+\_\+bias\+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+}
+
+Conv layer biases, one per filter. \Hypertarget{structCNNWeights_a156c720293eda7d7b652ba2841ed21a3}\index{CNNWeights@{CNNWeights}!kernels@{kernels}}
+\index{kernels@{kernels}!CNNWeights@{CNNWeights}}
+\doxysubsubsection{\texorpdfstring{kernels}{kernels}}
+{\footnotesize\ttfamily \label{structCNNWeights_a156c720293eda7d7b652ba2841ed21a3} 
+float CNNWeights::\+kernels\+[\doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}]\+\+[\doxymbox{\hyperlink{cnn_8h_adb097e298ba6b84fb4cc59ac08641c31}{CNN\+\_\+\+KERNEL\+\_\+H}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a3cfba4b17a3484edca8821c4001efc76}{CNN\+\_\+\+KERNEL\+\_\+W}}]\+}
+
+Conv layer:\+ kernels\+[filter]\+\+[row]\+\+[col]\+. \Hypertarget{structCNNWeights_a2f77a1b306efdaabe73e32aa502bd01f}\index{CNNWeights@{CNNWeights}!W1@{W1}}
+\index{W1@{W1}!CNNWeights@{CNNWeights}}
+\doxysubsubsection{\texorpdfstring{W1}{W1}}
+{\footnotesize\ttfamily \label{structCNNWeights_a2f77a1b306efdaabe73e32aa502bd01f} 
+float CNNWeights::\+\+W1\+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a269e26192240a9ab5fc15963d3e7bf20}{CNN\+\_\+\+FLAT\+\_\+\+SIZE}}]\+}
+
+Dense layer 1 weights:\+ W1\+[hidden]\+\+[flat]\+. \Hypertarget{structCNNWeights_afa07a4000e7d5801c94bdbb53e98f521}\index{CNNWeights@{CNNWeights}!W2@{W2}}
+\index{W2@{W2}!CNNWeights@{CNNWeights}}
+\doxysubsubsection{\texorpdfstring{W2}{W2}}
+{\footnotesize\ttfamily \label{structCNNWeights_afa07a4000e7d5801c94bdbb53e98f521} 
+float CNNWeights::\+\+W2\+[\doxymbox{\hyperlink{cnn_8h_aa2ab0030db9e5b3b00f0d1782897fa5c}{CNN\+\_\+\+N\+\_\+\+CLASSES}}]\+\+[\doxymbox{\hyperlink{cnn_8h_a5e09f493e77e24e2aaa43dc0dee0cb80}{CNN\+\_\+\+HIDDEN\+\_\+\+SIZE}}]\+}
+
+Dense layer 2 weights:\+ W2\+[class]\+\+[hidden]\+. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+cnn/\+\doxymbox{\hyperlink{cnn_8h}{cnn.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,17 @@
+<map id="cnn_forward" name="cnn_forward">
+<area shape="rect" id="Node000001" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="5,109,107,137"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#ab5cfc81d08bd47071237d6d712cce0e4" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="163,5,272,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,107,107,76,153,44,167,38,163,42,156,48,110,80,74,111"/>
+<area shape="rect" id="Node000004" href="$cnn_8c.html#a965e7546544716df9f94516eab66a69b" title="Dense layer 1 (2704 → 128) followed by ReLU." alt="" coords="155,57,280,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="100,106,160,88,156,92,103,111"/>
+<area shape="rect" id="Node000005" href="$cnn_8c.html#a4733c05bd6ecfdd8aea86561031a0138" title="Dense layer 2 (128 → 26) followed by Softmax." alt="" coords="155,109,280,137"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="106,121,141,122,137,124,108,126"/>
+<area shape="rect" id="Node000007" href="$cnn_8c.html#a78dfd01dac25db70517ca90e165d9656" title="Flatten stage: copy pool_out into act&#45;&gt;flat, row&#45;major." alt="" coords="157,161,278,189"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="102,135,160,155,155,157,102,140"/>
+<area shape="rect" id="Node000008" href="$cnn_8c.html#aff764a1877fe34f7084fc0c804e64a5f" title="Max&#45;pooling stage: compute net&#45;&gt;act.pool_out." alt="" coords="164,213,270,241"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="73,134,110,166,156,198,168,207,163,206,153,203,107,170,72,140"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#a3eea1fcc46fdb93cd28f49760d187e75" title="Apply ReLU element&#45;wise: f(x) = max(0, x)." alt="" coords="342,5,442,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="271,17,329,18,324,20,273,22"/>
+<area shape="rect" id="Node000006" href="$cnn_8c.html#a61bbed6c1803dbf5364fc8575dea1ad1" title="Apply softmax in&#45;place over an array of length n." alt="" coords="328,109,456,137"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="280,121,315,123,310,124,281,126"/>
+</map>

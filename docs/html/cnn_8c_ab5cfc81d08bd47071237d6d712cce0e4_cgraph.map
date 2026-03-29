@@ -1,0 +1,5 @@
+<map id="forward_conv" name="forward_conv">
+<area shape="rect" id="Node000001" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="5,5,115,33"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#a3eea1fcc46fdb93cd28f49760d187e75" title="Apply ReLU element&#45;wise: f(x) = max(0, x)." alt="" coords="163,5,263,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,17,150,19,144,19,115,22"/>
+</map>

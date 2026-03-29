@@ -1,0 +1,5 @@
+<map id="forward_dense2" name="forward_dense2">
+<area shape="rect" id="Node000001" title="Dense layer 2 (128 → 26) followed by Softmax." alt="" coords="5,5,131,33"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#a61bbed6c1803dbf5364fc8575dea1ad1" title="Apply softmax in&#45;place over an array of length n." alt="" coords="179,5,307,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,17,166,19,161,19,131,22"/>
+</map>

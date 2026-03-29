@@ -1,0 +1,9 @@
+<map id="src/cnn/model.h" name="src/cnn/model.h">
+<area shape="rect" id="Node000001" title="Binary serialisation and deserialisation of CNN weights." alt="" coords="24,5,148,33"/>
+<area shape="rect" id="Node000002" href="$cnn_8h.html" title="Convolutional Neural Network for A–Z character recognition." alt="" coords="14,81,70,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,36,60,69,55,66,79,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="95,81,165,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="94,31,117,67,112,68,93,36"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,157,79,184"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="44,107,45,141,39,141,40,111"/>
+</map>

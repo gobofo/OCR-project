@@ -1,0 +1,166 @@
+\doxysection{src/\+cnn/\+dataset.h File Reference}
+\hypertarget{dataset_8h}{}\label{dataset_8h}\index{src/cnn/dataset.h@{src/cnn/dataset.h}}
+
+
+Training dataset loader.  
+
+
+{\ttfamily \+\#include "{}cnn.\+h"{}}\newline
+{\ttfamily \+\#include $<$stddef.\+h$>$}\newline
+Include dependency graph for dataset.\+h:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{dataset_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{dataset_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structSample}{Sample}}
+\begin{DoxyCompactList}\small\item\em A single labelled training sample. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structDataset}{Dataset}}
+\begin{DoxyCompactList}\small\item\em A collection of training samples. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{dataset_8h_a73880acad0c6623605bec581bb468f54}{dataset\+\_\+load}} (const char \texorpdfstring{$\ast$}{*}root\+\_\+dir, int n\+\_\+threads)
+\begin{DoxyCompactList}\small\item\em Load all images from {\ttfamily root\+\_\+dir} into a \doxylink{structDataset}{Dataset}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{dataset_8h_a8f29f81c08084278983c39e57931ae3c}{dataset\+\_\+shuffle}} (\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}ds)
+\begin{DoxyCompactList}\small\item\em Shuffle the samples in a \doxylink{structDataset}{Dataset} in-\/place (Fisher-\/\+Yates). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{dataset_8h_aa47cdfa2cb64479b8cf15f5e9838c8a1}{dataset\+\_\+free}} (\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}ds)
+\begin{DoxyCompactList}\small\item\em Free all memory owned by a \doxylink{structDataset}{Dataset}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{dataset_8h_ae4efe00373f1161a112fd63725b13017}{dataset\+\_\+print\+\_\+info}} (const \doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}ds)
+\begin{DoxyCompactList}\small\item\em Print a summary of the dataset to stdout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Training dataset loader. 
+
+Expects a root directory with one sub-\/directory per letter:\+
+
+training\+\_\+data/\+ A/\+ image1.\+png image2.\+png … B/\+ … … Z/\+ …
+
+Each image is loaded with SDL2, converted to grayscale, and resized to CNN\+\_\+\+IMG\+\_\+H × CNN\+\_\+\+IMG\+\_\+W. The resulting pixel values are normalised to \+[0, 1]\+.
+
+Parallelism:\+ loading can be parallelised over POSIX threads; the number of worker threads is controlled by the caller. 
+
+\label{doc-func-members}
+\Hypertarget{dataset_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{dataset_8h_aa47cdfa2cb64479b8cf15f5e9838c8a1}\index{dataset.h@{dataset.h}!dataset\_free@{dataset\_free}}
+\index{dataset\_free@{dataset\_free}!dataset.h@{dataset.h}}
+\doxysubsubsection{\texorpdfstring{dataset\_free()}{dataset\_free()}}
+{\footnotesize\ttfamily \label{dataset_8h_aa47cdfa2cb64479b8cf15f5e9838c8a1} 
+void dataset\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}}]{ds}{}\end{DoxyParamCaption})}
+
+
+
+Free all memory owned by a \doxylink{structDataset}{Dataset}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & \doxylink{structDataset}{Dataset} returned by \doxylink{dataset_8h_a73880acad0c6623605bec581bb468f54}{dataset\+\_\+load()}. No-\/op if NULL. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{dataset_8h_aa47cdfa2cb64479b8cf15f5e9838c8a1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8h_a73880acad0c6623605bec581bb468f54}\index{dataset.h@{dataset.h}!dataset\_load@{dataset\_load}}
+\index{dataset\_load@{dataset\_load}!dataset.h@{dataset.h}}
+\doxysubsubsection{\texorpdfstring{dataset\_load()}{dataset\_load()}}
+{\footnotesize\ttfamily \label{dataset_8h_a73880acad0c6623605bec581bb468f54} 
+\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*} dataset\+\_\+load (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{root\+\_\+dir}{, }\item[{int}]{n\+\_\+threads}{}\end{DoxyParamCaption})}
+
+
+
+Load all images from {\ttfamily root\+\_\+dir} into a \doxylink{structDataset}{Dataset}. 
+
+Opens sub-\/directories named A–Z. For each PNG/\+\+JPG image found, loads it with SDL2, converts to grayscale, resizes to 28×28, normalises to \+[0, 1]\+, and appends a \doxylink{structSample}{Sample} to the dataset. Non-\/image files are silently skipped.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root\+\_\+dir} & Path to the training data root (e.\+g. "{}training\+\_\+data/\+"{}). \\
+\hline
+{\em n\+\_\+threads} & Number of POSIX loader threads (1 = single-\/threaded). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a heap-\/allocated \doxylink{structDataset}{Dataset}, or NULL on error. Free with \doxylink{dataset_8h_aa47cdfa2cb64479b8cf15f5e9838c8a1}{dataset\+\_\+free()}.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Requires SDL2 and SDL2\+\_\+image to be linked. 
+\end{DoxyNote}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dataset_8h_a73880acad0c6623605bec581bb468f54_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{dataset_8h_a73880acad0c6623605bec581bb468f54_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8h_ae4efe00373f1161a112fd63725b13017}\index{dataset.h@{dataset.h}!dataset\_print\_info@{dataset\_print\_info}}
+\index{dataset\_print\_info@{dataset\_print\_info}!dataset.h@{dataset.h}}
+\doxysubsubsection{\texorpdfstring{dataset\_print\_info()}{dataset\_print\_info()}}
+{\footnotesize\ttfamily \label{dataset_8h_ae4efe00373f1161a112fd63725b13017} 
+void dataset\+\_\+print\+\_\+info (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}}]{ds}{}\end{DoxyParamCaption})}
+
+
+
+Print a summary of the dataset to stdout. 
+
+Shows the total number of samples and the per-\/class distribution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & \doxylink{structDataset}{Dataset} to describe. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{dataset_8h_ae4efe00373f1161a112fd63725b13017_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8h_a8f29f81c08084278983c39e57931ae3c}\index{dataset.h@{dataset.h}!dataset\_shuffle@{dataset\_shuffle}}
+\index{dataset\_shuffle@{dataset\_shuffle}!dataset.h@{dataset.h}}
+\doxysubsubsection{\texorpdfstring{dataset\_shuffle()}{dataset\_shuffle()}}
+{\footnotesize\ttfamily \label{dataset_8h_a8f29f81c08084278983c39e57931ae3c} 
+void dataset\+\_\+shuffle (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}}]{ds}{}\end{DoxyParamCaption})}
+
+
+
+Shuffle the samples in a \doxylink{structDataset}{Dataset} in-\/place (Fisher-\/\+Yates). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & \doxylink{structDataset}{Dataset} to shuffle. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{dataset_8h_a8f29f81c08084278983c39e57931ae3c_icgraph}
+\end{center}
+\end{figure}

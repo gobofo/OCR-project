@@ -1,0 +1,94 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,445,60,473"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#ad61352e349918920eb7049293eb055fa" title="Allocate and initialise a CNN with He&#45;initialised weights." alt="" coords="139,5,232,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,445,37,363,50,244,72,125,87,77,106,44,126,30,124,35,110,48,92,79,77,126,55,244,43,364,37,445"/>
+<area shape="rect" id="Node000004" href="$cnn_8c.html#ad0b13d3a238166cf78825f43df5ac1be" title="Free all memory associated with a CNN." alt="" coords="147,57,224,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="32,445,39,373,53,269,75,166,89,125,106,96,133,79,130,84,110,100,94,127,80,167,58,269,44,373,38,445"/>
+<area shape="rect" id="Node000005" href="$solver_8c.html#ac709bb3fa1106fa280d3bda18fdaa1fd" title="Allocate a CharGrid of the given dimensions, filled with spaces." alt="" coords="138,109,232,137"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="33,445,41,382,56,293,78,206,91,172,106,148,125,135,123,140,110,152,96,174,83,208,61,294,46,382,38,445"/>
+<area shape="rect" id="Node000006" href="$solver_8c.html#a0e5be091d6732712e52e71bf774dd4eb" title="Fill a CharGrid from an array of predicted character indices." alt="" coords="151,161,220,189"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="31,445,33,398,43,333,52,298,65,263,83,230,106,200,119,189,137,182,134,187,122,194,110,204,87,232,70,265,57,299,48,334,38,399,36,445"/>
+<area shape="rect" id="Node000007" href="$solver_8c.html#a4b748577700cf6ad1ee4fb51c9f6e6c2" title="Free a CharGrid." alt="" coords="146,213,225,241"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="32,445,37,407,49,355,71,301,87,275,106,252,132,237,129,241,109,256,91,278,76,303,54,357,42,408,37,445"/>
+<area shape="rect" id="Node000008" href="$solver_8c.html#a370fe8ba1f79fb1aff05af0b1cb9ec73" title="Print a CharGrid to stdout (for debugging / verbose mode)." alt="" coords="144,265,227,293"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="34,445,42,415,56,378,77,338,106,304,131,290,128,295,109,308,81,341,61,380,47,417,39,446"/>
+<area shape="rect" id="Node000009" href="$image_8c.html#a8e5e4e11e7daf8b8d973824c6476c8d2" title="Binarise a grayscale Image in&#45;place using a global threshold." alt="" coords="125,317,246,345"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="38,444,64,401,83,377,106,356,117,350,114,355,109,360,87,380,68,404,43,446"/>
+<area shape="rect" id="Node000010" href="$image_8c.html#a712dc87c6c9fed0f3bf082bce38b40fb" title="Free an Image allocated by image_load_png()." alt="" coords="383,420,478,448"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="59,455,369,435,366,440,61,460"/>
+<area shape="rect" id="Node000011" href="$image_8c.html#a28674722e7d5137fadd79c172bc60127" title="Load a PNG file into an Image." alt="" coords="121,369,250,397"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="54,443,106,413,134,401,131,406,109,418,58,446"/>
+<area shape="rect" id="Node000013" href="$image_8c.html#a0aca710a195c2b99587ca94455b25c46" title="Convert an Image to grayscale in&#45;place." alt="" coords="109,471,262,498"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="59,461,96,468,92,471,61,466"/>
+<area shape="rect" id="Node000014" href="$model_8c.html#a2707495d03714c502efe81f3f16e10c3" title="Load CNN weights from a binary file into net." alt="" coords="137,523,234,550"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="51,471,109,507,125,515,120,518,106,512,53,476"/>
+<area shape="rect" id="Node000015" href="$solve__main_8c.html#ab3b6bd6bc2e6b88c8592033b2c7b29c5" title="Parse argv into a SolveArgs structure." alt="" coords="139,575,232,602"/>
+<area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="40,471,68,515,87,539,109,560,127,571,122,573,106,564,83,543,64,518,41,476"/>
+<area shape="rect" id="Node000016" href="$solve__main_8c.html#a6680539f8c646b0b8c01cf9eb3c49148" title="Crop a cell bounding box from a pixel buffer, resize, and predict." alt="" coords="128,627,242,654"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="37,471,47,502,61,539,81,578,110,612,117,618,112,620,106,616,77,581,56,541,42,503,37,476"/>
+<area shape="rect" id="Node000028" href="$solve__main_8c.html#ab0afc1d46614af9864f863e2808317d0" title="Ensure args&#45;&gt;model_path is filled: auto&#45;detect if not specified." alt="" coords="127,679,244,706"/>
+<area shape="poly" id="edge30_Node000001_Node000028" title=" " alt="" coords="35,471,42,511,54,562,76,616,91,642,110,664,116,670,111,672,106,668,87,645,71,619,49,564,37,512,35,476"/>
+<area shape="rect" id="Node000030" href="$solve__main_8c.html#a6258df9f0bf10752ca0b2487e72fdf81" title="Search for all comma&#45;separated words in args&#45;&gt;words." alt="" coords="130,731,240,758"/>
+<area shape="poly" id="edge32_Node000001_Node000030" title=" " alt="" coords="34,470,38,519,48,584,57,619,70,654,87,687,110,716,119,725,114,726,106,720,83,690,65,656,52,621,43,585,33,519,34,476"/>
+<area shape="rect" id="Node000034" href="$segment_8c.html#af4f1a9479f738e0cccc6d9f0b6e963e3" title="Segment a binarised image into letter cell bounding boxes." alt="" coords="122,803,248,830"/>
+<area shape="poly" id="edge36_Node000001_Node000034" title=" " alt="" coords="34,470,38,525,47,602,56,645,69,688,87,730,110,768,138,794,133,795,106,772,82,733,64,690,51,647,42,603,32,526,33,476"/>
+<area shape="rect" id="Node000044" href="$segment_8c.html#aa54f26ffb11d643dce51321e45cc1912" title="Free a SegmentResult returned by segment_image()." alt="" coords="108,855,263,882"/>
+<area shape="poly" id="edge46_Node000001_Node000044" title=" " alt="" coords="35,471,44,549,57,659,79,768,93,811,110,840,114,845,108,846,106,843,88,813,73,770,52,660,38,549,35,476"/>
+<area shape="rect" id="Node000045" href="$solve__main_8c.html#a848c0ca46d3e3ecc39d2fccc4d85fa12" title="Print usage information to stderr." alt="" coords="155,907,216,934"/>
+<area shape="poly" id="edge47_Node000001_Node000045" title=" " alt="" coords="34,471,42,558,54,684,63,749,76,809,91,859,110,892,124,904,143,913,137,914,121,908,106,896,86,861,71,810,58,750,49,685,36,558,34,476"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#abe4f46755db0f2e8923d757a80fd60a8" title="Box&#45;Muller transform: sample one value from N(0, 1)." alt="" coords="402,5,460,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="230,17,388,17,384,21,233,21"/>
+<area shape="poly" id="edge12_Node000011_Node000010" title=" " alt="" coords="249,394,370,420,366,422,251,399"/>
+<area shape="rect" id="Node000012" href="$image_8c.html#a0f84a9ec64f5cd9a13915bd0d631a580" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="603,427,704,454"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="249,381,388,386,470,394,551,406,602,420,597,422,550,411,469,399,388,391,251,386"/>
+<area shape="poly" id="edge26_Node000016_Node000010" title=" " alt="" coords="241,626,261,612,274,595,281,578,284,543,288,507,295,489,309,471,336,452,370,441,366,444,339,456,313,474,300,491,293,508,289,543,286,579,279,597,265,616,245,629"/>
+<area shape="rect" id="Node000017" href="$cnn_8c.html#a5128dc1ad09d45983c5b93bd26dc6504" title="Predict the most likely class for a single image." alt="" coords="382,561,479,589"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="229,624,310,599,369,587,365,590,312,604,232,628"/>
+<area shape="rect" id="Node000026" href="$image_8c.html#a9d344df105e6164de2266f08e2bc3130" title="Resize an Image to the given dimensions (nearest&#45;neighbour)." alt="" coords="376,484,485,512"/>
+<area shape="poly" id="edge27_Node000016_Node000026" title=" " alt="" coords="239,624,261,612,277,596,285,581,294,565,309,548,337,529,370,516,366,520,340,534,313,552,298,568,290,584,281,600,265,616,243,628"/>
+<area shape="rect" id="Node000027" href="$image_8c.html#aea22486042d084f879e40219b1bc8967" title="Convert an Image to a flat normalised float array." alt="" coords="372,613,490,641"/>
+<area shape="poly" id="edge29_Node000016_Node000027" title=" " alt="" coords="242,635,358,630,354,633,244,640"/>
+<area shape="rect" id="Node000018" href="$cnn_8c.html#a97f29ff1777a0eaec225d9efd2ebfc2d" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="603,561,704,589"/>
+<area shape="poly" id="edge18_Node000017_Node000018" title=" " alt="" coords="478,573,589,574,585,576,480,578"/>
+<area shape="rect" id="Node000019" href="$cnn_8c.html#ab5cfc81d08bd47071237d6d712cce0e4" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="765,457,874,485"/>
+<area shape="poly" id="edge19_Node000018_Node000019" title=" " alt="" coords="670,559,708,528,755,496,770,491,765,493,758,500,711,532,673,563"/>
+<area shape="rect" id="Node000021" href="$cnn_8c.html#a965e7546544716df9f94516eab66a69b" title="Dense layer 1 (2704 → 128) followed by ReLU." alt="" coords="757,509,882,537"/>
+<area shape="poly" id="edge21_Node000018_Node000021" title=" " alt="" coords="699,558,761,541,756,543,701,563"/>
+<area shape="rect" id="Node000022" href="$cnn_8c.html#a4733c05bd6ecfdd8aea86561031a0138" title="Dense layer 2 (128 → 26) followed by Softmax." alt="" coords="757,561,882,589"/>
+<area shape="poly" id="edge22_Node000018_Node000022" title=" " alt="" coords="704,573,744,574,739,576,705,578"/>
+<area shape="rect" id="Node000024" href="$cnn_8c.html#a78dfd01dac25db70517ca90e165d9656" title="Flatten stage: copy pool_out into act&#45;&gt;flat, row&#45;major." alt="" coords="759,613,880,641"/>
+<area shape="poly" id="edge24_Node000018_Node000024" title=" " alt="" coords="700,587,761,608,756,609,700,592"/>
+<area shape="rect" id="Node000025" href="$cnn_8c.html#aff764a1877fe34f7084fc0c804e64a5f" title="Max&#45;pooling stage: compute net&#45;&gt;act.pool_out." alt="" coords="766,665,872,693"/>
+<area shape="poly" id="edge25_Node000018_Node000025" title=" " alt="" coords="672,587,711,618,758,650,770,658,765,658,755,655,708,622,671,592"/>
+<area shape="rect" id="Node000020" href="$cnn_8c.html#a3eea1fcc46fdb93cd28f49760d187e75" title="Apply ReLU element&#45;wise: f(x) = max(0, x)." alt="" coords="944,457,1044,485"/>
+<area shape="poly" id="edge20_Node000019_Node000020" title=" " alt="" coords="874,469,931,470,926,472,875,474"/>
+<area shape="rect" id="Node000023" href="$cnn_8c.html#a61bbed6c1803dbf5364fc8575dea1ad1" title="Apply softmax in&#45;place over an array of length n." alt="" coords="930,561,1058,589"/>
+<area shape="poly" id="edge23_Node000022_Node000023" title=" " alt="" coords="882,573,917,575,912,576,883,578"/>
+<area shape="poly" id="edge28_Node000026_Node000012" title=" " alt="" coords="484,482,590,456,586,459,487,486"/>
+<area shape="rect" id="Node000029" href="$model_8c.html#a6b4d12a76727dd069dcbc5a1f993925b" title="Find the most recently modified .bin file inside a directory." alt="" coords="362,665,499,693"/>
+<area shape="poly" id="edge31_Node000028_Node000029" title=" " alt="" coords="243,687,349,682,344,685,245,692"/>
+<area shape="rect" id="Node000031" href="$solver_8c.html#a00412cc6de353149b5444883cb2de064" title="Return the human&#45;readable name of direction index dir." alt="" coords="366,717,495,745"/>
+<area shape="poly" id="edge33_Node000030_Node000031" title=" " alt="" coords="240,739,353,734,348,737,242,744"/>
+<area shape="rect" id="Node000032" href="$solver_8c.html#ae7bb6f196b7565fd463fabc118c16d03" title="Search for word in grid in all 8 directions." alt="" coords="384,769,477,797"/>
+<area shape="poly" id="edge34_Node000030_Node000032" title=" " alt="" coords="241,751,371,772,367,775,241,756"/>
+<area shape="rect" id="Node000033" href="$solver_8c.html#a41c1b7b5e6dc3aa102fd9f8b74f6b4b1" title="Check whether word fits in grid starting at (r, c) going in direction dir." alt="" coords="602,665,705,693"/>
+<area shape="poly" id="edge35_Node000032_Node000033" title=" " alt="" coords="476,777,513,769,549,754,564,743,573,731,582,718,597,704,603,702,608,700,600,708,586,721,577,734,568,747,552,759,515,774,478,782"/>
+<area shape="rect" id="Node000035" href="$segment_8c.html#a1f320fd7cedab5d2870e28e717a337d8" title="Extract letter bounding boxes via connected&#45;component analysis." alt="" coords="311,821,550,849"/>
+<area shape="poly" id="edge37_Node000034_Node000035" title=" " alt="" coords="249,819,298,824,293,826,250,824"/>
+<area shape="rect" id="Node000041" href="$segment_8c.html#a597c16bd9433d6d0adf303db35f78d49" title="Detect grid lines and infer cell geometry." alt="" coords="352,873,510,901"/>
+<area shape="poly" id="edge43_Node000034_Node000041" title=" " alt="" coords="228,828,264,841,312,858,347,869,342,870,310,863,262,846,228,834"/>
+<area shape="rect" id="Node000042" href="$segment_8c.html#ae3e3fe1fc29541ff4b621ddcea8c733e" title="Sort a SegmentResult&#39;s cells in reading order (top&#45;to&#45;bottom, left&#45;to&#45;right)." alt="" coords="348,946,514,991"/>
+<area shape="poly" id="edge44_Node000034_Node000042" title=" " alt="" coords="241,828,265,841,281,859,290,876,298,893,313,910,354,939,349,939,309,915,293,896,285,878,277,862,261,845,241,833"/>
+<area shape="rect" id="Node000036" href="$segment_8c.html#ac8e6a7763372099c3ddbb9f7b23d537c" title="Allocate a Queue with initial capacity cap pixel pairs." alt="" coords="599,925,708,953"/>
+<area shape="poly" id="edge38_Node000035_Node000036" title=" " alt="" coords="522,847,552,860,568,872,577,884,586,897,600,910,608,918,603,917,597,915,582,901,573,888,564,876,549,864,522,852"/>
+<area shape="rect" id="Node000037" href="$segment_8c.html#ae63c70cbd30b3a6b9761ff09da7093c6" title="Return 1 if the queue has elements, 0 if empty." alt="" coords="598,717,709,745"/>
+<area shape="poly" id="edge39_Node000035_Node000037" title=" " alt="" coords="521,818,549,806,564,795,573,783,582,770,597,756,603,754,608,752,600,760,586,773,577,786,568,799,552,811,523,823"/>
+<area shape="rect" id="Node000038" href="$segment_8c.html#af0bc5753cb9e7df233227b71a6a4a11d" title="Free queue memory." alt="" coords="606,769,701,797"/>
+<area shape="poly" id="edge40_Node000035_Node000038" title=" " alt="" coords="496,818,550,806,594,798,589,799,551,811,498,823"/>
+<area shape="rect" id="Node000039" href="$segment_8c.html#ab71b3e9afd214fc91fc20f4c39aef264" title="Pop the front element. Caller must ensure queue is non&#45;empty." alt="" coords="607,821,700,849"/>
+<area shape="poly" id="edge41_Node000035_Node000039" title=" " alt="" coords="550,833,595,835,589,836,551,838"/>
+<area shape="rect" id="Node000040" href="$segment_8c.html#a7903d51a922266d740a3987c9cdf0799" title="Append a pixel coordinate to the queue, growing if needed." alt="" coords="604,873,703,901"/>
+<area shape="poly" id="edge42_Node000035_Node000040" title=" " alt="" coords="497,847,551,859,592,871,586,871,550,864,497,852"/>
+<area shape="rect" id="Node000043" href="$segment_8c.html#a1c8bbcb985c4ccf49dd35f24012e9967" title="qsort comparator: sort BoundingBox by y then x." alt="" coords="609,977,698,1005"/>
+<area shape="poly" id="edge45_Node000042_Node000043" title=" " alt="" coords="514,974,597,985,591,985,514,980"/>
+</map>

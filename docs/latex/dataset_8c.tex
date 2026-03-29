@@ -1,0 +1,261 @@
+\doxysection{src/\+cnn/\+dataset.c File Reference}
+\hypertarget{dataset_8c}{}\label{dataset_8c}\index{src/cnn/dataset.c@{src/cnn/dataset.c}}
+
+
+Training dataset loader with optional POSIX thread parallelism.  
+
+
+{\ttfamily \+\#include "{}dataset.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+preprocess/\+image.\+h"{}}\newline
+{\ttfamily \+\#include $<$dirent.\+h$>$}\newline
+{\ttfamily \+\#include $<$pthread.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$sys/\+stat.\+h$>$}\newline
+Include dependency graph for dataset.\+c:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dataset_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structLoaderArgs}{Loader\+Args}}
+\begin{DoxyCompactList}\small\item\em Arguments passed to each loader thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \doxymbox{\hyperlink{dataset_8c_a9835941ed32f81c45571e5986f4f6a19}{is\+\_\+image\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}filename)
+\begin{DoxyCompactList}\small\item\em Check whether {\ttfamily filename} ends with a known image extension. \end{DoxyCompactList}\item 
+static void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{dataset_8c_ab148502e4728c441f68ab88cb1303620}{loader\+\_\+thread}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em POSIX thread worker:\+ load all images from one class directory. \end{DoxyCompactList}\item 
+static size\+\_\+t \doxymbox{\hyperlink{dataset_8c_acdf368673c2db18790faefc8d06f88e5}{count\+\_\+images}} (const char \texorpdfstring{$\ast$}{*}dir\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Count the number of image files in a directory. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{dataset_8c_a73880acad0c6623605bec581bb468f54}{dataset\+\_\+load}} (const char \texorpdfstring{$\ast$}{*}root\+\_\+dir, int n\+\_\+threads)
+\begin{DoxyCompactList}\small\item\em Load all images from {\ttfamily root\+\_\+dir} into a \doxylink{structDataset}{Dataset}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{dataset_8c_a8f29f81c08084278983c39e57931ae3c}{dataset\+\_\+shuffle}} (\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}ds)
+\begin{DoxyCompactList}\small\item\em Shuffle the samples in a \doxylink{structDataset}{Dataset} in-\/place (Fisher-\/\+Yates). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{dataset_8c_aa47cdfa2cb64479b8cf15f5e9838c8a1}{dataset\+\_\+free}} (\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}ds)
+\begin{DoxyCompactList}\small\item\em Free all memory owned by a \doxylink{structDataset}{Dataset}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{dataset_8c_ae4efe00373f1161a112fd63725b13017}{dataset\+\_\+print\+\_\+info}} (const \doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}ds)
+\begin{DoxyCompactList}\small\item\em Print a summary of the dataset to stdout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Training dataset loader with optional POSIX thread parallelism. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{dataset_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{dataset_8c_acdf368673c2db18790faefc8d06f88e5}\index{dataset.c@{dataset.c}!count\_images@{count\_images}}
+\index{count\_images@{count\_images}!dataset.c@{dataset.c}}
+\doxysubsubsection{\texorpdfstring{count\_images()}{count\_images()}}
+{\footnotesize\ttfamily \label{dataset_8c_acdf368673c2db18790faefc8d06f88e5} 
+size\+\_\+t count\+\_\+images (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{dir\+\_\+path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Count the number of image files in a directory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+\_\+path} & Directory path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of image files (0 if directory cannot be opened). 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{dataset_8c_acdf368673c2db18790faefc8d06f88e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dataset_8c_acdf368673c2db18790faefc8d06f88e5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8c_aa47cdfa2cb64479b8cf15f5e9838c8a1}\index{dataset.c@{dataset.c}!dataset\_free@{dataset\_free}}
+\index{dataset\_free@{dataset\_free}!dataset.c@{dataset.c}}
+\doxysubsubsection{\texorpdfstring{dataset\_free()}{dataset\_free()}}
+{\footnotesize\ttfamily \label{dataset_8c_aa47cdfa2cb64479b8cf15f5e9838c8a1} 
+void dataset\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}}]{ds}{}\end{DoxyParamCaption})}
+
+
+
+Free all memory owned by a \doxylink{structDataset}{Dataset}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & \doxylink{structDataset}{Dataset} returned by \doxylink{dataset_8h_a73880acad0c6623605bec581bb468f54}{dataset\+\_\+load()}. No-\/op if NULL. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{dataset_8c_aa47cdfa2cb64479b8cf15f5e9838c8a1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8c_a73880acad0c6623605bec581bb468f54}\index{dataset.c@{dataset.c}!dataset\_load@{dataset\_load}}
+\index{dataset\_load@{dataset\_load}!dataset.c@{dataset.c}}
+\doxysubsubsection{\texorpdfstring{dataset\_load()}{dataset\_load()}}
+{\footnotesize\ttfamily \label{dataset_8c_a73880acad0c6623605bec581bb468f54} 
+\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*} dataset\+\_\+load (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{root\+\_\+dir}{, }\item[{int}]{n\+\_\+threads}{}\end{DoxyParamCaption})}
+
+
+
+Load all images from {\ttfamily root\+\_\+dir} into a \doxylink{structDataset}{Dataset}. 
+
+Opens sub-\/directories named A–Z. For each PNG/\+\+JPG image found, loads it with SDL2, converts to grayscale, resizes to 28×28, normalises to \+[0, 1]\+, and appends a \doxylink{structSample}{Sample} to the dataset. Non-\/image files are silently skipped.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root\+\_\+dir} & Path to the training data root (e.\+g. "{}training\+\_\+data/\+"{}). \\
+\hline
+{\em n\+\_\+threads} & Number of POSIX loader threads (1 = single-\/threaded). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a heap-\/allocated \doxylink{structDataset}{Dataset}, or NULL on error. Free with \doxylink{dataset_8h_aa47cdfa2cb64479b8cf15f5e9838c8a1}{dataset\+\_\+free()}.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Requires SDL2 and SDL2\+\_\+image to be linked. 
+\end{DoxyNote}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dataset_8c_a73880acad0c6623605bec581bb468f54_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{dataset_8c_a73880acad0c6623605bec581bb468f54_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8c_ae4efe00373f1161a112fd63725b13017}\index{dataset.c@{dataset.c}!dataset\_print\_info@{dataset\_print\_info}}
+\index{dataset\_print\_info@{dataset\_print\_info}!dataset.c@{dataset.c}}
+\doxysubsubsection{\texorpdfstring{dataset\_print\_info()}{dataset\_print\_info()}}
+{\footnotesize\ttfamily \label{dataset_8c_ae4efe00373f1161a112fd63725b13017} 
+void dataset\+\_\+print\+\_\+info (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}}]{ds}{}\end{DoxyParamCaption})}
+
+
+
+Print a summary of the dataset to stdout. 
+
+Shows the total number of samples and the per-\/class distribution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & \doxylink{structDataset}{Dataset} to describe. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{dataset_8c_ae4efe00373f1161a112fd63725b13017_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8c_a8f29f81c08084278983c39e57931ae3c}\index{dataset.c@{dataset.c}!dataset\_shuffle@{dataset\_shuffle}}
+\index{dataset\_shuffle@{dataset\_shuffle}!dataset.c@{dataset.c}}
+\doxysubsubsection{\texorpdfstring{dataset\_shuffle()}{dataset\_shuffle()}}
+{\footnotesize\ttfamily \label{dataset_8c_a8f29f81c08084278983c39e57931ae3c} 
+void dataset\+\_\+shuffle (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structDataset}{Dataset}} \texorpdfstring{$\ast$}{*}}]{ds}{}\end{DoxyParamCaption})}
+
+
+
+Shuffle the samples in a \doxylink{structDataset}{Dataset} in-\/place (Fisher-\/\+Yates). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ds} & \doxylink{structDataset}{Dataset} to shuffle. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{dataset_8c_a8f29f81c08084278983c39e57931ae3c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8c_a9835941ed32f81c45571e5986f4f6a19}\index{dataset.c@{dataset.c}!is\_image\_file@{is\_image\_file}}
+\index{is\_image\_file@{is\_image\_file}!dataset.c@{dataset.c}}
+\doxysubsubsection{\texorpdfstring{is\_image\_file()}{is\_image\_file()}}
+{\footnotesize\ttfamily \label{dataset_8c_a9835941ed32f81c45571e5986f4f6a19} 
+int is\+\_\+image\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check whether {\ttfamily filename} ends with a known image extension. 
+
+Accepted:\+ .png, .jpg, .jpeg, .bmp (case-\/insensitive).
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & File name (not full path). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the file is a recognised image, 0 otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dataset_8c_a9835941ed32f81c45571e5986f4f6a19_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{dataset_8c_ab148502e4728c441f68ab88cb1303620}\index{dataset.c@{dataset.c}!loader\_thread@{loader\_thread}}
+\index{loader\_thread@{loader\_thread}!dataset.c@{dataset.c}}
+\doxysubsubsection{\texorpdfstring{loader\_thread()}{loader\_thread()}}
+{\footnotesize\ttfamily \label{dataset_8c_ab148502e4728c441f68ab88cb1303620} 
+void \texorpdfstring{$\ast$}{*} loader\+\_\+thread (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+POSIX thread worker:\+ load all images from one class directory. 
+
+Opens {\ttfamily args-\/\texorpdfstring{$>$}{>}dir\+\_\+path}, iterates over image files, loads each one with \doxylink{image_8c_a29ef0f108bf45225178781b800a0e4a9}{image\+\_\+load\+\_\+normalised()} and writes the result to {\ttfamily args-\/\texorpdfstring{$>$}{>}buf}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & Pointer to a heap-\/allocated \doxylink{structLoaderArgs}{Loader\+Args} (owned by caller). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always NULL (errors are printed to stderr). 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dataset_8c_ab148502e4728c441f68ab88cb1303620_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dataset_8c_ab148502e4728c441f68ab88cb1303620_icgraph}
+\end{center}
+\end{figure}

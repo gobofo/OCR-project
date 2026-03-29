@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['data_0',['data',['../structDataset.html#ab2c787d589d3906b56da29da8afd22bc',1,'Dataset::data'],['../structQueue.html#a7a2dbb7a3bf7c2e3a8175f123b413b13',1,'Queue::data']]],
+  ['data_5fdir_1',['data_dir',['../structTrainArgs.html#ac40cc7130ff277af5bd21a9f7fea0102',1,'TrainArgs']]],
+  ['dataset_2',['Dataset',['../structDataset.html',1,'']]],
+  ['dataset_2ec_3',['dataset.c',['../dataset_8c.html',1,'']]],
+  ['dataset_2eh_4',['dataset.h',['../dataset_8h.html',1,'']]],
+  ['dataset_5ffree_5',['dataset_free',['../dataset_8c.html#aa47cdfa2cb64479b8cf15f5e9838c8a1',1,'dataset_free(Dataset *ds):&#160;dataset.c'],['../dataset_8h.html#aa47cdfa2cb64479b8cf15f5e9838c8a1',1,'dataset_free(Dataset *ds):&#160;dataset.c']]],
+  ['dataset_5fload_6',['dataset_load',['../dataset_8c.html#a73880acad0c6623605bec581bb468f54',1,'dataset_load(const char *root_dir, int n_threads):&#160;dataset.c'],['../dataset_8h.html#a73880acad0c6623605bec581bb468f54',1,'dataset_load(const char *root_dir, int n_threads):&#160;dataset.c']]],
+  ['dataset_5fprint_5finfo_7',['dataset_print_info',['../dataset_8c.html#ae4efe00373f1161a112fd63725b13017',1,'dataset_print_info(const Dataset *ds):&#160;dataset.c'],['../dataset_8h.html#ae4efe00373f1161a112fd63725b13017',1,'dataset_print_info(const Dataset *ds):&#160;dataset.c']]],
+  ['dataset_5fshuffle_8',['dataset_shuffle',['../dataset_8c.html#a8f29f81c08084278983c39e57931ae3c',1,'dataset_shuffle(Dataset *ds):&#160;dataset.c'],['../dataset_8h.html#a8f29f81c08084278983c39e57931ae3c',1,'dataset_shuffle(Dataset *ds):&#160;dataset.c']]],
+  ['default_5fdata_5fdir_9',['DEFAULT_DATA_DIR',['../train__main_8c.html#a89d9b90dbc1df3ab30a2d08519e40e49',1,'train_main.c']]],
+  ['default_5fmodel_5fdir_10',['DEFAULT_MODEL_DIR',['../train__main_8c.html#ada0f7155f9e594701164ffa4cc8dfb5e',1,'DEFAULT_MODEL_DIR:&#160;train_main.c'],['../solve__main_8c.html#ada0f7155f9e594701164ffa4cc8dfb5e',1,'DEFAULT_MODEL_DIR:&#160;solve_main.c']]],
+  ['dir_11',['dir',['../structWordResult.html#a08b9d6750e1f5f17a6fc91bb7f27f181',1,'WordResult']]],
+  ['dir_5fdc_12',['DIR_DC',['../solver_8c.html#a3af337b5b8a983fede5cc1c281113f98',1,'solver.c']]],
+  ['dir_5fdr_13',['DIR_DR',['../solver_8c.html#a62144e264147ad1715e5789731306538',1,'solver.c']]],
+  ['dir_5fnames_14',['DIR_NAMES',['../solver_8c.html#ae7d8c96b045fc222a3a2f0327df9249a',1,'solver.c']]],
+  ['dir_5fpath_15',['dir_path',['../structLoaderArgs.html#a24395f7952d4f1e86d2b87047eadad68',1,'LoaderArgs']]]
+];

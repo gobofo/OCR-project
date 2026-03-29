@@ -1,0 +1,7 @@
+<map id="grid_load" name="grid_load">
+<area shape="rect" id="Node000001" title="Read a CharGrid from a plain&#45;text file." alt="" coords="5,32,87,60"/>
+<area shape="rect" id="Node000002" href="$solver_8c.html#ac709bb3fa1106fa280d3bda18fdaa1fd" title="Allocate a CharGrid of the given dimensions, filled with spaces." alt="" coords="135,5,229,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,35,121,30,117,33,88,40"/>
+<area shape="rect" id="Node000003" href="$solver_8c.html#a4b748577700cf6ad1ee4fb51c9f6e6c2" title="Free a CharGrid." alt="" coords="142,57,222,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="87,51,129,60,124,62,87,56"/>
+</map>

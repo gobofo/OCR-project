@@ -1,0 +1,24 @@
+<map id="image_alloc" name="image_alloc">
+<area shape="rect" id="Node000001" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="822,57,922,85"/>
+<area shape="rect" id="Node000002" href="$image_8c.html#a28674722e7d5137fadd79c172bc60127" title="Load a PNG file into an Image." alt="" coords="646,57,774,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="804,71,775,74,775,69,809,71"/>
+<area shape="rect" id="Node000008" href="$image_8c.html#a9d344df105e6164de2266f08e2bc3130" title="Resize an Image to the given dimensions (nearest&#45;neighbour)." alt="" coords="656,109,764,137"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="814,90,756,111,755,106,809,91"/>
+<area shape="rect" id="Node000010" href="$image_8c.html#a2f65d152419d4fcd1418da5fc863b421" title="Rotate an Image by angle_deg degrees clockwise." alt="" coords="656,5,764,33"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="809,52,755,36,756,31,814,52"/>
+<area shape="rect" id="Node000003" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="420,8,598,36"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="634,53,568,39,568,34,639,53"/>
+<area shape="rect" id="Node000007" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="290,84,344,112"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="628,77,345,99,344,93,633,76"/>
+<area shape="rect" id="Node000004" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="261,8,372,36"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="402,22,373,24,372,19,408,21"/>
+<area shape="rect" id="Node000005" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="108,8,213,36"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="243,23,214,24,213,19,248,21"/>
+<area shape="rect" id="Node000006" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,8,60,36"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="90,24,61,24,59,19,94,20"/>
+<area shape="poly" id="edge8_Node000008_Node000003" title=" " alt="" coords="657,102,644,99,534,39,535,34,647,94,662,103"/>
+<area shape="rect" id="Node000009" href="$solve__main_8c.html#a6680539f8c646b0b8c01cf9eb3c49148" title="Crop a cell bounding box from a pixel buffer, resize, and predict." alt="" coords="452,109,566,137"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="637,123,567,126,567,121,643,123"/>
+<area shape="poly" id="edge10_Node000009_Node000007" title=" " alt="" coords="434,114,344,104,345,99,439,114"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="638,20,598,23,598,18,643,20"/>
+</map>

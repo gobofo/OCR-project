@@ -1,0 +1,28 @@
+<map id="solve_main.c" name="solve_main.c">
+<area shape="rect" id="Node000001" title="Entry point for the OCR + crossword&#45;solver binary." alt="" coords="354,5,461,33"/>
+<area shape="rect" id="Node000002" href="$cnn_8h.html" title="Convolutional Neural Network for A–Z character recognition." alt="" coords="21,157,128,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="351,22,265,26,163,35,114,43,71,53,36,66,14,83,8,98,13,114,26,130,44,146,39,148,23,134,9,117,3,98,10,79,34,62,69,48,113,37,162,30,265,21,356,19"/>
+<area shape="rect" id="Node000004" href="$model_8h.html" title="Binary serialisation and deserialisation of CNN weights." alt="" coords="24,81,149,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="352,35,160,80,158,75,355,30"/>
+<area shape="rect" id="Node000006" href="$image_8h.html" title="Image loading, preprocessing, and normalisation." alt="" coords="172,81,345,109"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="379,35,300,76,297,72,383,32"/>
+<area shape="rect" id="Node000007" href="$segment_8h.html" title="Letter segmentation: detect crossword grid and extract letter cells." alt="" coords="295,157,470,184"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="408,31,390,143,385,140,404,35"/>
+<area shape="rect" id="Node000008" href="$solver_8h.html" title="Crossword word&#45;search solver: find words in a 2&#45;D character grid in all 8 directions." alt="" coords="494,157,633,184"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="414,31,433,68,462,107,490,129,521,150,516,149,487,134,458,111,428,71,412,36"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="471,81,536,109"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="425,31,477,71,472,71,424,36"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="561,81,630,109"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="442,31,551,75,546,76,441,36"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="654,81,724,109"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="459,31,641,79,636,81,459,36"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="283,232,356,260"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="119,182,270,228,267,231,118,188"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="85,107,82,142,77,141,83,112"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="151,157,222,184"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="105,107,159,146,154,148,104,112"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="262,107,272,143,286,183,305,220,300,218,281,185,267,144,260,111"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="248,108,211,148,208,143,243,111"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="374,184,342,223,339,218,369,186"/>
+<area shape="poly" id="edge12_Node000008_Node000003" title=" " alt="" coords="523,185,372,232,371,227,518,185"/>
+</map>

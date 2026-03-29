@@ -1,0 +1,9 @@
+<map id="queue_free" name="queue_free">
+<area shape="rect" id="Node000001" title="Free queue memory." alt="" coords="569,5,664,33"/>
+<area shape="rect" id="Node000002" href="$segment_8c.html#a1f320fd7cedab5d2870e28e717a337d8" title="Extract letter bounding boxes via connected&#45;component analysis." alt="" coords="282,5,521,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="551,19,522,22,522,17,557,19"/>
+<area shape="rect" id="Node000003" href="$segment_8c.html#af4f1a9479f738e0cccc6d9f0b6e963e3" title="Segment a binarised image into letter cell bounding boxes." alt="" coords="108,5,234,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="264,19,235,22,234,17,269,19"/>
+<area shape="rect" id="Node000004" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="89,20,60,22,60,17,95,18"/>
+</map>
