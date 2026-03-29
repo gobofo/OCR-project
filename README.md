@@ -135,18 +135,8 @@ perte cross-entropie, taille de batch 32.
 │   └── solver/
 │       └── solver.h / solver.c    Recherche en 8 directions
 ├── models/                 Modèles entraînés (.bin)
-├── training_data/          Dataset d'entraînement (A–Z)
-└── CLAUDE.md               Suivi des tâches et documentation interne
+└── training_data/          Dataset d'entraînement (A–Z)
 ```
-
-### Modules hérités (référence)
-
-| Dossier | Contenu |
-|---|---|
-| `OCR-project/` | Implémentation modulaire précédente |
-| `epita-prepa-computer-science-proj-s3-2028-tls-groupe3/` | Prototype initial du groupe |
-
----
 
 ## Format du fichier modèle
 
