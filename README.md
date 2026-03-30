@@ -1,7 +1,5 @@
 # OCR & Résolveur de mots mêlés
 
-Projet EPITA S3 2028 — Groupe 3, TLS.
-
 OCR complet en C (C99) avec SDL2 et libpng, capable de lire les lettres
 d'une grille de mots mêlés et d'y rechercher des mots — avec une interface
 graphique qui affiche les résultats directement sur l'image.
