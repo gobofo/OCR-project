@@ -8,6 +8,8 @@ graphique qui affiche les résultats directement sur l'image.
 
 ![Interface graphique](screenshoot/gui_1.png)
 
+> **Documentation Doxygen complète :** [gobofo.github.io/OCR-project](https://gobofo.github.io/OCR-project/)
+
 ---
 
 ## Pipeline
