@@ -6,16 +6,14 @@ Convolutional Neural Network for A–Z character recognition.
 
 
 {\ttfamily \+\#include $<$stddef.\+h$>$}\newline
-Include dependency graph for cnn.\+h:\+
-\nopagebreak
+Include dependency graph for cnn.\+h:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=160pt]{cnn_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file:\+
-\nopagebreak
+This graph shows which files directly or indirectly include this file:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -228,8 +226,7 @@ Must be called after \doxylink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_
 \begin{DoxyNote}{Note}
 This is a stub:\+ the full implementation is deferred. 
 \end{DoxyNote}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -254,16 +251,14 @@ Pointer to a heap-\/allocated \doxylink{structCNN}{CNN}, or NULL on allocation f
 \begin{DoxyNote}{Note}
 The caller must free the returned pointer with \doxylink{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be}{cnn\+\_\+free()}. 
 \end{DoxyNote}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=229pt]{cnn_8h_ad61352e349918920eb7049293eb055fa_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -289,16 +284,14 @@ Stages:\+ Conv2D → Re\+LU → Max\+Pool → Flatten → Dense → Re\+LU → D
 {\em image} & Flat array of CNN\+\_\+\+IMG\+\_\+H \texorpdfstring{$\ast$}{*} CNN\+\_\+\+IMG\+\_\+W normalised float pixels, row-\/major order. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -320,8 +313,7 @@ Free all memory associated with a \doxylink{structCNN}{CNN}.
 {\em net} & Pointer returned by \doxylink{cnn_8h_ad61352e349918920eb7049293eb055fa}{cnn\+\_\+create()}. No-\/op if NULL. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -350,8 +342,7 @@ loss = -\/log(output\+[label]\+)
 \begin{DoxyReturn}{Returns}
 Scalar cross-\/entropy loss (≥ 0). 
 \end{DoxyReturn}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -380,8 +371,7 @@ Runs \doxylink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward()} int
 \begin{DoxyReturn}{Returns}
 Class index in \+[0, CNN\+\_\+\+N\+\_\+\+CLASSES), i.\+e. 0 = \textquotesingle{}A\textquotesingle{}, 25 = \textquotesingle{}Z\textquotesingle{}. 
 \end{DoxyReturn}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -408,16 +398,14 @@ w\+\_\+new = w -\/ lr \texorpdfstring{$\ast$}{*} (β \texorpdfstring{$\ast$}{*} 
 \begin{DoxyNote}{Note}
 Resets net-\/\texorpdfstring{$>$}{>}grads to zero after the update. 
 \end{DoxyNote}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=280pt]{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -439,8 +427,7 @@ Zero all gradient accumulators in net-\/\texorpdfstring{$>$}{>}grads.
 {\em net} & \doxylink{structCNN}{CNN} whose gradients should be cleared. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

@@ -9,8 +9,7 @@ Letter segmentation via connected-\/component analysis and grid detection.
 {\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \+\#include $<$string.\+h$>$}\newline
 {\ttfamily \+\#include $<$stdio.\+h$>$}\newline
-Include dependency graph for segment.\+c:\+
-\nopagebreak
+Include dependency graph for segment.\+c:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -107,8 +106,7 @@ int bbox\+\_\+cmp (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\a
 
 qsort comparator:\+ sort \doxylink{structBoundingBox}{Bounding\+Box} by y then x. 
 
-Boxes with y-\/centres within 10 pixels of each other are considered the same row and sorted left-\/to-\/right. Here is the caller graph for this function:\+
-\nopagebreak
+Boxes with y-\/centres within 10 pixels of each other are considered the same row and sorted left-\/to-\/right. Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -133,8 +131,7 @@ Allocate a \doxylink{structQueue}{Queue} with initial capacity {\ttfamily cap} p
 \begin{DoxyReturn}{Returns}
 Initialised \doxylink{structQueue}{Queue}, or \{NULL,0,0,0\} on failure. 
 \end{DoxyReturn}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -151,8 +148,7 @@ int queue\+\_\+empty (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{
 
 Return 1 if the queue has elements, 0 if empty. 
 
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -169,8 +165,7 @@ void queue\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct
 
 Free queue memory. 
 
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -196,8 +191,7 @@ Pop the front element. Caller must ensure queue is non-\/empty.
 {\em y} & Receives row. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -226,8 +220,7 @@ Append a pixel coordinate to the queue, growing if needed.
 \begin{DoxyReturn}{Returns}
 0 on success, -\/1 on allocation failure. 
 \end{DoxyReturn}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -260,16 +253,14 @@ Uses an iterative flood-\/fill (queue-\/based, no recursion) to group connected 
 \begin{DoxyReturn}{Returns}
 Number of components found (≥ 0), -\/1 on error. 
 \end{DoxyReturn}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{segment_8c_a1f320fd7cedab5d2870e28e717a337d8_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -307,8 +298,7 @@ Finds horizontal and vertical runs of dark pixels spanning at least {\ttfamily m
 \begin{DoxyNote}{Note}
 STUB — full implementation deferred. 
 \end{DoxyNote}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -348,16 +338,14 @@ Heap-\/allocated \doxylink{structSegmentResult}{Segment\+Result} on success, NUL
 \begin{DoxyNote}{Note}
 STUB:\+ grid-\/line detection and connected-\/component paths are partially implemented; see internal comments for the full algorithm outline. 
 \end{DoxyNote}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{segment_8c_af4f1a9479f738e0cccc6d9f0b6e963e3_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -379,8 +367,7 @@ Free a \doxylink{structSegmentResult}{Segment\+Result} returned by \doxylink{seg
 {\em res} & Result to free. No-\/op if NULL. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -404,16 +391,14 @@ Cells are grouped into rows based on vertical overlap, then sorted left-\/to-\/r
 {\em res} & \doxylink{structSegmentResult}{Segment\+Result} to sort in-\/place. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=307pt]{segment_8c_ae3e3fe1fc29541ff4b621ddcea8c733e_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

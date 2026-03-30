@@ -1,9 +1,12 @@
-# OCR & Résolveur de mots croisés
+# OCR & Résolveur de mots mêlés
 
 Projet EPITA S3 2028 — Groupe 3, TLS.
 
 OCR complet en C (C99) avec SDL2 et libpng, capable de lire les lettres
-d'une grille de mots croisés et d'y rechercher des mots.
+d'une grille de mots mêlés et d'y rechercher des mots — avec une interface
+graphique qui affiche les résultats directement sur l'image.
+
+![Interface graphique](screenshoot/gui_1.png)
 
 ---
 
@@ -24,18 +27,19 @@ Image PNG
 | Bibliothèque | Rôle |
 |---|---|
 | **libpng** | Chargement et sauvegarde des images PNG |
-| **SDL2** | Rendu (rotation d'image) |
+| **SDL2** | Rendu (rotation d'image, GUI) |
+| **SDL2_ttf** | Texte dans l'interface graphique |
 | **libm** | Fonctions mathématiques (sqrt, cos, …) |
 | **libpthread** | Parallélisme lors du chargement du dataset |
 
 Installation sur Arch Linux :
 ```bash
-sudo pacman -S sdl2 libpng
+sudo pacman -S sdl2 sdl2_ttf libpng ttf-dejavu
 ```
 
 Installation sur Debian/Ubuntu :
 ```bash
-sudo apt install libsdl2-dev libpng-dev
+sudo apt install libsdl2-dev libsdl2-ttf-dev libpng-dev fonts-dejavu
 ```
 
 ---
@@ -43,9 +47,10 @@ sudo apt install libsdl2-dev libpng-dev
 ## Compilation
 
 ```bash
-make all      # compile ./train et ./solve  (cible par défaut)
+make all      # compile ./train, ./solve et ./gui  (cible par défaut)
 make train    # compile uniquement ./train
 make solve    # compile uniquement ./solve
+make gui      # compile uniquement ./gui  (requiert SDL2_ttf)
 make clean    # supprime les .o et les binaires
 ```
 
@@ -79,7 +84,7 @@ training_data/
   Z/  …
 ```
 
-### Résolution
+### Résolution (ligne de commande)
 
 ```bash
 ./solve --image grille.png --model models/mon_modele.bin --words CHAT,CHIEN -v
@@ -95,15 +100,38 @@ training_data/
 Si aucun `--model` n'est fourni et que le dossier `models/` est vide,
 `./solve` affiche une erreur claire et quitte avec le code `2`.
 
+### Interface graphique
+
+```bash
+./gui                          # détecte automatiquement le dernier modèle
+./gui --model models/model.bin # spécifie un modèle
+```
+
+![Interface graphique](screenshoot/gui_1.png)
+
+L'interface propose trois champs de saisie :
+
+| Champ | Action |
+|---|---|
+| **Image** | Chemin vers l'image PNG de la grille |
+| **Modèle** | Chemin vers le fichier `.bin` (pré-rempli avec le dernier modèle) |
+| **Mots** | Liste de mots séparés par des virgules |
+
+- Cliquer sur un champ ou utiliser **Tab** pour naviguer entre eux
+- **Entrée** pour valider / lancer la recherche
+- **Ctrl+V** pour coller un chemin depuis le presse-papiers
+- **Ctrl+Q** pour quitter
+- Les mots trouvés sont entourés en rouge directement sur l'image affichée ; l'image originale n'est jamais modifiée en mémoire.
+
 ---
 
 ## Architecture CNN
 
 ```
-Entrée 28×28 (float, 0–1)
-  Conv2D  16 filtres 3×3        →  16×26×26
+Entrée 56×56 (float, 0–1)
+  Conv2D  16 filtres 3×3        →  16×54×54
   ReLU
-  MaxPool 2×2                   →  16×13×13
+  MaxPool 4×4                   →  16×13×13
   Flatten                       →  2704
   Dense   2704 → 128
   ReLU
@@ -123,6 +151,7 @@ perte cross-entropie, taille de batch 32.
 ├── Makefile
 ├── train_main.c            Point d'entrée de ./train
 ├── solve_main.c            Point d'entrée de ./solve
+├── gui_main.c              Point d'entrée de ./gui (interface graphique)
 ├── src/
 │   ├── cnn/
 │   │   ├── cnn.h / cnn.c          Architecture CNN, passe avant/arrière
@@ -135,6 +164,7 @@ perte cross-entropie, taille de batch 32.
 │   └── solver/
 │       └── solver.h / solver.c    Recherche en 8 directions
 ├── models/                 Modèles entraînés (.bin)
+├── screenshoot/            Captures d'écran
 └── training_data/          Dataset d'entraînement (A–Z)
 ```
 
@@ -162,3 +192,5 @@ Version actuelle : **1**.
 | `solve` | `2` | Modèle introuvable ou invalide |
 | `solve` | `3` | Erreur de chargement de l'image |
 | `solve` | `4` | Erreur de segmentation |
+| `gui` | `0` | Succès |
+| `gui` | `1` | Erreur SDL2 / TTF |

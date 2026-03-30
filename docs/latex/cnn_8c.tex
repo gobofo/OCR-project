@@ -10,8 +10,7 @@
 {\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \+\#include $<$string.\+h$>$}\newline
 {\ttfamily \+\#include $<$stdio.\+h$>$}\newline
-Include dependency graph for cnn.\+c:\+
-\nopagebreak
+Include dependency graph for cnn.\+c:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -87,8 +86,7 @@ Must be called after \doxylink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_
 \begin{DoxyNote}{Note}
 This is a stub:\+ the full implementation is deferred. 
 \end{DoxyNote}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -113,16 +111,14 @@ Pointer to a heap-\/allocated \doxylink{structCNN}{CNN}, or NULL on allocation f
 \begin{DoxyNote}{Note}
 The caller must free the returned pointer with \doxylink{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be}{cnn\+\_\+free()}. 
 \end{DoxyNote}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=229pt]{cnn_8c_ad61352e349918920eb7049293eb055fa_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -148,16 +144,14 @@ Stages:\+ Conv2D → Re\+LU → Max\+Pool → Flatten → Dense → Re\+LU → D
 {\em image} & Flat array of CNN\+\_\+\+IMG\+\_\+H \texorpdfstring{$\ast$}{*} CNN\+\_\+\+IMG\+\_\+W normalised float pixels, row-\/major order. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{cnn_8c_a97f29ff1777a0eaec225d9efd2ebfc2d_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -179,8 +173,7 @@ Free all memory associated with a \doxylink{structCNN}{CNN}.
 {\em net} & Pointer returned by \doxylink{cnn_8h_ad61352e349918920eb7049293eb055fa}{cnn\+\_\+create()}. No-\/op if NULL. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -209,8 +202,7 @@ loss = -\/log(output\+[label]\+)
 \begin{DoxyReturn}{Returns}
 Scalar cross-\/entropy loss (≥ 0). 
 \end{DoxyReturn}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -239,8 +231,7 @@ Runs \doxylink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward()} int
 \begin{DoxyReturn}{Returns}
 Class index in \+[0, CNN\+\_\+\+N\+\_\+\+CLASSES), i.\+e. 0 = \textquotesingle{}A\textquotesingle{}, 25 = \textquotesingle{}Z\textquotesingle{}. 
 \end{DoxyReturn}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -267,16 +258,14 @@ w\+\_\+new = w -\/ lr \texorpdfstring{$\ast$}{*} (β \texorpdfstring{$\ast$}{*} 
 \begin{DoxyNote}{Note}
 Resets net-\/\texorpdfstring{$>$}{>}grads to zero after the update. 
 \end{DoxyNote}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=280pt]{cnn_8c_abda61d7b8584ba361e8a81f4e858dc50_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -298,8 +287,7 @@ Zero all gradient accumulators in net-\/\texorpdfstring{$>$}{>}grads.
 {\em net} & \doxylink{structCNN}{CNN} whose gradients should be cleared. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -323,16 +311,14 @@ For each filter f and output position (r, c):\+ conv\+\_\+out\+[f]\+\+[r]\+\+[c]
 {\em net} & \doxylink{structCNN}{CNN} with loaded weights and net-\/\texorpdfstring{$>$}{>}act.\+input filled. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=273pt]{cnn_8c_ab5cfc81d08bd47071237d6d712cce0e4_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -356,8 +342,7 @@ z1\+[h]\+ = b1\+[h]\+ + sum\+\_\+f W1\+[h]\+\+[f]\+ \texorpdfstring{$\ast$}{*} f
 {\em net} & \doxylink{structCNN}{CNN} after \doxylink{cnn_8c_a78dfd01dac25db70517ca90e165d9656}{forward\+\_\+flatten()}. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -381,16 +366,14 @@ z2\+[k]\+ = b2\+[k]\+ + sum\+\_\+h W2\+[k]\+\+[h]\+ \texorpdfstring{$\ast$}{*} h
 {\em net} & \doxylink{structCNN}{CNN} after \doxylink{cnn_8c_a965e7546544716df9f94516eab66a69b}{forward\+\_\+dense1()}. \\
 \hline
 \end{DoxyParams}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=306pt]{cnn_8c_a4733c05bd6ecfdd8aea86561031a0138_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -414,8 +397,7 @@ Index formula:\+ flat\+[f \texorpdfstring{$\ast$}{*} POOL\+\_\+\+OUT\+\_\+H \tex
 {\em net} & \doxylink{structCNN}{CNN} after \doxylink{cnn_8c_aff764a1877fe34f7084fc0c804e64a5f}{forward\+\_\+pool()}. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -439,8 +421,7 @@ Max-\/pooling stage:\+ compute net-\/\texorpdfstring{$>$}{>}act.\+pool\+\_\+out.
 {\em net} & \doxylink{structCNN}{CNN} after \doxylink{cnn_8c_ab5cfc81d08bd47071237d6d712cce0e4}{forward\+\_\+conv()}. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -462,8 +443,7 @@ Uses the standard two-\/uniform-\/samples formula. Not thread-\/safe due to stat
 \begin{DoxyReturn}{Returns}
 One sample from the standard normal distribution. 
 \end{DoxyReturn}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -487,8 +467,7 @@ Apply Re\+LU element-\/wise:\+ f(x) = max(0, x).
 {\em length} & Number of elements. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -518,8 +497,7 @@ For each weight w, velocity v, gradient g:\+ v = β \texorpdfstring{$\ast$}{*} v
 {\em n} & Number of elements. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -545,8 +523,7 @@ Subtracts the maximum value before exponentiation for numerical stability.
 {\em length} & Number of elements. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

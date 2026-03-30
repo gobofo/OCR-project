@@ -6,16 +6,14 @@ Crossword word-\/search solver:\+ find words in a 2-\/D character grid in all 8 
 
 
 {\ttfamily \+\#include $<$stddef.\+h$>$}\newline
-Include dependency graph for solver.\+h:\+
-\nopagebreak
+Include dependency graph for solver.\+h:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=185pt]{solver_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file:\+
-\nopagebreak
+This graph shows which files directly or indirectly include this file:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -78,8 +76,7 @@ Allocate a \doxylink{structCharGrid}{Char\+Grid} of the given dimensions, filled
 \begin{DoxyReturn}{Returns}
 Heap-\/allocated \doxylink{structCharGrid}{Char\+Grid}, or NULL on failure. Free with \doxylink{solver_8h_ad2ff6ea984bd03b9b62fd372cf4c3a38}{grid\+\_\+free()}. 
 \end{DoxyReturn}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -105,8 +102,7 @@ Fill a \doxylink{structCharGrid}{Char\+Grid} from an array of predicted characte
 {\em count} & Number of elements in {\ttfamily labels} (must equal rows \texorpdfstring{$\ast$}{*} cols). \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -128,8 +124,7 @@ Free a \doxylink{structCharGrid}{Char\+Grid}.
 {\em grid} & Grid to free. No-\/op if NULL. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -164,8 +159,7 @@ File format (first line:\+ dimensions, then one row per line):\+
 \begin{DoxyReturn}{Returns}
 Heap-\/allocated \doxylink{structCharGrid}{Char\+Grid} on success, NULL on error. Free with \doxylink{solver_8h_ad2ff6ea984bd03b9b62fd372cf4c3a38}{grid\+\_\+free()}. 
 \end{DoxyReturn}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -187,8 +181,7 @@ Print a \doxylink{structCharGrid}{Char\+Grid} to stdout (for debugging /\+ verbo
 {\em grid} & Grid to display. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -215,8 +208,7 @@ Directions are numbered 0–7:\+ 0=RIGHT, 1=DOWN\+\_\+\+RIGHT, 2=DOWN, 3=DOWN\+\
 \begin{DoxyReturn}{Returns}
 Constant string (e.\+g. "{}\+RIGHT"{}), or "{}\+UNKNOWN"{} if out of range. 
 \end{DoxyReturn}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -245,16 +237,14 @@ The search is case-\/insensitive; the grid and word are both converted to upperc
 \begin{DoxyReturn}{Returns}
 \doxylink{structWordResult}{Word\+Result} with found=1 and coordinates if found, or found=0 if not present. 
 \end{DoxyReturn}
-Here is the call graph for this function:\+
-\nopagebreak
+Here is the call graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=263pt]{solver_8h_ae7bb6f196b7565fd463fabc118c16d03_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
+Here is the caller graph for this function:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
