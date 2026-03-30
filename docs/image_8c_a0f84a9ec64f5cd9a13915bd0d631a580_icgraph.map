@@ -1,0 +1,26 @@
+<map id="image_alloc" name="image_alloc">
+<area shape="rect" id="Node000001" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="825,57,925,85"/>
+<area shape="rect" id="Node000002" href="$image_8c.html#a28674722e7d5137fadd79c172bc60127" title="Load a PNG file into an Image." alt="" coords="649,57,777,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="807,71,778,74,778,69,812,71"/>
+<area shape="rect" id="Node000008" href="$image_8c.html#a9d344df105e6164de2266f08e2bc3130" title="Resize an Image to the given dimensions (nearest&#45;neighbour)." alt="" coords="659,109,767,137"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="817,90,759,111,758,106,812,91"/>
+<area shape="rect" id="Node000011" href="$image_8c.html#a2f65d152419d4fcd1418da5fc863b421" title="Rotate an Image by angle_deg degrees clockwise." alt="" coords="659,5,767,33"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="812,52,758,36,759,31,817,52"/>
+<area shape="rect" id="Node000003" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="423,8,601,36"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="637,53,571,39,571,34,642,53"/>
+<area shape="rect" id="Node000007" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="133,84,188,112"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="633,78,188,99,188,94,633,72"/>
+<area shape="rect" id="Node000004" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="262,8,374,36"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="405,22,375,24,374,19,410,21"/>
+<area shape="rect" id="Node000005" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="108,8,213,36"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="244,23,214,24,213,19,249,21"/>
+<area shape="rect" id="Node000006" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,8,60,36"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="90,24,61,24,59,19,94,20"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="660,102,647,99,537,39,538,34,650,94,665,103"/>
+<area shape="rect" id="Node000009" href="$solve__main_8c.html#abc07c63e9fbfd2509d909d1536c192ee" title="Run one forward pass on a region of the grayscale image." alt="" coords="452,109,572,137"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="641,123,572,126,572,121,646,123"/>
+<area shape="rect" id="Node000010" href="$solve__main_8c.html#a497f978a5995cb2281d1f11459bd91c2" title="Predict a cell using Test&#45;Time Augmentation (TTA)." alt="" coords="261,109,375,137"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="434,123,376,126,376,121,439,123"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="243,112,188,105,188,99,248,111"/>
+<area shape="poly" id="edge13_Node000011_Node000003" title=" " alt="" coords="641,20,601,23,601,18,646,20"/>
+</map>

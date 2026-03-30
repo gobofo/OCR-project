@@ -13,7 +13,8 @@ Entry point for the OCR + crossword-\/solver binary.
 {\ttfamily \+\#include $<$stdio.\+h$>$}\newline
 {\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \+\#include $<$string.\+h$>$}\newline
-Include dependency graph for solve\+\_\+main.\+c:\+\nopagebreak
+Include dependency graph for solve\+\_\+main.\+c:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -29,6 +30,8 @@ struct \doxymbox{\hyperlink{structSolveArgs}{Solve\+Args}}
 \begin{DoxyCompactItemize}
 \item 
 \+\#define \doxymbox{\hyperlink{solve__main_8c_ada0f7155f9e594701164ffa4cc8dfb5e}{DEFAULT\+\_\+\+MODEL\+\_\+\+DIR}}~"{}models/\+"{}
+\item 
+\+\#define \doxymbox{\hyperlink{solve__main_8c_ade9069c845f61881d96d8cc77455de4e}{TTA\+\_\+\+N\+\_\+\+CROPS}}~5
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -39,8 +42,10 @@ static int \doxymbox{\hyperlink{solve__main_8c_ab3b6bd6bc2e6b88c8592033b2c7b29c5
 \begin{DoxyCompactList}\small\item\em Parse argv into a \doxylink{structSolveArgs}{Solve\+Args} structure. \end{DoxyCompactList}\item 
 static int \doxymbox{\hyperlink{solve__main_8c_ab0afc1d46614af9864f863e2808317d0}{resolve\+\_\+model}} (\doxymbox{\hyperlink{structSolveArgs}{Solve\+Args}} \texorpdfstring{$\ast$}{*}args)
 \begin{DoxyCompactList}\small\item\em Ensure args-\/\texorpdfstring{$>$}{>}model\+\_\+path is filled:\+ auto-\/detect if not specified. \end{DoxyCompactList}\item 
-static int \doxymbox{\hyperlink{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148}{recognise\+\_\+cell}} (const unsigned char \texorpdfstring{$\ast$}{*}full\+\_\+pixels, int img\+\_\+w, int img\+\_\+h, const \doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*}box, \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
-\begin{DoxyCompactList}\small\item\em Crop a cell bounding box from a pixel buffer, resize, and predict. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{solve__main_8c_abc07c63e9fbfd2509d909d1536c192ee}{forward\+\_\+region}} (const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}gray\+\_\+img, int x1, int y1, int x2, int y2, \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, float \texorpdfstring{$\ast$}{*}probs\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Run one forward pass on a region of the grayscale image. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{solve__main_8c_a497f978a5995cb2281d1f11459bd91c2}{recognise\+\_\+cell}} (const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}gray\+\_\+img, const \doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*}box, int cell\+\_\+size, \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
+\begin{DoxyCompactList}\small\item\em Predict a cell using Test-\/\+Time Augmentation (TTA). \end{DoxyCompactList}\item 
 static void \doxymbox{\hyperlink{solve__main_8c_a6258df9f0bf10752ca0b2487e72fdf81}{search\+\_\+words}} (const \doxymbox{\hyperlink{structCharGrid}{Char\+Grid}} \texorpdfstring{$\ast$}{*}grid, char \texorpdfstring{$\ast$}{*}words)
 \begin{DoxyCompactList}\small\item\em Search for all comma-\/separated words in {\ttfamily args-\/\texorpdfstring{$>$}{>}words}. \end{DoxyCompactList}\item 
 int \doxymbox{\hyperlink{solve__main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
@@ -82,11 +87,56 @@ Exit codes:\+ 0 Success. 1 Argument error. 2 Model error (not found /\+ cannot l
 {\footnotesize\ttfamily \label{solve__main_8c_ada0f7155f9e594701164ffa4cc8dfb5e} 
 \+\#define DEFAULT\+\_\+\+MODEL\+\_\+\+DIR~"{}models/\+"{}}
 
+\Hypertarget{solve__main_8c_ade9069c845f61881d96d8cc77455de4e}\index{solve\_main.c@{solve\_main.c}!TTA\_N\_CROPS@{TTA\_N\_CROPS}}
+\index{TTA\_N\_CROPS@{TTA\_N\_CROPS}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{TTA\_N\_CROPS}{TTA\_N\_CROPS}}
+{\footnotesize\ttfamily \label{solve__main_8c_ade9069c845f61881d96d8cc77455de4e} 
+\+\#define TTA\+\_\+\+N\+\_\+\+CROPS~5}
 
+Number of shifted crops averaged for Test-\/\+Time Augmentation. 
 
 \label{doc-func-members}
 \Hypertarget{solve__main_8c_doc-func-members}
 \doxysubsection{Function Documentation}
+\Hypertarget{solve__main_8c_abc07c63e9fbfd2509d909d1536c192ee}\index{solve\_main.c@{solve\_main.c}!forward\_region@{forward\_region}}
+\index{forward\_region@{forward\_region}!solve\_main.c@{solve\_main.c}}
+\doxysubsubsection{\texorpdfstring{forward\_region()}{forward\_region()}}
+{\footnotesize\ttfamily \label{solve__main_8c_abc07c63e9fbfd2509d909d1536c192ee} 
+void forward\+\_\+region (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{gray\+\_\+img}{, }\item[{int}]{x1}{, }\item[{int}]{y1}{, }\item[{int}]{x2}{, }\item[{int}]{y2}{, }\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{probs\+\_\+out}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Run one forward pass on a region of the grayscale image. 
+
+Extracts \+[x1,x2) × \+[y1,y2) from gray\+\_\+img (RGBA, grayscale), binarizes the region locally, resizes to 28×28 and runs \doxylink{cnn_8c_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward()}. The \doxylink{structCNN}{CNN} output probabilities are added into {\ttfamily probs\+\_\+out}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gray\+\_\+img} & Full grayscale image (RGBA). \\
+\hline
+{\em x1} & y1 x2 y2 Region bounds (clamped to image boundaries internally). \\
+\hline
+{\em net} & Trained \doxylink{structCNN}{CNN}. \\
+\hline
+{\em probs\+\_\+out} & Array of CNN\+\_\+\+N\+\_\+\+CLASSES floats — result is {\itshape added} here. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solve__main_8c_abc07c63e9fbfd2509d909d1536c192ee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{solve__main_8c_abc07c63e9fbfd2509d909d1536c192ee_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{solve__main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\index{solve\_main.c@{solve\_main.c}!main@{main}}
 \index{main@{main}!solve\_main.c@{solve\_main.c}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
@@ -131,40 +181,40 @@ Here is the caller graph for this function:\+
 \includegraphics[width=226pt]{solve__main_8c_ab3b6bd6bc2e6b88c8592033b2c7b29c5_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148}\index{solve\_main.c@{solve\_main.c}!recognise\_cell@{recognise\_cell}}
+\Hypertarget{solve__main_8c_a497f978a5995cb2281d1f11459bd91c2}\index{solve\_main.c@{solve\_main.c}!recognise\_cell@{recognise\_cell}}
 \index{recognise\_cell@{recognise\_cell}!solve\_main.c@{solve\_main.c}}
 \doxysubsubsection{\texorpdfstring{recognise\_cell()}{recognise\_cell()}}
-{\footnotesize\ttfamily \label{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148} 
-int recognise\+\_\+cell (\begin{DoxyParamCaption}\item[{const unsigned char \texorpdfstring{$\ast$}{*}}]{full\+\_\+pixels}{, }\item[{int}]{img\+\_\+w}{, }\item[{int}]{img\+\_\+h}{, }\item[{const \doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*}}]{box}{, }\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{solve__main_8c_a497f978a5995cb2281d1f11459bd91c2} 
+int recognise\+\_\+cell (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{gray\+\_\+img}{, }\item[{const \doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*}}]{box}{, }\item[{int}]{cell\+\_\+size}{, }\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Crop a cell bounding box from a pixel buffer, resize, and predict. 
+Predict a cell using Test-\/\+Time Augmentation (TTA). 
 
-Allocates a temporary \doxylink{structImage}{Image} for the cell, runs the full pipeline, then calls \doxylink{cnn_8c_a5128dc1ad09d45983c5b93bd26dc6504}{cnn\+\_\+predict()}.
+Runs TTA\+\_\+\+N\+\_\+\+CROPS forward passes with slightly different crop origins (the original crop + 4 shifts of ±shift pixels in x and y), averages the softmax outputs, and returns the argmax class.
+
+The crop window is grid-\/aware:\+ it is centred on the letter\textquotesingle{}s bounding-\/box centre and sized to {\ttfamily cell\+\_\+size} × {\ttfamily cell\+\_\+size} (the detected grid pitch). This guarantees a consistent white border around the letter regardless of how tight the connected-\/component bounding box is.
 
 
 \begin{DoxyParams}{Parameters}
-{\em full\+\_\+pixels} & Full image pixel buffer (RGBA, row-\/major). \\
+{\em gray\+\_\+img} & Full grayscale image. \\
 \hline
-{\em img\+\_\+w} & Full image width. \\
+{\em box} & Tight bounding box from segmentation. \\
 \hline
-{\em img\+\_\+h} & Full image height. \\
-\hline
-{\em box} & Bounding box of the cell to recognise. \\
+{\em cell\+\_\+size} & Full grid cell side length (pixels). Pass 0 to fall back to the padding-\/fraction heuristic. \\
 \hline
 {\em net} & Trained \doxylink{structCNN}{CNN}. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Predicted class index (0=\textquotesingle{}A\textquotesingle{}…25=\textquotesingle{}Z\textquotesingle{}), or -\/1 on error. 
+Best class index (0=\textquotesingle{}A\textquotesingle{}…25=\textquotesingle{}Z\textquotesingle{}), or -\/1 on error. 
 \end{DoxyReturn}
 Here is the call graph for this function:\+
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148_cgraph}
+\includegraphics[width=350pt]{solve__main_8c_a497f978a5995cb2281d1f11459bd91c2_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function:\+
@@ -172,7 +222,7 @@ Here is the caller graph for this function:\+
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=243pt]{solve__main_8c_a6680539f8c646b0b8c01cf9eb3c49148_icgraph}
+\includegraphics[width=243pt]{solve__main_8c_a497f978a5995cb2281d1f11459bd91c2_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{solve__main_8c_ab0afc1d46614af9864f863e2808317d0}\index{solve\_main.c@{solve\_main.c}!resolve\_model@{resolve\_model}}

@@ -10,7 +10,8 @@
 {\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \+\#include $<$string.\+h$>$}\newline
 {\ttfamily \+\#include $<$stdio.\+h$>$}\newline
-Include dependency graph for cnn.\+c:\+\nopagebreak
+Include dependency graph for cnn.\+c:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -48,7 +49,7 @@ void \doxymbox{\hyperlink{cnn_8c_a361aa06e1ee8de199d32219f0e75aa51}{cnn\+\_\+bac
 \begin{DoxyCompactList}\small\item\em Compute gradients via backpropagation. \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{cnn_8c_a6b9ac925c4c2f18b387e92f84babc7b8}{cnn\+\_\+zero\+\_\+grads}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
 \begin{DoxyCompactList}\small\item\em Zero all gradient accumulators in net-\/\texorpdfstring{$>$}{>}grads. \end{DoxyCompactList}\item 
-static void \doxymbox{\hyperlink{cnn_8c_a3ffa6d0a657a540e817ba092042f84b0}{sgd\+\_\+update}} (float \texorpdfstring{$\ast$}{*}w, float \texorpdfstring{$\ast$}{*}v, const float \texorpdfstring{$\ast$}{*}g, size\+\_\+t n)
+static void \doxymbox{\hyperlink{cnn_8c_a83a80733f82444bf76b86734f92c9d17}{sgd\+\_\+update}} (float \texorpdfstring{$\ast$}{*}w, float \texorpdfstring{$\ast$}{*}v, const float \texorpdfstring{$\ast$}{*}g, size\+\_\+t n, float inv\+\_\+batch)
 \begin{DoxyCompactList}\small\item\em Apply SGD+momentum to one weight array. \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{cnn_8c_abda61d7b8584ba361e8a81f4e858dc50}{cnn\+\_\+update}} (\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
 \begin{DoxyCompactList}\small\item\em Apply one SGD-\/with-\/momentum update step to the weights. \end{DoxyCompactList}\item 
@@ -120,7 +121,8 @@ Here is the call graph for this function:\+
 \includegraphics[width=229pt]{cnn_8c_ad61352e349918920eb7049293eb055fa_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+\nopagebreak
+Here is the caller graph for this function:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -177,7 +179,8 @@ Free all memory associated with a \doxylink{structCNN}{CNN}.
 {\em net} & Pointer returned by \doxylink{cnn_8h_ad61352e349918920eb7049293eb055fa}{cnn\+\_\+create()}. No-\/op if NULL. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+\nopagebreak
+Here is the caller graph for this function:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -242,14 +245,6 @@ Here is the call graph for this function:\+
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{cnn_8c_a5128dc1ad09d45983c5b93bd26dc6504_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{cnn_8c_a5128dc1ad09d45983c5b93bd26dc6504_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{cnn_8c_abda61d7b8584ba361e8a81f4e858dc50}\index{cnn.c@{cnn.c}!cnn\_update@{cnn\_update}}
@@ -500,11 +495,11 @@ Here is the caller graph for this function:\+
 \includegraphics[width=350pt]{cnn_8c_a3eea1fcc46fdb93cd28f49760d187e75_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{cnn_8c_a3ffa6d0a657a540e817ba092042f84b0}\index{cnn.c@{cnn.c}!sgd\_update@{sgd\_update}}
+\Hypertarget{cnn_8c_a83a80733f82444bf76b86734f92c9d17}\index{cnn.c@{cnn.c}!sgd\_update@{sgd\_update}}
 \index{sgd\_update@{sgd\_update}!cnn.c@{cnn.c}}
 \doxysubsubsection{\texorpdfstring{sgd\_update()}{sgd\_update()}}
-{\footnotesize\ttfamily \label{cnn_8c_a3ffa6d0a657a540e817ba092042f84b0} 
-void sgd\+\_\+update (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{w}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{v}{, }\item[{const float \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{cnn_8c_a83a80733f82444bf76b86734f92c9d17} 
+void sgd\+\_\+update (\begin{DoxyParamCaption}\item[{float \texorpdfstring{$\ast$}{*}}]{w}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{v}{, }\item[{const float \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t}]{n}{, }\item[{float}]{inv\+\_\+batch}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -528,7 +523,7 @@ Here is the caller graph for this function:\+
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{cnn_8c_a3ffa6d0a657a540e817ba092042f84b0_icgraph}
+\includegraphics[width=350pt]{cnn_8c_a83a80733f82444bf76b86734f92c9d17_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{cnn_8c_a61bbed6c1803dbf5364fc8575dea1ad1}\index{cnn.c@{cnn.c}!softmax\_inplace@{softmax\_inplace}}

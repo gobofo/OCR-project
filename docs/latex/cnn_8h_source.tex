@@ -13,8 +13,8 @@
 \DoxyCodeLine{00025\ \textcolor{comment}{\ *\ Architecture\ constants}}
 \DoxyCodeLine{00026\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ CNN\_IMG\_H\ \ \ 28}}
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ CNN\_IMG\_W\ \ \ 28}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ CNN\_IMG\_H\ \ \ 56}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ CNN\_IMG\_W\ \ \ 56}}
 \DoxyCodeLine{00031\ }
 \DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ CNN\_N\_FILTERS\ \ \ 16}}
 \DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ CNN\_KERNEL\_H\ \ \ \ \ 3}}
@@ -23,8 +23,8 @@
 \DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ CNN\_CONV\_H\ \ (CNN\_IMG\_H\ -\/\ CNN\_KERNEL\_H\ +\ 1)\ \ \ }\textcolor{comment}{/*\ 26\ */}\textcolor{preprocessor}{}}
 \DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ CNN\_CONV\_W\ \ (CNN\_IMG\_W\ -\/\ CNN\_KERNEL\_W\ +\ 1)\ \ \ }\textcolor{comment}{/*\ 26\ */}\textcolor{preprocessor}{}}
 \DoxyCodeLine{00040\ }
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ CNN\_POOL\_H\ \ 2}}
-\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ CNN\_POOL\_W\ \ 2}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ CNN\_POOL\_H\ \ 4}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ CNN\_POOL\_W\ \ 4}}
 \DoxyCodeLine{00044\ }
 \DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ CNN\_POOL\_OUT\_H\ \ (CNN\_CONV\_H\ /\ CNN\_POOL\_H)\ \ \ }\textcolor{comment}{/*\ 13\ */}\textcolor{preprocessor}{}}
 \DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ CNN\_POOL\_OUT\_W\ \ (CNN\_CONV\_W\ /\ CNN\_POOL\_W)\ \ \ }\textcolor{comment}{/*\ 13\ */}\textcolor{preprocessor}{}}
@@ -80,32 +80,33 @@
 \DoxyCodeLine{00132\ \}\ \doxymbox{\hyperlink{structCNNActivations}{CNNActivations}};}
 \DoxyCodeLine{00133\ }
 \DoxyCodeLine{00137\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00138\ \ \ \ \ \doxymbox{\hyperlink{structCNNWeights}{CNNWeights}}\ \ \doxymbox{\hyperlink{structCNN_a5ed8686d38b2dafb8912c5f817b10278}{weights}};\ \ \ }
-\DoxyCodeLine{00139\ \ \ \ \ \doxymbox{\hyperlink{structCNNWeights}{CNNWeights}}\ \ \doxymbox{\hyperlink{structCNN_ab2e73669a995d8660f02167881ed65db}{grads}};\ \ \ \ \ }
-\DoxyCodeLine{00140\ \ \ \ \ \doxymbox{\hyperlink{structCNNWeights}{CNNWeights}}\ \ \doxymbox{\hyperlink{structCNN_a6ed93f5166f0bcfa2ac4e1a0e525a354}{velocity}};\ \ }
-\DoxyCodeLine{00141\ \ \ \ \ \doxymbox{\hyperlink{structCNNActivations}{CNNActivations}}\ \doxymbox{\hyperlink{structCNN_a4368f9961c876136f2f90392be455459}{act}};\ \ \ \ }
-\DoxyCodeLine{00142\ \}\ \doxymbox{\hyperlink{structCNN}{CNN}};}
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00145\ \textcolor{comment}{\ *\ Public\ API}}
-\DoxyCodeLine{00146\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00157\ \doxymbox{\hyperlink{structCNN}{CNN}}\ *\doxymbox{\hyperlink{cnn_8h_ad61352e349918920eb7049293eb055fa}{cnn\_create}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00158\ }
-\DoxyCodeLine{00164\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be}{cnn\_free}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net);}
-\DoxyCodeLine{00165\ }
-\DoxyCodeLine{00175\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\_forward}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *image);}
-\DoxyCodeLine{00176\ }
-\DoxyCodeLine{00187\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_a361aa06e1ee8de199d32219f0e75aa51}{cnn\_backward}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keywordtype}{int}\ label);}
-\DoxyCodeLine{00188\ }
-\DoxyCodeLine{00198\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50}{cnn\_update}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net);}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00205\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_a6b9ac925c4c2f18b387e92f84babc7b8}{cnn\_zero\_grads}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net);}
-\DoxyCodeLine{00206\ }
-\DoxyCodeLine{00216\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504}{cnn\_predict}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *image);}
-\DoxyCodeLine{00217\ }
-\DoxyCodeLine{00227\ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{cnn_8h_a77821bf85cd4325cb90a473548d8a920}{cnn\_loss}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keywordtype}{int}\ label);}
-\DoxyCodeLine{00228\ }
-\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CNN\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00138\ \ \ \ \ \doxymbox{\hyperlink{structCNNWeights}{CNNWeights}}\ \ \doxymbox{\hyperlink{structCNN_a5ed8686d38b2dafb8912c5f817b10278}{weights}};\ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \doxymbox{\hyperlink{structCNNWeights}{CNNWeights}}\ \ \doxymbox{\hyperlink{structCNN_ab2e73669a995d8660f02167881ed65db}{grads}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \doxymbox{\hyperlink{structCNNWeights}{CNNWeights}}\ \ \doxymbox{\hyperlink{structCNN_a6ed93f5166f0bcfa2ac4e1a0e525a354}{velocity}};\ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \doxymbox{\hyperlink{structCNNActivations}{CNNActivations}}\ \doxymbox{\hyperlink{structCNN_a4368f9961c876136f2f90392be455459}{act}};\ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structCNN_ae093c34a0103a0876457f816907039de}{batch\_count}};\ }
+\DoxyCodeLine{00143\ \}\ \doxymbox{\hyperlink{structCNN}{CNN}};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ *\ Public\ API}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ *\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00158\ \doxymbox{\hyperlink{structCNN}{CNN}}\ *\doxymbox{\hyperlink{cnn_8h_ad61352e349918920eb7049293eb055fa}{cnn\_create}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00165\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_ad0b13d3a238166cf78825f43df5ac1be}{cnn\_free}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net);}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\_forward}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *image);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00188\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_a361aa06e1ee8de199d32219f0e75aa51}{cnn\_backward}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keywordtype}{int}\ label);}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00199\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50}{cnn\_update}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00206\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{cnn_8h_a6b9ac925c4c2f18b387e92f84babc7b8}{cnn\_zero\_grads}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net);}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00217\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504}{cnn\_predict}}(\doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ *image);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00228\ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{cnn_8h_a77821bf85cd4325cb90a473548d8a920}{cnn\_loss}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structCNN}{CNN}}\ *net,\ \textcolor{keywordtype}{int}\ label);}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CNN\_H\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

@@ -6,14 +6,16 @@ Convolutional Neural Network for A–Z character recognition.
 
 
 {\ttfamily \+\#include $<$stddef.\+h$>$}\newline
-Include dependency graph for cnn.\+h:\+\nopagebreak
+Include dependency graph for cnn.\+h:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=160pt]{cnn_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file:\+\nopagebreak
+This graph shows which files directly or indirectly include this file:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,9 +34,9 @@ struct \doxymbox{\hyperlink{structCNN}{CNN}}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\+\#define \doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}}~28
+\+\#define \doxymbox{\hyperlink{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}{CNN\+\_\+\+IMG\+\_\+H}}~56
 \item 
-\+\#define \doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}}~28
+\+\#define \doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}}~56
 \item 
 \+\#define \doxymbox{\hyperlink{cnn_8h_aef1f52124bb88f7d0a016fae7b8ce732}{CNN\+\_\+\+N\+\_\+\+FILTERS}}~16
 \item 
@@ -46,9 +48,9 @@ struct \doxymbox{\hyperlink{structCNN}{CNN}}
 \item 
 \+\#define \doxymbox{\hyperlink{cnn_8h_af515392cca7f15414fa7d0135341c5a0}{CNN\+\_\+\+CONV\+\_\+W}}~(\doxymbox{\hyperlink{cnn_8h_a61715312c5f1056571a8be4d28773754}{CNN\+\_\+\+IMG\+\_\+W}} -\/ \doxymbox{\hyperlink{cnn_8h_a3cfba4b17a3484edca8821c4001efc76}{CNN\+\_\+\+KERNEL\+\_\+W}} + 1)   /\+\texorpdfstring{$\ast$}{*} 26 \texorpdfstring{$\ast$}{*}/\+
 \item 
-\+\#define \doxymbox{\hyperlink{cnn_8h_a106b6060d5bb01886f146b81ebb4e822}{CNN\+\_\+\+POOL\+\_\+H}}~2
+\+\#define \doxymbox{\hyperlink{cnn_8h_a106b6060d5bb01886f146b81ebb4e822}{CNN\+\_\+\+POOL\+\_\+H}}~4
 \item 
-\+\#define \doxymbox{\hyperlink{cnn_8h_a63ed2572f3e837b3871429d7d8fcfb34}{CNN\+\_\+\+POOL\+\_\+W}}~2
+\+\#define \doxymbox{\hyperlink{cnn_8h_a63ed2572f3e837b3871429d7d8fcfb34}{CNN\+\_\+\+POOL\+\_\+W}}~4
 \item 
 \+\#define \doxymbox{\hyperlink{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}{CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H}}~(\doxymbox{\hyperlink{cnn_8h_ae09fcfd11a99599048be612b2493e968}{CNN\+\_\+\+CONV\+\_\+H}} /\+ \doxymbox{\hyperlink{cnn_8h_a106b6060d5bb01886f146b81ebb4e822}{CNN\+\_\+\+POOL\+\_\+H}})   /\+\texorpdfstring{$\ast$}{*} 13 \texorpdfstring{$\ast$}{*}/\+
 \item 
@@ -131,13 +133,13 @@ Hidden dense layer size. \Hypertarget{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9}\
 \index{CNN\_IMG\_H@{CNN\_IMG\_H}!cnn.h@{cnn.h}}
 \doxysubsubsection{\texorpdfstring{CNN\_IMG\_H}{CNN\_IMG\_H}}
 {\footnotesize\ttfamily \label{cnn_8h_a6289e660cf1b1066d3bdb77d97316cf9} 
-\+\#define CNN\+\_\+\+IMG\+\_\+H~28}
+\+\#define CNN\+\_\+\+IMG\+\_\+H~56}
 
 Input image height and width (pixels). \Hypertarget{cnn_8h_a61715312c5f1056571a8be4d28773754}\index{cnn.h@{cnn.h}!CNN\_IMG\_W@{CNN\_IMG\_W}}
 \index{CNN\_IMG\_W@{CNN\_IMG\_W}!cnn.h@{cnn.h}}
 \doxysubsubsection{\texorpdfstring{CNN\_IMG\_W}{CNN\_IMG\_W}}
 {\footnotesize\ttfamily \label{cnn_8h_a61715312c5f1056571a8be4d28773754} 
-\+\#define CNN\+\_\+\+IMG\+\_\+W~28}
+\+\#define CNN\+\_\+\+IMG\+\_\+W~56}
 
 \Hypertarget{cnn_8h_adb097e298ba6b84fb4cc59ac08641c31}\index{cnn.h@{cnn.h}!CNN\_KERNEL\_H@{CNN\_KERNEL\_H}}
 \index{CNN\_KERNEL\_H@{CNN\_KERNEL\_H}!cnn.h@{cnn.h}}
@@ -179,15 +181,15 @@ Convolution:\+ number of filters and kernel size. \Hypertarget{cnn_8h_a106b6060d
 \index{CNN\_POOL\_H@{CNN\_POOL\_H}!cnn.h@{cnn.h}}
 \doxysubsubsection{\texorpdfstring{CNN\_POOL\_H}{CNN\_POOL\_H}}
 {\footnotesize\ttfamily \label{cnn_8h_a106b6060d5bb01886f146b81ebb4e822} 
-\+\#define CNN\+\_\+\+POOL\+\_\+H~2}
+\+\#define CNN\+\_\+\+POOL\+\_\+H~4}
 
-Max-\/pooling window and stride. \Hypertarget{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}\index{cnn.h@{cnn.h}!CNN\_POOL\_OUT\_H@{CNN\_POOL\_OUT\_H}}
+Max-\/pooling window and stride (4×4 keeps flat size at 2704 with 56×56 input). \Hypertarget{cnn_8h_a091cc69cd46eef1600559c977b48fbd7}\index{cnn.h@{cnn.h}!CNN\_POOL\_OUT\_H@{CNN\_POOL\_OUT\_H}}
 \index{CNN\_POOL\_OUT\_H@{CNN\_POOL\_OUT\_H}!cnn.h@{cnn.h}}
 \doxysubsubsection{\texorpdfstring{CNN\_POOL\_OUT\_H}{CNN\_POOL\_OUT\_H}}
 {\footnotesize\ttfamily \label{cnn_8h_a091cc69cd46eef1600559c977b48fbd7} 
 \+\#define CNN\+\_\+\+POOL\+\_\+\+OUT\+\_\+H~(\doxymbox{\hyperlink{cnn_8h_ae09fcfd11a99599048be612b2493e968}{CNN\+\_\+\+CONV\+\_\+H}} /\+ \doxymbox{\hyperlink{cnn_8h_a106b6060d5bb01886f146b81ebb4e822}{CNN\+\_\+\+POOL\+\_\+H}})   /\+\texorpdfstring{$\ast$}{*} 13 \texorpdfstring{$\ast$}{*}/\+}
 
-Derived pool output size. \Hypertarget{cnn_8h_a3b7aa9b6b805919938567139ff144f81}\index{cnn.h@{cnn.h}!CNN\_POOL\_OUT\_W@{CNN\_POOL\_OUT\_W}}
+Derived pool output size:\+ floor(54/\+4) = 13. \Hypertarget{cnn_8h_a3b7aa9b6b805919938567139ff144f81}\index{cnn.h@{cnn.h}!CNN\_POOL\_OUT\_W@{CNN\_POOL\_OUT\_W}}
 \index{CNN\_POOL\_OUT\_W@{CNN\_POOL\_OUT\_W}!cnn.h@{cnn.h}}
 \doxysubsubsection{\texorpdfstring{CNN\_POOL\_OUT\_W}{CNN\_POOL\_OUT\_W}}
 {\footnotesize\ttfamily \label{cnn_8h_a3b7aa9b6b805919938567139ff144f81} 
@@ -197,7 +199,7 @@ Derived pool output size. \Hypertarget{cnn_8h_a3b7aa9b6b805919938567139ff144f81}
 \index{CNN\_POOL\_W@{CNN\_POOL\_W}!cnn.h@{cnn.h}}
 \doxysubsubsection{\texorpdfstring{CNN\_POOL\_W}{CNN\_POOL\_W}}
 {\footnotesize\ttfamily \label{cnn_8h_a63ed2572f3e837b3871429d7d8fcfb34} 
-\+\#define CNN\+\_\+\+POOL\+\_\+W~2}
+\+\#define CNN\+\_\+\+POOL\+\_\+W~4}
 
 
 
@@ -260,7 +262,8 @@ Here is the call graph for this function:\+
 \includegraphics[width=229pt]{cnn_8h_ad61352e349918920eb7049293eb055fa_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function:\+\nopagebreak
+Here is the caller graph for this function:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -317,7 +320,8 @@ Free all memory associated with a \doxylink{structCNN}{CNN}.
 {\em net} & Pointer returned by \doxylink{cnn_8h_ad61352e349918920eb7049293eb055fa}{cnn\+\_\+create()}. No-\/op if NULL. \\
 \hline
 \end{DoxyParams}
-Here is the caller graph for this function:\+\nopagebreak
+Here is the caller graph for this function:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -382,14 +386,6 @@ Here is the call graph for this function:\+
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function:\+
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{cnn_8h_a5128dc1ad09d45983c5b93bd26dc6504_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{cnn_8h_abda61d7b8584ba361e8a81f4e858dc50}\index{cnn.h@{cnn.h}!cnn\_update@{cnn\_update}}

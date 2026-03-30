@@ -1,0 +1,35 @@
+<map id="train_loop" name="train_loop">
+<area shape="rect" id="Node000001" title="Run the training loop with early stopping." alt="" coords="5,133,92,161"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#a361aa06e1ee8de199d32219f0e75aa51" title="Compute gradients via backpropagation." alt="" coords="143,5,258,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,132,90,89,113,65,138,44,149,39,145,43,141,48,117,69,94,93,62,134"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#a97f29ff1777a0eaec225d9efd2ebfc2d" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="320,147,421,174"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="91,143,171,142,261,145,307,151,301,152,261,150,170,147,93,148"/>
+<area shape="rect" id="Node000011" href="$cnn_8c.html#a77821bf85cd4325cb90a473548d8a920" title="Compute cross&#45;entropy loss for the current forward&#45;pass output." alt="" coords="332,224,409,252"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="58,159,90,206,113,230,141,247,185,260,231,263,276,259,314,254,319,254,277,264,231,268,184,266,139,252,110,234,86,209,56,164"/>
+<area shape="rect" id="Node000012" href="$cnn_8c.html#abda61d7b8584ba361e8a81f4e858dc50" title="Apply one SGD&#45;with&#45;momentum update step to the weights." alt="" coords="152,57,248,85"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="77,131,158,90,156,95,80,135"/>
+<area shape="rect" id="Node000015" href="$dataset_8c.html#a8f29f81c08084278983c39e57931ae3c" title="Shuffle the samples in a Dataset in&#45;place (Fisher&#45;Yates)." alt="" coords="140,211,261,238"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="74,159,141,195,154,203,149,204,138,200,74,164"/>
+<area shape="rect" id="Node000016" href="$train__main_8c.html#a5295741721f4fdb51966332285b7f667" title="Compute loss and accuracy on a slice of samples (no gradient update)." alt="" coords="159,159,242,186"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="92,152,146,162,141,165,93,157"/>
+<area shape="rect" id="Node000004" href="$cnn_8c.html#ab5cfc81d08bd47071237d6d712cce0e4" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="487,43,597,70"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="388,144,428,113,478,81,488,78,493,76,481,85,431,118,390,148"/>
+<area shape="rect" id="Node000006" href="$cnn_8c.html#a965e7546544716df9f94516eab66a69b" title="Dense layer 1 (2704 → 128) followed by ReLU." alt="" coords="479,95,605,122"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="418,143,482,126,477,128,419,149"/>
+<area shape="rect" id="Node000007" href="$cnn_8c.html#a4733c05bd6ecfdd8aea86561031a0138" title="Dense layer 2 (128 → 26) followed by Softmax." alt="" coords="479,147,605,174"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="421,158,467,160,462,161,422,163"/>
+<area shape="rect" id="Node000009" href="$cnn_8c.html#a78dfd01dac25db70517ca90e165d9656" title="Flatten stage: copy pool_out into act&#45;&gt;flat, row&#45;major." alt="" coords="482,199,602,226"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="419,172,482,194,477,194,418,178"/>
+<area shape="rect" id="Node000010" href="$cnn_8c.html#aff764a1877fe34f7084fc0c804e64a5f" title="Max&#45;pooling stage: compute net&#45;&gt;act.pool_out." alt="" coords="489,251,595,278"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="390,172,431,203,481,236,493,244,488,243,478,240,428,208,388,177"/>
+<area shape="rect" id="Node000005" href="$cnn_8c.html#a3eea1fcc46fdb93cd28f49760d187e75" title="Apply ReLU element&#45;wise: f(x) = max(0, x)." alt="" coords="667,43,767,70"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="596,54,653,56,648,57,597,59"/>
+<area shape="rect" id="Node000008" href="$cnn_8c.html#a61bbed6c1803dbf5364fc8575dea1ad1" title="Apply softmax in&#45;place over an array of length n." alt="" coords="653,147,781,174"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="605,158,640,160,635,161,605,163"/>
+<area shape="rect" id="Node000013" href="$cnn_8c.html#a6b9ac925c4c2f18b387e92f84babc7b8" title="Zero all gradient accumulators in net&#45;&gt;grads." alt="" coords="309,71,431,98"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="249,72,296,78,291,79,250,78"/>
+<area shape="rect" id="Node000014" href="$cnn_8c.html#a83a80733f82444bf76b86734f92c9d17" title="Apply SGD+momentum to one weight array." alt="" coords="322,19,418,46"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="248,58,309,45,305,48,250,63"/>
+<area shape="poly" id="edge16_Node000016_Node000003" title=" " alt="" coords="242,167,307,164,302,166,243,172"/>
+<area shape="poly" id="edge17_Node000016_Node000011" title=" " alt="" coords="239,184,320,218,315,218,238,190"/>
+</map>

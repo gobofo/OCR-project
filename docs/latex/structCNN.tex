@@ -11,7 +11,8 @@ Full \doxylink{structCNN}{CNN} state:\+ weights, gradients, momentum buffers, ac
 
 
 
-Collaboration diagram for CNN:\+\nopagebreak
+Collaboration diagram for CNN:\+
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,6 +29,8 @@ Collaboration diagram for CNN:\+\nopagebreak
 \doxymbox{\hyperlink{structCNNWeights}{CNNWeights}} \doxymbox{\hyperlink{structCNN_a6ed93f5166f0bcfa2ac4e1a0e525a354}{velocity}}
 \item 
 \doxymbox{\hyperlink{structCNNActivations}{CNNActivations}} \doxymbox{\hyperlink{structCNN_a4368f9961c876136f2f90392be455459}{act}}
+\item 
+int \doxymbox{\hyperlink{structCNN_ae093c34a0103a0876457f816907039de}{batch\+\_\+count}}
 \end{DoxyCompactItemize}
 
 
@@ -43,7 +46,13 @@ Full \doxylink{structCNN}{CNN} state:\+ weights, gradients, momentum buffers, ac
 {\footnotesize\ttfamily \label{structCNN_a4368f9961c876136f2f90392be455459} 
 \doxymbox{\hyperlink{structCNNActivations}{CNNActivations}} CNN::\+act}
 
-Forward-\/pass activations. \Hypertarget{structCNN_ab2e73669a995d8660f02167881ed65db}\index{CNN@{CNN}!grads@{grads}}
+Forward-\/pass activations. \Hypertarget{structCNN_ae093c34a0103a0876457f816907039de}\index{CNN@{CNN}!batch\_count@{batch\_count}}
+\index{batch\_count@{batch\_count}!CNN@{CNN}}
+\doxysubsubsection{\texorpdfstring{batch\_count}{batch\_count}}
+{\footnotesize\ttfamily \label{structCNN_ae093c34a0103a0876457f816907039de} 
+int CNN::\+batch\+\_\+count}
+
+Number of backward() calls since last update(). \Hypertarget{structCNN_ab2e73669a995d8660f02167881ed65db}\index{CNN@{CNN}!grads@{grads}}
 \index{grads@{grads}!CNN@{CNN}}
 \doxysubsubsection{\texorpdfstring{grads}{grads}}
 {\footnotesize\ttfamily \label{structCNN_ab2e73669a995d8660f02167881ed65db} 
