@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loaderargs_0',['LoaderArgs',['../structLoaderArgs.html',1,'']]]
+  ['image_0',['Image',['../structImage.html',1,'']]]
 ];

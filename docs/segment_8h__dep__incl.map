@@ -1,7 +1,9 @@
 <map id="src/segment/segment.h" name="src/segment/segment.h">
-<area shape="rect" id="Node000001" title="Letter segmentation: detect crossword grid and extract letter cells." alt="" coords="53,5,228,33"/>
-<area shape="rect" id="Node000002" href="$solve__main_8c.html" title="Entry point for the OCR + crossword&#45;solver binary." alt="" coords="5,81,113,109"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,43,75,83,72,78,112,44"/>
-<area shape="rect" id="Node000003" href="$segment_8c.html" title="Letter segmentation via connected&#45;component analysis and grid detection." alt="" coords="136,81,310,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,41,211,81,206,81,165,46"/>
+<area shape="rect" id="Node000001" title="Letter segmentation: detect crossword grid and extract letter cells." alt="" coords="88,5,263,33"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html" title="SDL2 graphical interface for the OCR crossword solver." alt="" coords="5,81,98,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,42,75,83,72,78,138,40"/>
+<area shape="rect" id="Node000003" href="$solve__main_8c.html" title="Entry point for the OCR + crossword&#45;solver binary." alt="" coords="122,81,229,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,47,178,82,173,79,174,51"/>
+<area shape="rect" id="Node000004" href="$segment_8c.html" title="Letter segmentation via connected&#45;component analysis and grid detection." alt="" coords="253,81,426,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="219,37,313,80,308,81,218,42"/>
 </map>

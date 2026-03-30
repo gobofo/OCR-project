@@ -1,0 +1,29 @@
+<map id="forward_region" name="forward_region">
+<area shape="rect" id="Node000001" title="Run one CNN forward pass on a rectangular sub&#45;region of a grayscale image." alt="" coords="5,213,125,241"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#a97f29ff1777a0eaec225d9efd2ebfc2d" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="183,109,284,137"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,211,122,180,171,148,186,142,181,146,174,152,125,185,85,215"/>
+<area shape="rect" id="Node000010" href="$image_8c.html#a8e5e4e11e7daf8b8d973824c6476c8d2" title="Binarise a grayscale Image in&#45;place using a global threshold." alt="" coords="173,161,294,189"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="111,210,174,192,170,196,114,215"/>
+<area shape="rect" id="Node000011" href="$image_8c.html#a712dc87c6c9fed0f3bf082bce38b40fb" title="Free an Image allocated by image_load_png()." alt="" coords="186,213,281,241"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="125,225,173,226,168,228,126,230"/>
+<area shape="rect" id="Node000012" href="$image_8c.html#a9d344df105e6164de2266f08e2bc3130" title="Resize an Image to the given dimensions (nearest&#45;neighbour)." alt="" coords="179,265,288,293"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="113,239,174,259,169,261,112,244"/>
+<area shape="rect" id="Node000014" href="$image_8c.html#aea22486042d084f879e40219b1bc8967" title="Convert an Image to a flat normalised float array." alt="" coords="174,317,292,345"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="84,239,125,270,174,302,186,311,181,310,171,307,122,274,83,244"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#ab5cfc81d08bd47071237d6d712cce0e4" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="350,5,459,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="250,107,291,76,341,44,355,38,351,41,343,48,294,80,254,111"/>
+<area shape="rect" id="Node000005" href="$cnn_8c.html#a965e7546544716df9f94516eab66a69b" title="Dense layer 1 (2704 → 128) followed by ReLU." alt="" coords="342,57,467,85"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="280,106,345,89,340,91,283,111"/>
+<area shape="rect" id="Node000006" href="$cnn_8c.html#a4733c05bd6ecfdd8aea86561031a0138" title="Dense layer 2 (128 → 26) followed by Softmax." alt="" coords="342,109,467,137"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="284,121,329,122,324,124,285,126"/>
+<area shape="rect" id="Node000008" href="$cnn_8c.html#a78dfd01dac25db70517ca90e165d9656" title="Flatten stage: copy pool_out into act&#45;&gt;flat, row&#45;major." alt="" coords="344,161,465,189"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="282,135,345,156,340,157,282,140"/>
+<area shape="rect" id="Node000009" href="$cnn_8c.html#aff764a1877fe34f7084fc0c804e64a5f" title="Max&#45;pooling stage: compute net&#45;&gt;act.pool_out." alt="" coords="352,213,458,241"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="272,135,296,148,311,161,320,174,329,186,344,198,353,206,348,206,340,203,325,189,316,177,307,165,292,152,272,140"/>
+<area shape="rect" id="Node000004" href="$cnn_8c.html#a3eea1fcc46fdb93cd28f49760d187e75" title="Apply ReLU element&#45;wise: f(x) = max(0, x)." alt="" coords="529,5,630,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="459,17,516,18,511,20,460,22"/>
+<area shape="rect" id="Node000007" href="$cnn_8c.html#a61bbed6c1803dbf5364fc8575dea1ad1" title="Apply softmax in&#45;place over an array of length n." alt="" coords="515,109,644,137"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="467,121,503,123,497,124,468,126"/>
+<area shape="rect" id="Node000013" href="$image_8c.html#a0f84a9ec64f5cd9a13915bd0d631a580" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="354,265,455,293"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="288,277,342,279,337,280,288,282"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="gui_load_image" name="gui_load_image">
+<area shape="rect" id="Node000001" title="Load a PNG image and create the display texture." alt="" coords="5,56,130,84"/>
+<area shape="rect" id="Node000002" href="$image_8c.html#a712dc87c6c9fed0f3bf082bce38b40fb" title="Free an Image allocated by image_load_png()." alt="" coords="364,5,460,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,53,177,42,267,29,351,23,346,25,268,35,178,47,126,58"/>
+<area shape="rect" id="Node000003" href="$image_8c.html#a28674722e7d5137fadd79c172bc60127" title="Load a PNG file into an Image." alt="" coords="182,56,310,84"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,67,169,69,163,71,131,72"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#a2830b237533c7fb39c4edcdbba12e582" title="Recompute the image display rectangle after a load or window change." alt="" coords="178,108,314,136"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="118,82,184,102,179,104,117,87"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="293,53,347,39,352,37,294,58"/>
+<area shape="rect" id="Node000004" href="$image_8c.html#a0f84a9ec64f5cd9a13915bd0d631a580" title="Allocate an Image of given dimensions with a zeroed pixel buffer." alt="" coords="362,57,462,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="310,68,349,70,344,71,311,73"/>
+</map>

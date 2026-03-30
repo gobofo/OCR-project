@@ -1,0 +1,15 @@
+<map id="GuiState" name="GuiState">
+<area shape="rect" id="Node000001" title="Complete application state passed to every GUI function." alt="" coords="152,251,230,279"/>
+<area shape="rect" id="Node000002" href="$structImage.html" title="Heap&#45;allocated RGBA pixel buffer (row&#45;major, 4 bytes per pixel)." alt="" coords="15,151,77,178"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,190,68,210,83,225,117,245,155,258,149,258,114,250,79,229,64,213,55,195"/>
+<area shape="rect" id="Node000003" href="$structCNN.html" title="Full CNN state: weights, gradients, momentum buffers, activations." alt="" coords="101,151,151,178"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,189,185,251,180,251,141,193"/>
+<area shape="rect" id="Node000004" href="$structCNNWeights.html" title="Learnable parameters of the CNN." alt="" coords="5,5,108,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="58,46,66,87,81,125,106,149,100,151,77,128,61,88,57,52"/>
+<area shape="rect" id="Node000005" href="$structCNNActivations.html" title="Intermediate activations produced by the forward pass." alt="" coords="132,5,256,33"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="183,46,134,151,130,149,179,49"/>
+<area shape="rect" id="Node000006" href="$structBoundingBox.html" title="Axis&#45;aligned bounding box of one letter cell." alt="" coords="175,151,282,178"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="221,192,198,252,194,249,216,194"/>
+<area shape="rect" id="Node000007" href="$structWordResult.html" title="Result of a single word search." alt="" coords="306,151,402,178"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="324,186,259,230,217,253,215,248,256,225,319,188"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="active_buf" name="active_buf">
+<area shape="rect" id="Node000001" title="Return a pointer to the text buffer of the currently focused field." alt="" coords="294,32,383,60"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="112,5,242,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="276,36,242,33,242,27,281,36"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a1dad3e7538889c0c3362544e9a3b4409" title="Append SDL_TEXTINPUT characters to the focused field&#39;s buffer." alt="" coords="108,57,246,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="281,55,247,63,246,58,276,56"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,36,61,43,59,38,99,32"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="90,57,60,53,60,48,95,55"/>
+</map>

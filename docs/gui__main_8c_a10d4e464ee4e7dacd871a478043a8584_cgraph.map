@@ -1,0 +1,11 @@
+<map id="draw_word_highlight" name="draw_word_highlight">
+<area shape="rect" id="Node000001" title="Overlay a semi&#45;transparent red rectangle on each cell of a found word." alt="" coords="5,84,162,112"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a49fd9cea7514012a2d7aa3b185d79567" title="Draw a solid filled rectangle." alt="" coords="224,5,294,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,81,214,38,211,42,118,86"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a7daaad1f1d10a2dd579e5e92896bbcc0" title="Draw a 1&#45;pixel outline rectangle (no fill)." alt="" coords="210,57,308,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,83,197,80,192,82,163,88"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a96180b7d003d7ea611c7139a50a4e88d" title="Convert an image&#45;space X coordinate to a screen X coordinate." alt="" coords="231,109,287,137"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="162,107,218,116,213,118,162,112"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#ab8439489926a15923d3e62a25cc25f40" title="Convert an image&#45;space Y coordinate to a screen Y coordinate." alt="" coords="231,161,287,189"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="118,110,219,155,214,158,116,115"/>
+</map>

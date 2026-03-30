@@ -6,6 +6,7 @@ var annotated_dup =
     [ "CNNActivations", "structCNNActivations.html", "structCNNActivations" ],
     [ "CNNWeights", "structCNNWeights.html", "structCNNWeights" ],
     [ "Dataset", "structDataset.html", "structDataset" ],
+    [ "GuiState", "structGuiState.html", "structGuiState" ],
     [ "Image", "structImage.html", "structImage" ],
     [ "LoaderArgs", "structLoaderArgs.html", "structLoaderArgs" ],
     [ "PreprocessParams", "structPreprocessParams.html", "structPreprocessParams" ],

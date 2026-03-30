@@ -1,0 +1,10 @@
+<map id="gui_load_model" name="gui_load_model">
+<area shape="rect" id="Node000001" title="Load CNN weights from a binary model file." alt="" coords="286,32,410,60"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="122,5,224,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="268,34,225,30,225,24,273,34"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="108,57,238,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="273,57,239,64,238,59,268,57"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,34,61,43,59,38,108,30"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="90,58,60,53,60,48,95,55"/>
+</map>

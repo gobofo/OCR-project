@@ -1,20 +1,33 @@
 <map id="forward_conv" name="forward_conv">
-<area shape="rect" id="Node000001" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="587,83,696,110"/>
-<area shape="rect" id="Node000002" href="$cnn_8c.html#a97f29ff1777a0eaec225d9efd2ebfc2d" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="437,83,539,110"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="568,97,539,99,539,94,574,96"/>
-<area shape="rect" id="Node000003" href="$cnn_8c.html#a5128dc1ad09d45983c5b93bd26dc6504" title="Predict the most likely class for a single image." alt="" coords="282,5,378,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="444,75,388,48,363,36,363,31,391,43,449,75"/>
-<area shape="rect" id="Node000004" href="$train__main_8c.html#a5295741721f4fdb51966332285b7f667" title="Compute loss and accuracy on a slice of samples (no gradient update)." alt="" coords="288,57,371,85"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="420,86,371,80,371,75,425,86"/>
-<area shape="rect" id="Node000005" href="$train__main_8c.html#a8f04a4925d406dfc7c833e46cb46f03d" title="Run the training loop with early stopping." alt="" coords="122,83,208,110"/>
-<area shape="poly" id="edge9_Node000002_Node000005" title=" " alt="" coords="420,98,209,99,208,94,424,95"/>
-<area shape="rect" id="Node000007" href="$solve__main_8c.html#abc07c63e9fbfd2509d909d1536c192ee" title="Run one forward pass on a region of the grayscale image." alt="" coords="270,159,389,186"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="446,117,361,161,360,156,441,118"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="271,81,209,92,208,87,276,79"/>
-<area shape="rect" id="Node000006" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,83,60,110"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="104,98,61,99,59,94,108,95"/>
-<area shape="rect" id="Node000008" href="$solve__main_8c.html#a497f978a5995cb2281d1f11459bd91c2" title="Predict a cell using Test&#45;Time Augmentation (TTA)." alt="" coords="108,159,222,186"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="252,173,223,175,222,170,257,172"/>
-<area shape="rect" id="Node000009" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,159,60,186"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="89,173,60,175,60,170,94,172"/>
+<area shape="rect" id="Node000001" title="Convolution stage: compute net&#45;&gt;act.conv_out." alt="" coords="909,108,1019,136"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#a97f29ff1777a0eaec225d9efd2ebfc2d" title="Run a full forward pass and populate net&#45;&gt;act." alt="" coords="760,108,861,136"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="891,122,862,124,861,119,896,122"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#a5128dc1ad09d45983c5b93bd26dc6504" title="Predict the most likely class for a single image." alt="" coords="604,5,700,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="779,97,748,74,711,48,689,36,689,31,713,44,751,69,785,98"/>
+<area shape="rect" id="Node000004" href="$train__main_8c.html#a5295741721f4fdb51966332285b7f667" title="Compute loss and accuracy on a slice of samples (no gradient update)." alt="" coords="611,57,694,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="748,103,693,87,694,82,754,103"/>
+<area shape="rect" id="Node000005" href="$train__main_8c.html#a8f04a4925d406dfc7c833e46cb46f03d" title="Run the training loop with early stopping." alt="" coords="444,83,531,110"/>
+<area shape="poly" id="edge16_Node000002_Node000005" title=" " alt="" coords="742,117,531,102,531,97,747,116"/>
+<area shape="rect" id="Node000007" href="$gui__main_8c.html#aca9dd6eaa6ca16f0b85132a1d9cca67b" title="Run one CNN forward pass on a rectangular sub&#45;region of a grayscale image." alt="" coords="593,159,712,186"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="753,140,699,161,697,155,748,141"/>
+<area shape="rect" id="Node000013" href="$solve__main_8c.html#abc07c63e9fbfd2509d909d1536c192ee" title="Run one forward pass on a region of the grayscale image." alt="" coords="593,211,712,238"/>
+<area shape="poly" id="edge13_Node000002_Node000013" title=" " alt="" coords="785,145,751,174,713,200,690,213,688,207,711,196,748,170,780,147"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="593,80,532,92,531,87,599,79"/>
+<area shape="rect" id="Node000006" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="307,83,361,110"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="426,97,362,99,362,94,432,96"/>
+<area shape="rect" id="Node000008" href="$gui__main_8c.html#ac7cc366bca3a3a9e66ab696c649d6449" title="Predict the letter in a grid cell using Test&#45;Time Augmentation (TTA)." alt="" coords="430,159,545,186"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="575,173,545,175,545,170,580,172"/>
+<area shape="rect" id="Node000009" href="$gui__main_8c.html#a536001e9abc0c38f7796d65689175349" title="Run the full OCR pipeline and word search, then store results." alt="" coords="286,159,382,186"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="412,173,383,175,383,170,417,172"/>
+<area shape="rect" id="Node000010" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="122,133,224,161"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="268,163,224,158,224,152,273,162"/>
+<area shape="rect" id="Node000012" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="108,185,238,213"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="268,183,239,191,238,186,273,182"/>
+<area shape="rect" id="Node000011" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,160,60,188"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="104,162,61,171,59,166,108,158"/>
+<area shape="poly" id="edge12_Node000012_Node000011" title=" " alt="" coords="90,186,60,181,60,176,95,183"/>
+<area shape="rect" id="Node000014" href="$solve__main_8c.html#a497f978a5995cb2281d1f11459bd91c2" title="Predict a cell using Test&#45;Time Augmentation (TTA)." alt="" coords="430,211,545,238"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="575,225,545,227,545,222,580,224"/>
+<area shape="rect" id="Node000015" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="307,211,361,238"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="412,225,362,227,362,222,418,224"/>
 </map>

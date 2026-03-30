@@ -1,9 +1,18 @@
 <map id="try_direction" name="try_direction">
-<area shape="rect" id="Node000001" title="Check whether word fits in grid starting at (r, c) going in direction dir." alt="" coords="406,5,510,33"/>
-<area shape="rect" id="Node000002" href="$solver_8c.html#ae7bb6f196b7565fd463fabc118c16d03" title="Search for word in grid in all 8 directions." alt="" coords="266,5,358,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="388,19,359,22,359,17,393,19"/>
-<area shape="rect" id="Node000003" href="$solve__main_8c.html#a6258df9f0bf10752ca0b2487e72fdf81" title="Search for all comma&#45;separated words in args&#45;&gt;words." alt="" coords="108,5,218,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="248,19,218,22,218,17,253,19"/>
-<area shape="rect" id="Node000004" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="90,20,60,22,60,17,95,18"/>
+<area shape="rect" id="Node000001" title="Check whether word fits in grid starting at (r, c) going in direction dir." alt="" coords="585,84,688,112"/>
+<area shape="rect" id="Node000002" href="$solver_8c.html#ae7bb6f196b7565fd463fabc118c16d03" title="Search for word in grid in all 8 directions." alt="" coords="444,84,537,112"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="566,98,537,100,537,95,572,98"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a536001e9abc0c38f7796d65689175349" title="Run the full OCR pipeline and word search, then store results." alt="" coords="293,57,389,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,87,390,82,390,77,432,87"/>
+<area shape="rect" id="Node000007" href="$solve__main_8c.html#a6258df9f0bf10752ca0b2487e72fdf81" title="Search for all comma&#45;separated words in args&#45;&gt;words." alt="" coords="286,109,396,137"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="432,108,397,116,396,111,426,109"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="122,5,224,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="277,53,220,36,220,31,282,52"/>
+<area shape="rect" id="Node000006" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="108,57,238,85"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="275,72,239,74,238,69,280,71"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="104,34,61,43,59,38,108,30"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="90,58,61,53,60,48,95,55"/>
+<area shape="rect" id="Node000008" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="146,109,200,137"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="268,123,201,126,201,121,273,123"/>
 </map>

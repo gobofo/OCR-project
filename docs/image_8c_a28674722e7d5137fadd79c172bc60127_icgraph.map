@@ -1,13 +1,26 @@
 <map id="image_load_png" name="image_load_png">
-<area shape="rect" id="Node000001" title="Load a PNG file into an Image." alt="" coords="646,32,774,60"/>
-<area shape="rect" id="Node000002" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="420,5,598,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="628,35,598,34,598,28,633,35"/>
-<area shape="rect" id="Node000006" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="482,57,536,85"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="633,56,537,70,536,65,628,56"/>
-<area shape="rect" id="Node000003" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="261,5,372,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="402,19,373,22,373,17,408,19"/>
-<area shape="rect" id="Node000004" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="108,5,213,33"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="243,20,214,22,213,17,248,19"/>
-<area shape="rect" id="Node000005" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="90,21,61,22,60,17,94,18"/>
+<area shape="rect" id="Node000001" title="Load a PNG file into an Image." alt="" coords="665,84,793,112"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#ad9504404927b7d783c441fa8f8b92112" title="Load a PNG image and create the display texture." alt="" coords="466,5,590,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="684,77,616,48,581,36,581,31,618,43,689,77"/>
+<area shape="rect" id="Node000006" href="$gui__main_8c.html#a536001e9abc0c38f7796d65689175349" title="Run the full OCR pipeline and word search, then store results." alt="" coords="480,57,576,85"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="647,87,576,80,576,75,652,87"/>
+<area shape="rect" id="Node000007" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="439,109,617,137"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="652,108,618,115,617,109,647,108"/>
+<area shape="rect" id="Node000011" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="501,161,555,189"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="688,118,618,151,556,171,555,166,616,146,683,119"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="275,5,377,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="447,20,378,22,377,17,453,18"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="261,57,391,85"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="454,38,384,59,382,54,459,37"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="133,32,188,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="257,31,189,44,187,39,262,28"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="243,60,188,53,188,47,248,58"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="462,55,378,35,378,30,468,55"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="462,72,392,74,391,69,467,71"/>
+<area shape="rect" id="Node000008" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="270,109,382,137"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="421,123,383,126,382,121,426,123"/>
+<area shape="rect" id="Node000009" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="108,109,213,137"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="252,124,214,126,213,121,258,123"/>
+<area shape="rect" id="Node000010" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,109,60,137"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="90,125,61,126,60,121,94,122"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="handle_text_input" name="handle_text_input">
+<area shape="rect" id="Node000001" title="Append SDL_TEXTINPUT characters to the focused field&#39;s buffer." alt="" coords="108,5,246,33"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,5,60,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,20,60,22,60,17,95,18"/>
+</map>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['image_2ec_0',['image.c',['../image_8c.html',1,'']]],
-  ['image_2eh_1',['image.h',['../image_8h.html',1,'']]]
+  ['gui_5fmain_2ec_0',['gui_main.c',['../gui__main_8c.html',1,'']]]
 ];

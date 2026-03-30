@@ -1,0 +1,5 @@
+<map id="draw_btn" name="draw_btn">
+<area shape="rect" id="Node000001" title="Draw an action button with a centred text label." alt="" coords="5,5,87,33"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a49fd9cea7514012a2d7aa3b185d79567" title="Draw a solid filled rectangle." alt="" coords="135,5,204,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,17,122,19,117,20,87,22"/>
+</map>

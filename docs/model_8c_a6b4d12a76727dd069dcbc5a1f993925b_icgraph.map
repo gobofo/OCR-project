@@ -1,7 +1,9 @@
 <map id="model_find_latest" name="model_find_latest">
-<area shape="rect" id="Node000001" title="Find the most recently modified .bin file inside a directory." alt="" coords="273,5,410,33"/>
-<area shape="rect" id="Node000002" href="$solve__main_8c.html#ab0afc1d46614af9864f863e2808317d0" title="Ensure args&#45;&gt;model_path is filled: auto&#45;detect if not specified." alt="" coords="108,5,225,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,19,225,22,225,17,260,19"/>
-<area shape="rect" id="Node000003" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,20,60,22,60,17,95,18"/>
+<area shape="rect" id="Node000001" title="Find the most recently modified .bin file inside a directory." alt="" coords="273,32,410,60"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="139,5,194,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="255,34,194,26,194,21,260,33"/>
+<area shape="rect" id="Node000003" href="$solve__main_8c.html#ab0afc1d46614af9864f863e2808317d0" title="Ensure args&#45;&gt;model_path is filled: auto&#45;detect if not specified." alt="" coords="108,57,225,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="260,58,226,65,225,60,255,58"/>
+<area shape="rect" id="Node000004" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,57,60,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="90,72,60,74,60,69,95,70"/>
 </map>

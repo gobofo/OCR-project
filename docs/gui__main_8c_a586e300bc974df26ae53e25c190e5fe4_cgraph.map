@@ -1,0 +1,9 @@
+<map id="gui_load_model" name="gui_load_model">
+<area shape="rect" id="Node000001" title="Load CNN weights from a binary model file." alt="" coords="5,32,130,60"/>
+<area shape="rect" id="Node000002" href="$cnn_8c.html#ad61352e349918920eb7049293eb055fa" title="Allocate and initialise a CNN with He&#45;initialised weights." alt="" coords="180,5,272,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,33,167,29,162,30,131,38"/>
+<area shape="rect" id="Node000004" href="$model_8c.html#a2707495d03714c502efe81f3f16e10c3" title="Load CNN weights from a binary file into net." alt="" coords="178,57,275,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="130,53,165,61,160,61,130,58"/>
+<area shape="rect" id="Node000003" href="$cnn_8c.html#abe4f46755db0f2e8923d757a80fd60a8" title="Box&#45;Muller transform: sample one value from N(0, 1)." alt="" coords="323,5,381,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="273,17,310,19,305,20,273,22"/>
+</map>

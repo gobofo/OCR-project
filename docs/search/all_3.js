@@ -10,10 +10,17 @@ var searchData=
   ['dataset_5fprint_5finfo_7',['dataset_print_info',['../dataset_8c.html#ae4efe00373f1161a112fd63725b13017',1,'dataset_print_info(const Dataset *ds):&#160;dataset.c'],['../dataset_8h.html#ae4efe00373f1161a112fd63725b13017',1,'dataset_print_info(const Dataset *ds):&#160;dataset.c']]],
   ['dataset_5fshuffle_8',['dataset_shuffle',['../dataset_8c.html#a8f29f81c08084278983c39e57931ae3c',1,'dataset_shuffle(Dataset *ds):&#160;dataset.c'],['../dataset_8h.html#a8f29f81c08084278983c39e57931ae3c',1,'dataset_shuffle(Dataset *ds):&#160;dataset.c']]],
   ['default_5fdata_5fdir_9',['DEFAULT_DATA_DIR',['../train__main_8c.html#a89d9b90dbc1df3ab30a2d08519e40e49',1,'train_main.c']]],
-  ['default_5fmodel_5fdir_10',['DEFAULT_MODEL_DIR',['../train__main_8c.html#ada0f7155f9e594701164ffa4cc8dfb5e',1,'DEFAULT_MODEL_DIR:&#160;train_main.c'],['../solve__main_8c.html#ada0f7155f9e594701164ffa4cc8dfb5e',1,'DEFAULT_MODEL_DIR:&#160;solve_main.c']]],
+  ['default_5fmodel_5fdir_10',['DEFAULT_MODEL_DIR',['../group__layout.html#gada0f7155f9e594701164ffa4cc8dfb5e',1,'DEFAULT_MODEL_DIR:&#160;gui_main.c'],['../train__main_8c.html#ada0f7155f9e594701164ffa4cc8dfb5e',1,'DEFAULT_MODEL_DIR:&#160;train_main.c'],['../solve__main_8c.html#ada0f7155f9e594701164ffa4cc8dfb5e',1,'DEFAULT_MODEL_DIR:&#160;solve_main.c']]],
   ['dir_11',['dir',['../structWordResult.html#a08b9d6750e1f5f17a6fc91bb7f27f181',1,'WordResult']]],
   ['dir_5fdc_12',['DIR_DC',['../solver_8c.html#a3af337b5b8a983fede5cc1c281113f98',1,'solver.c']]],
   ['dir_5fdr_13',['DIR_DR',['../solver_8c.html#a62144e264147ad1715e5789731306538',1,'solver.c']]],
   ['dir_5fnames_14',['DIR_NAMES',['../solver_8c.html#ae7d8c96b045fc222a3a2f0327df9249a',1,'solver.c']]],
-  ['dir_5fpath_15',['dir_path',['../structLoaderArgs.html#a24395f7952d4f1e86d2b87047eadad68',1,'LoaderArgs']]]
+  ['dir_5fpath_15',['dir_path',['../structLoaderArgs.html#a24395f7952d4f1e86d2b87047eadad68',1,'LoaderArgs']]],
+  ['disp_5fscale_16',['disp_scale',['../structGuiState.html#a5003e2c46268064ff486ef7eab9b792a',1,'GuiState']]],
+  ['disp_5fx_17',['disp_x',['../structGuiState.html#a8860293669f0d081c16237445f4d6c93',1,'GuiState']]],
+  ['disp_5fy_18',['disp_y',['../structGuiState.html#a9256e9bc43dff84f17109bd1ab390628',1,'GuiState']]],
+  ['draw_5fbtn_19',['draw_btn',['../gui__main_8c.html#a22c9e0bde0953fd7ce91e33670680665',1,'gui_main.c']]],
+  ['draw_5finput_20',['draw_input',['../gui__main_8c.html#ad22d9a40b70a2b78dcb12166c8e56019',1,'gui_main.c']]],
+  ['draw_5ftext_21',['draw_text',['../gui__main_8c.html#a745b380c7a7157450136f2efdb16fae2',1,'gui_main.c']]],
+  ['draw_5fword_5fhighlight_22',['draw_word_highlight',['../gui__main_8c.html#a10d4e464ee4e7dacd871a478043a8584',1,'gui_main.c']]]
 ];

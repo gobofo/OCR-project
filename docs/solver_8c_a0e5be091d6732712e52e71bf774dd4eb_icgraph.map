@@ -1,5 +1,14 @@
 <map id="grid_fill" name="grid_fill">
-<area shape="rect" id="Node000001" title="Fill a CharGrid from an array of predicted character indices." alt="" coords="108,5,177,33"/>
-<area shape="rect" id="Node000002" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,20,60,22,60,17,94,18"/>
+<area shape="rect" id="Node000001" title="Fill a CharGrid from an array of predicted character indices." alt="" coords="430,57,500,85"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a536001e9abc0c38f7796d65689175349" title="Run the full OCR pipeline and word search, then store results." alt="" coords="286,31,382,58"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="412,61,383,57,383,52,418,61"/>
+<area shape="rect" id="Node000006" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="307,83,361,110"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="418,80,362,94,361,89,413,81"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="122,5,224,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="268,35,224,30,224,24,273,34"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="108,57,238,85"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="268,55,239,63,238,58,273,54"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="104,34,61,43,59,38,108,30"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="90,58,60,53,60,48,95,55"/>
 </map>

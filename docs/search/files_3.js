@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['model_2ec_0',['model.c',['../model_8c.html',1,'']]],
-  ['model_2eh_1',['model.h',['../model_8h.html',1,'']]]
+  ['image_2ec_0',['image.c',['../image_8c.html',1,'']]],
+  ['image_2eh_1',['image.h',['../image_8h.html',1,'']]]
 ];

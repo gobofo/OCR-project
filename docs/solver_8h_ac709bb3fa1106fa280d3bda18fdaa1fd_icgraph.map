@@ -1,7 +1,16 @@
 <map id="grid_create" name="grid_create">
-<area shape="rect" id="Node000001" title="Allocate a CharGrid of the given dimensions, filled with spaces." alt="" coords="135,32,229,60"/>
-<area shape="rect" id="Node000002" href="$solver_8c.html#a2c5f08af3f67e41ab4ea1023c48b6f23" title="Read a CharGrid from a plain&#45;text file." alt="" coords="5,5,87,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,35,87,30,87,24,122,33"/>
-<area shape="rect" id="Node000003" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="19,57,73,85"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,58,74,69,73,64,122,57"/>
+<area shape="rect" id="Node000001" title="Allocate a CharGrid of the given dimensions, filled with spaces." alt="" coords="430,57,525,85"/>
+<area shape="rect" id="Node000002" href="$solver_8c.html#a2c5f08af3f67e41ab4ea1023c48b6f23" title="Read a CharGrid from a plain&#45;text file." alt="" coords="294,5,375,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="420,51,374,36,375,31,425,51"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a536001e9abc0c38f7796d65689175349" title="Run the full OCR pipeline and word search, then store results." alt="" coords="286,57,382,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="412,71,383,74,383,69,417,71"/>
+<area shape="rect" id="Node000007" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="307,109,361,137"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="426,90,362,116,361,111,420,91"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="122,32,224,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="268,62,224,56,224,51,273,61"/>
+<area shape="rect" id="Node000006" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="108,84,238,112"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="268,82,239,90,238,84,273,81"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,59,60,86"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="104,60,61,70,59,65,108,57"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="90,85,60,80,60,75,95,82"/>
 </map>

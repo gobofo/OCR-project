@@ -1,0 +1,5 @@
+<map id="handle_click" name="handle_click">
+<area shape="rect" id="Node000001" title="Handle a left mouse&#45;button click." alt="" coords="108,5,210,33"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,5,60,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,20,60,22,60,17,94,18"/>
+</map>

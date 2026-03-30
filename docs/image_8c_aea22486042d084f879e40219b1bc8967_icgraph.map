@@ -1,17 +1,30 @@
 <map id="image_to_float" name="image_to_float">
-<area shape="rect" id="Node000001" title="Convert an Image to a flat normalised float array." alt="" coords="649,32,767,60"/>
-<area shape="rect" id="Node000002" href="$solve__main_8c.html#abc07c63e9fbfd2509d909d1536c192ee" title="Run one forward pass on a region of the grayscale image." alt="" coords="452,5,572,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="630,36,572,30,572,25,636,36"/>
-<area shape="rect" id="Node000005" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="423,57,601,85"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="636,55,601,62,601,57,630,56"/>
-<area shape="rect" id="Node000003" href="$solve__main_8c.html#a497f978a5995cb2281d1f11459bd91c2" title="Predict a cell using Test&#45;Time Augmentation (TTA)." alt="" coords="261,5,375,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="434,19,376,22,376,17,439,19"/>
-<area shape="rect" id="Node000004" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="133,5,188,33"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="243,20,188,22,188,17,248,19"/>
-<area shape="rect" id="Node000006" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="262,57,374,85"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="405,71,375,74,374,69,410,71"/>
-<area shape="rect" id="Node000007" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="108,57,213,85"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="244,71,213,74,213,69,250,71"/>
-<area shape="rect" id="Node000008" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,57,60,85"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="89,72,60,74,60,69,94,70"/>
+<area shape="rect" id="Node000001" title="Convert an Image to a flat normalised float array." alt="" coords="827,83,945,110"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#aca9dd6eaa6ca16f0b85132a1d9cca67b" title="Run one CNN forward pass on a rectangular sub&#45;region of a grayscale image." alt="" coords="631,31,750,58"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="814,78,745,62,746,56,820,78"/>
+<area shape="rect" id="Node000008" href="$solve__main_8c.html#abc07c63e9fbfd2509d909d1536c192ee" title="Run one forward pass on a region of the grayscale image." alt="" coords="631,83,750,110"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="809,97,751,99,751,94,814,96"/>
+<area shape="rect" id="Node000011" href="$image_8c.html#a29ef0f108bf45225178781b800a0e4a9" title="Full pipeline: load PNG → preprocess → resize → float array." alt="" coords="602,135,779,162"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="819,114,746,137,745,131,814,115"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#ac7cc366bca3a3a9e66ab696c649d6449" title="Predict the letter in a grid cell using Test&#45;Time Augmentation (TTA)." alt="" coords="439,31,554,58"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="612,45,554,47,554,42,618,44"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a536001e9abc0c38f7796d65689175349" title="Run the full OCR pipeline and word search, then store results." alt="" coords="290,31,387,58"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="421,45,388,47,387,42,426,44"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="122,5,224,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="273,36,224,30,224,24,278,34"/>
+<area shape="rect" id="Node000007" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="108,57,238,85"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="273,55,239,63,238,58,278,54"/>
+<area shape="rect" id="Node000006" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="104,34,61,43,59,38,108,30"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="90,58,61,53,59,48,94,55"/>
+<area shape="rect" id="Node000009" href="$solve__main_8c.html#a497f978a5995cb2281d1f11459bd91c2" title="Predict a cell using Test&#45;Time Augmentation (TTA)." alt="" coords="439,83,554,110"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="612,97,554,99,554,94,618,96"/>
+<area shape="rect" id="Node000010" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="312,83,366,110"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="421,97,366,99,366,94,427,96"/>
+<area shape="rect" id="Node000012" href="$dataset_8c.html#ab148502e4728c441f68ab88cb1303620" title="POSIX thread worker: load all images from one class directory." alt="" coords="441,135,552,162"/>
+<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="583,149,553,151,553,146,589,148"/>
+<area shape="rect" id="Node000013" href="$dataset_8c.html#a73880acad0c6623605bec581bb468f54" title="Load all images from root_dir into a Dataset." alt="" coords="286,135,391,162"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="423,149,392,151,392,146,428,148"/>
+<area shape="rect" id="Node000014" href="$train__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="146,135,200,162"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="268,149,200,151,200,146,273,148"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bbox_5fcmp_0',['bbox_cmp',['../segment_8c.html#a1c8bbcb985c4ccf49dd35f24012e9967',1,'segment.c']]]
+  ['active_5fbuf_0',['active_buf',['../gui__main_8c.html#a6de68d35044447f247feb6ee55c0971b',1,'gui_main.c']]]
 ];

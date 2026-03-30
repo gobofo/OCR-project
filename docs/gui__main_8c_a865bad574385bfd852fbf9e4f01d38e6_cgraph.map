@@ -1,0 +1,5 @@
+<map id="handle_motion" name="handle_motion">
+<area shape="rect" id="Node000001" title="Update the hovered&#45;button state on mouse motion." alt="" coords="5,5,124,33"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a5bc17456c0c72356e07ea4d6635ad93d" title="Test whether a mouse position hits the action button on a given row." alt="" coords="172,5,238,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,17,159,19,153,19,124,22"/>
+</map>

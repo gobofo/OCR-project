@@ -1,0 +1,14 @@
+<map id="forward_region" name="forward_region">
+<area shape="rect" id="Node000001" title="Run one CNN forward pass on a rectangular sub&#45;region of a grayscale image." alt="" coords="593,32,712,60"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#ac7cc366bca3a3a9e66ab696c649d6449" title="Predict the letter in a grid cell using Test&#45;Time Augmentation (TTA)." alt="" coords="430,32,545,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="575,46,545,48,545,43,580,46"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a536001e9abc0c38f7796d65689175349" title="Run the full OCR pipeline and word search, then store results." alt="" coords="286,32,382,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="412,46,383,48,383,43,418,46"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="122,5,224,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="268,36,224,30,224,25,273,35"/>
+<area shape="rect" id="Node000006" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="108,57,238,85"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="273,55,239,64,238,58,268,56"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="104,34,61,43,59,38,108,30"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="90,58,60,53,60,48,95,55"/>
+</map>

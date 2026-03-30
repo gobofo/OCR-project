@@ -1,0 +1,1044 @@
+\doxysection{gui\+\_\+main.\+c File Reference}
+\hypertarget{gui__main_8c}{}\label{gui__main_8c}\index{gui\_main.c@{gui\_main.c}}
+
+
+SDL2 graphical interface for the OCR crossword solver.  
+
+
+{\ttfamily \+\#include $<$SDL2/\+\+SDL.\+h$>$}\newline
+{\ttfamily \+\#include $<$SDL2/\+\+SDL\+\_\+ttf.\+h$>$}\newline
+{\ttfamily \+\#include "{}src/\+cnn/\+cnn.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+cnn/\+model.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+preprocess/\+image.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+segment/\+segment.\+h"{}}\newline
+{\ttfamily \+\#include "{}src/\+solver/\+solver.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$sys/\+stat.\+h$>$}\newline
+Include dependency graph for gui\+\_\+main.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structGuiState}{Gui\+State}}
+\begin{DoxyCompactList}\small\item\em Complete application state passed to every GUI function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga23f7b870356588ddfcc49a1c364cba5e}{WIN\+\_\+W}}~1280
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_gae893136b52eb3d95f3a310c3900ae42b}{WIN\+\_\+H}}~800
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_gaff5bd921faea144bda420627350e0b5c}{ROW\+\_\+H}}~36
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga1948b98c4d80a2b5933f7b432778659b}{ROW\+\_\+\+PAD}}~8
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga63bda5f79be43c3b0161f12c7c845797}{LABEL\+\_\+W}}~68
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga88518206f114f83cf5c0bb345a44ec4c}{BTN\+\_\+W}}~120
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_gaa968a61524f9ed159c4c5464cb26dd41}{FONT\+\_\+\+SIZE}}~15
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga535c682a8f545bed0e03379bb2f1f362}{FONT\+\_\+\+SIZE\+\_\+\+SM}}~13
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_gaae8669995c7bab7cbd1e5b0e94645445}{ROW1\+\_\+Y}}~8
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga9b4d09fbaa1b9d1bb069ad3a9d4c16bc}{ROW2\+\_\+Y}}~(\doxymbox{\hyperlink{group__layout_gaae8669995c7bab7cbd1e5b0e94645445}{ROW1\+\_\+Y}} + \doxymbox{\hyperlink{group__layout_gaff5bd921faea144bda420627350e0b5c}{ROW\+\_\+H}} + \doxymbox{\hyperlink{group__layout_ga1948b98c4d80a2b5933f7b432778659b}{ROW\+\_\+\+PAD}})
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_gaa3807f7acffa2a6bf3e2b99b9ee98c77}{ROW3\+\_\+Y}}~(\doxymbox{\hyperlink{group__layout_ga9b4d09fbaa1b9d1bb069ad3a9d4c16bc}{ROW2\+\_\+Y}} + \doxymbox{\hyperlink{group__layout_gaff5bd921faea144bda420627350e0b5c}{ROW\+\_\+H}} + \doxymbox{\hyperlink{group__layout_ga1948b98c4d80a2b5933f7b432778659b}{ROW\+\_\+\+PAD}})
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga02620080169237e5ba87d6778f31cc41}{STATUS\+\_\+Y}}~(\doxymbox{\hyperlink{group__layout_gaa3807f7acffa2a6bf3e2b99b9ee98c77}{ROW3\+\_\+Y}} + \doxymbox{\hyperlink{group__layout_gaff5bd921faea144bda420627350e0b5c}{ROW\+\_\+H}} + 6)
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_gaf8b3442139f0d622eddbe7183c340a84}{PANEL\+\_\+H}}~(\doxymbox{\hyperlink{group__layout_ga02620080169237e5ba87d6778f31cc41}{STATUS\+\_\+Y}} + \doxymbox{\hyperlink{group__layout_ga535c682a8f545bed0e03379bb2f1f362}{FONT\+\_\+\+SIZE\+\_\+\+SM}} + 8)
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_gaf1f0925eb640218d364f43bb085548ca}{INPUT\+\_\+X}}~(\doxymbox{\hyperlink{group__layout_ga63bda5f79be43c3b0161f12c7c845797}{LABEL\+\_\+W}} + 4)
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga794e00eb3aefb2d10446164809c6e702}{INPUT\+\_\+W}}~(\doxymbox{\hyperlink{group__layout_ga23f7b870356588ddfcc49a1c364cba5e}{WIN\+\_\+W}} -\/ \doxymbox{\hyperlink{group__layout_gaf1f0925eb640218d364f43bb085548ca}{INPUT\+\_\+X}} -\/ \doxymbox{\hyperlink{group__layout_ga88518206f114f83cf5c0bb345a44ec4c}{BTN\+\_\+W}} -\/ 8 -\/ 8)
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga892a3c47110d70575b32287729b447c7}{BTN\+\_\+X}}~(\doxymbox{\hyperlink{group__layout_gaf1f0925eb640218d364f43bb085548ca}{INPUT\+\_\+X}} + \doxymbox{\hyperlink{group__layout_ga794e00eb3aefb2d10446164809c6e702}{INPUT\+\_\+W}} + 8)
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_ga07b6635a0aa8eb07e2aed172b4bb0d29}{MAX\+\_\+\+RESULTS}}~64
+\item 
+\+\#define \doxymbox{\hyperlink{group__layout_gada0f7155f9e594701164ffa4cc8dfb5e}{DEFAULT\+\_\+\+MODEL\+\_\+\+DIR}}~"{}models/\+"{}
+\item 
+\+\#define \doxymbox{\hyperlink{group__focus_gaebc423c8848ddd0eab22d1a08f317224}{FOCUS\+\_\+\+NONE}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{group__focus_gac0257fc61f2c8712dba34d14ffc6b30c}{FOCUS\+\_\+\+IMAGE}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{group__focus_gaf81ca7b9d44071935f3b2366a03af708}{FOCUS\+\_\+\+MODEL}}~2
+\item 
+\+\#define \doxymbox{\hyperlink{group__focus_ga607d48b56057fb0d1ceb9faf5f9abc54}{FOCUS\+\_\+\+WORDS}}~3
+\item 
+\+\#define \doxymbox{\hyperlink{gui__main_8c_aecaef8588c5c69d9cfb438908c1e1be0}{TTA\+\_\+N}}~5
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a85cf255ba2431096ce822a5bf2523223}{gui\+\_\+render}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Composite and present one complete frame. \end{DoxyCompactList}\item 
+static TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{gui__main_8c_a70bccf45170d9cc5d1b0032cd442671b}{find\+\_\+font}} (int size)
+\begin{DoxyCompactList}\small\item\em Open the first TTF font found in the system font search paths. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a49fd9cea7514012a2d7aa3b185d79567}{fill\+\_\+rect}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}r, int x, int y, int w, int h, Uint8 cr, Uint8 cg, Uint8 cb, Uint8 ca)
+\begin{DoxyCompactList}\small\item\em Draw a solid filled rectangle. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a7daaad1f1d10a2dd579e5e92896bbcc0}{outline\+\_\+rect}} (SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}r, int x, int y, int w, int h, Uint8 cr, Uint8 cg, Uint8 cb, Uint8 ca)
+\begin{DoxyCompactList}\small\item\em Draw a 1-\/pixel outline rectangle (no fill). \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a745b380c7a7157450136f2efdb16fae2}{draw\+\_\+text}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}f, const char \texorpdfstring{$\ast$}{*}txt, int x, int y, Uint8 cr, Uint8 cg, Uint8 cb)
+\begin{DoxyCompactList}\small\item\em Render a UTF-\/8 string at pixel position (x, y). \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a22c9e0bde0953fd7ce91e33670680665}{draw\+\_\+btn}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, int btn\+\_\+id, const char \texorpdfstring{$\ast$}{*}label, int x, int y, int busy\+\_\+flag)
+\begin{DoxyCompactList}\small\item\em Draw an action button with a centred text label. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_ad22d9a40b70a2b78dcb12166c8e56019}{draw\+\_\+input}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, int field\+\_\+id, const char \texorpdfstring{$\ast$}{*}buf, const char \texorpdfstring{$\ast$}{*}placeholder, int row\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Draw a text-\/input field with optional placeholder and blinking cursor. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a2830b237533c7fb39c4edcdbba12e582}{update\+\_\+geometry}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Recompute the image display rectangle after a load or window change. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{gui__main_8c_a96180b7d003d7ea611c7139a50a4e88d}{to\+\_\+sx}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, int ix)
+\begin{DoxyCompactList}\small\item\em Convert an image-\/space X coordinate to a screen X coordinate. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{gui__main_8c_ab8439489926a15923d3e62a25cc25f40}{to\+\_\+sy}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, int iy)
+\begin{DoxyCompactList}\small\item\em Convert an image-\/space Y coordinate to a screen Y coordinate. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_ad9504404927b7d783c441fa8f8b92112}{gui\+\_\+load\+\_\+image}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Load a PNG image and create the display texture. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a586e300bc974df26ae53e25c190e5fe4}{gui\+\_\+load\+\_\+model}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, const char \texorpdfstring{$\ast$}{*}path)
+\begin{DoxyCompactList}\small\item\em Load \doxylink{structCNN}{CNN} weights from a binary model file. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_aca9dd6eaa6ca16f0b85132a1d9cca67b}{forward\+\_\+region}} (const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}gray, int x1, int y1, int x2, int y2, \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net, float \texorpdfstring{$\ast$}{*}probs)
+\begin{DoxyCompactList}\small\item\em Run one \doxylink{structCNN}{CNN} forward pass on a rectangular sub-\/region of a grayscale image. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{gui__main_8c_ac7cc366bca3a3a9e66ab696c649d6449}{recognise\+\_\+cell}} (const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}gray, const \doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*}box, int cell\+\_\+size, \doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}net)
+\begin{DoxyCompactList}\small\item\em Predict the letter in a grid cell using Test-\/\+Time Augmentation (TTA). \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a536001e9abc0c38f7796d65689175349}{gui\+\_\+run\+\_\+ocr}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Run the full OCR pipeline and word search, then store results. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a10d4e464ee4e7dacd871a478043a8584}{draw\+\_\+word\+\_\+highlight}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, const \doxymbox{\hyperlink{structWordResult}{Word\+Result}} \texorpdfstring{$\ast$}{*}r)
+\begin{DoxyCompactList}\small\item\em Overlay a semi-\/transparent red rectangle on each cell of a found word. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{gui__main_8c_a5bc17456c0c72356e07ea4d6635ad93d}{btn\+\_\+hit}} (int mx, int my, int row\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Test whether a mouse position hits the action button on a given row. \end{DoxyCompactList}\item 
+static int \doxymbox{\hyperlink{gui__main_8c_ad4c2ff82ca2f54f5a9cc5499f043503a}{input\+\_\+hit}} (int mx, int my, int row\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Test whether a mouse position hits the text-\/input field on a given row. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_aa2deaf89b1cda3da6657138b14968172}{set\+\_\+focus}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, int new\+\_\+focus)
+\begin{DoxyCompactList}\small\item\em Set keyboard focus to a field and start/\+stop SDL text input. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a8476ad048caada8e1eb7b92272f915c6}{handle\+\_\+click}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, int mx, int my)
+\begin{DoxyCompactList}\small\item\em Handle a left mouse-\/button click. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a865bad574385bfd852fbf9e4f01d38e6}{handle\+\_\+motion}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, int mx, int my)
+\begin{DoxyCompactList}\small\item\em Update the hovered-\/button state on mouse motion. \end{DoxyCompactList}\item 
+static char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{gui__main_8c_a6de68d35044447f247feb6ee55c0971b}{active\+\_\+buf}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, size\+\_\+t \texorpdfstring{$\ast$}{*}cap)
+\begin{DoxyCompactList}\small\item\em Return a pointer to the text buffer of the currently focused field. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_aeee906aa84907a612ba32b42f75a36d6}{handle\+\_\+keydown}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, SDL\+\_\+\+Keycode key)
+\begin{DoxyCompactList}\small\item\em Handle SDL\+\_\+\+KEYDOWN events for the focused text field. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{gui__main_8c_a1dad3e7538889c0c3362544e9a3b4409}{handle\+\_\+text\+\_\+input}} (\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}g, const char \texorpdfstring{$\ast$}{*}text)
+\begin{DoxyCompactList}\small\item\em Append SDL\+\_\+\+TEXTINPUT characters to the focused field\textquotesingle{}s buffer. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{gui__main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\begin{DoxyCompactList}\small\item\em Entry point for the GUI binary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{gui__main_8c_aaaccbc576be32dabb329785eedfec432}{FONT\+\_\+\+PATHS}} \+[$\,$]\+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SDL2 graphical interface for the OCR crossword solver. 
+
+Provides a 1280×800 window with three text-\/input rows:\+
+\begin{DoxyItemize}
+\item {\bfseries{\doxylink{structImage}{Image}}} — path to the PNG crossword image
+\item {\bfseries{Modèle}} — path to the trained \doxylink{structCNN}{CNN} model (.bin)
+\item {\bfseries{Mots}} — comma-\/separated list of words to find
+\end{DoxyItemize}
+
+Clicking {\bfseries{Charger}} (or pressing Enter) loads the file. Clicking {\bfseries{Chercher}} (or pressing Enter in the words field) runs the full OCR pipeline and overlays red rectangles on each found-\/word cell. The original image pixels are never modified.
+
+\begin{DoxyParagraph}{Keyboard shortcuts}
+
+\begin{DoxyItemize}
+\item {\bfseries{Tab}} — cycle focus between fields
+\item {\bfseries{Ctrl+V}} — paste from clipboard into the focused field
+\item {\bfseries{Enter}} — validate /\+ trigger action for the focused field
+\item {\bfseries{Escape}} — clear focus
+\item {\bfseries{Ctrl+Q}} — quit
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Dependencies}
+SDL2, SDL2\+\_\+ttf, libpng — plus the project\textquotesingle{}s own \doxylink{structCNN}{CNN} /\+ segment /\+ solver.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Usage}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./gui\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ \textcolor{keyword}{auto}-\/detects\ latest\ model\ in\ models/}
+\DoxyCodeLine{./gui\ -\/-\/model\ models/foo.bin\ \ \ \#\ \textcolor{keyword}{explicit}\ model\ path}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}
+
+
+\label{doc-define-members}
+\Hypertarget{gui__main_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gui__main_8c_aecaef8588c5c69d9cfb438908c1e1be0}\index{gui\_main.c@{gui\_main.c}!TTA\_N@{TTA\_N}}
+\index{TTA\_N@{TTA\_N}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{TTA\_N}{TTA\_N}}
+{\footnotesize\ttfamily \label{gui__main_8c_aecaef8588c5c69d9cfb438908c1e1be0} 
+\+\#define TTA\+\_\+N~5}
+
+
+
+\label{doc-func-members}
+\Hypertarget{gui__main_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{gui__main_8c_a6de68d35044447f247feb6ee55c0971b}\index{gui\_main.c@{gui\_main.c}!active\_buf@{active\_buf}}
+\index{active\_buf@{active\_buf}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{active\_buf()}{active\_buf()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a6de68d35044447f247feb6ee55c0971b} 
+char \texorpdfstring{$\ast$}{*} active\+\_\+buf (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{size\+\_\+t \texorpdfstring{$\ast$}{*}}]{cap}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Return a pointer to the text buffer of the currently focused field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em cap} & Output:\+ byte capacity of the returned buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the focused buffer, or NULL if no field is focused. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a6de68d35044447f247feb6ee55c0971b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a5bc17456c0c72356e07ea4d6635ad93d}\index{gui\_main.c@{gui\_main.c}!btn\_hit@{btn\_hit}}
+\index{btn\_hit@{btn\_hit}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{btn\_hit()}{btn\_hit()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a5bc17456c0c72356e07ea4d6635ad93d} 
+int btn\+\_\+hit (\begin{DoxyParamCaption}\item[{int}]{mx}{, }\item[{int}]{my}{, }\item[{int}]{row\+\_\+y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Test whether a mouse position hits the action button on a given row. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mx,my} & Mouse cursor position in window coordinates. \\
+\hline
+{\em row\+\_\+y} & Top-\/left Y of the row to test. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Non-\/zero if the button was hit. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{gui__main_8c_a5bc17456c0c72356e07ea4d6635ad93d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a22c9e0bde0953fd7ce91e33670680665}\index{gui\_main.c@{gui\_main.c}!draw\_btn@{draw\_btn}}
+\index{draw\_btn@{draw\_btn}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{draw\_btn()}{draw\_btn()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a22c9e0bde0953fd7ce91e33670680665} 
+void draw\+\_\+btn (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{btn\+\_\+id}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{label}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{busy\+\_\+flag}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Draw an action button with a centred text label. 
+
+The button colour changes when hovered ({\ttfamily btn\+\_\+id} matches {\ttfamily g-\/\texorpdfstring{$>$}{>}hovered\+\_\+btn}) and dims when {\ttfamily busy\+\_\+flag} is set.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em btn\+\_\+id} & Button identity (1=load image, 2=load model, 3=search). \\
+\hline
+{\em label} & UTF-\/8 label string displayed on the button. \\
+\hline
+{\em x,y} & Top-\/left pixel of the button (width is always BTN\+\_\+W). \\
+\hline
+{\em busy\+\_\+flag} & Non-\/zero while the OCR pipeline is running (dims button). \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{gui__main_8c_a22c9e0bde0953fd7ce91e33670680665_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a22c9e0bde0953fd7ce91e33670680665_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_ad22d9a40b70a2b78dcb12166c8e56019}\index{gui\_main.c@{gui\_main.c}!draw\_input@{draw\_input}}
+\index{draw\_input@{draw\_input}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{draw\_input()}{draw\_input()}}
+{\footnotesize\ttfamily \label{gui__main_8c_ad22d9a40b70a2b78dcb12166c8e56019} 
+void draw\+\_\+input (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{field\+\_\+id}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{placeholder}{, }\item[{int}]{row\+\_\+y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Draw a text-\/input field with optional placeholder and blinking cursor. 
+
+The field is highlighted with a blue border when it has focus ({\ttfamily field\+\_\+id} == {\ttfamily g-\/\texorpdfstring{$>$}{>}focused}). If {\ttfamily buf} is empty the {\ttfamily placeholder} text is rendered in a dim colour. A blinking cursor is drawn after the last character when the field is focused.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em field\+\_\+id} & FOCUS\+\_\+\+IMAGE /\+ FOCUS\+\_\+\+MODEL /\+ FOCUS\+\_\+\+WORDS. \\
+\hline
+{\em buf} & Current text content of the field. \\
+\hline
+{\em placeholder} & Hint text displayed when {\ttfamily buf} is empty. \\
+\hline
+{\em row\+\_\+y} & Top-\/left Y of the row (field is placed at INPUT\+\_\+X). \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{gui__main_8c_ad22d9a40b70a2b78dcb12166c8e56019_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_ad22d9a40b70a2b78dcb12166c8e56019_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a745b380c7a7157450136f2efdb16fae2}\index{gui\_main.c@{gui\_main.c}!draw\_text@{draw\_text}}
+\index{draw\_text@{draw\_text}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{draw\_text()}{draw\_text()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a745b380c7a7157450136f2efdb16fae2} 
+void draw\+\_\+text (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*}}]{f}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{txt}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{Uint8}]{cr}{, }\item[{Uint8}]{cg}{, }\item[{Uint8}]{cb}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Render a UTF-\/8 string at pixel position (x, y). 
+
+Creates a temporary texture from the rendered glyph surface, copies it to the renderer, then destroys it. No-\/op if {\ttfamily f} or {\ttfamily txt} is NULL/\+empty.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state (provides renderer). \\
+\hline
+{\em f} & Font to use. \\
+\hline
+{\em txt} & UTF-\/8 string to render. \\
+\hline
+{\em x,y} & Top-\/left pixel of the text. \\
+\hline
+{\em cr,cg,cb} & RGB colour. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a745b380c7a7157450136f2efdb16fae2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a10d4e464ee4e7dacd871a478043a8584}\index{gui\_main.c@{gui\_main.c}!draw\_word\_highlight@{draw\_word\_highlight}}
+\index{draw\_word\_highlight@{draw\_word\_highlight}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{draw\_word\_highlight()}{draw\_word\_highlight()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a10d4e464ee4e7dacd871a478043a8584} 
+void draw\+\_\+word\+\_\+highlight (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{const \doxymbox{\hyperlink{structWordResult}{Word\+Result}} \texorpdfstring{$\ast$}{*}}]{r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Overlay a semi-\/transparent red rectangle on each cell of a found word. 
+
+Iterates from (start\+\_\+r, start\+\_\+c) to (end\+\_\+r, end\+\_\+c) using the direction deltas derived from the \doxylink{structWordResult}{Word\+Result}, maps each cell index to a \doxylink{structBoundingBox}{Bounding\+Box} in {\ttfamily g-\/\texorpdfstring{$>$}{>}cells}, converts the bounding-\/box centre to screen coordinates via \doxylink{gui__main_8c_a96180b7d003d7ea611c7139a50a4e88d}{to\+\_\+sx()} /\+ \doxylink{gui__main_8c_ab8439489926a15923d3e62a25cc25f40}{to\+\_\+sy()}, and draws a filled + outlined rectangle scaled by {\ttfamily g-\/\texorpdfstring{$>$}{>}disp\+\_\+scale}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state (provides cells, grid\+\_\+cols, disp\+\_\+scale, renderer). \\
+\hline
+{\em r} & Solver result for one word; no-\/op if {\ttfamily r-\/\texorpdfstring{$>$}{>}found} is 0. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{gui__main_8c_a10d4e464ee4e7dacd871a478043a8584_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a10d4e464ee4e7dacd871a478043a8584_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a49fd9cea7514012a2d7aa3b185d79567}\index{gui\_main.c@{gui\_main.c}!fill\_rect@{fill\_rect}}
+\index{fill\_rect@{fill\_rect}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{fill\_rect()}{fill\_rect()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a49fd9cea7514012a2d7aa3b185d79567} 
+void fill\+\_\+rect (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{r}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{w}{, }\item[{int}]{h}{, }\item[{Uint8}]{cr}{, }\item[{Uint8}]{cg}{, }\item[{Uint8}]{cb}{, }\item[{Uint8}]{ca}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Draw a solid filled rectangle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & SDL renderer. \\
+\hline
+{\em x,y} & Top-\/left corner. \\
+\hline
+{\em w,h} & Dimensions in pixels. \\
+\hline
+{\em cr,cg,cb,ca} & RGBA colour components. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a49fd9cea7514012a2d7aa3b185d79567_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a70bccf45170d9cc5d1b0032cd442671b}\index{gui\_main.c@{gui\_main.c}!find\_font@{find\_font}}
+\index{find\_font@{find\_font}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{find\_font()}{find\_font()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a70bccf45170d9cc5d1b0032cd442671b} 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} find\+\_\+font (\begin{DoxyParamCaption}\item[{int}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Open the first TTF font found in the system font search paths. 
+
+Iterates over {\ttfamily FONT\+\_\+\+PATHS} and returns the first font that can be opened at the requested point size. Intended to avoid a hard dependency on a specific font package.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Desired point size. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Opened TTF\+\_\+\+Font, or NULL if no font was found. Caller must close with TTF\+\_\+\+Close\+Font(). 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{gui__main_8c_a70bccf45170d9cc5d1b0032cd442671b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_aca9dd6eaa6ca16f0b85132a1d9cca67b}\index{gui\_main.c@{gui\_main.c}!forward\_region@{forward\_region}}
+\index{forward\_region@{forward\_region}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{forward\_region()}{forward\_region()}}
+{\footnotesize\ttfamily \label{gui__main_8c_aca9dd6eaa6ca16f0b85132a1d9cca67b} 
+void forward\+\_\+region (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{gray}{, }\item[{int}]{x1}{, }\item[{int}]{y1}{, }\item[{int}]{x2}{, }\item[{int}]{y2}{, }\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{, }\item[{float \texorpdfstring{$\ast$}{*}}]{probs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Run one \doxylink{structCNN}{CNN} forward pass on a rectangular sub-\/region of a grayscale image. 
+
+Copies the region \+[{\ttfamily x1}, {\ttfamily x2}) × \+[{\ttfamily y1}, {\ttfamily y2}) from {\ttfamily gray} into a temporary \doxylink{structImage}{Image}, binarizes it locally, resizes to CNN\+\_\+\+IMG\+\_\+W × CNN\+\_\+\+IMG\+\_\+H, then calls \doxylink{cnn_8c_a97f29ff1777a0eaec225d9efd2ebfc2d}{cnn\+\_\+forward()}. The resulting softmax probabilities are {\bfseries{added}} to {\ttfamily probs} (not overwritten), allowing TTA accumulation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gray} & Full grayscale RGBA image (R=G=B=luminance). \\
+\hline
+{\em x1,y1} & Top-\/left of the region (clamped to image bounds). \\
+\hline
+{\em x2,y2} & Bottom-\/right exclusive (clamped to image bounds). \\
+\hline
+{\em net} & Trained \doxylink{structCNN}{CNN}. \\
+\hline
+{\em probs} & Array of CNN\+\_\+\+N\+\_\+\+CLASSES floats; results are added here. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_aca9dd6eaa6ca16f0b85132a1d9cca67b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_aca9dd6eaa6ca16f0b85132a1d9cca67b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_ad9504404927b7d783c441fa8f8b92112}\index{gui\_main.c@{gui\_main.c}!gui\_load\_image@{gui\_load\_image}}
+\index{gui\_load\_image@{gui\_load\_image}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{gui\_load\_image()}{gui\_load\_image()}}
+{\footnotesize\ttfamily \label{gui__main_8c_ad9504404927b7d783c441fa8f8b92112} 
+void gui\+\_\+load\+\_\+image (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Load a PNG image and create the display texture. 
+
+Frees any previously loaded image, texture, and OCR results, then loads the PNG at {\ttfamily path} via \doxylink{image_8c_a28674722e7d5137fadd79c172bc60127}{image\+\_\+load\+\_\+png()}. An SDL texture is created from the raw RGBA pixels (SDL\+\_\+\+PIXELFORMAT\+\_\+\+RGBA32) without copying them. \doxylink{gui__main_8c_a2830b237533c7fb39c4edcdbba12e582}{update\+\_\+geometry()} is called to recompute the display rectangle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em path} & Path to the PNG file. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_ad9504404927b7d783c441fa8f8b92112_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_ad9504404927b7d783c441fa8f8b92112_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a586e300bc974df26ae53e25c190e5fe4}\index{gui\_main.c@{gui\_main.c}!gui\_load\_model@{gui\_load\_model}}
+\index{gui\_load\_model@{gui\_load\_model}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{gui\_load\_model()}{gui\_load\_model()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a586e300bc974df26ae53e25c190e5fe4} 
+void gui\+\_\+load\+\_\+model (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Load \doxylink{structCNN}{CNN} weights from a binary model file. 
+
+Allocates {\ttfamily g-\/\texorpdfstring{$>$}{>}net} if necessary, then calls \doxylink{model_8c_a2707495d03714c502efe81f3f16e10c3}{model\+\_\+load()}. On success {\ttfamily g-\/\texorpdfstring{$>$}{>}model\+\_\+buf} already holds the path (set by the caller); the status bar is updated to reflect the loaded filename.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em path} & Path to the .bin model file. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a586e300bc974df26ae53e25c190e5fe4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a586e300bc974df26ae53e25c190e5fe4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a85cf255ba2431096ce822a5bf2523223}\index{gui\_main.c@{gui\_main.c}!gui\_render@{gui\_render}}
+\index{gui\_render@{gui\_render}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{gui\_render()}{gui\_render()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a85cf255ba2431096ce822a5bf2523223} 
+void gui\+\_\+render (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Composite and present one complete frame. 
+
+Drawing order:\+
+\begin{DoxyEnumerate}
+\item Dark background.
+\item Control panel (rows 1–3:\+ labels, input fields, buttons; status bar).
+\item Scaled image (if loaded), or a placeholder message.
+\item Word-\/highlight rectangles for every found \doxylink{structWordResult}{Word\+Result}.
+\end{DoxyEnumerate}
+
+Called every \texorpdfstring{$\sim$}{\string~}16 ms from the event loop and also mid-\/\+OCR to show progress.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a85cf255ba2431096ce822a5bf2523223_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a85cf255ba2431096ce822a5bf2523223_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a536001e9abc0c38f7796d65689175349}\index{gui\_main.c@{gui\_main.c}!gui\_run\_ocr@{gui\_run\_ocr}}
+\index{gui\_run\_ocr@{gui\_run\_ocr}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{gui\_run\_ocr()}{gui\_run\_ocr()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a536001e9abc0c38f7796d65689175349} 
+void gui\+\_\+run\+\_\+ocr (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Run the full OCR pipeline and word search, then store results. 
+
+Steps performed:\+
+\begin{DoxyEnumerate}
+\item Reload the image from {\ttfamily g-\/\texorpdfstring{$>$}{>}image\+\_\+buf} and convert to grayscale.
+\item Build a binarized buffer for the segmenter (mean-\/threshold global binarization).
+\item Call \doxylink{segment_8c_af4f1a9479f738e0cccc6d9f0b6e963e3}{segment\+\_\+image()} to detect letter bounding boxes.
+\item Estimate the grid pitch from the first/\+last cell centres.
+\item Call \doxylink{gui__main_8c_ac7cc366bca3a3a9e66ab696c649d6449}{recognise\+\_\+cell()} for every cell (with TTA).
+\item Build a \doxylink{structCharGrid}{Char\+Grid} and run \doxylink{solver_8c_ae7bb6f196b7565fd463fabc118c16d03}{solver\+\_\+find()} for each word in {\ttfamily g-\/\texorpdfstring{$>$}{>}words\+\_\+buf}.
+\item Store the \doxylink{structBoundingBox}{Bounding\+Box} array in {\ttfamily g-\/\texorpdfstring{$>$}{>}cells} for highlight rendering.
+\end{DoxyEnumerate}
+
+The status bar is updated at each major step so the render loop can show progress messages. The original image ({\ttfamily g-\/\texorpdfstring{$>$}{>}orig\+\_\+img}) is never touched.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state — must have orig\+\_\+img and net set. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a536001e9abc0c38f7796d65689175349_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a536001e9abc0c38f7796d65689175349_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a8476ad048caada8e1eb7b92272f915c6}\index{gui\_main.c@{gui\_main.c}!handle\_click@{handle\_click}}
+\index{handle\_click@{handle\_click}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{handle\_click()}{handle\_click()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a8476ad048caada8e1eb7b92272f915c6} 
+void handle\+\_\+click (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{mx}{, }\item[{int}]{my}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle a left mouse-\/button click. 
+
+Updates focus based on which field was clicked, then triggers the appropriate action if an action button was hit:\+
+\begin{DoxyItemize}
+\item Row 1 button → \doxylink{gui__main_8c_ad9504404927b7d783c441fa8f8b92112}{gui\+\_\+load\+\_\+image()}
+\item Row 2 button → \doxylink{gui__main_8c_a586e300bc974df26ae53e25c190e5fe4}{gui\+\_\+load\+\_\+model()}
+\item Row 3 button → \doxylink{gui__main_8c_a536001e9abc0c38f7796d65689175349}{gui\+\_\+run\+\_\+ocr()} (ignored while busy)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em mx,my} & Mouse cursor position. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a8476ad048caada8e1eb7b92272f915c6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{gui__main_8c_a8476ad048caada8e1eb7b92272f915c6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_aeee906aa84907a612ba32b42f75a36d6}\index{gui\_main.c@{gui\_main.c}!handle\_keydown@{handle\_keydown}}
+\index{handle\_keydown@{handle\_keydown}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{handle\_keydown()}{handle\_keydown()}}
+{\footnotesize\ttfamily \label{gui__main_8c_aeee906aa84907a612ba32b42f75a36d6} 
+void handle\+\_\+keydown (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{SDL\+\_\+\+Keycode}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Handle SDL\+\_\+\+KEYDOWN events for the focused text field. 
+
+Supported keys:\+
+\begin{DoxyItemize}
+\item {\bfseries{Backspace}} — delete the last character.
+\item {\bfseries{Enter}} — validate the field (load file or run OCR).
+\item {\bfseries{Ctrl+V}} — paste clipboard text (newlines stripped).
+\item {\bfseries{Escape}} — clear focus.
+\item {\bfseries{Tab}} — cycle focus to the next field.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em key} & SDL key symbol. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_aeee906aa84907a612ba32b42f75a36d6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{gui__main_8c_aeee906aa84907a612ba32b42f75a36d6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a865bad574385bfd852fbf9e4f01d38e6}\index{gui\_main.c@{gui\_main.c}!handle\_motion@{handle\_motion}}
+\index{handle\_motion@{handle\_motion}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{handle\_motion()}{handle\_motion()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a865bad574385bfd852fbf9e4f01d38e6} 
+void handle\+\_\+motion (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{mx}{, }\item[{int}]{my}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Update the hovered-\/button state on mouse motion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em mx,my} & Current mouse cursor position. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{gui__main_8c_a865bad574385bfd852fbf9e4f01d38e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{gui__main_8c_a865bad574385bfd852fbf9e4f01d38e6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a1dad3e7538889c0c3362544e9a3b4409}\index{gui\_main.c@{gui\_main.c}!handle\_text\_input@{handle\_text\_input}}
+\index{handle\_text\_input@{handle\_text\_input}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{handle\_text\_input()}{handle\_text\_input()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a1dad3e7538889c0c3362544e9a3b4409} 
+void handle\+\_\+text\+\_\+input (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Append SDL\+\_\+\+TEXTINPUT characters to the focused field\textquotesingle{}s buffer. 
+
+SDL delivers printable characters via SDL\+\_\+\+TEXTINPUT events (already converted from key codes with correct locale/\+\+IME handling). The text is appended only if the buffer has room.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em text} & UTF-\/8 string from the SDL\+\_\+\+TEXTINPUT event. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{gui__main_8c_a1dad3e7538889c0c3362544e9a3b4409_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{gui__main_8c_a1dad3e7538889c0c3362544e9a3b4409_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_ad4c2ff82ca2f54f5a9cc5499f043503a}\index{gui\_main.c@{gui\_main.c}!input\_hit@{input\_hit}}
+\index{input\_hit@{input\_hit}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{input\_hit()}{input\_hit()}}
+{\footnotesize\ttfamily \label{gui__main_8c_ad4c2ff82ca2f54f5a9cc5499f043503a} 
+int input\+\_\+hit (\begin{DoxyParamCaption}\item[{int}]{mx}{, }\item[{int}]{my}{, }\item[{int}]{row\+\_\+y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Test whether a mouse position hits the text-\/input field on a given row. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mx,my} & Mouse cursor position in window coordinates. \\
+\hline
+{\em row\+\_\+y} & Top-\/left Y of the row to test. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Non-\/zero if the field was hit. 
+\end{DoxyReturn}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{gui__main_8c_ad4c2ff82ca2f54f5a9cc5499f043503a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\index{gui\_main.c@{gui\_main.c}!main@{main}}
+\index{main@{main}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+Entry point for the GUI binary. 
+
+Initialises SDL2 and SDL2\+\_\+ttf, creates the window and renderer, loads the most recently modified model from {\ttfamily models/\+} (or the path given via {\ttfamily -\/-\/model}), then enters the event loop. The loop runs at \texorpdfstring{$\sim$}{\string~}60 fps and dispatches events to the appropriate handler before calling \doxylink{gui__main_8c_a85cf255ba2431096ce822a5bf2523223}{gui\+\_\+render()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Argument count. \\
+\hline
+{\em argv} & Argument vector. Accepted options:\+ {\ttfamily -\/-\/model} {\ttfamily \texorpdfstring{$<$}{<}path\texorpdfstring{$>$}{>}} — explicit model file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on clean exit, 1 on SDL/\+\+TTF initialisation failure. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a7daaad1f1d10a2dd579e5e92896bbcc0}\index{gui\_main.c@{gui\_main.c}!outline\_rect@{outline\_rect}}
+\index{outline\_rect@{outline\_rect}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{outline\_rect()}{outline\_rect()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a7daaad1f1d10a2dd579e5e92896bbcc0} 
+void outline\+\_\+rect (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{r}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{w}{, }\item[{int}]{h}{, }\item[{Uint8}]{cr}{, }\item[{Uint8}]{cg}{, }\item[{Uint8}]{cb}{, }\item[{Uint8}]{ca}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Draw a 1-\/pixel outline rectangle (no fill). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & SDL renderer. \\
+\hline
+{\em x,y} & Top-\/left corner. \\
+\hline
+{\em w,h} & Dimensions in pixels. \\
+\hline
+{\em cr,cg,cb,ca} & RGBA colour components. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a7daaad1f1d10a2dd579e5e92896bbcc0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_ac7cc366bca3a3a9e66ab696c649d6449}\index{gui\_main.c@{gui\_main.c}!recognise\_cell@{recognise\_cell}}
+\index{recognise\_cell@{recognise\_cell}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{recognise\_cell()}{recognise\_cell()}}
+{\footnotesize\ttfamily \label{gui__main_8c_ac7cc366bca3a3a9e66ab696c649d6449} 
+int recognise\+\_\+cell (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*}}]{gray}{, }\item[{const \doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*}}]{box}{, }\item[{int}]{cell\+\_\+size}{, }\item[{\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*}}]{net}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Predict the letter in a grid cell using Test-\/\+Time Augmentation (TTA). 
+
+Runs TTA\+\_\+N forward passes centred on the bounding-\/box centre, each with a small ±2 px spatial shift, averages the softmax outputs, and returns the argmax class index (0=\textquotesingle{}A\textquotesingle{} … 25=\textquotesingle{}Z\textquotesingle{}).
+
+The crop window is {\ttfamily cell\+\_\+size} × {\ttfamily cell\+\_\+size} (grid pitch) so that every letter sees a consistent white border regardless of how tight the connected-\/component bounding box is. If {\ttfamily cell\+\_\+size} is 0, a 35\%-\/padding heuristic is used instead.
+
+
+\begin{DoxyParams}{Parameters}
+{\em gray} & Full grayscale image. \\
+\hline
+{\em box} & Tight bounding box returned by the segmenter. \\
+\hline
+{\em cell\+\_\+size} & Grid pitch in pixels (pass 0 to use the padding fallback). \\
+\hline
+{\em net} & Trained \doxylink{structCNN}{CNN}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Class index in \+[0, 25]\+, or 0 on degenerate input. 
+\end{DoxyReturn}
+Here is the call graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_ac7cc366bca3a3a9e66ab696c649d6449_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_ac7cc366bca3a3a9e66ab696c649d6449_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_aa2deaf89b1cda3da6657138b14968172}\index{gui\_main.c@{gui\_main.c}!set\_focus@{set\_focus}}
+\index{set\_focus@{set\_focus}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{set\_focus()}{set\_focus()}}
+{\footnotesize\ttfamily \label{gui__main_8c_aa2deaf89b1cda3da6657138b14968172} 
+void set\+\_\+focus (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{new\+\_\+focus}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Set keyboard focus to a field and start/\+stop SDL text input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state. \\
+\hline
+{\em new\+\_\+focus} & FOCUS\+\_\+\+IMAGE, FOCUS\+\_\+\+MODEL, FOCUS\+\_\+\+WORDS, or FOCUS\+\_\+\+NONE. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_aa2deaf89b1cda3da6657138b14968172_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a96180b7d003d7ea611c7139a50a4e88d}\index{gui\_main.c@{gui\_main.c}!to\_sx@{to\_sx}}
+\index{to\_sx@{to\_sx}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{to\_sx()}{to\_sx()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a96180b7d003d7ea611c7139a50a4e88d} 
+int to\+\_\+sx (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{ix}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convert an image-\/space X coordinate to a screen X coordinate. 
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a96180b7d003d7ea611c7139a50a4e88d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_ab8439489926a15923d3e62a25cc25f40}\index{gui\_main.c@{gui\_main.c}!to\_sy@{to\_sy}}
+\index{to\_sy@{to\_sy}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{to\_sy()}{to\_sy()}}
+{\footnotesize\ttfamily \label{gui__main_8c_ab8439489926a15923d3e62a25cc25f40} 
+int to\+\_\+sy (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{, }\item[{int}]{iy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convert an image-\/space Y coordinate to a screen Y coordinate. 
+
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_ab8439489926a15923d3e62a25cc25f40_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{gui__main_8c_a2830b237533c7fb39c4edcdbba12e582}\index{gui\_main.c@{gui\_main.c}!update\_geometry@{update\_geometry}}
+\index{update\_geometry@{update\_geometry}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{update\_geometry()}{update\_geometry()}}
+{\footnotesize\ttfamily \label{gui__main_8c_a2830b237533c7fb39c4edcdbba12e582} 
+void update\+\_\+geometry (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structGuiState}{Gui\+State}} \texorpdfstring{$\ast$}{*}}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Recompute the image display rectangle after a load or window change. 
+
+Calculates the uniform scale factor that fits {\ttfamily g-\/\texorpdfstring{$>$}{>}orig\+\_\+img} inside the image area (below PANEL\+\_\+H) while preserving the aspect ratio, then stores the top-\/left offset ({\ttfamily g-\/\texorpdfstring{$>$}{>}disp\+\_\+x}, {\ttfamily g-\/\texorpdfstring{$>$}{>}disp\+\_\+y}) and {\ttfamily g-\/\texorpdfstring{$>$}{>}disp\+\_\+scale}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Application state; {\ttfamily g-\/\texorpdfstring{$>$}{>}orig\+\_\+img} must be non-\/\+NULL. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui__main_8c_a2830b237533c7fb39c4edcdbba12e582_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{gui__main_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{gui__main_8c_aaaccbc576be32dabb329785eedfec432}\index{gui\_main.c@{gui\_main.c}!FONT\_PATHS@{FONT\_PATHS}}
+\index{FONT\_PATHS@{FONT\_PATHS}!gui\_main.c@{gui\_main.c}}
+\doxysubsubsection{\texorpdfstring{FONT\_PATHS}{FONT\_PATHS}}
+{\footnotesize\ttfamily \label{gui__main_8c_aaaccbc576be32dabb329785eedfec432} 
+const char\texorpdfstring{$\ast$}{*} const FONT\+\_\+\+PATHS\+[$\,$]\+\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/TTF/DejaVuSans.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/dejavu/DejaVuSans.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/TTF/LiberationSans-\/Regular.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/truetype/liberation/LiberationSans-\/Regular.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/liberation-\/sans/LiberationSans-\/Regular.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/TTF/FreeSans.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/gnu-\/free/FreeSans.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/noto/NotoSans-\/Regular.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ \textcolor{stringliteral}{"{}/usr/share/fonts/truetype/noto/NotoSans-\/Regular.ttf"{}},}
+\DoxyCodeLine{\ \ \ \ NULL}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

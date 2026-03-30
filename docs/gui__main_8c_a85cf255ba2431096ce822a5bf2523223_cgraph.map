@@ -1,0 +1,24 @@
+<map id="gui_render" name="gui_render">
+<area shape="rect" id="Node000001" title="Composite and present one complete frame." alt="" coords="5,107,96,134"/>
+<area shape="rect" id="Node000002" href="$gui__main_8c.html#a22c9e0bde0953fd7ce91e33670680665" title="Draw an action button with a centred text label." alt="" coords="181,5,262,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,105,100,77,142,49,168,38,165,41,145,53,103,81,70,108"/>
+<area shape="rect" id="Node000003" href="$gui__main_8c.html#a49fd9cea7514012a2d7aa3b185d79567" title="Draw a solid filled rectangle." alt="" coords="362,55,432,82"/>
+<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="95,109,143,99,348,72,346,76,144,104,97,113"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#ad22d9a40b70a2b78dcb12166c8e56019" title="Draw a text&#45;input field with optional placeholder and blinking cursor." alt="" coords="175,157,268,185"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,131,163,152,158,155,96,136"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#a745b380c7a7157450136f2efdb16fae2" title="Render a UTF&#45;8 string at pixel position (x, y)." alt="" coords="354,107,440,134"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="96,118,339,118,337,123,96,123"/>
+<area shape="rect" id="Node000007" href="$gui__main_8c.html#a10d4e464ee4e7dacd871a478043a8584" title="Overlay a semi&#45;transparent red rectangle on each cell of a found word." alt="" coords="144,209,300,237"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="66,132,101,163,145,194,159,203,154,203,142,199,98,167,65,137"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,28,350,54,345,56,263,33"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="245,155,347,93,354,92,359,89,349,97,247,159"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="268,155,341,136,337,138,270,160"/>
+<area shape="rect" id="Node000006" href="$gui__main_8c.html#a7daaad1f1d10a2dd579e5e92896bbcc0" title="Draw a 1&#45;pixel outline rectangle (no fill)." alt="" coords="348,159,446,186"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="269,169,335,171,330,173,269,174"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="280,206,298,195,316,171,323,146,329,121,346,93,349,93,354,90,350,97,334,123,328,148,321,173,302,198,283,211"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="271,206,336,190,331,192,273,211"/>
+<area shape="rect" id="Node000008" href="$gui__main_8c.html#a96180b7d003d7ea611c7139a50a4e88d" title="Convert an image&#45;space X coordinate to a screen X coordinate." alt="" coords="369,263,425,290"/>
+<area shape="poly" id="edge11_Node000007_Node000008" title=" " alt="" coords="270,235,357,263,351,264,269,240"/>
+<area shape="rect" id="Node000009" href="$gui__main_8c.html#ab8439489926a15923d3e62a25cc25f40" title="Convert an image&#45;space Y coordinate to a screen Y coordinate." alt="" coords="369,211,425,238"/>
+<area shape="poly" id="edge12_Node000007_Node000009" title=" " alt="" coords="300,221,356,224,351,225,301,226"/>
+</map>

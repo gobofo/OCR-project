@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wordresult_0',['WordResult',['../structWordResult.html',1,'']]]
+  ['trainargs_0',['TrainArgs',['../structTrainArgs.html',1,'']]]
 ];

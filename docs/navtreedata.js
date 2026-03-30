@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "OCR Project", "index.html", [
+    [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -48,7 +49,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"train__main_8c.html#a89d9b90dbc1df3ab30a2d08519e40e49"
+"structDataset.html#ad962e1bccad21818b5921eceba79006a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

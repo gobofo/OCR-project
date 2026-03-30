@@ -1,9 +1,18 @@
 <map id="queue_push" name="queue_push">
-<area shape="rect" id="Node000001" title="Append a pixel coordinate to the queue, growing if needed." alt="" coords="569,5,669,33"/>
-<area shape="rect" id="Node000002" href="$segment_8c.html#a1f320fd7cedab5d2870e28e717a337d8" title="Extract letter bounding boxes via connected&#45;component analysis." alt="" coords="282,5,521,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="551,19,522,22,522,17,556,19"/>
-<area shape="rect" id="Node000003" href="$segment_8c.html#af4f1a9479f738e0cccc6d9f0b6e963e3" title="Segment a binarised image into letter cell bounding boxes." alt="" coords="108,5,234,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="264,19,235,22,234,17,269,19"/>
-<area shape="rect" id="Node000004" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,5,60,33"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="89,20,60,22,60,17,95,18"/>
+<area shape="rect" id="Node000001" title="Append a pixel coordinate to the queue, growing if needed." alt="" coords="892,57,991,85"/>
+<area shape="rect" id="Node000002" href="$segment_8c.html#a1f320fd7cedab5d2870e28e717a337d8" title="Extract letter bounding boxes via connected&#45;component analysis." alt="" coords="605,57,844,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="874,71,845,74,845,69,879,71"/>
+<area shape="rect" id="Node000003" href="$segment_8c.html#af4f1a9479f738e0cccc6d9f0b6e963e3" title="Segment a binarised image into letter cell bounding boxes." alt="" coords="430,57,557,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="586,71,557,74,557,69,592,71"/>
+<area shape="rect" id="Node000004" href="$gui__main_8c.html#a536001e9abc0c38f7796d65689175349" title="Run the full OCR pipeline and word search, then store results." alt="" coords="286,31,382,58"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="412,58,383,55,383,50,418,58"/>
+<area shape="rect" id="Node000008" href="$solve__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="307,83,361,110"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="418,83,362,95,361,90,413,84"/>
+<area shape="rect" id="Node000005" href="$gui__main_8c.html#a8476ad048caada8e1eb7b92272f915c6" title="Handle a left mouse&#45;button click." alt="" coords="122,5,224,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="268,35,224,30,224,24,273,34"/>
+<area shape="rect" id="Node000007" href="$gui__main_8c.html#aeee906aa84907a612ba32b42f75a36d6" title="Handle SDL_KEYDOWN events for the focused text field." alt="" coords="108,57,238,85"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="268,55,239,63,238,58,273,54"/>
+<area shape="rect" id="Node000006" href="$gui__main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627" title="Entry point for the GUI binary." alt="" coords="5,32,60,60"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="104,34,61,43,59,38,108,30"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="90,58,60,53,60,48,95,55"/>
 </map>

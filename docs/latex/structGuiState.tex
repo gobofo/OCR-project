@@ -1,0 +1,251 @@
+\doxysection{Gui\+State Struct Reference}
+\hypertarget{structGuiState}{}\label{structGuiState}\index{GuiState@{GuiState}}
+
+
+Complete application state passed to every GUI function.  
+
+
+
+
+Collaboration diagram for Gui\+State:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structGuiState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structGuiState_aedfcf967e206a5235c19165bec735896}{window}}
+\item 
+SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structGuiState_a354b1dcbfecb97ec10e69ebc0474d27c}{renderer}}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structGuiState_af3643e76951a731da78f7ba8e7d44796}{font}}
+\item 
+TTF\+\_\+\+Font \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structGuiState_a5e19665651804d1512c4b70a7adef76d}{font\+\_\+sm}}
+\item 
+char \doxymbox{\hyperlink{structGuiState_a2ad0daea0cc14f703a930b9151a99aa1}{image\+\_\+buf}} \+[512]\+
+\item 
+char \doxymbox{\hyperlink{structGuiState_a7753f34c127b683eecab97db0680684a}{model\+\_\+buf}} \+[512]\+
+\item 
+char \doxymbox{\hyperlink{structGuiState_a496c33c704ca528abbe4056942c2bcaf}{words\+\_\+buf}} \+[2048]\+
+\item 
+int \doxymbox{\hyperlink{structGuiState_a95e2e073d2eb377f0e366eb6bfcf1eea}{focused}}
+\item 
+\doxymbox{\hyperlink{structImage}{Image}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structGuiState_a4b9e19eee0b4ab4c567cdfb1f17537af}{orig\+\_\+img}}
+\item 
+SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structGuiState_ad34bcf2c42315082e19640e9adb418c8}{orig\+\_\+tex}}
+\item 
+\doxymbox{\hyperlink{structCNN}{CNN}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structGuiState_af08c27b6c2dfe3c009fb3eb8792f3f79}{net}}
+\item 
+\doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structGuiState_ad343866b5538363dc5736e952e616e68}{cells}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{structGuiState_a97599dc37cbcc51f89e4f17cefa06eea}{n\+\_\+cells}}
+\item 
+int \doxymbox{\hyperlink{structGuiState_ad819d72e3b35dbbb35d6d81daf47bcba}{grid\+\_\+rows}}
+\item 
+int \doxymbox{\hyperlink{structGuiState_a0bc6b380bf497f19ffc60a4871ce3ef5}{grid\+\_\+cols}}
+\item 
+int \doxymbox{\hyperlink{structGuiState_aa0640f9f9178301e7304bc11c8144811}{cell\+\_\+pitch}}
+\item 
+char \doxymbox{\hyperlink{structGuiState_a2935909373cc673b18802e47269e3707}{result\+\_\+words}} \+[\doxymbox{\hyperlink{group__layout_ga07b6635a0aa8eb07e2aed172b4bb0d29}{MAX\+\_\+\+RESULTS}}]\+\+[64]\+
+\item 
+\doxymbox{\hyperlink{structWordResult}{Word\+Result}} \doxymbox{\hyperlink{structGuiState_a3421319b266079e90f2c2d9bae845e4a}{results}} \+[\doxymbox{\hyperlink{group__layout_ga07b6635a0aa8eb07e2aed172b4bb0d29}{MAX\+\_\+\+RESULTS}}]\+
+\item 
+int \doxymbox{\hyperlink{structGuiState_a26042c7ef482573ecc81069b9b3da9d1}{n\+\_\+results}}
+\item 
+int \doxymbox{\hyperlink{structGuiState_a8860293669f0d081c16237445f4d6c93}{disp\+\_\+x}}
+\item 
+int \doxymbox{\hyperlink{structGuiState_a9256e9bc43dff84f17109bd1ab390628}{disp\+\_\+y}}
+\item 
+float \doxymbox{\hyperlink{structGuiState_a5003e2c46268064ff486ef7eab9b792a}{disp\+\_\+scale}}
+\item 
+char \doxymbox{\hyperlink{structGuiState_ab64273ce2d73b204558aa9d1a8b1f58f}{status}} \+[256]\+
+\item 
+int \doxymbox{\hyperlink{structGuiState_a49362a36a6bb939e1bf7850a61aaddcd}{status\+\_\+ok}}
+\item 
+int \doxymbox{\hyperlink{structGuiState_a4a36e44701e853ffd007c9d4a1f8f2ad}{hovered\+\_\+btn}}
+\item 
+int \doxymbox{\hyperlink{structGuiState_aed69568aaf6680793ef5a5e365ef1c54}{running}}
+\item 
+int \doxymbox{\hyperlink{structGuiState_ac9948f2a1fc93d53314d76319d2e2ab0}{busy}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Complete application state passed to every GUI function. 
+
+All mutable state lives here so that every helper function receives only a single pointer instead of a growing parameter list. 
+
+\label{doc-variable-members}
+\Hypertarget{structGuiState_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structGuiState_ac9948f2a1fc93d53314d76319d2e2ab0}\index{GuiState@{GuiState}!busy@{busy}}
+\index{busy@{busy}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{busy}{busy}}
+{\footnotesize\ttfamily \label{structGuiState_ac9948f2a1fc93d53314d76319d2e2ab0} 
+int Gui\+State::\+busy}
+
+Non-\/zero while OCR pipeline is running. \Hypertarget{structGuiState_aa0640f9f9178301e7304bc11c8144811}\index{GuiState@{GuiState}!cell\_pitch@{cell\_pitch}}
+\index{cell\_pitch@{cell\_pitch}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{cell\_pitch}{cell\_pitch}}
+{\footnotesize\ttfamily \label{structGuiState_aa0640f9f9178301e7304bc11c8144811} 
+int Gui\+State::\+cell\+\_\+pitch}
+
+Average grid pitch in image pixels. \Hypertarget{structGuiState_ad343866b5538363dc5736e952e616e68}\index{GuiState@{GuiState}!cells@{cells}}
+\index{cells@{cells}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{cells}{cells}}
+{\footnotesize\ttfamily \label{structGuiState_ad343866b5538363dc5736e952e616e68} 
+\doxymbox{\hyperlink{structBoundingBox}{Bounding\+Box}}\texorpdfstring{$\ast$}{*} Gui\+State::\+cells}
+
+Sorted letter bounding boxes (image coords). \Hypertarget{structGuiState_a5003e2c46268064ff486ef7eab9b792a}\index{GuiState@{GuiState}!disp\_scale@{disp\_scale}}
+\index{disp\_scale@{disp\_scale}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{disp\_scale}{disp\_scale}}
+{\footnotesize\ttfamily \label{structGuiState_a5003e2c46268064ff486ef7eab9b792a} 
+float Gui\+State::\+disp\+\_\+scale}
+
+Factor:\+ image\+\_\+pixel × disp\+\_\+scale = screen\+\_\+pixel. \Hypertarget{structGuiState_a8860293669f0d081c16237445f4d6c93}\index{GuiState@{GuiState}!disp\_x@{disp\_x}}
+\index{disp\_x@{disp\_x}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{disp\_x}{disp\_x}}
+{\footnotesize\ttfamily \label{structGuiState_a8860293669f0d081c16237445f4d6c93} 
+int Gui\+State::\+disp\+\_\+x}
+
+X pixel of the image top-\/left corner on screen. \Hypertarget{structGuiState_a9256e9bc43dff84f17109bd1ab390628}\index{GuiState@{GuiState}!disp\_y@{disp\_y}}
+\index{disp\_y@{disp\_y}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{disp\_y}{disp\_y}}
+{\footnotesize\ttfamily \label{structGuiState_a9256e9bc43dff84f17109bd1ab390628} 
+int Gui\+State::\+disp\+\_\+y}
+
+Y pixel of the image top-\/left corner on screen. \Hypertarget{structGuiState_a95e2e073d2eb377f0e366eb6bfcf1eea}\index{GuiState@{GuiState}!focused@{focused}}
+\index{focused@{focused}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{focused}{focused}}
+{\footnotesize\ttfamily \label{structGuiState_a95e2e073d2eb377f0e366eb6bfcf1eea} 
+int Gui\+State::\+focused}
+
+Which field has keyboard focus (FOCUS\+\_\+\texorpdfstring{$\ast$}{*}). \Hypertarget{structGuiState_af3643e76951a731da78f7ba8e7d44796}\index{GuiState@{GuiState}!font@{font}}
+\index{font@{font}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily \label{structGuiState_af3643e76951a731da78f7ba8e7d44796} 
+TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} Gui\+State::\+font}
+
+Primary font (FONT\+\_\+\+SIZE pt). \Hypertarget{structGuiState_a5e19665651804d1512c4b70a7adef76d}\index{GuiState@{GuiState}!font\_sm@{font\_sm}}
+\index{font\_sm@{font\_sm}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{font\_sm}{font\_sm}}
+{\footnotesize\ttfamily \label{structGuiState_a5e19665651804d1512c4b70a7adef76d} 
+TTF\+\_\+\+Font\texorpdfstring{$\ast$}{*} Gui\+State::\+font\+\_\+sm}
+
+Smaller font for labels/\+status (FONT\+\_\+\+SIZE\+\_\+\+SM pt). \Hypertarget{structGuiState_a0bc6b380bf497f19ffc60a4871ce3ef5}\index{GuiState@{GuiState}!grid\_cols@{grid\_cols}}
+\index{grid\_cols@{grid\_cols}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{grid\_cols}{grid\_cols}}
+{\footnotesize\ttfamily \label{structGuiState_a0bc6b380bf497f19ffc60a4871ce3ef5} 
+int Gui\+State::\+grid\+\_\+cols}
+
+Number of grid columns inferred by OCR. \Hypertarget{structGuiState_ad819d72e3b35dbbb35d6d81daf47bcba}\index{GuiState@{GuiState}!grid\_rows@{grid\_rows}}
+\index{grid\_rows@{grid\_rows}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{grid\_rows}{grid\_rows}}
+{\footnotesize\ttfamily \label{structGuiState_ad819d72e3b35dbbb35d6d81daf47bcba} 
+int Gui\+State::\+grid\+\_\+rows}
+
+Number of grid rows inferred by OCR. \Hypertarget{structGuiState_a4a36e44701e853ffd007c9d4a1f8f2ad}\index{GuiState@{GuiState}!hovered\_btn@{hovered\_btn}}
+\index{hovered\_btn@{hovered\_btn}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{hovered\_btn}{hovered\_btn}}
+{\footnotesize\ttfamily \label{structGuiState_a4a36e44701e853ffd007c9d4a1f8f2ad} 
+int Gui\+State::\+hovered\+\_\+btn}
+
+Button under the mouse:\+ 0=none, 1–3=row index. \Hypertarget{structGuiState_a2ad0daea0cc14f703a930b9151a99aa1}\index{GuiState@{GuiState}!image\_buf@{image\_buf}}
+\index{image\_buf@{image\_buf}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{image\_buf}{image\_buf}}
+{\footnotesize\ttfamily \label{structGuiState_a2ad0daea0cc14f703a930b9151a99aa1} 
+char Gui\+State::\+image\+\_\+buf\+[512]\+}
+
+Editable image-\/path field content. \Hypertarget{structGuiState_a7753f34c127b683eecab97db0680684a}\index{GuiState@{GuiState}!model\_buf@{model\_buf}}
+\index{model\_buf@{model\_buf}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{model\_buf}{model\_buf}}
+{\footnotesize\ttfamily \label{structGuiState_a7753f34c127b683eecab97db0680684a} 
+char Gui\+State::\+model\+\_\+buf\+[512]\+}
+
+Editable model-\/path field content. \Hypertarget{structGuiState_a97599dc37cbcc51f89e4f17cefa06eea}\index{GuiState@{GuiState}!n\_cells@{n\_cells}}
+\index{n\_cells@{n\_cells}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{n\_cells}{n\_cells}}
+{\footnotesize\ttfamily \label{structGuiState_a97599dc37cbcc51f89e4f17cefa06eea} 
+size\+\_\+t Gui\+State::\+n\+\_\+cells}
+
+Number of entries in {\ttfamily cells}. \Hypertarget{structGuiState_a26042c7ef482573ecc81069b9b3da9d1}\index{GuiState@{GuiState}!n\_results@{n\_results}}
+\index{n\_results@{n\_results}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{n\_results}{n\_results}}
+{\footnotesize\ttfamily \label{structGuiState_a26042c7ef482573ecc81069b9b3da9d1} 
+int Gui\+State::\+n\+\_\+results}
+
+Number of entries in results\+[]\+. \Hypertarget{structGuiState_af08c27b6c2dfe3c009fb3eb8792f3f79}\index{GuiState@{GuiState}!net@{net}}
+\index{net@{net}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{net}{net}}
+{\footnotesize\ttfamily \label{structGuiState_af08c27b6c2dfe3c009fb3eb8792f3f79} 
+\doxymbox{\hyperlink{structCNN}{CNN}}\texorpdfstring{$\ast$}{*} Gui\+State::\+net}
+
+Loaded \doxylink{structCNN}{CNN} model. \Hypertarget{structGuiState_a4b9e19eee0b4ab4c567cdfb1f17537af}\index{GuiState@{GuiState}!orig\_img@{orig\_img}}
+\index{orig\_img@{orig\_img}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{orig\_img}{orig\_img}}
+{\footnotesize\ttfamily \label{structGuiState_a4b9e19eee0b4ab4c567cdfb1f17537af} 
+\doxymbox{\hyperlink{structImage}{Image}}\texorpdfstring{$\ast$}{*} Gui\+State::\+orig\+\_\+img}
+
+Original RGBA image — {\bfseries{never}} modified. \Hypertarget{structGuiState_ad34bcf2c42315082e19640e9adb418c8}\index{GuiState@{GuiState}!orig\_tex@{orig\_tex}}
+\index{orig\_tex@{orig\_tex}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{orig\_tex}{orig\_tex}}
+{\footnotesize\ttfamily \label{structGuiState_ad34bcf2c42315082e19640e9adb418c8} 
+SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} Gui\+State::\+orig\+\_\+tex}
+
+GPU texture built once from orig\+\_\+img. \Hypertarget{structGuiState_a354b1dcbfecb97ec10e69ebc0474d27c}\index{GuiState@{GuiState}!renderer@{renderer}}
+\index{renderer@{renderer}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily \label{structGuiState_a354b1dcbfecb97ec10e69ebc0474d27c} 
+SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} Gui\+State::\+renderer}
+
+Hardware-\/accelerated renderer. \Hypertarget{structGuiState_a2935909373cc673b18802e47269e3707}\index{GuiState@{GuiState}!result\_words@{result\_words}}
+\index{result\_words@{result\_words}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{result\_words}{result\_words}}
+{\footnotesize\ttfamily \label{structGuiState_a2935909373cc673b18802e47269e3707} 
+char Gui\+State::\+result\+\_\+words\+[\doxymbox{\hyperlink{group__layout_ga07b6635a0aa8eb07e2aed172b4bb0d29}{MAX\+\_\+\+RESULTS}}]\+\+[64]\+}
+
+Words that were searched. \Hypertarget{structGuiState_a3421319b266079e90f2c2d9bae845e4a}\index{GuiState@{GuiState}!results@{results}}
+\index{results@{results}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{results}{results}}
+{\footnotesize\ttfamily \label{structGuiState_a3421319b266079e90f2c2d9bae845e4a} 
+\doxymbox{\hyperlink{structWordResult}{Word\+Result}} Gui\+State::\+results\+[\doxymbox{\hyperlink{group__layout_ga07b6635a0aa8eb07e2aed172b4bb0d29}{MAX\+\_\+\+RESULTS}}]\+}
+
+Corresponding solver results. \Hypertarget{structGuiState_aed69568aaf6680793ef5a5e365ef1c54}\index{GuiState@{GuiState}!running@{running}}
+\index{running@{running}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily \label{structGuiState_aed69568aaf6680793ef5a5e365ef1c54} 
+int Gui\+State::\+running}
+
+Set to 0 to exit the event loop. \Hypertarget{structGuiState_ab64273ce2d73b204558aa9d1a8b1f58f}\index{GuiState@{GuiState}!status@{status}}
+\index{status@{status}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily \label{structGuiState_ab64273ce2d73b204558aa9d1a8b1f58f} 
+char Gui\+State::\+status\+[256]\+}
+
+Status-\/bar message. \Hypertarget{structGuiState_a49362a36a6bb939e1bf7850a61aaddcd}\index{GuiState@{GuiState}!status\_ok@{status\_ok}}
+\index{status\_ok@{status\_ok}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{status\_ok}{status\_ok}}
+{\footnotesize\ttfamily \label{structGuiState_a49362a36a6bb939e1bf7850a61aaddcd} 
+int Gui\+State::\+status\+\_\+ok}
+
+Colour hint:\+ 1=green, 0=red, -\/1=neutral grey. \Hypertarget{structGuiState_aedfcf967e206a5235c19165bec735896}\index{GuiState@{GuiState}!window@{window}}
+\index{window@{window}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily \label{structGuiState_aedfcf967e206a5235c19165bec735896} 
+SDL\+\_\+\+Window\texorpdfstring{$\ast$}{*} Gui\+State::\+window}
+
+Main application window. \Hypertarget{structGuiState_a496c33c704ca528abbe4056942c2bcaf}\index{GuiState@{GuiState}!words\_buf@{words\_buf}}
+\index{words\_buf@{words\_buf}!GuiState@{GuiState}}
+\doxysubsubsection{\texorpdfstring{words\_buf}{words\_buf}}
+{\footnotesize\ttfamily \label{structGuiState_a496c33c704ca528abbe4056942c2bcaf} 
+char Gui\+State::\+words\+\_\+buf\+[2048]\+}
+
+Comma-\/separated words to search for. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{gui__main_8c}{gui\+\_\+main.\+c}}\end{DoxyCompactItemize}
